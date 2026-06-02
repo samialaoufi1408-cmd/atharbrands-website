@@ -2,6 +2,7 @@ import { Container } from "../ui/Container";
 import { SectionTitle } from "../ui/SectionTitle";
 import { Reveal } from "../ui/Reveal";
 import { Icon } from "../ui/Icon";
+import { Monogram } from "../ui/Logo";
 
 const PILLARS = [
   {
@@ -23,18 +24,27 @@ const PILLARS = [
 
 export function About() {
   return (
-    <section id="about" className="bg-ivory py-24 sm:py-32">
+    <section id="about" className="bg-ivory py-24 lg:py-32">
       <Container>
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-5">
             <Reveal>
               <SectionTitle align="start" eyebrow="About" title="من نحن" />
-              <p className="text-midnight/70 mt-6 text-lg leading-relaxed">
+              <p className="mt-7 text-lg leading-relaxed text-midnight/70">
                 أثر هو استوديو سعودي متخصص في بناء العلامات التجارية من الفكرة إلى التجربة. نساعد
                 الشركات الناشئة والمنشآت الطموحة على تحويل رؤيتها إلى هوية واضحة، ورسالة مؤثرة،
                 وحضور بصري يرسخ في الذاكرة.
               </p>
-              <div className="from-gold mt-8 h-px w-28 bg-gradient-to-l to-transparent" />
+              <div className="rule-gold mt-8 max-w-28" />
+              <div className="mt-8 flex items-center gap-3.5">
+                <Monogram className="size-12" />
+                <div className="leading-tight">
+                  <p className="font-kufi text-sm text-midnight">أثر | ATHAR</p>
+                  <p className="label-latin mt-1 text-[0.55rem] text-gold-deep/80">
+                    Saudi Brand Studio
+                  </p>
+                </div>
+              </div>
             </Reveal>
           </div>
 
@@ -42,13 +52,13 @@ export function About() {
             <div className="flex flex-col gap-4">
               {PILLARS.map((pillar, index) => (
                 <Reveal key={pillar.title} delay={index * 80}>
-                  <div className="card-lift border-midnight/10 hover:border-gold/40 flex items-start gap-5 rounded-2xl border bg-white p-6 hover:shadow-[0_30px_60px_-36px_rgba(13,27,42,0.3)]">
-                    <span className="bg-gold/10 text-gold-deep grid size-12 shrink-0 place-items-center rounded-xl">
+                  <div className="card-lift flex items-start gap-5 rounded-card border border-midnight/10 bg-white p-6 hover:border-gold/45 hover:shadow-gold">
+                    <span className="grid size-12 shrink-0 place-items-center rounded-button border border-gold/25 bg-gold/[0.07] text-gold-deep">
                       <Icon name={pillar.icon} className="size-6" />
                     </span>
                     <div>
-                      <h3 className="text-midnight text-lg">{pillar.title}</h3>
-                      <p className="text-midnight/60 mt-1.5 text-sm leading-relaxed">
+                      <h3 className="text-lg text-midnight">{pillar.title}</h3>
+                      <p className="mt-1.5 text-sm leading-relaxed text-midnight/60">
                         {pillar.text}
                       </p>
                     </div>

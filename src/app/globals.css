@@ -1,9 +1,9 @@
 @import "tailwindcss";
 
 /* ============================================================
-   أثر | ATHAR — Design System
-   A Saudi luxury brand studio. Refined, calm, gold-accented.
-   Palette + type tokens consumed by Tailwind v4 utilities.
+   أثر | ATHAR — Brand-board Design System
+   Saudi luxury brand studio. Midnight + sand + gold.
+   Typography: IBM Plex Sans Arabic (AR) · Inter (Latin).
    ============================================================ */
 
 @theme {
@@ -23,8 +23,19 @@
 
   /* Type families (wired by next/font in layout.tsx) */
   --font-sans: var(--font-plex-arabic), "Segoe UI", system-ui, sans-serif;
-  --font-kufi: var(--font-reem), var(--font-plex-arabic), system-ui, sans-serif;
-  --font-serif: var(--font-cormorant), "Times New Roman", serif;
+  --font-kufi: var(--font-plex-arabic), "Segoe UI", system-ui, sans-serif;
+  --font-latin: var(--font-inter), system-ui, sans-serif;
+  --font-serif: var(--font-inter), system-ui, sans-serif; /* legacy alias → Inter */
+
+  /* Radii */
+  --radius-card: 20px;
+  --radius-button: 14px;
+
+  /* Shadows */
+  --shadow-soft: 0 24px 80px rgba(13, 27, 42, 0.1);
+  --shadow-gold:
+    0 0 0 1px rgba(200, 169, 106, 0.22), 0 24px 80px rgba(13, 27, 42, 0.18);
+  --shadow-mock: 0 30px 60px -28px rgba(13, 27, 42, 0.55);
 
   /* Motion */
   --ease-luxe: cubic-bezier(0.22, 1, 0.36, 1);
@@ -48,22 +59,34 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+/* Confident, premium Arabic headings */
 h1,
 h2,
 h3,
 h4 {
   font-family: var(--font-kufi);
-  font-weight: 500;
-  line-height: 1.18;
-  letter-spacing: -0.005em;
+  font-weight: 600;
+  line-height: 1.14;
+  letter-spacing: -0.01em;
 }
 
 .font-kufi {
   font-family: var(--font-kufi);
 }
-
+.font-latin {
+  font-family: var(--font-latin);
+}
 .font-serif {
-  font-family: var(--font-serif);
+  font-family: var(--font-latin);
+}
+
+/* Small-caps Latin label (letter-spacing is safe on Latin, not Arabic) */
+.label-latin {
+  font-family: var(--font-latin);
+  font-weight: 600;
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
 }
 
 ::selection {
@@ -73,10 +96,10 @@ h4 {
 
 /* Offset anchored sections beneath the sticky header */
 section[id] {
-  scroll-margin-top: 5.5rem;
+  scroll-margin-top: 6rem;
 }
 
-/* ---------- Reveal-on-scroll (see components/ui/Reveal.tsx) ---------- */
+/* ---------- Reveal-on-scroll ---------- */
 .reveal {
   opacity: 0;
   transform: translateY(26px);
@@ -136,7 +159,7 @@ section[id] {
     background-color 0.5s var(--ease-luxe);
 }
 .card-lift:hover {
-  transform: translateY(-5px);
+  transform: translateY(-6px);
 }
 
 /* Refined thin scrollbar on precise pointers */

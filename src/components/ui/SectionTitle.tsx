@@ -2,8 +2,8 @@ import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
 /**
- * Eyebrow (small, letter-spaced LATIN — spacing breaks Arabic joining) over an
- * Arabic heading, with an optional description. `tone="light"` for dark sections.
+ * Small-caps LATIN eyebrow over a large, confident Arabic heading.
+ * `tone="light"` for dark sections.
  */
 export function SectionTitle({
   eyebrow,
@@ -24,20 +24,20 @@ export function SectionTitle({
   return (
     <div
       className={cn(
-        "flex flex-col gap-4",
+        "flex flex-col gap-5",
         align === "center" ? "items-center text-center" : "items-start text-right",
         className
       )}
     >
       {eyebrow && (
-        <span className="text-gold inline-flex items-center gap-3 text-[0.7rem] font-semibold tracking-[0.32em] uppercase">
-          <span className="bg-gold/55 h-px w-7" />
+        <span className="label-latin inline-flex items-center gap-3 text-gold">
+          <span className="h-px w-8 bg-gold/55" />
           {eyebrow}
         </span>
       )}
       <h2
         className={cn(
-          "text-3xl leading-[1.15] text-balance sm:text-4xl md:text-[2.6rem]",
+          "text-balance text-3xl leading-[1.12] sm:text-4xl md:text-5xl",
           light ? "text-ivory" : "text-midnight"
         )}
       >
@@ -46,7 +46,7 @@ export function SectionTitle({
       {description && (
         <p
           className={cn(
-            "max-w-2xl text-base leading-relaxed text-pretty sm:text-lg",
+            "max-w-2xl text-pretty text-base leading-relaxed sm:text-lg",
             light ? "text-ivory/70" : "text-midnight/65"
           )}
         >

@@ -2,8 +2,7 @@
 
 import { useState, type ChangeEvent, type FormEvent } from "react";
 import { PACKAGES, type BrandPackage } from "@/data/packages";
-import { formatNumber } from "@/lib/utils";
-import { cn } from "@/lib/utils";
+import { cn, formatNumber } from "@/lib/utils";
 import { packageRequestSchema } from "@/lib/validation/packageRequest";
 import { postJson } from "@/lib/forms";
 import { packageWhatsApp, whatsappUrl } from "@/lib/whatsapp";
@@ -64,12 +63,9 @@ export function Packages() {
   }
 
   return (
-    <section
-      id="packages"
-      className="bg-midnight text-ivory relative overflow-hidden py-24 sm:py-32"
-    >
+    <section id="packages" className="relative overflow-hidden bg-midnight py-24 text-ivory lg:py-32">
       <div className="pointer-events-none absolute inset-0">
-        <Pattern className="text-gold/[0.05] h-full w-full" id="packages-geo" />
+        <Pattern className="h-full w-full text-gold/[0.05]" id="packages-geo" />
       </div>
 
       <Container className="relative">
@@ -82,39 +78,42 @@ export function Packages() {
           />
         </Reveal>
 
-        <div className="mt-14 grid items-stretch gap-5 lg:grid-cols-3">
+        <div className="mt-16 grid items-stretch gap-5 lg:grid-cols-3">
           {PACKAGES.map((pkg, index) => (
-            <Reveal key={pkg.id} delay={index * 70} className="h-full">
+            <Reveal key={pkg.id} delay={index * 80} className="h-full">
               <div
                 className={cn(
-                  "relative flex h-full flex-col rounded-2xl border p-7 sm:p-8",
+                  "relative flex h-full flex-col rounded-card border p-7 transition-all duration-500 sm:p-8",
                   pkg.recommended
-                    ? "border-gold/50 bg-ivory/[0.07] shadow-[0_40px_90px_-50px_rgba(200,169,106,0.5)]"
-                    : "border-ivory/10 bg-ivory/[0.03]"
+                    ? "border-gold/50 bg-ivory/[0.06] shadow-gold lg:-translate-y-3"
+                    : "border-ivory/10 bg-ivory/[0.03] hover:border-gold/30"
                 )}
               >
                 {pkg.recommended && (
-                  <span className="bg-gold text-midnight absolute -top-3 right-7 rounded-full px-3 py-1 text-xs font-medium">
+                  <span className="label-latin absolute -top-3 right-7 rounded-full bg-gold px-3 py-1 text-[0.55rem] text-midnight">
                     الأكثر طلبًا
                   </span>
                 )}
-                <h3 className="text-ivory text-2xl">{pkg.name}</h3>
-                <p className="text-ivory/60 mt-2 text-sm leading-relaxed">{pkg.tagline}</p>
+                <p className="label-latin text-[0.58rem] text-gold/70">
+                  Package {String(index + 1).padStart(2, "0")}
+                </p>
+                <h3 className="mt-2 font-kufi text-2xl text-ivory">{pkg.name}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-ivory/60">{pkg.tagline}</p>
 
                 <div className="mt-5 flex items-baseline gap-1.5">
-                  <span className="text-ivory/50 text-xs">تبدأ من</span>
-                  <span className="font-kufi text-gold text-3xl">
+                  <span className="label-latin text-[0.55rem] text-ivory/45">From</span>
+                  <span className="font-latin text-3xl font-semibold text-gold">
                     {formatNumber(pkg.startingPrice)}
                   </span>
-                  <span className="text-ivory/60 text-sm">ريال</span>
+                  <span className="text-sm text-ivory/60">ريال</span>
                 </div>
 
-                <div className="bg-ivory/10 my-6 h-px" />
+                <div className="rule-gold my-6 opacity-70" />
 
                 <ul className="flex flex-1 flex-col gap-2.5">
                   {pkg.features.map((feature) => (
-                    <li key={feature} className="text-ivory/80 flex items-start gap-2.5 text-sm">
-                      <Icon name="check" className="text-gold mt-0.5 size-4 shrink-0" />
+                    <li key={feature} className="flex items-start gap-2.5 text-sm text-ivory/80">
+                      <Icon name="check" className="mt-0.5 size-4 shrink-0 text-gold" />
                       {feature}
                     </li>
                   ))}
@@ -132,7 +131,7 @@ export function Packages() {
           ))}
         </div>
 
-        <p className="text-ivory/50 mt-8 text-center text-sm">
+        <p className="mt-8 text-center text-sm text-ivory/50">
           الأسعار تقديرية وتختلف حسب نطاق المشروع ومتطلبات العلامة.
         </p>
       </Container>
@@ -151,11 +150,11 @@ export function Packages() {
         ) : (
           <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-4">
             {active && (
-              <div className="bg-midnight/5 flex items-baseline justify-between rounded-xl px-4 py-3 text-sm">
+              <div className="flex items-baseline justify-between rounded-xl bg-midnight/5 px-4 py-3 text-sm">
                 <span className="text-midnight/70">{active.name}</span>
                 <span className="text-midnight/60">
                   تبدأ من{" "}
-                  <span className="font-kufi text-gold-deep">
+                  <span className="font-latin font-semibold text-gold-deep">
                     {formatNumber(active.startingPrice)}
                   </span>{" "}
                   ريال

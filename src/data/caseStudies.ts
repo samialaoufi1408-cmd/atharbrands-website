@@ -1,62 +1,221 @@
-export type MockupKind = "signage" | "card" | "seal" | "phone" | "menu";
-
+/**
+ * Conceptual brand projects shown in «أعمال تصورية».
+ * Each entry is a mini brand sheet (name · idea · palette · applications) —
+ * rendered purely with CSS/SVG (no external images). Edit freely.
+ */
 export interface CaseStudy {
   id: string;
-  title: string;
+  index: string;
+  nameAr: string;
+  nameEn: string;
+  category: string;
   description: string;
-  tag: string;
-  /** Which CSS mockup to render (see components/sections/CaseStudies.tsx). */
-  mockup: MockupKind;
-  /** Per-study palette so each concept reads distinctly. */
-  palette: { bg: string; ink: string; accent: string };
-  /** Single glyph shown inside the mockup. */
+  /** فكرة الشعار */
+  logoIdea: string;
+  /** الألوان — palette swatches (hex). */
+  swatches: string[];
+  /** Emblem header colours. */
+  emblem: { bg: string; ink: string; accent: string };
+  /** Single glyph shown in the emblem. */
   monogram: string;
+  /** التطبيقات */
+  applications: string[];
 }
 
 export const CASE_STUDIES: CaseStudy[] = [
   {
-    id: "cafe",
-    title: "هوية مقهى فاخر",
-    description: "نظام بصري دافئ وهادئ لتجربة قهوة راقية.",
-    tag: "مقاهي",
-    mockup: "signage",
-    palette: { bg: "#2a211a", ink: "#efe6d6", accent: "#c8a96a" },
-    monogram: "ق",
-  },
-  {
-    id: "realestate",
-    title: "هوية شركة عقارية",
-    description: "حضور بصري موثوق يعكس الثبات والقيمة الاستثمارية.",
-    tag: "عقار",
-    mockup: "card",
-    palette: { bg: "#0d1b2a", ink: "#f6f3ee", accent: "#c8a96a" },
-    monogram: "ع",
-  },
-  {
-    id: "clinic",
-    title: "هوية عيادة تجميل",
-    description: "هوية ناعمة وراقية تعزز الثقة والراحة.",
-    tag: "طبي",
-    mockup: "seal",
-    palette: { bg: "#f1ece3", ink: "#0d1b2a", accent: "#7f8f7a" },
-    monogram: "ت",
-  },
-  {
-    id: "app",
-    title: "هوية تطبيق تقني",
-    description: "نظام بصري حديث وسريع مناسب لمنصة رقمية.",
-    tag: "تقنية",
-    mockup: "phone",
-    palette: { bg: "#13273b", ink: "#f6f3ee", accent: "#dcc28d" },
-    monogram: "A",
-  },
-  {
-    id: "restaurant",
-    title: "هوية مطعم سعودي معاصر",
-    description: "مزيج بين الأصالة والحداثة بتفاصيل بصرية فاخرة.",
-    tag: "مطاعم",
-    mockup: "menu",
-    palette: { bg: "#1c2a1f", ink: "#ece3d4", accent: "#c8a96a" },
+    id: "marsa",
+    index: "01",
+    nameAr: "مرسى الين",
+    nameEn: "Marsa Roastery",
+    category: "مقاهي",
+    description: "مقهى محمّص فاخر مستوحى من المراسي البحرية القديمة ورحلات الين.",
+    logoIdea: "موجة ناعمة وحرف عربي بسيط يعبّر عن التجربة الهادئة.",
+    swatches: ["#3a2c24", "#efe6d6", "#6b4f3a", "#c8a96a"],
+    emblem: { bg: "#2e231d", ink: "#efe6d6", accent: "#c8a96a" },
     monogram: "م",
+    applications: ["كيس قهوة", "كوب", "بطاقة عمل", "لوحة محل", "ستوري سوشال"],
+  },
+  {
+    id: "qatfa",
+    index: "02",
+    nameAr: "قطفة",
+    nameEn: "Qatfa Cafe",
+    category: "مقاهي",
+    description: "مقهى نباتي بطابع هادئ ومريح للجلسات والعمل.",
+    logoIdea: "ورقة نبات بسيطة مع فنجان قهوة بخط واحد.",
+    swatches: ["#6f7d63", "#cdd2c4", "#d9c08c", "#3f4a38"],
+    emblem: { bg: "#3f4a38", ink: "#e8ece2", accent: "#d9c08c" },
+    monogram: "ق",
+    applications: ["منيو", "كوب", "كيس قهوة", "بطاقة عضوية", "ستوري سوشال"],
+  },
+  {
+    id: "noon",
+    index: "03",
+    nameAr: "نون القهوة",
+    nameEn: "Noon Coffee",
+    category: "مقاهي",
+    description: "مقهى فاخر بطابع معاصر يركّز على تجربة قهوة فاخرة وسريعة.",
+    logoIdea: "حرف النون على شكل فنجان مع بخار أنيق.",
+    swatches: ["#1b1b1b", "#c8a96a", "#efe6d6", "#4a4a4a"],
+    emblem: { bg: "#161616", ink: "#efe6d6", accent: "#c8a96a" },
+    monogram: "ن",
+    applications: ["كوب", "حقيبة توصيل", "علبة حلويات", "لوحة محل", "بوست سوشال"],
+  },
+  {
+    id: "byaz",
+    index: "04",
+    nameAr: "بياز",
+    nameEn: "Byaz Cafe",
+    category: "مقاهي",
+    description: "مقهى فخم بطابع شرقي معاصر يقدّم القهوة والحلويات الراقية.",
+    logoIdea: "تجريد لحبة قهوة بشكل هندسي مستوحى من النقوش الشرقية.",
+    swatches: ["#b89a73", "#6b4f3a", "#c8a96a", "#e8dcc8"],
+    emblem: { bg: "#3b2c20", ink: "#ecdfce", accent: "#c8a96a" },
+    monogram: "ب",
+    applications: ["علبة حلويات", "كوب", "مناديل", "لوحة محل", "بوست"],
+  },
+  {
+    id: "irtiwa",
+    index: "05",
+    nameAr: "ارتواء",
+    nameEn: "Irtiwa Cafe",
+    category: "مقاهي",
+    description: "مقهى هادئ مستوحى من فكرة الارتواء والسكينة.",
+    logoIdea: "قطرة ماء تنسكب داخل فنجان قهوة.",
+    swatches: ["#5d6b4f", "#e8e3d6", "#c8a96a", "#8a8f73"],
+    emblem: { bg: "#3c4633", ink: "#eef0e6", accent: "#c8a96a" },
+    monogram: "ا",
+    applications: ["منيو", "كوب", "كيس قهوة", "ستوري سوشال", "بوست"],
+  },
+  {
+    id: "arkan",
+    index: "06",
+    nameAr: "أركان العقارية",
+    nameEn: "Arkan Real Estate",
+    category: "عقار",
+    description: "شركة عقارية حديثة لبناء مجمعات راقية ومستدامة.",
+    logoIdea: "حرف الألف بشكل مبنى متداخل يرمز للثبات والنمو.",
+    swatches: ["#16344e", "#5a7894", "#c8a96a", "#d8cdb8"],
+    emblem: { bg: "#122c42", ink: "#e6ecf2", accent: "#c8a96a" },
+    monogram: "أ",
+    applications: ["كتيب", "لوحة مشروع", "موقع", "بوست سوشال"],
+  },
+  {
+    id: "ofoq",
+    index: "07",
+    nameAr: "أفق العقارية",
+    nameEn: "Ofoq Real Estate",
+    category: "عقار",
+    description: "شركة تطوير عقاري مستقبلية بمشاريع نوعية.",
+    logoIdea: "أفق واسع يعبّر عن الرؤية والامتداد.",
+    swatches: ["#2f6d5e", "#d8d2c4", "#6a8f82", "#1f4a40"],
+    emblem: { bg: "#1f4a40", ink: "#e6efea", accent: "#9fc2b6" },
+    monogram: "أ",
+    applications: ["كتيب", "موقع", "بوست سوشال", "لوحة مشروع"],
+  },
+  {
+    id: "riyada",
+    index: "08",
+    nameAr: "ريادة العقارية",
+    nameEn: "Riyada Real Estate",
+    category: "عقار",
+    description: "شركة استثمار عقاري برؤية رائدة وفرص مميزة.",
+    logoIdea: "حرف الراء بشكل برج يرمز للريادة والتميز.",
+    swatches: ["#1b1b1b", "#c8a96a", "#efe6d6", "#5a5a5a"],
+    emblem: { bg: "#161616", ink: "#efe6d6", accent: "#c8a96a" },
+    monogram: "ر",
+    applications: ["كرت معرّف", "لوحة عمل", "موقع", "بوست سوشال"],
+  },
+  {
+    id: "majd",
+    index: "09",
+    nameAr: "مجد العقارية",
+    nameEn: "Majd Real Estate",
+    category: "عقار",
+    description: "شركة عقارية متخصصة في المنازل والمجمعات الفاخرة.",
+    logoIdea: "تجريد لحرف الميم بشكل سقف يعكس الفخامة والاستقرار.",
+    swatches: ["#b8a78c", "#6b4f3a", "#c8a96a", "#e3d8c4"],
+    emblem: { bg: "#4a3a2c", ink: "#ece2d2", accent: "#c8a96a" },
+    monogram: "م",
+    applications: ["كتيب", "علبة دعوة", "لوحة مشروع", "بوست"],
+  },
+  {
+    id: "wafi",
+    index: "10",
+    nameAr: "وافي العقارية",
+    nameEn: "Wafi Real Estate",
+    category: "عقار",
+    description: "شركة عقارية تركّز على القيمة والاستثمار والموثوقية.",
+    logoIdea: "شكل هندسي يوحي بالأمانة والثبات والموثوقية.",
+    swatches: ["#123a3a", "#1f6f6f", "#c8a96a", "#d8cdb8"],
+    emblem: { bg: "#0f3030", ink: "#e2ece9", accent: "#c8a96a" },
+    monogram: "و",
+    applications: ["كرت معرّف", "موقع", "لوحة محل", "بوست سوشال"],
+  },
+  {
+    id: "naqaa",
+    index: "11",
+    nameAr: "نقاء كلينك",
+    nameEn: "Naqaa Clinic",
+    category: "عيادات",
+    description: "عيادة جلدية وتجميل تُعنى بالنقاء والجمال الطبيعي.",
+    logoIdea: "ورقة ناعمة تشكّل حرف النون للمسة نقاء.",
+    swatches: ["#c9a8a0", "#e8d8d0", "#b0938a", "#7d635c"],
+    emblem: { bg: "#7d635c", ink: "#f3e9e4", accent: "#e8d8d0" },
+    monogram: "ن",
+    applications: ["كرت هدايا", "كوب", "كيس هدايا", "بوست الاستقبال"],
+  },
+  {
+    id: "diaa",
+    index: "12",
+    nameAr: "ضياء كلينك",
+    nameEn: "Diaa Clinic",
+    category: "عيادات",
+    description: "عيادة أسنان حديثة بأحدث التقنيات والعناية المتكاملة.",
+    logoIdea: "حرف الدال بشكل سن بخط أنيق.",
+    swatches: ["#2f6d6d", "#d8d2c4", "#6a9f9f", "#1f4a4a"],
+    emblem: { bg: "#1f4a4a", ink: "#e6efef", accent: "#9fcaca" },
+    monogram: "ض",
+    applications: ["كرت موعد", "موقع", "بوست", "كوب"],
+  },
+  {
+    id: "ruqi",
+    index: "13",
+    nameAr: "رُقي كلينك",
+    nameEn: "Ruqi Clinic",
+    category: "عيادات",
+    description: "عيادة تجميل وتحسين متكاملة تمنح الثقة والجمال.",
+    logoIdea: "حرف الراء بخط انسيابي يشبه الوجه والانسجام.",
+    swatches: ["#b8a78c", "#e8dcc8", "#c8a96a", "#8a7a64"],
+    emblem: { bg: "#5a4d3c", ink: "#ece4d6", accent: "#c8a96a" },
+    monogram: "ر",
+    applications: ["كرت هدايا", "كيس هدايا", "موقع", "بوست"],
+  },
+  {
+    id: "mila",
+    index: "14",
+    nameAr: "ميلا كلينك",
+    nameEn: "Mila Clinic",
+    category: "عيادات",
+    description: "عيادة متخصصة في العناية المتقدمة والتقنيات الحديثة.",
+    logoIdea: "حرف الميم بشكل بسيط يعكس العناية والحياة.",
+    swatches: ["#16344e", "#e8e3d6", "#5a7894", "#c8a96a"],
+    emblem: { bg: "#122c42", ink: "#e6ecf2", accent: "#c8a96a" },
+    monogram: "م",
+    applications: ["كرت موعد", "كوب", "لوحة", "موقع", "بوست"],
+  },
+  {
+    id: "jamal",
+    index: "15",
+    nameAr: "جمال الطبيعة",
+    nameEn: "Jamal Nature",
+    category: "منتجات طبيعية",
+    description: "منتجات عناية طبيعية عضوية وآمنة.",
+    logoIdea: "ورقة داخل قطرة ترمز للطبيعة والنقاء.",
+    swatches: ["#6b7a4f", "#cdd2b4", "#8a9f6a", "#46512f"],
+    emblem: { bg: "#46512f", ink: "#eef0e4", accent: "#bcd29a" },
+    monogram: "ج",
+    applications: ["زجاجة", "علبة", "ملصق", "كيس", "بوست"],
   },
 ];

@@ -14,6 +14,7 @@ import { Input } from "../ui/Input";
 import { Select } from "../ui/Select";
 import { Textarea } from "../ui/Textarea";
 import { FormSuccess } from "../ui/FormSuccess";
+import { Monogram } from "../ui/Logo";
 
 type FieldErrors = Record<string, string[] | undefined>;
 const EMPTY = {
@@ -26,7 +27,7 @@ const EMPTY = {
   message: "",
 };
 
-const INFO = [
+const INFO: { icon: string; label: string; href?: string }[] = [
   { icon: "location", label: SITE.locationAr, href: undefined },
   { icon: "mail", label: SITE.email, href: `mailto:${SITE.email}` },
   { icon: "web", label: `www.${SITE.domain}`, href: SITE.url },
@@ -61,7 +62,7 @@ export function Contact() {
   }
 
   return (
-    <section id="contact" className="bg-ivory py-24 sm:py-32">
+    <section id="contact" className="bg-ivory py-24 lg:py-32">
       <Container>
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
           <Reveal>
@@ -72,11 +73,11 @@ export function Contact() {
               description="أخبرنا عن مشروعك، وسنعود إليك بخطوة أولى واضحة نحو علامة لا تُنسى."
             />
 
-            <ul className="mt-8 flex flex-col gap-4">
+            <ul className="mt-8 flex flex-col gap-3">
               {INFO.map((item) => {
                 const content = (
                   <>
-                    <span className="bg-gold/10 text-gold-deep grid size-10 shrink-0 place-items-center rounded-full">
+                    <span className="grid size-11 shrink-0 place-items-center rounded-xl border border-gold/25 bg-gold/[0.06] text-gold-deep">
                       <Icon name={item.icon} className="size-5" />
                     </span>
                     <span className="text-midnight/75">{item.label}</span>
@@ -89,7 +90,7 @@ export function Contact() {
                         href={item.href}
                         target={item.href.startsWith("http") ? "_blank" : undefined}
                         rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                        className="hover:text-gold-deep flex items-center gap-4 transition-colors"
+                        className="flex items-center gap-4 transition-colors hover:text-gold-deep"
                       >
                         {content}
                       </a>
@@ -101,7 +102,7 @@ export function Contact() {
               })}
             </ul>
 
-            <div className="mt-8">
+            <div className="mt-8 flex items-center gap-4">
               <Button
                 href={whatsappUrl("السلام عليكم، أرغب في الاستفسار عن خدمات أثر.")}
                 target="_blank"
@@ -111,11 +112,12 @@ export function Contact() {
                 <Icon name="whatsapp" className="size-5" />
                 تواصل عبر واتساب
               </Button>
+              <Monogram className="size-12 opacity-70" />
             </div>
           </Reveal>
 
           <Reveal delay={120}>
-            <div className="border-midnight/10 rounded-3xl border bg-white p-6 shadow-[0_40px_90px_-60px_rgba(13,27,42,0.35)] sm:p-9">
+            <div className="rounded-card border border-gold/20 bg-white p-6 shadow-soft sm:p-9">
               {doneUrl ? (
                 <FormSuccess
                   title="تم استلام رسالتك"

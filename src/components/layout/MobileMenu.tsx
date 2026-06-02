@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
 import { Logo } from "../ui/Logo";
 import { Button } from "../ui/Button";
 import { Icon } from "../ui/Icon";
+import { Pattern } from "../ui/Pattern";
 
 export function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
   useEffect(() => {
@@ -26,10 +27,7 @@ export function MobileMenu({ open, onClose }: { open: boolean; onClose: () => vo
 
   return (
     <div
-      className={cn(
-        "fixed inset-0 z-[60] lg:hidden",
-        open ? "pointer-events-auto" : "pointer-events-none"
-      )}
+      className={cn("fixed inset-0 z-[60] lg:hidden", open ? "pointer-events-auto" : "pointer-events-none")}
       aria-hidden={!open}
     >
       <button
@@ -38,42 +36,47 @@ export function MobileMenu({ open, onClose }: { open: boolean; onClose: () => vo
         aria-label="إغلاق القائمة"
         onClick={onClose}
         className={cn(
-          "bg-midnight/70 absolute inset-0 backdrop-blur-sm transition-opacity duration-300",
+          "absolute inset-0 bg-midnight/70 backdrop-blur-sm transition-opacity duration-300",
           open ? "opacity-100" : "opacity-0"
         )}
       />
       <aside
         className={cn(
-          "bg-midnight absolute inset-y-0 right-0 flex w-[82%] max-w-sm flex-col shadow-2xl transition-transform duration-300 ease-out",
+          "absolute inset-y-0 right-0 flex w-[86%] max-w-sm flex-col overflow-hidden bg-midnight shadow-2xl transition-transform duration-300 ease-out",
           open ? "translate-x-0" : "translate-x-full"
         )}
       >
-        <div className="border-ivory/10 flex items-center justify-between border-b px-6 py-5">
+        <Pattern className="pointer-events-none absolute inset-0 h-full w-full text-gold/[0.05]" id="menu-geo" />
+
+        <div className="relative flex items-center justify-between border-b border-ivory/10 px-6 py-5">
           <Logo tone="light" />
           <button
             type="button"
             onClick={onClose}
             aria-label="إغلاق"
-            className="border-ivory/20 text-ivory hover:border-gold/50 hover:text-gold grid size-10 place-items-center rounded-full border transition-colors"
+            className="grid size-10 place-items-center rounded-button border border-ivory/20 text-ivory transition-colors hover:border-gold/50 hover:text-gold"
           >
             <Icon name="close" className="size-5" />
           </button>
         </div>
 
-        <nav className="flex flex-1 flex-col gap-1 overflow-y-auto px-4 py-6">
-          {NAV_LINKS.map((link) => (
+        <nav className="relative flex flex-1 flex-col gap-0.5 overflow-y-auto px-5 py-6">
+          {NAV_LINKS.map((link, i) => (
             <a
               key={link.href}
               href={link.href}
               onClick={onClose}
-              className="text-ivory/85 hover:bg-ivory/5 hover:text-gold rounded-xl px-4 py-3 text-lg transition-colors"
+              className="group flex items-center justify-between border-b border-ivory/[0.08] px-2 py-3.5 text-lg text-ivory/85 transition-colors hover:text-gold"
             >
-              {link.label}
+              <span>{link.label}</span>
+              <span className="label-latin text-[0.6rem] text-gold/45 transition-colors group-hover:text-gold">
+                {String(i + 1).padStart(2, "0")}
+              </span>
             </a>
           ))}
         </nav>
 
-        <div className="border-ivory/10 flex flex-col gap-3 border-t px-6 py-6">
+        <div className="relative flex flex-col gap-3 border-t border-ivory/10 px-6 py-6">
           <Button href="#contact" onClick={onClose} className="w-full">
             ابدأ مشروعك
           </Button>

@@ -26,7 +26,7 @@ export function Header() {
         className={cn(
           "fixed inset-x-0 top-0 z-50 border-b transition-all duration-500",
           scrolled
-            ? "border-gold/20 bg-midnight/90 py-3 backdrop-blur-md"
+            ? "border-gold/20 bg-midnight/85 py-3 backdrop-blur-md"
             : "border-transparent bg-transparent py-5"
         )}
       >
@@ -40,7 +40,7 @@ export function Header() {
               <a
                 key={link.href}
                 href={link.href}
-                className="text-ivory/75 hover:text-gold rounded-full px-3.5 py-2 text-sm transition-colors"
+                className="rounded-full px-3.5 py-2 text-[13px] text-ivory/70 transition-colors hover:text-gold"
               >
                 {link.label}
               </a>
@@ -55,7 +55,7 @@ export function Header() {
               type="button"
               onClick={() => setMenuOpen(true)}
               aria-label="فتح القائمة"
-              className="border-ivory/20 text-ivory hover:border-gold/50 hover:text-gold grid size-10 place-items-center rounded-full border transition-colors lg:hidden"
+              className="grid size-10 place-items-center rounded-button border border-ivory/20 text-ivory transition-colors hover:border-gold/50 hover:text-gold lg:hidden"
             >
               <Icon name="menu" className="size-5" />
             </button>

@@ -9,6 +9,7 @@ import { estimateWhatsApp, whatsappUrl } from "@/lib/whatsapp";
 import { Container } from "../ui/Container";
 import { SectionTitle } from "../ui/SectionTitle";
 import { Reveal } from "../ui/Reveal";
+import { Pattern } from "../ui/Pattern";
 import { Icon } from "../ui/Icon";
 import { Button } from "../ui/Button";
 import { Input } from "../ui/Input";
@@ -36,8 +37,9 @@ export function EstimateCalculator() {
     setSelectedIds((prev) => (prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]));
   }
 
-  const updateLead = (key: keyof typeof EMPTY_LEAD) => (e: ChangeEvent<HTMLInputElement>) =>
-    setLead((prev) => ({ ...prev, [key]: e.target.value }));
+  const updateLead =
+    (key: keyof typeof EMPTY_LEAD) => (e: ChangeEvent<HTMLInputElement>) =>
+      setLead((prev) => ({ ...prev, [key]: e.target.value }));
 
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
@@ -63,7 +65,7 @@ export function EstimateCalculator() {
   }
 
   return (
-    <section id="estimate" className="bg-ivory-deep py-24 sm:py-32">
+    <section id="estimate" className="bg-ivory-deep py-24 lg:py-32">
       <Container>
         <Reveal>
           <SectionTitle
@@ -73,44 +75,48 @@ export function EstimateCalculator() {
           />
         </Reveal>
 
-        <div className="mt-12 grid gap-6 lg:grid-cols-5 lg:items-start">
+        <div className="mt-14 grid gap-6 lg:grid-cols-5 lg:items-start">
           <Reveal className="lg:col-span-3">
-            <div className="grid gap-3 sm:grid-cols-2">
-              {ESTIMATE_SERVICES.map((service) => {
-                const on = selectedIds.includes(service.id);
-                return (
-                  <button
-                    key={service.id}
-                    type="button"
-                    onClick={() => toggle(service.id)}
-                    aria-pressed={on}
-                    className={cn(
-                      "flex items-center justify-between gap-3 rounded-xl border px-4 py-4 text-right transition-all",
-                      on
-                        ? "border-gold bg-white shadow-sm"
-                        : "border-midnight/12 hover:border-gold/50 bg-white/60 hover:bg-white"
-                    )}
-                  >
-                    <span className="flex items-center gap-3">
+            <div className="rounded-card border border-midnight/10 bg-white/60 p-6 sm:p-7">
+              <p className="label-latin mb-4 text-[0.6rem] text-gold-deep">Select services</p>
+              <div className="flex flex-wrap gap-2.5">
+                {ESTIMATE_SERVICES.map((service) => {
+                  const on = selectedIds.includes(service.id);
+                  return (
+                    <button
+                      key={service.id}
+                      type="button"
+                      onClick={() => toggle(service.id)}
+                      aria-pressed={on}
+                      className={cn(
+                        "inline-flex items-center gap-2.5 rounded-button border px-4 py-2.5 text-sm transition-all",
+                        on
+                          ? "border-gold bg-gold/10 text-midnight shadow-sm"
+                          : "border-midnight/15 bg-white text-midnight/75 hover:border-gold/50"
+                      )}
+                    >
                       <span
                         className={cn(
-                          "grid size-5 shrink-0 place-items-center rounded-md border",
+                          "grid size-4 shrink-0 place-items-center rounded border",
                           on ? "border-gold bg-gold text-midnight" : "border-midnight/25"
                         )}
                       >
-                        {on && <Icon name="check" className="size-3.5" />}
+                        {on && <Icon name="check" className="size-3" />}
                       </span>
-                      <span className="text-midnight">{service.label}</span>
-                    </span>
-                    <span className="text-midnight/50 text-sm">{formatNumber(service.price)}</span>
-                  </button>
-                );
-              })}
+                      {service.label}
+                      <span className="font-latin text-xs text-midnight/40">
+                        {formatNumber(service.price)}
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
             </div>
           </Reveal>
 
           <Reveal delay={120} className="lg:col-span-2">
-            <div className="border-midnight/10 rounded-2xl border bg-white p-6 sm:p-7 lg:sticky lg:top-24">
+            <div className="relative overflow-hidden rounded-card border border-gold/25 bg-white p-6 shadow-soft sm:p-7 lg:sticky lg:top-24">
+              <Pattern className="pointer-events-none absolute inset-0 h-full w-full text-gold/[0.04]" id="estimate-geo" />
               {phase === "done" ? (
                 <FormSuccess
                   title="تم حفظ تقديرك"
@@ -118,19 +124,19 @@ export function EstimateCalculator() {
                   waUrl={doneUrl}
                 />
               ) : (
-                <>
-                  <span className="text-midnight/55 text-sm">السعر المتوقع</span>
-                  <div className="bg-midnight text-ivory mt-3 rounded-xl p-5 text-center">
+                <div className="relative">
+                  <p className="label-latin text-[0.6rem] text-gold-deep">Estimated range</p>
+                  <div className="mt-3 rounded-xl bg-midnight p-5 text-center text-ivory">
                     {hasSelection ? (
                       <p className="font-kufi text-xl sm:text-2xl">
-                        من <span className="text-gold">{formatNumber(min)}</span> إلى{" "}
-                        <span className="text-gold">{formatNumber(max)}</span> ريال
+                        من <span className="font-latin font-semibold text-gold">{formatNumber(min)}</span>{" "}
+                        إلى <span className="font-latin font-semibold text-gold">{formatNumber(max)}</span> ريال
                       </p>
                     ) : (
                       <p className="text-ivory/55">اختر خدمة للبدء</p>
                     )}
                   </div>
-                  <p className="text-midnight/55 mt-3 text-xs leading-relaxed">
+                  <p className="mt-3 text-xs leading-relaxed text-midnight/55">
                     هذا التقدير مبدئي، ويتم تحديد السعر النهائي بعد جلسة الاكتشاف.
                   </p>
 
@@ -177,7 +183,7 @@ export function EstimateCalculator() {
                       </Button>
                     </form>
                   )}
-                </>
+                </div>
               )}
             </div>
           </Reveal>

@@ -6,7 +6,7 @@ import { Icon } from "../ui/Icon";
 
 export function Industries() {
   return (
-    <section id="industries" className="bg-sand-soft py-24 sm:py-32">
+    <section id="industries" className="bg-ivory py-24 lg:py-32">
       <Container>
         <Reveal>
           <SectionTitle
@@ -16,14 +16,17 @@ export function Industries() {
           />
         </Reveal>
 
-        <div className="mt-14 grid grid-cols-2 gap-4 md:grid-cols-4">
+        <div className="mt-16 grid grid-cols-2 gap-4 sm:gap-5 md:grid-cols-4">
           {INDUSTRIES.map((industry, index) => (
             <Reveal key={industry.id} delay={index * 50}>
-              <div className="card-lift group border-midnight/10 bg-ivory/70 hover:border-gold/40 flex h-full flex-col items-center gap-4 rounded-2xl border p-6 text-center hover:bg-white">
-                <span className="text-gold-deep group-hover:bg-gold/10 grid size-14 place-items-center rounded-2xl bg-white shadow-sm transition-colors">
-                  <Icon name={industry.icon} className="size-7" />
+              <div className="card-lift group relative flex h-full flex-col items-center gap-5 overflow-hidden rounded-card border border-gold/25 bg-white p-7 text-center transition-colors hover:border-gold/45 hover:shadow-gold">
+                <span className="label-latin absolute end-4 top-4 text-[0.6rem] text-midnight/25 transition-colors group-hover:text-gold/70">
+                  {String(index + 1).padStart(2, "0")}
                 </span>
-                <h3 className="text-midnight text-base">{industry.title}</h3>
+                <span className="text-gold-deep transition-transform duration-300 group-hover:-translate-y-0.5">
+                  <Icon name={industry.icon} className="size-9" />
+                </span>
+                <h3 className="font-kufi text-base leading-snug text-midnight">{industry.title}</h3>
               </div>
             </Reveal>
           ))}

@@ -5,7 +5,7 @@ type Variant = "primary" | "outline" | "outlineLight" | "light" | "ghost" | "wha
 type Size = "sm" | "md" | "lg";
 
 const base =
-  "inline-flex items-center justify-center gap-2 rounded-full font-medium leading-none transition-all duration-300 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-60";
+  "inline-flex items-center justify-center gap-2 rounded-button font-medium leading-none transition-all duration-300 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-60";
 
 const sizes: Record<Size, string> = {
   sm: "px-4 py-2.5 text-sm",

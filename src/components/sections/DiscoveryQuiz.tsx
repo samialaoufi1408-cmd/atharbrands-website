@@ -12,6 +12,7 @@ import { Reveal } from "../ui/Reveal";
 import { Icon } from "../ui/Icon";
 import { Button } from "../ui/Button";
 import { Input } from "../ui/Input";
+import { Monogram } from "../ui/Logo";
 import { FormSuccess } from "../ui/FormSuccess";
 
 const QUESTIONS = [
@@ -90,8 +91,9 @@ export function DiscoveryQuiz() {
     else setPhase("result");
   }
 
-  const updateLead = (key: keyof typeof EMPTY_LEAD) => (e: ChangeEvent<HTMLInputElement>) =>
-    setLead((prev) => ({ ...prev, [key]: e.target.value }));
+  const updateLead =
+    (key: keyof typeof EMPTY_LEAD) => (e: ChangeEvent<HTMLInputElement>) =>
+      setLead((prev) => ({ ...prev, [key]: e.target.value }));
 
   function restart() {
     setPhase("quiz");
@@ -128,7 +130,7 @@ export function DiscoveryQuiz() {
   }
 
   return (
-    <section id="discovery" className="bg-ivory py-24 sm:py-32">
+    <section id="discovery" className="bg-ivory py-24 lg:py-32">
       <Container>
         <Reveal>
           <SectionTitle
@@ -139,23 +141,25 @@ export function DiscoveryQuiz() {
         </Reveal>
 
         <Reveal>
-          <div className="border-midnight/10 mx-auto mt-12 max-w-2xl rounded-3xl border bg-white p-6 shadow-[0_40px_90px_-60px_rgba(13,27,42,0.35)] sm:p-9">
+          <div className="mx-auto mt-12 max-w-2xl rounded-card border border-gold/20 bg-white p-6 shadow-soft sm:p-9">
             {phase === "quiz" && (
               <div>
-                <div className="text-midnight/55 flex items-center justify-between text-sm">
+                <div className="flex items-center justify-between text-sm text-midnight/55">
                   <span>
                     سؤال {step + 1} من {QUESTIONS.length}
                   </span>
-                  <span className="text-gold font-serif">{String(step + 1).padStart(2, "0")}</span>
+                  <span className="label-latin text-[0.6rem] text-gold">
+                    {String(step + 1).padStart(2, "0")} / {String(QUESTIONS.length).padStart(2, "0")}
+                  </span>
                 </div>
-                <div className="bg-midnight/10 mt-2 h-1 overflow-hidden rounded-full">
+                <div className="mt-2 h-1 overflow-hidden rounded-full bg-midnight/10">
                   <div
-                    className="bg-gold h-full rounded-full transition-all duration-500"
+                    className="h-full rounded-full bg-gold transition-all duration-500"
                     style={{ width: `${((step + 1) / QUESTIONS.length) * 100}%` }}
                   />
                 </div>
 
-                <h3 className="text-midnight mt-7 text-2xl">{current.title}</h3>
+                <h3 className="mt-7 font-kufi text-2xl text-midnight">{current.title}</h3>
                 <div className="mt-5 flex flex-col gap-2.5">
                   {current.options.map((option) => {
                     const selected = answers[current.id] === option;
@@ -189,7 +193,7 @@ export function DiscoveryQuiz() {
                   <button
                     type="button"
                     onClick={() => setStep(step - 1)}
-                    className="text-midnight/55 hover:text-gold-deep mt-6 inline-flex items-center gap-1.5 text-sm transition-colors"
+                    className="mt-6 inline-flex items-center gap-1.5 text-sm text-midnight/55 transition-colors hover:text-gold-deep"
                   >
                     <Icon name="arrow" className="size-4 rotate-180" />
                     السؤال السابق
@@ -200,23 +204,24 @@ export function DiscoveryQuiz() {
 
             {phase === "result" && (
               <div>
-                <span className="text-midnight/55 text-sm">بناءً على إجاباتك، نقترح لك:</span>
-                <div className="border-gold/30 bg-gold/[0.06] mt-3 rounded-2xl border p-6">
-                  <h3 className="text-midnight text-2xl">{recommended.name}</h3>
-                  <p className="text-midnight/65 mt-2 text-sm leading-relaxed">
-                    {recommended.tagline}
-                  </p>
+                <div className="rounded-card border border-gold/30 bg-gold/[0.06] p-6">
+                  <div className="flex items-center justify-between">
+                    <span className="label-latin text-[0.6rem] text-gold-deep">Recommended</span>
+                    <Monogram className="size-10" />
+                  </div>
+                  <h3 className="mt-3 font-kufi text-2xl text-midnight">{recommended.name}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-midnight/65">{recommended.tagline}</p>
                   <div className="mt-4 flex items-baseline gap-1.5">
-                    <span className="text-midnight/50 text-xs">تبدأ من</span>
-                    <span className="font-kufi text-gold-deep text-2xl">
+                    <span className="label-latin text-[0.55rem] text-midnight/50">From</span>
+                    <span className="font-latin text-2xl font-semibold text-gold-deep">
                       {formatNumber(recommended.startingPrice)}
                     </span>
-                    <span className="text-midnight/60 text-sm">ريال</span>
+                    <span className="text-sm text-midnight/60">ريال</span>
                   </div>
                 </div>
 
                 <form onSubmit={handleSubmit} noValidate className="mt-6 flex flex-col gap-4">
-                  <p className="text-midnight/65 text-sm">
+                  <p className="text-sm text-midnight/65">
                     اترك بياناتك ونرسل لك تصورًا مبدئيًا مناسبًا لمشروعك.
                   </p>
                   <Input
@@ -254,7 +259,7 @@ export function DiscoveryQuiz() {
                     <button
                       type="button"
                       onClick={restart}
-                      className="text-midnight/55 hover:text-gold-deep text-sm transition-colors"
+                      className="text-sm text-midnight/55 transition-colors hover:text-gold-deep"
                     >
                       تعديل الإجابات
                     </button>

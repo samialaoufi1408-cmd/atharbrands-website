@@ -1,15 +1,9 @@
 import type { Metadata, Viewport } from "next";
-import { Reem_Kufi, IBM_Plex_Sans_Arabic, Cormorant_Garamond } from "next/font/google";
+import { IBM_Plex_Sans_Arabic, Inter } from "next/font/google";
 import "./globals.css";
 import { SITE, BRAND_COLORS } from "@/lib/constants";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-
-const reem = Reem_Kufi({
-  subsets: ["arabic", "latin"],
-  display: "swap",
-  variable: "--font-reem",
-});
 
 const plexArabic = IBM_Plex_Sans_Arabic({
   subsets: ["arabic", "latin"],
@@ -18,12 +12,11 @@ const plexArabic = IBM_Plex_Sans_Arabic({
   variable: "--font-plex-arabic",
 });
 
-const cormorant = Cormorant_Garamond({
+const inter = Inter({
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  style: ["normal", "italic"],
+  weight: ["400", "500", "600", "700"],
   display: "swap",
-  variable: "--font-cormorant",
+  variable: "--font-inter",
 });
 
 const description =
@@ -90,7 +83,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html
       lang="ar"
       dir="rtl"
-      className={`${reem.variable} ${plexArabic.variable} ${cormorant.variable}`}
+      className={`${plexArabic.variable} ${inter.variable}`}
     >
       <body className="bg-ivory min-h-screen antialiased">
         <Header />
