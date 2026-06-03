@@ -13,7 +13,7 @@ export default function OpengraphImage() {
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
-        background: "#0D1B2A",
+        background: "#0F1113",
         padding: "72px",
       }}
     >
@@ -24,26 +24,26 @@ export default function OpengraphImage() {
             width: "54px",
             height: "54px",
             borderRadius: "14px",
-            border: "3px solid #C8A96A",
+            border: "3px solid #D4AF7A",
           }}
         />
-        <div style={{ display: "flex", fontSize: "30px", letterSpacing: "14px", color: "#C8A96A" }}>
+        <div style={{ display: "flex", fontSize: "30px", letterSpacing: "14px", color: "#D4AF7A" }}>
           ATHAR
         </div>
       </div>
 
       <div style={{ display: "flex", flexDirection: "column" }}>
-        <div style={{ display: "flex", fontSize: "82px", color: "#F6F3EE", fontWeight: 600 }}>
-          Saudi Brand Studio
+        <div style={{ display: "flex", fontSize: "78px", color: "#F2EFE6", fontWeight: 600 }}>
+          Legacy in Every Impact
         </div>
-        <div style={{ display: "flex", fontSize: "30px", color: "#DCCDB3", marginTop: "20px" }}>
-          Strategy · Identity · Experience · Impact
+        <div style={{ display: "flex", fontSize: "30px", color: "#D4AF7A", marginTop: "20px" }}>
+          Saudi Brand Studio
         </div>
       </div>
 
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-        <div style={{ display: "flex", fontSize: "26px", color: "#C8A96A" }}>atharbrands.com</div>
-        <div style={{ display: "flex", fontSize: "22px", color: "#7F8F7A" }}>
+        <div style={{ display: "flex", fontSize: "26px", color: "#D4AF7A" }}>atharbrands.com</div>
+        <div style={{ display: "flex", fontSize: "22px", color: "#555B50" }}>
           Riyadh, Saudi Arabia
         </div>
       </div>

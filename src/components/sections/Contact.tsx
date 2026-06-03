@@ -8,13 +8,14 @@ import { contactWhatsApp, whatsappUrl } from "@/lib/whatsapp";
 import { Container } from "../ui/Container";
 import { SectionTitle } from "../ui/SectionTitle";
 import { Reveal } from "../ui/Reveal";
+import { Pattern } from "../ui/Pattern";
 import { Icon } from "../ui/Icon";
 import { Button } from "../ui/Button";
 import { Input } from "../ui/Input";
 import { Select } from "../ui/Select";
 import { Textarea } from "../ui/Textarea";
 import { FormSuccess } from "../ui/FormSuccess";
-import { Monogram } from "../ui/Logo";
+import { AtharMonogram } from "../ui/Logo";
 
 type FieldErrors = Record<string, string[] | undefined>;
 const EMPTY = {
@@ -62,25 +63,43 @@ export function Contact() {
   }
 
   return (
-    <section id="contact" className="bg-ivory py-24 lg:py-32">
-      <Container>
-        <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
+    <section id="contact" className="relative overflow-hidden bg-charcoal py-24 text-ivory lg:py-32">
+      <div className="pointer-events-none absolute inset-0">
+        <Pattern className="h-full w-full text-gold/[0.04]" id="contact-geo" />
+      </div>
+      <div className="pointer-events-none absolute left-1/2 top-0 h-[34rem] w-[34rem] -translate-x-1/2 rounded-full bg-gold/[0.07] blur-[140px]" />
+
+      <Container className="relative">
+        <Reveal>
+          <div className="mx-auto max-w-2xl text-center">
+            <AtharMonogram className="mx-auto h-12 w-auto text-gold" />
+            <h2 className="mt-6 text-balance text-4xl leading-[1.15] text-ivory sm:text-5xl">
+              لنصنع <span className="text-gold-gradient">أثرًا</span> يبقى
+            </h2>
+            <p className="mt-4 font-serif text-xl italic text-gold/80">
+              Let&rsquo;s build a legacy that lasts
+            </p>
+          </div>
+        </Reveal>
+
+        <div className="mt-16 grid gap-12 lg:grid-cols-2 lg:gap-16">
           <Reveal>
             <SectionTitle
+              tone="light"
               align="start"
               eyebrow="Contact"
               title="تواصل معنا"
-              description="أخبرنا عن مشروعك، وسنعود إليك بخطوة أولى واضحة نحو علامة لا تُنسى."
+              description="أخبرنا عن مشروعك، وسنعود إليك بخطوة أولى واضحة نحو أثر يدوم."
             />
 
             <ul className="mt-8 flex flex-col gap-3">
               {INFO.map((item) => {
                 const content = (
                   <>
-                    <span className="grid size-11 shrink-0 place-items-center rounded-xl border border-gold/25 bg-gold/[0.06] text-gold-deep">
+                    <span className="grid size-11 shrink-0 place-items-center rounded-xl border border-gold/25 bg-gold/[0.06] text-gold">
                       <Icon name={item.icon} className="size-5" />
                     </span>
-                    <span className="text-midnight/75">{item.label}</span>
+                    <span className="text-ivory/75">{item.label}</span>
                   </>
                 );
                 return (
@@ -90,7 +109,7 @@ export function Contact() {
                         href={item.href}
                         target={item.href.startsWith("http") ? "_blank" : undefined}
                         rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                        className="flex items-center gap-4 transition-colors hover:text-gold-deep"
+                        className="flex items-center gap-4 transition-colors hover:text-gold"
                       >
                         {content}
                       </a>
@@ -102,7 +121,7 @@ export function Contact() {
               })}
             </ul>
 
-            <div className="mt-8 flex items-center gap-4">
+            <div className="mt-8">
               <Button
                 href={whatsappUrl("السلام عليكم، أرغب في الاستفسار عن خدمات أثر.")}
                 target="_blank"
@@ -112,12 +131,11 @@ export function Contact() {
                 <Icon name="whatsapp" className="size-5" />
                 تواصل عبر واتساب
               </Button>
-              <Monogram className="size-12 opacity-70" />
             </div>
           </Reveal>
 
           <Reveal delay={120}>
-            <div className="rounded-card border border-gold/20 bg-white p-6 shadow-soft sm:p-9">
+            <div className="rounded-card border border-ivory/10 bg-charcoal-700 p-6 shadow-soft sm:p-9">
               {doneUrl ? (
                 <FormSuccess
                   title="تم استلام رسالتك"

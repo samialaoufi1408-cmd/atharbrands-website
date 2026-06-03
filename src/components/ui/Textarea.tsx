@@ -17,7 +17,7 @@ export function Textarea({ label, error, required, id, className, ...props }: Te
         className={cn(
           inputClass,
           "min-h-[120px] resize-y",
-          error && "border-[#b4534b]/60",
+          error && "border-[#d6a39c]/60",
           className
         )}
         {...props}

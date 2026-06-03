@@ -29,8 +29,8 @@ export function Select({
           aria-invalid={error ? true : undefined}
           className={cn(
             inputClass,
-            "appearance-none bg-white/70 pl-10",
-            error && "border-[#b4534b]/60",
+            "appearance-none pl-10",
+            error && "border-[#d6a39c]/60",
             className
           )}
           {...props}
@@ -49,7 +49,7 @@ export function Select({
         {/* chevron sits on the left in RTL */}
         <Icon
           name="chevron-down"
-          className="text-midnight/40 pointer-events-none absolute top-1/2 left-3 size-4 -translate-y-1/2"
+          className="pointer-events-none absolute top-1/2 left-3 size-4 -translate-y-1/2 text-ivory/40"
         />
       </div>
     </Field>

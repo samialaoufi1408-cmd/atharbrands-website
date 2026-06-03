@@ -20,14 +20,14 @@ export function Field({
   return (
     <div className={cn("flex flex-col gap-1.5", className)}>
       {label && (
-        <label htmlFor={htmlFor} className="text-midnight/80 text-sm font-medium">
+        <label htmlFor={htmlFor} className="text-sm font-medium text-ivory/70">
           {label}
           {required && <span className="text-gold"> *</span>}
         </label>
       )}
       {children}
       {error && (
-        <span className="text-xs text-[#b4534b]" role="alert">
+        <span className="text-xs text-[#d6a39c]" role="alert">
           {error}
         </span>
       )}
@@ -36,7 +36,7 @@ export function Field({
 }
 
 export const inputClass =
-  "w-full rounded-xl border border-midnight/15 bg-white/70 px-4 py-3 text-midnight outline-none transition-colors placeholder:text-midnight/40 focus:border-gold focus:bg-white";
+  "w-full rounded-xl border border-ivory/15 bg-ivory/[0.04] px-4 py-3 text-ivory outline-none transition-colors placeholder:text-ivory/35 focus:border-gold focus:bg-ivory/[0.06]";
 
 interface InputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, "size"> {
   label?: string;
@@ -50,7 +50,7 @@ export function Input({ label, error, required, id, className, ...props }: Input
         id={id}
         required={required}
         aria-invalid={error ? true : undefined}
-        className={cn(inputClass, error && "border-[#b4534b]/60", className)}
+        className={cn(inputClass, error && "border-[#d6a39c]/60", className)}
         {...props}
       />
     </Field>

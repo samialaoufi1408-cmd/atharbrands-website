@@ -1,154 +1,86 @@
-import { SITE, BRAND_COLORS } from "@/lib/constants";
+import { SITE } from "@/lib/constants";
 import { Container } from "../ui/Container";
 import { Button } from "../ui/Button";
 import { Icon } from "../ui/Icon";
 import { Pattern } from "../ui/Pattern";
-import { LogoMark, Monogram } from "../ui/Logo";
-import { Seal } from "../ui/Seal";
-
-const PALETTE = [
-  { name: "Midnight", hex: BRAND_COLORS.midnight },
-  { name: "Sand", hex: BRAND_COLORS.sand },
-  { name: "Sage", hex: BRAND_COLORS.sage },
-  { name: "Ivory", hex: BRAND_COLORS.ivory },
-  { name: "Gold", hex: BRAND_COLORS.gold },
-];
-
-const FRAMEWORK = [
-  { en: "Strategy", ar: "استراتيجية" },
-  { en: "Identity", ar: "هوية" },
-  { en: "Experience", ar: "تجربة" },
-  { en: "Impact", ar: "أثر" },
-];
+import { AtharSymbol } from "../ui/Logo";
 
 export function Hero() {
   return (
-    <section id="home" className="relative isolate overflow-hidden bg-midnight">
+    <section id="home" className="relative isolate overflow-hidden bg-charcoal">
       <div className="pointer-events-none absolute inset-0">
         <Pattern className="h-full w-full text-gold/[0.04]" id="hero-geo" />
       </div>
-      <div className="pointer-events-none absolute -top-40 right-1/4 h-[42rem] w-[42rem] rounded-full bg-gold/10 blur-[140px]" />
-      <div className="pointer-events-none absolute -bottom-40 left-0 h-[32rem] w-[32rem] rounded-full bg-sage/10 blur-[140px]" />
+      <div className="pointer-events-none absolute left-1/3 top-0 h-[42rem] w-[42rem] -translate-x-1/2 rounded-full bg-gold/[0.08] blur-[150px]" />
 
-      <Container className="relative grid items-center gap-12 pb-24 pt-36 lg:grid-cols-12 lg:gap-10 lg:pb-32 lg:pt-44">
-        {/* Text column */}
-        <div className="lg:col-span-6">
-          <div
-            className="animate-rise inline-flex items-center gap-3"
+      {/* subtle mountain landscape (board "website hero") */}
+      <svg
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-72 w-full"
+        viewBox="0 0 1440 320"
+        preserveAspectRatio="none"
+        aria-hidden="true"
+      >
+        <path
+          d="M0,320 L0,205 L240,150 L480,200 L720,120 L960,185 L1200,135 L1440,195 L1440,320 Z"
+          fill="#17191c"
+          opacity="0.85"
+        />
+        <path
+          d="M0,320 L0,250 L300,205 L600,245 L900,195 L1200,235 L1440,205 L1440,320 Z"
+          fill="#202327"
+          opacity="0.75"
+        />
+      </svg>
+
+      <Container className="relative grid min-h-[92vh] items-center gap-12 pb-28 pt-36 lg:grid-cols-12 lg:gap-8 lg:pt-44">
+        {/* Text */}
+        <div className="lg:col-span-7">
+          <span
+            className="animate-rise label-latin block text-[0.62rem] text-gold/80"
             style={{ animationDelay: "0ms" }}
           >
-            <Monogram className="size-11" />
-            <span className="flex flex-col leading-none">
-              <span className="font-kufi text-2xl font-bold text-ivory">
-                أثر <span className="font-normal text-gold/80">| ATHAR</span>
-              </span>
-              <span className="label-latin mt-1.5 text-[0.58rem] text-ivory/45">
-                Saudi Brand Studio
-              </span>
-            </span>
-          </div>
-
+            The Seal of Impact · ختم الأثر
+          </span>
           <h1
-            className="animate-rise mt-8 text-balance text-4xl font-semibold leading-[1.16] text-ivory sm:text-5xl md:text-[3.35rem]"
+            className="animate-rise mt-5 text-balance text-5xl font-bold leading-[1.08] text-ivory sm:text-6xl md:text-[4.5rem]"
             style={{ animationDelay: "80ms" }}
           >
-            نبني علامات تجارية لا تُرى فقط
-            <span className="text-gold-gradient">… بل تُتذكر</span>
+            نبني أثرًا يدوم
           </h1>
-
           <p
-            className="animate-rise mt-6 max-w-xl text-lg leading-relaxed text-ivory/70"
+            className="animate-rise mt-5 font-serif text-2xl font-medium tracking-[0.18em] text-gold sm:text-3xl"
             style={{ animationDelay: "160ms" }}
           >
-            {SITE.subtagline}
+            LEGACY IN EVERY IMPACT
           </p>
-
+          <p
+            className="animate-rise mt-7 max-w-xl text-lg leading-relaxed text-ivory/65"
+            style={{ animationDelay: "240ms" }}
+          >
+            {SITE.essenceAr}
+          </p>
           <div
             className="animate-rise mt-9 flex flex-wrap items-center gap-3"
-            style={{ animationDelay: "240ms" }}
+            style={{ animationDelay: "320ms" }}
           >
             <Button href="#contact" size="lg">
               ابدأ مشروعك
               <Icon name="arrow" className="size-4" />
             </Button>
-            <Button href="#methodology" variant="outlineLight" size="lg">
-              شاهد المنهجية
+            <Button href="#about" variant="outlineLight" size="lg">
+              اكتشف المزيد
             </Button>
           </div>
-
-          <p
-            className="animate-rise mt-9 flex items-center gap-2.5 text-sm text-ivory/55"
-            style={{ animationDelay: "320ms" }}
-          >
-            <span className="size-1.5 rounded-full bg-gold" />
-            {SITE.positioningAr}
-          </p>
         </div>
 
-        {/* Brand sheet board */}
-        <div className="lg:col-span-6">
+        {/* Symbol */}
+        <div className="lg:col-span-5">
           <div
-            className="animate-rise relative overflow-hidden rounded-card border border-gold/20 bg-midnight-700/60 p-5 shadow-soft backdrop-blur-sm sm:p-6"
-            style={{ animationDelay: "220ms" }}
+            className="animate-rise relative mx-auto flex max-w-sm justify-center"
+            style={{ animationDelay: "260ms" }}
           >
-            <Pattern
-              className="pointer-events-none absolute inset-0 h-full w-full text-gold/[0.05]"
-              id="hero-board-geo"
-            />
-
-            <div className="relative flex items-center justify-between">
-              <Monogram className="size-12" />
-              <div className="text-left">
-                <p className="label-latin text-[0.58rem] text-gold/80">Brand Sheet</p>
-                <p className="font-latin text-xs text-ivory/45">№ 001 — ATHAR</p>
-              </div>
-            </div>
-
-            <div className="relative mt-6">
-              <p className="label-latin mb-2.5 text-[0.55rem] text-ivory/40">Palette</p>
-              <div className="flex gap-2.5">
-                {PALETTE.map((c) => (
-                  <div key={c.hex} className="flex-1">
-                    <div
-                      className="h-10 rounded-lg ring-1 ring-inset ring-white/10"
-                      style={{ background: c.hex }}
-                    />
-                    <p className="mt-1.5 font-latin text-[0.5rem] text-ivory/40">{c.name}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="relative mt-6 grid grid-cols-5 gap-3">
-              <div className="col-span-3 rounded-xl border border-ivory/10 bg-ivory/[0.03] p-4">
-                <p className="label-latin mb-3 text-[0.55rem] text-ivory/40">Framework</p>
-                <ul className="flex flex-col gap-2">
-                  {FRAMEWORK.map((f, i) => (
-                    <li key={f.en} className="flex items-baseline justify-between gap-2">
-                      <span className="flex items-baseline gap-2">
-                        <span className="font-latin text-[0.6rem] text-gold/70">0{i + 1}</span>
-                        <span className="font-latin text-sm text-ivory">{f.en}</span>
-                      </span>
-                      <span className="text-[0.7rem] text-ivory/45">{f.ar}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div className="col-span-2 grid place-items-center rounded-xl border border-ivory/10 bg-ivory/[0.03] p-3">
-                <Seal id="hero-seal" spin className="size-24" />
-              </div>
-            </div>
-
-            <div className="relative mt-3 flex items-center justify-between rounded-xl border border-gold/20 bg-gradient-to-l from-midnight to-midnight-600 p-4">
-              <div className="flex items-center gap-2.5">
-                <LogoMark className="h-7 w-7 text-gold" />
-                <div className="leading-tight">
-                  <p className="font-kufi text-sm text-ivory">أثر | ATHAR</p>
-                  <p className="font-latin text-[0.6rem] text-ivory/45">Brand Studio</p>
-                </div>
-              </div>
-              <p className="font-latin text-[0.6rem] text-ivory/45">hello@atharbrands.com</p>
-            </div>
+            <div className="pointer-events-none absolute inset-0 -z-10 rounded-full bg-gold/[0.06] blur-[90px]" />
+            <AtharSymbol className="h-80 w-auto text-gold drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)] sm:h-[24rem]" />
           </div>
         </div>
       </Container>

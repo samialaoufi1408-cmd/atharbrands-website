@@ -1,7 +1,8 @@
 /**
- * Subtle Arabic geometric lattice (8-point khatam stars). Tints via currentColor —
- * set color + opacity on the element, e.g. <Pattern className="text-gold/[0.07]" />.
- * Place inside a positioned, overflow-hidden parent.
+ * ATHAR brand pattern — a fine gold star/diamond lattice (rebuilt from the
+ * board's "Brand Pattern"). Tints via currentColor; set colour + opacity on the
+ * element, e.g. <Pattern className="text-gold/[0.07]" />. Place inside a
+ * positioned, overflow-hidden parent.
  */
 export function Pattern({ className, id = "athar-geo" }: { className?: string; id?: string }) {
   return (
@@ -13,14 +14,18 @@ export function Pattern({ className, id = "athar-geo" }: { className?: string; i
       preserveAspectRatio="xMidYMid slice"
     >
       <defs>
-        <pattern id={id} width="64" height="64" patternUnits="userSpaceOnUse">
+        <pattern id={id} width="60" height="60" patternUnits="userSpaceOnUse">
           <g fill="none" stroke="currentColor" strokeWidth="1">
-            <path d="M32 12l20 20-20 20-20-20z" />
-            <path d="M18 18h28v28H18z" />
-            <path d="M32 0l6 6-6 6-6-6z" />
-            <path d="M0 32l6-6 6 6-6 6z" />
-            <path d="M64 32l-6-6-6 6 6 6z" />
-            <path d="M32 64l6-6-6-6-6 6z" />
+            {/* diamond grid */}
+            <path d="M30 0 L60 30 L30 60 L0 30 Z" />
+            {/* centre 8-point star (khatam) */}
+            <path d="M30 22 L38 30 L30 38 L22 30 Z" />
+            <path d="M24 24 H36 V36 H24 Z" />
+            {/* star nodes at the lattice points (edge midpoints) */}
+            <path d="M30 -5 L35 0 L30 5 L25 0 Z" />
+            <path d="M30 55 L35 60 L30 65 L25 60 Z" />
+            <path d="M-5 30 L0 25 L5 30 L0 35 Z" />
+            <path d="M55 30 L60 25 L65 30 L60 35 Z" />
           </g>
         </pattern>
       </defs>

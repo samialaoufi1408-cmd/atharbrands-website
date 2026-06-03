@@ -1,22 +1,29 @@
 import type { Metadata, Viewport } from "next";
-import { IBM_Plex_Sans_Arabic, Inter } from "next/font/google";
+import { Cairo, Cormorant_Garamond, Jost } from "next/font/google";
 import "./globals.css";
 import { SITE, BRAND_COLORS } from "@/lib/constants";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 
-const plexArabic = IBM_Plex_Sans_Arabic({
+const cairo = Cairo({
   subsets: ["arabic", "latin"],
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["400", "500", "600", "700"],
   display: "swap",
-  variable: "--font-plex-arabic",
+  variable: "--font-cairo",
 });
 
-const inter = Inter({
+const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
   display: "swap",
-  variable: "--font-inter",
+  variable: "--font-cormorant",
+});
+
+const jost = Jost({
+  subsets: ["latin"],
+  weight: ["300", "400", "500"],
+  display: "swap",
+  variable: "--font-jost",
 });
 
 const description =
@@ -83,9 +90,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html
       lang="ar"
       dir="rtl"
-      className={`${plexArabic.variable} ${inter.variable}`}
+      className={`${cairo.variable} ${cormorant.variable} ${jost.variable}`}
     >
-      <body className="bg-ivory min-h-screen antialiased">
+      <body className="bg-charcoal text-ivory min-h-screen antialiased">
         <Header />
         <main>{children}</main>
         <Footer />

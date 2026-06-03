@@ -1,57 +1,72 @@
 @import "tailwindcss";
 
 /* ============================================================
-   أثر | ATHAR — Brand-board Design System
-   Saudi luxury brand studio. Midnight + sand + gold.
-   Typography: IBM Plex Sans Arabic (AR) · Inter (Latin).
+   أثر | ATHAR — Brand Board Design System (source of truth)
+   Charcoal · Champagne Gold · Ivory · Warm Taupe · Olive Gray.
+   Type: Cairo (AR ≈ DIN Next Arabic) · Cormorant Garamond (EN display) · Jost (labels).
+   Token NAMES kept for compatibility; VALUES are the board's colours.
    ============================================================ */
 
 @theme {
-  /* Brand palette */
-  --color-midnight: #0d1b2a;
-  --color-midnight-700: #13273b;
-  --color-midnight-600: #1c3450;
-  --color-sand: #dccdb3;
-  --color-sand-soft: #ebe2d3;
-  --color-sage: #7f8f7a;
-  --color-sage-soft: #9aa896;
-  --color-ivory: #f6f3ee;
-  --color-ivory-deep: #eee7dc;
-  --color-gold: #c8a96a;
-  --color-gold-soft: #dcc28d;
-  --color-gold-deep: #a4844a;
+  /* Charcoal (primary dark / background) — board CHARCOAL #0F1113 */
+  --color-midnight: #0f1113;
+  --color-midnight-700: #17191c;
+  --color-midnight-600: #20232733;
+  --color-charcoal: #0f1113;
+  --color-charcoal-700: #17191c;
+  --color-charcoal-600: #202327;
+
+  /* Champagne Gold — board #D4AF7A */
+  --color-gold: #d4af7a;
+  --color-gold-soft: #e6cda1;
+  --color-gold-deep: #b9935c;
+  --color-champagne: #d4af7a;
+
+  /* Ivory — board #F2EFE6 */
+  --color-ivory: #f2efe6;
+  --color-ivory-deep: #e6e1d3;
+
+  /* Warm Taupe — board #7A6955 */
+  --color-sand: #7a6955;
+  --color-sand-soft: #9a8770;
+  --color-taupe: #7a6955;
+
+  /* Olive Gray — board #555B50 */
+  --color-sage: #555b50;
+  --color-sage-soft: #6f766a;
+  --color-olive: #555b50;
 
   /* Type families (wired by next/font in layout.tsx) */
-  --font-sans: var(--font-plex-arabic), "Segoe UI", system-ui, sans-serif;
-  --font-kufi: var(--font-plex-arabic), "Segoe UI", system-ui, sans-serif;
-  --font-latin: var(--font-inter), system-ui, sans-serif;
-  --font-serif: var(--font-inter), system-ui, sans-serif; /* legacy alias → Inter */
+  --font-sans: var(--font-cairo), "Segoe UI", system-ui, sans-serif;
+  --font-kufi: var(--font-cairo), "Segoe UI", system-ui, sans-serif;
+  --font-serif: var(--font-cormorant), "Times New Roman", serif;
+  --font-latin: var(--font-jost), system-ui, sans-serif;
 
   /* Radii */
-  --radius-card: 20px;
-  --radius-button: 14px;
+  --radius-card: 18px;
+  --radius-button: 6px;
 
   /* Shadows */
-  --shadow-soft: 0 24px 80px rgba(13, 27, 42, 0.1);
+  --shadow-soft: 0 30px 90px rgba(0, 0, 0, 0.45);
   --shadow-gold:
-    0 0 0 1px rgba(200, 169, 106, 0.22), 0 24px 80px rgba(13, 27, 42, 0.18);
-  --shadow-mock: 0 30px 60px -28px rgba(13, 27, 42, 0.55);
+    0 0 0 1px rgba(212, 175, 122, 0.22), 0 30px 90px rgba(0, 0, 0, 0.5);
+  --shadow-mock: 0 40px 80px -30px rgba(0, 0, 0, 0.8);
 
-  /* Motion */
   --ease-luxe: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 :root {
-  color-scheme: light;
+  color-scheme: dark;
 }
 
 html {
   scroll-behavior: smooth;
 }
 
+/* Dark-first, like the brand board */
 body {
-  background-color: var(--color-ivory);
-  color: var(--color-midnight);
+  background-color: var(--color-charcoal);
+  color: var(--color-ivory);
   font-family: var(--font-sans);
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
@@ -59,15 +74,14 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-/* Confident, premium Arabic headings */
 h1,
 h2,
 h3,
 h4 {
   font-family: var(--font-kufi);
-  font-weight: 600;
-  line-height: 1.14;
-  letter-spacing: -0.01em;
+  font-weight: 700;
+  line-height: 1.16;
+  letter-spacing: 0;
 }
 
 .font-kufi {
@@ -77,24 +91,23 @@ h4 {
   font-family: var(--font-latin);
 }
 .font-serif {
-  font-family: var(--font-latin);
+  font-family: var(--font-serif);
 }
 
-/* Small-caps Latin label (letter-spacing is safe on Latin, not Arabic) */
+/* Letter-spaced uppercase Latin micro-label (board section labels) */
 .label-latin {
   font-family: var(--font-latin);
-  font-weight: 600;
+  font-weight: 500;
   font-size: 0.7rem;
-  letter-spacing: 0.3em;
+  letter-spacing: 0.34em;
   text-transform: uppercase;
 }
 
 ::selection {
-  background: color-mix(in srgb, var(--color-gold) 30%, transparent);
-  color: var(--color-midnight);
+  background: color-mix(in srgb, var(--color-gold) 32%, transparent);
+  color: var(--color-charcoal);
 }
 
-/* Offset anchored sections beneath the sticky header */
 section[id] {
   scroll-margin-top: 6rem;
 }
@@ -112,7 +125,6 @@ section[id] {
   transform: none;
 }
 
-/* ---------- Hero load-in ---------- */
 @keyframes athar-rise {
   from {
     opacity: 0;
@@ -132,7 +144,7 @@ section[id] {
   background-image: linear-gradient(
     105deg,
     var(--color-gold-soft),
-    var(--color-gold) 45%,
+    var(--color-gold) 50%,
     var(--color-gold-deep)
   );
   -webkit-background-clip: text;
@@ -151,6 +163,14 @@ section[id] {
   );
 }
 
+/* Embossed surface (seal / folder / debossed marks) */
+.emboss {
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.05),
+    inset 0 -3px 8px rgba(0, 0, 0, 0.65),
+    0 1px 0 rgba(255, 255, 255, 0.03);
+}
+
 .card-lift {
   transition:
     transform 0.5s var(--ease-luxe),
@@ -162,22 +182,19 @@ section[id] {
   transform: translateY(-6px);
 }
 
-/* Refined thin scrollbar on precise pointers */
 @media (pointer: fine) {
   * {
     scrollbar-width: thin;
-    scrollbar-color: color-mix(in srgb, var(--color-gold) 55%, transparent) transparent;
+    scrollbar-color: color-mix(in srgb, var(--color-gold) 50%, transparent) transparent;
   }
 }
 
-/* Accessible focus ring */
 :where(a, button, input, select, textarea, [tabindex]):focus-visible {
   outline: 2px solid var(--color-gold);
   outline-offset: 3px;
   border-radius: 2px;
 }
 
-/* Respect reduced-motion preferences */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

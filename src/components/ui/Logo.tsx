@@ -1,58 +1,94 @@
 import { cn } from "@/lib/utils";
 
 /**
- * أثر | ATHAR — an original logo system derived from the letters & meaning of «أثر»
- * (a trace / lasting impression):
- *   ا (alef)  → the upright pillar — a gateway / lighthouse: beginning & stability.
- *   ء (hamza) → a small gold diamond resting above the pillar.
- *   ث (thaa)  → three dots — the spreading impact (Strategy · Identity · Impact).
- *   ر (raa)   → a soft arc beneath — the path / trace the brand leaves behind.
- * Set inside a calm contemporary Arabic gateway. Drawn in currentColor (gold).
+ * أثر | ATHAR — Primary symbol: "The Seal of Impact / ختم الأثر".
+ * A bold gold ring at the centre, a radiant sunburst around it, a vertical
+ * spire up & down ending in diamond finials, and horizontal arms with dots.
+ * Rebuilt exactly from the brand board. Drawn in currentColor (champagne gold).
  */
 export function AtharSymbol({ className }: { className?: string }) {
+  const cx = 100;
+  const cy = 130;
+  const r = 30;
+  const rayAngles = [
+    15, 30, 45, 60, 75, 105, 120, 135, 150, 165, 195, 210, 225, 240, 255, 285, 300, 315, 330, 345,
+  ];
+  const rays = rayAngles.map((deg, i) => {
+    const a = (deg * Math.PI) / 180;
+    const inner = r + 9;
+    const outer = inner + (i % 2 === 0 ? 24 : 12);
+    return (
+      <line
+        key={deg}
+        x1={(cx + inner * Math.cos(a)).toFixed(2)}
+        y1={(cy + inner * Math.sin(a)).toFixed(2)}
+        x2={(cx + outer * Math.cos(a)).toFixed(2)}
+        y2={(cy + outer * Math.sin(a)).toFixed(2)}
+        strokeWidth="2"
+      />
+    );
+  });
+
   return (
-    <svg viewBox="0 0 48 56" fill="none" className={className} aria-hidden="true">
+    <svg viewBox="0 0 200 260" fill="none" className={className} aria-hidden="true">
       <g stroke="currentColor" strokeLinecap="round" strokeLinejoin="round">
-        {/* gateway */}
-        <path d="M11 50 V22 C11 13 16.4 7.5 24 7.5 C31.6 7.5 37 13 37 22 V50" strokeWidth="1.6" />
-        {/* alef — the pillar */}
-        <path d="M24 16 V37" strokeWidth="2.4" />
-        {/* raa — the trace */}
-        <path d="M14.5 46 Q24 51.5 33.5 46" strokeWidth="2" />
+        <g opacity="0.85">{rays}</g>
+        <circle cx={cx} cy={cy} r={r} strokeWidth="8" />
+        <path d="M100 96 V54" strokeWidth="3.4" />
+        <path d="M100 164 V206" strokeWidth="3.4" />
+        <path d="M66 130 H40" strokeWidth="3" />
+        <path d="M134 130 H160" strokeWidth="3" />
       </g>
-      {/* hamza — diamond */}
-      <path d="M24 10.5 L26.5 13 L24 15.5 L21.5 13 Z" fill="currentColor" />
-      {/* thaa — three dots of impact */}
-      <circle cx="17.5" cy="41.5" r="1.5" fill="currentColor" />
-      <circle cx="24" cy="41.5" r="1.5" fill="currentColor" />
-      <circle cx="30.5" cy="41.5" r="1.5" fill="currentColor" />
+      <path d="M100 32 L105 45 L100 58 L95 45 Z" fill="currentColor" />
+      <path d="M100 202 L105 215 L100 228 L95 215 Z" fill="currentColor" />
+      <circle cx="34" cy="130" r="4.5" fill="currentColor" />
+      <circle cx="166" cy="130" r="4.5" fill="currentColor" />
     </svg>
   );
 }
 
-/** Wordmark: «أثر | ATHAR». Gold on dark (tone="light"), midnight on light (tone="dark"). */
+/** Compact mark (ring + axis + dots + small finials, no sunburst). */
+export function AtharMonogram({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 120 150" fill="none" className={className} aria-hidden="true">
+      <g stroke="currentColor" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="60" cy="75" r="21" strokeWidth="6" />
+        <path d="M60 54 V36" strokeWidth="3" />
+        <path d="M60 96 V114" strokeWidth="3" />
+        <path d="M39 75 H26" strokeWidth="2.6" />
+        <path d="M81 75 H94" strokeWidth="2.6" />
+      </g>
+      <path d="M60 24 L64 31 L60 38 L56 31 Z" fill="currentColor" />
+      <path d="M60 112 L64 119 L60 126 L56 119 Z" fill="currentColor" />
+      <circle cx="22" cy="75" r="3.4" fill="currentColor" />
+      <circle cx="98" cy="75" r="3.4" fill="currentColor" />
+    </svg>
+  );
+}
+
+/** Wordmark: «أثر │ ATHAR». Gold/ivory on dark (tone="light"), charcoal on light. */
 export function AtharWordmark({
-  tone = "dark",
+  tone = "light",
   className,
 }: {
-  tone?: "dark" | "light";
+  tone?: "light" | "dark";
   className?: string;
 }) {
   return (
-    <span className={cn("inline-flex items-baseline gap-2", className)}>
+    <span className={cn("inline-flex items-center gap-3", className)}>
       <span
         className={cn(
-          "font-kufi text-xl font-semibold leading-none",
-          tone === "light" ? "text-gold" : "text-midnight"
+          "font-kufi text-xl font-bold leading-none",
+          tone === "light" ? "text-ivory" : "text-charcoal"
         )}
       >
         أثر
       </span>
-      <span className="h-4 w-px bg-gold/50" />
+      <span className="h-5 w-px bg-gold/55" />
       <span
         className={cn(
-          "label-latin text-[0.62rem] leading-none",
-          tone === "light" ? "text-gold/85" : "text-gold-deep"
+          "font-serif text-base font-medium leading-none tracking-[0.3em]",
+          tone === "light" ? "text-gold" : "text-gold-deep"
         )}
       >
         ATHAR
@@ -61,90 +97,75 @@ export function AtharWordmark({
   );
 }
 
-/** Full lockup: symbol + wordmark. Used in Header / Hero / Footer. */
+/** Full lockup: compact mark + wordmark. Header / Footer. */
 export function AtharLogo({
-  tone = "dark",
+  tone = "light",
   className,
 }: {
-  tone?: "dark" | "light";
+  tone?: "light" | "dark";
   className?: string;
 }) {
   return (
-    <span className={cn("inline-flex items-center gap-2.5", className)} aria-label="أثر | ATHAR">
-      <AtharSymbol className="h-9 w-auto shrink-0 text-gold" />
+    <span className={cn("inline-flex items-center gap-3", className)} aria-label="أثر | ATHAR">
+      <AtharMonogram className="h-8 w-auto shrink-0 text-gold" />
       <AtharWordmark tone={tone} />
     </span>
   );
 }
 
-/** Compact mark inside a geometric seal frame. Favicon / preview board / cards / pattern. */
-export function AtharMonogram({ className }: { className?: string }) {
-  return (
-    <span
-      className={cn(
-        "relative inline-grid shrink-0 place-items-center rounded-2xl border border-gold/45 text-gold",
-        className
-      )}
-      aria-hidden="true"
-    >
-      <span className="pointer-events-none absolute inset-[6px] rounded-xl border border-gold/25" />
-      <svg viewBox="0 0 48 56" fill="none" className="h-[66%] w-[66%]">
-        <g stroke="currentColor" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M24 14 V38" strokeWidth="2.6" />
-          <path d="M14 46 Q24 51.5 34 46" strokeWidth="2.2" />
-        </g>
-        <path d="M24 8 L26.7 11 L24 14 L21.3 11 Z" fill="currentColor" />
-        <circle cx="17.5" cy="42" r="1.6" fill="currentColor" />
-        <circle cx="24" cy="42" r="1.6" fill="currentColor" />
-        <circle cx="30.5" cy="42" r="1.6" fill="currentColor" />
-      </svg>
-    </span>
-  );
-}
-
-/** Circular seal: curved «ATHAR BRANDS · BRAND STUDIO» around the mark. */
+/** Circular embossed seal: «ATHAR» curved on top, symbol centre, motto below. */
 export function AtharSeal({
   className,
   id = "athar-seal",
-  text = "ATHAR  BRANDS   ·   BRAND  STUDIO   ·   ",
   spin = false,
 }: {
   className?: string;
   id?: string;
-  text?: string;
   spin?: boolean;
 }) {
   return (
     <span
       className={cn(
-        "relative inline-grid shrink-0 place-items-center rounded-full border border-gold/40 text-gold",
+        "emboss relative inline-grid shrink-0 place-items-center rounded-full border border-gold/25 bg-charcoal-700 text-gold",
         className
       )}
       aria-hidden="true"
     >
+      <span className="pointer-events-none absolute inset-[7%] rounded-full border border-gold/20" />
+      <span className="pointer-events-none absolute inset-[12%] rounded-full border border-gold/12" />
       <svg
         viewBox="0 0 100 100"
-        className={cn("absolute inset-0 h-full w-full", spin && "motion-safe:animate-[spin_60s_linear_infinite]")}
+        className={cn("absolute inset-0 h-full w-full", spin && "motion-safe:animate-[spin_70s_linear_infinite]")}
       >
         <defs>
-          <path id={`${id}-path`} d="M50,50 m-37,0 a37,37 0 1,1 74,0 a37,37 0 1,1 -74,0" fill="none" />
+          <path id={`${id}-top`} d="M50,50 m-40,0 a40,40 0 0,1 80,0" fill="none" />
         </defs>
         <text
           fill="currentColor"
-          className="font-latin"
-          style={{ fontSize: "7.5px", letterSpacing: "1.3px", fontWeight: 600 }}
+          className="font-serif"
+          style={{ fontSize: "9px", letterSpacing: "5px", fontWeight: 500 }}
         >
-          <textPath href={`#${id}-path`} startOffset="0">
-            {text}
+          <textPath href={`#${id}-top`} startOffset="50%" textAnchor="middle">
+            ATHAR
           </textPath>
         </text>
+        <text
+          x="50"
+          y="83"
+          textAnchor="middle"
+          fill="currentColor"
+          className="font-latin"
+          style={{ fontSize: "4.6px", letterSpacing: "1.6px", fontWeight: 500 }}
+        >
+          LEGACY IN EVERY IMPACT
+        </text>
       </svg>
-      <AtharSymbol className="h-[42%] w-auto" />
+      <AtharSymbol className="relative h-[48%] w-auto" />
     </span>
   );
 }
 
-/* ---- Backward-compatible aliases (every existing usage renders the new logo) ---- */
+/* ---- Backward-compatible aliases ---- */
 export const Logo = AtharLogo;
 export const LogoMark = AtharSymbol;
 export const Monogram = AtharMonogram;

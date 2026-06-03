@@ -23,15 +23,17 @@ export const SITE = {
     "في أثر، نصنع الهويات والاستراتيجيات التي تمنح الشركات حضورًا واضحًا، وشخصية مميزة، وتجربة تترك أثرًا طويلًا في السوق.",
   positioningAr: "استوديو سعودي لبناء العلامات التجارية يخدم المشاريع الطموحة في السعودية والخليج.",
   positioningEn: "Saudi-born Brand Studio serving Saudi Arabia & GCC",
+  taglineEn: "Legacy in Every Impact",
+  essenceAr: "أثر يعبّر عن ما نتركه من قيمة؛ ما يصنع الفرق، وما يستمر بعدنا.",
+  essenceEn: "ATHAR is the impact we leave — the value we create, the legacy that endures.",
+  sealMottoEn: "LEGACY IN EVERY IMPACT",
 } as const;
 
 /** Primary navigation — labels map to in-page section ids. */
 export const NAV_LINKS = [
   { label: "الرئيسية", href: "#home" },
   { label: "من نحن", href: "#about" },
-  { label: "الخدمات", href: "#services" },
-  { label: "المنهجية", href: "#methodology" },
-  { label: "الباقات", href: "#packages" },
+  { label: "الهوية", href: "#identity" },
   { label: "الأعمال", href: "#work" },
   { label: "تواصل معنا", href: "#contact" },
 ] as const;
@@ -62,10 +64,20 @@ export const BUDGET_OPTIONS = [
 ] as const;
 
 /** Official brand palette (hex), available for inline use / OG image. */
+/** Legacy token aliases (kept for compatibility) mapped to the board palette. */
 export const BRAND_COLORS = {
-  midnight: "#0D1B2A",
-  sand: "#DCCDB3",
-  sage: "#7F8F7A",
-  ivory: "#F6F3EE",
-  gold: "#C8A96A",
+  midnight: "#0F1113",
+  gold: "#D4AF7A",
+  ivory: "#F2EFE6",
+  sand: "#7A6955",
+  sage: "#555B50",
 } as const;
+
+/** Official brand board palette — name + code (used by the Color Palette section). */
+export const BRAND_PALETTE = [
+  { nameEn: "Champagne Gold", nameAr: "ذهبي شامبين", hex: "#D4AF7A" },
+  { nameEn: "Ivory", nameAr: "عاجي", hex: "#F2EFE6" },
+  { nameEn: "Charcoal", nameAr: "فحمي", hex: "#0F1113" },
+  { nameEn: "Warm Taupe", nameAr: "بُنّي دافئ", hex: "#7A6955" },
+  { nameEn: "Olive Gray", nameAr: "رمادي زيتي", hex: "#555B50" },
+] as const;
