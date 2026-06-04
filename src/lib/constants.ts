@@ -33,8 +33,10 @@ export const SITE = {
 export const NAV_LINKS = [
   { label: "الرئيسية", href: "#home" },
   { label: "من نحن", href: "#about" },
-  { label: "الهوية", href: "#identity" },
+  { label: "الخدمات", href: "#services" },
+  { label: "المنهجية", href: "#methodology" },
   { label: "الأعمال", href: "#work" },
+  { label: "اكتشف احتياجك", href: "#discovery" },
   { label: "تواصل معنا", href: "#contact" },
 ] as const;
 

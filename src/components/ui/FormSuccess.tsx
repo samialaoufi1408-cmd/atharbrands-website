@@ -13,11 +13,11 @@ export function FormSuccess({
 }) {
   return (
     <div className="flex flex-col items-center py-2 text-center">
-      <span className="bg-gold/15 text-gold-deep grid size-14 place-items-center rounded-full">
+      <span className="bg-gold/15 text-gold grid size-14 place-items-center rounded-full">
         <Icon name="check" className="size-7" />
       </span>
-      <h3 className="text-midnight mt-4 text-xl">{title}</h3>
-      <p className="text-midnight/60 mt-2 max-w-sm text-sm leading-relaxed">{message}</p>
+      <h3 className="text-ivory mt-4 text-xl">{title}</h3>
+      <p className="text-ivory/60 mt-2 max-w-sm text-sm leading-relaxed">{message}</p>
       {waUrl && (
         <Button
           href={waUrl}

@@ -2,7 +2,7 @@
 
 import { useState, type ChangeEvent, type FormEvent } from "react";
 import { ESTIMATE_SERVICES, ESTIMATE_MAX_MULTIPLIER } from "@/data/pricing";
-import { cn, formatNumber } from "@/lib/utils";
+import { cn } from "@/lib/utils";
 import { estimateSchema } from "@/lib/validation/estimate";
 import { postJson } from "@/lib/forms";
 import { estimateWhatsApp, whatsappUrl } from "@/lib/whatsapp";
@@ -29,6 +29,7 @@ export function EstimateCalculator() {
 
   const selectedServices = ESTIMATE_SERVICES.filter((s) => selectedIds.includes(s.id));
   const labels = selectedServices.map((s) => s.label);
+  // Computed for the saved lead only — never shown to the visitor.
   const min = selectedServices.reduce((sum, s) => sum + s.price, 0);
   const max = Math.round(min * ESTIMATE_MAX_MULTIPLIER);
   const hasSelection = selectedServices.length > 0;
@@ -65,20 +66,21 @@ export function EstimateCalculator() {
   }
 
   return (
-    <section id="estimate" className="bg-ivory-deep py-24 lg:py-32">
+    <section id="estimate" className="bg-charcoal py-24 lg:py-32">
       <Container>
         <Reveal>
           <SectionTitle
-            eyebrow="Estimate"
-            title="حاسبة تقدير مبدئية"
-            description="اختر الخدمات التي تحتاجها لتحصل على نطاق سعري تقريبي فوري."
+            tone="light"
+            eyebrow="Proposal"
+            title="اطلب تصورًا مبدئيًا"
+            description="اختر الخدمات التي تحتاجها، ونعدّ لك تصورًا مبدئيًا وعرضًا مناسبًا لمشروعك."
           />
         </Reveal>
 
         <div className="mt-14 grid gap-6 lg:grid-cols-5 lg:items-start">
           <Reveal className="lg:col-span-3">
-            <div className="rounded-card border border-midnight/10 bg-white/60 p-6 sm:p-7">
-              <p className="label-latin mb-4 text-[0.6rem] text-gold-deep">Select services</p>
+            <div className="rounded-card border border-ivory/10 bg-ivory/[0.03] p-6 sm:p-7">
+              <p className="label-latin mb-4 text-[0.6rem] text-gold">اختر الخدمات</p>
               <div className="flex flex-wrap gap-2.5">
                 {ESTIMATE_SERVICES.map((service) => {
                   const on = selectedIds.includes(service.id);
@@ -91,22 +93,19 @@ export function EstimateCalculator() {
                       className={cn(
                         "inline-flex items-center gap-2.5 rounded-button border px-4 py-2.5 text-sm transition-all",
                         on
-                          ? "border-gold bg-gold/10 text-midnight shadow-sm"
-                          : "border-midnight/15 bg-white text-midnight/75 hover:border-gold/50"
+                          ? "border-gold bg-gold/10 text-ivory"
+                          : "border-ivory/15 bg-ivory/[0.03] text-ivory/75 hover:border-gold/50"
                       )}
                     >
                       <span
                         className={cn(
                           "grid size-4 shrink-0 place-items-center rounded border",
-                          on ? "border-gold bg-gold text-midnight" : "border-midnight/25"
+                          on ? "border-gold bg-gold text-charcoal" : "border-ivory/25"
                         )}
                       >
                         {on && <Icon name="check" className="size-3" />}
                       </span>
                       {service.label}
-                      <span className="font-latin text-xs text-midnight/40">
-                        {formatNumber(service.price)}
-                      </span>
                     </button>
                   );
                 })}
@@ -115,29 +114,44 @@ export function EstimateCalculator() {
           </Reveal>
 
           <Reveal delay={120} className="lg:col-span-2">
-            <div className="relative overflow-hidden rounded-card border border-gold/25 bg-white p-6 shadow-soft sm:p-7 lg:sticky lg:top-24">
+            <div className="relative overflow-hidden rounded-card border border-ivory/10 bg-charcoal-700 p-6 shadow-soft sm:p-7 lg:sticky lg:top-24">
               <Pattern className="pointer-events-none absolute inset-0 h-full w-full text-gold/[0.04]" id="estimate-geo" />
               {phase === "done" ? (
                 <FormSuccess
-                  title="تم حفظ تقديرك"
-                  message="سنراجع طلبك ونعود إليك بعرض سعر مفصّل."
+                  title="تم استلام طلبك"
+                  message="سنراجع طلبك ونعود إليك بتصور مبدئي وعرض مناسب لمشروعك."
                   waUrl={doneUrl}
                 />
               ) : (
                 <div className="relative">
-                  <p className="label-latin text-[0.6rem] text-gold-deep">Estimated range</p>
-                  <div className="mt-3 rounded-xl bg-midnight p-5 text-center text-ivory">
+                  <p className="label-latin text-[0.6rem] text-gold">ملخص طلبك</p>
+                  <div className="mt-3 rounded-xl bg-charcoal p-5 text-center">
                     {hasSelection ? (
-                      <p className="font-kufi text-xl sm:text-2xl">
-                        من <span className="font-latin font-semibold text-gold">{formatNumber(min)}</span>{" "}
-                        إلى <span className="font-latin font-semibold text-gold">{formatNumber(max)}</span> ريال
-                      </p>
+                      <div>
+                        <p className="font-kufi text-lg text-ivory">
+                          اخترت{" "}
+                          <span className="font-latin font-semibold text-gold">
+                            {selectedServices.length}
+                          </span>{" "}
+                          {selectedServices.length === 1 ? "خدمة" : "خدمات"}
+                        </p>
+                        <div className="mt-3 flex flex-wrap justify-center gap-1.5">
+                          {labels.map((label) => (
+                            <span
+                              key={label}
+                              className="rounded-button border border-ivory/12 bg-ivory/[0.04] px-2.5 py-1 text-xs text-ivory/70"
+                            >
+                              {label}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
                     ) : (
                       <p className="text-ivory/55">اختر خدمة للبدء</p>
                     )}
                   </div>
-                  <p className="mt-3 text-xs leading-relaxed text-midnight/55">
-                    هذا التقدير مبدئي، ويتم تحديد السعر النهائي بعد جلسة الاكتشاف.
+                  <p className="mt-3 text-xs leading-relaxed text-ivory/55">
+                    نعدّ لك التصور المبدئي والعرض المناسب بعد فهم مشروعك في جلسة الاكتشاف.
                   </p>
 
                   {!showForm ? (
@@ -146,7 +160,7 @@ export function EstimateCalculator() {
                       disabled={!hasSelection}
                       className="mt-5 w-full"
                     >
-                      احفظ التقدير واطلب عرض سعر
+                      اطلب التصور المبدئي
                     </Button>
                   ) : (
                     <form onSubmit={handleSubmit} noValidate className="mt-5 flex flex-col gap-4">

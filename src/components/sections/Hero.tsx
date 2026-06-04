@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { SITE } from "@/lib/constants";
 import { Container } from "../ui/Container";
 import { Button } from "../ui/Button";
 import { Icon } from "../ui/Icon";
@@ -9,7 +8,7 @@ export function Hero() {
     <section id="home" className="relative isolate overflow-hidden bg-charcoal">
       <div className="pointer-events-none absolute left-1/3 top-0 h-[42rem] w-[42rem] -translate-x-1/2 rounded-full bg-gold/[0.07] blur-[150px]" />
 
-      {/* subtle mountain landscape (board "website hero") */}
+      {/* subtle mountain horizon — texture borrowed from the brand world, not shown as content */}
       <svg
         className="pointer-events-none absolute inset-x-0 bottom-0 h-72 w-full"
         viewBox="0 0 1440 320"
@@ -34,48 +33,45 @@ export function Hero() {
             className="animate-rise label-latin block text-[0.62rem] text-gold/80"
             style={{ animationDelay: "0ms" }}
           >
-            The Seal of Impact · ختم الأثر
+            Saudi Brand Studio · Legacy in Every Impact
           </span>
           <h1
-            className="animate-rise mt-5 font-serif text-5xl font-medium leading-[1.05] tracking-[0.06em] text-ivory sm:text-6xl md:text-7xl"
+            className="animate-rise mt-6 font-kufi text-4xl font-bold leading-[1.18] text-ivory sm:text-5xl md:text-[3.5rem]"
             style={{ animationDelay: "80ms" }}
           >
-            LEGACY
+            نبني علامات تجارية لا تُرى فقط…
             <br />
-            IN EVERY IMPACT
+            بل <span className="text-gold-gradient">تُتذكر</span>
           </h1>
           <p
-            className="animate-rise mt-6 font-kufi text-2xl text-gold sm:text-3xl"
+            className="animate-rise mt-6 max-w-xl text-lg leading-relaxed text-ivory/65"
             style={{ animationDelay: "160ms" }}
           >
-            نبني أثرًا يدوم
-          </p>
-          <p
-            className="animate-rise mt-6 max-w-lg leading-relaxed text-ivory/60"
-            style={{ animationDelay: "240ms" }}
-          >
-            {SITE.essenceAr}
+            من الفكرة إلى الإطلاق، نصنع هويات استراتيجية تترك أثرًا واضحًا في السوق.
           </p>
           <div
             className="animate-rise mt-9 flex flex-wrap items-center gap-3"
-            style={{ animationDelay: "320ms" }}
+            style={{ animationDelay: "240ms" }}
           >
             <Button href="#contact" size="lg">
-              Discover More
+              ابدأ مشروعك
               <Icon name="arrow" className="size-4" />
             </Button>
-            <Button href="#about" variant="outlineLight" size="lg">
-              اكتشف المزيد
+            <Button href="#discovery" variant="outlineLight" size="lg">
+              اكتشف احتياج علامتك
             </Button>
           </div>
         </div>
 
         <div className="lg:col-span-5">
-          <div className="animate-rise relative mx-auto flex max-w-sm justify-center" style={{ animationDelay: "260ms" }}>
+          <div
+            className="animate-rise relative mx-auto flex max-w-sm justify-center"
+            style={{ animationDelay: "260ms" }}
+          >
             <div className="pointer-events-none absolute inset-0 -z-10 rounded-full bg-gold/[0.06] blur-[90px]" />
             <Image
               src="/brand/athar/primary-symbol.png"
-              alt="الرمز الأساسي لأثر — ختم الأثر"
+              alt="أثر | ATHAR"
               width={235}
               height={300}
               priority

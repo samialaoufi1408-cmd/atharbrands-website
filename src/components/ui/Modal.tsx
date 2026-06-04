@@ -43,15 +43,15 @@ export function Modal({
         role="dialog"
         aria-modal="true"
         aria-label={title}
-        className="animate-rise bg-ivory relative z-10 max-h-[92vh] w-full max-w-lg overflow-y-auto rounded-t-3xl shadow-2xl sm:rounded-3xl"
+        className="animate-rise bg-charcoal-700 relative z-10 max-h-[92vh] w-full max-w-lg overflow-y-auto rounded-t-3xl border border-ivory/10 shadow-soft sm:rounded-3xl"
       >
-        <div className="border-midnight/10 bg-ivory/95 sticky top-0 flex items-center justify-between border-b px-6 py-4 backdrop-blur">
-          <h3 className="font-kufi text-midnight text-lg">{title}</h3>
+        <div className="border-ivory/10 bg-charcoal-700/95 sticky top-0 flex items-center justify-between border-b px-6 py-4 backdrop-blur">
+          <h3 className="font-kufi text-ivory text-lg">{title}</h3>
           <button
             type="button"
             onClick={onClose}
             aria-label="إغلاق"
-            className="border-midnight/15 text-midnight/60 hover:border-gold/50 hover:text-gold-deep grid size-9 place-items-center rounded-full border transition-colors"
+            className="border-ivory/15 text-ivory/60 hover:border-gold/50 hover:text-gold grid size-9 place-items-center rounded-full border transition-colors"
           >
             <Icon name="close" className="size-4" />
           </button>

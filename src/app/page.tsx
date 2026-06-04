@@ -1,20 +1,24 @@
 import { Hero } from "@/components/sections/Hero";
-import { BrandSystem } from "@/components/sections/BrandSystem";
-import { ColorPalette } from "@/components/sections/ColorPalette";
-import { Typography } from "@/components/sections/Typography";
-import { PatternShowcase } from "@/components/sections/PatternShowcase";
-import { BrandApplications } from "@/components/sections/BrandApplications";
+import { About } from "@/components/sections/About";
+import { Services } from "@/components/sections/Services";
+import { Methodology } from "@/components/sections/Methodology";
+import { CaseStudies } from "@/components/sections/CaseStudies";
+import { DiscoveryQuiz } from "@/components/sections/DiscoveryQuiz";
+import { EstimateCalculator } from "@/components/sections/EstimateCalculator";
+import { CTA } from "@/components/sections/CTA";
 import { Contact } from "@/components/sections/Contact";
 
 export default function Home() {
   return (
     <>
       <Hero />
-      <BrandSystem />
-      <ColorPalette />
-      <Typography />
-      <PatternShowcase />
-      <BrandApplications />
+      <About />
+      <Services />
+      <Methodology />
+      <CaseStudies />
+      <DiscoveryQuiz />
+      <EstimateCalculator />
+      <CTA />
       <Contact />
     </>
   );

@@ -5,10 +5,11 @@ import { Reveal } from "../ui/Reveal";
 
 export function Methodology() {
   return (
-    <section id="methodology" className="bg-ivory-deep py-24 lg:py-32">
+    <section id="methodology" className="bg-charcoal-700 py-24 lg:py-32">
       <Container>
         <Reveal>
           <SectionTitle
+            tone="light"
             eyebrow="Methodology"
             title="منهجية أثر"
             description="رحلة من خمس مراحل، من فهم السوق إلى لحظة الإطلاق."
@@ -29,11 +30,11 @@ export function Methodology() {
                   </span>
 
                   {/* Node marker on the track */}
-                  <span className="absolute right-[1.6rem] top-3 hidden size-2.5 rounded-full bg-gold/70 ring-4 ring-ivory-deep lg:right-auto lg:left-0 lg:top-[1.85rem] lg:block" />
+                  <span className="absolute right-[1.6rem] top-3 hidden size-2.5 rounded-full bg-gold/70 ring-4 ring-charcoal-700 lg:right-auto lg:left-0 lg:top-[1.85rem] lg:block" />
 
                   <div className="lg:mt-9">
-                    <h3 className="text-xl text-midnight">{step.title}</h3>
-                    <p className="mt-2.5 text-sm leading-relaxed text-midnight/60">
+                    <h3 className="text-xl text-ivory">{step.title}</h3>
+                    <p className="mt-2.5 text-sm leading-relaxed text-ivory/60">
                       {step.description}
                     </p>
                   </div>

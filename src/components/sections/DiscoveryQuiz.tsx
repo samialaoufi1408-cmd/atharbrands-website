@@ -2,7 +2,7 @@
 
 import { useState, type ChangeEvent, type FormEvent } from "react";
 import { PACKAGES, type BrandPackage } from "@/data/packages";
-import { cn, formatNumber } from "@/lib/utils";
+import { cn } from "@/lib/utils";
 import { discoverySchema } from "@/lib/validation/discovery";
 import { postJson } from "@/lib/forms";
 import { discoveryWhatsApp, whatsappUrl } from "@/lib/whatsapp";
@@ -12,7 +12,7 @@ import { Reveal } from "../ui/Reveal";
 import { Icon } from "../ui/Icon";
 import { Button } from "../ui/Button";
 import { Input } from "../ui/Input";
-import { Monogram } from "../ui/Logo";
+import { AtharMonogram } from "../ui/Logo";
 import { FormSuccess } from "../ui/FormSuccess";
 
 const QUESTIONS = [
@@ -130,10 +130,11 @@ export function DiscoveryQuiz() {
   }
 
   return (
-    <section id="discovery" className="bg-ivory py-24 lg:py-32">
+    <section id="discovery" className="bg-charcoal-700 py-24 lg:py-32">
       <Container>
         <Reveal>
           <SectionTitle
+            tone="light"
             eyebrow="Discovery"
             title="اكتشف احتياج علامتك"
             description="أجب عن خمسة أسئلة سريعة لنقترح عليك نقطة انطلاق مناسبة."
@@ -141,10 +142,10 @@ export function DiscoveryQuiz() {
         </Reveal>
 
         <Reveal>
-          <div className="mx-auto mt-12 max-w-2xl rounded-card border border-gold/20 bg-white p-6 shadow-soft sm:p-9">
+          <div className="mx-auto mt-12 max-w-2xl rounded-card border border-ivory/10 bg-charcoal p-6 shadow-soft sm:p-9">
             {phase === "quiz" && (
               <div>
-                <div className="flex items-center justify-between text-sm text-midnight/55">
+                <div className="flex items-center justify-between text-sm text-ivory/55">
                   <span>
                     سؤال {step + 1} من {QUESTIONS.length}
                   </span>
@@ -152,14 +153,14 @@ export function DiscoveryQuiz() {
                     {String(step + 1).padStart(2, "0")} / {String(QUESTIONS.length).padStart(2, "0")}
                   </span>
                 </div>
-                <div className="mt-2 h-1 overflow-hidden rounded-full bg-midnight/10">
+                <div className="mt-2 h-1 overflow-hidden rounded-full bg-ivory/10">
                   <div
                     className="h-full rounded-full bg-gold transition-all duration-500"
                     style={{ width: `${((step + 1) / QUESTIONS.length) * 100}%` }}
                   />
                 </div>
 
-                <h3 className="mt-7 font-kufi text-2xl text-midnight">{current.title}</h3>
+                <h3 className="mt-7 font-kufi text-2xl text-ivory">{current.title}</h3>
                 <div className="mt-5 flex flex-col gap-2.5">
                   {current.options.map((option) => {
                     const selected = answers[current.id] === option;
@@ -171,15 +172,15 @@ export function DiscoveryQuiz() {
                         className={cn(
                           "flex items-center justify-between gap-3 rounded-xl border px-4 py-3.5 text-right transition-all",
                           selected
-                            ? "border-gold bg-gold/10 text-midnight"
-                            : "border-midnight/12 text-midnight/80 hover:border-gold/50 hover:bg-gold/5"
+                            ? "border-gold bg-gold/10 text-ivory"
+                            : "border-ivory/12 text-ivory/80 hover:border-gold/50 hover:bg-gold/5"
                         )}
                       >
                         <span>{option}</span>
                         <span
                           className={cn(
                             "grid size-5 shrink-0 place-items-center rounded-full border",
-                            selected ? "border-gold bg-gold text-midnight" : "border-midnight/25"
+                            selected ? "border-gold bg-gold text-charcoal" : "border-ivory/25"
                           )}
                         >
                           {selected && <Icon name="check" className="size-3.5" />}
@@ -193,7 +194,7 @@ export function DiscoveryQuiz() {
                   <button
                     type="button"
                     onClick={() => setStep(step - 1)}
-                    className="mt-6 inline-flex items-center gap-1.5 text-sm text-midnight/55 transition-colors hover:text-gold-deep"
+                    className="mt-6 inline-flex items-center gap-1.5 text-sm text-ivory/55 transition-colors hover:text-gold"
                   >
                     <Icon name="arrow" className="size-4 rotate-180" />
                     السؤال السابق
@@ -206,22 +207,19 @@ export function DiscoveryQuiz() {
               <div>
                 <div className="rounded-card border border-gold/30 bg-gold/[0.06] p-6">
                   <div className="flex items-center justify-between">
-                    <span className="label-latin text-[0.6rem] text-gold-deep">Recommended</span>
-                    <Monogram className="size-10" />
+                    <span className="label-latin text-[0.6rem] text-gold">Recommended</span>
+                    <AtharMonogram className="size-10 text-gold" />
                   </div>
-                  <h3 className="mt-3 font-kufi text-2xl text-midnight">{recommended.name}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-midnight/65">{recommended.tagline}</p>
-                  <div className="mt-4 flex items-baseline gap-1.5">
-                    <span className="label-latin text-[0.55rem] text-midnight/50">From</span>
-                    <span className="font-latin text-2xl font-semibold text-gold-deep">
-                      {formatNumber(recommended.startingPrice)}
-                    </span>
-                    <span className="text-sm text-midnight/60">ريال</span>
-                  </div>
+                  <h3 className="mt-3 font-kufi text-2xl text-ivory">{recommended.name}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-ivory/65">{recommended.tagline}</p>
+                  <p className="mt-4 flex items-center gap-2 text-sm text-gold/80">
+                    <Icon name="check" className="size-4" />
+                    نوضّح لك التفاصيل والتصور المبدئي في جلسة الاكتشاف.
+                  </p>
                 </div>
 
                 <form onSubmit={handleSubmit} noValidate className="mt-6 flex flex-col gap-4">
-                  <p className="text-sm text-midnight/65">
+                  <p className="text-sm text-ivory/65">
                     اترك بياناتك ونرسل لك تصورًا مبدئيًا مناسبًا لمشروعك.
                   </p>
                   <Input
@@ -259,7 +257,7 @@ export function DiscoveryQuiz() {
                     <button
                       type="button"
                       onClick={restart}
-                      className="text-sm text-midnight/55 transition-colors hover:text-gold-deep"
+                      className="text-sm text-ivory/55 transition-colors hover:text-gold"
                     >
                       تعديل الإجابات
                     </button>

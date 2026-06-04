@@ -17,8 +17,8 @@ export const METHODOLOGY: MethodologyStep[] = [
   },
   {
     number: "03",
-    title: "نوجه",
-    description: "نضع الاتجاه البصري المناسب للعلامة قبل التصميم.",
+    title: "نبني",
+    description: "نبني أساس العلامة: الاسم، الرسالة، والاتجاه البصري قبل التصميم.",
   },
   {
     number: "04",
@@ -27,7 +27,7 @@ export const METHODOLOGY: MethodologyStep[] = [
   },
   {
     number: "05",
-    title: "نسلّم ونطلق",
-    description: "نسلم الملفات، دليل الاستخدام، والتطبيقات الجاهزة للإطلاق.",
+    title: "نطلق",
+    description: "نسلم الملفات ودليل الاستخدام والتطبيقات الجاهزة، ونطلق العلامة بثقة.",
   },
 ];
