@@ -1,7 +1,7 @@
 import { NAV_LINKS, SITE } from "@/lib/constants";
 import { whatsappUrl } from "@/lib/whatsapp";
 import { Container } from "../ui/Container";
-import { Logo, AtharSymbol } from "../ui/Logo";
+import { AtharWordmark } from "../ui/Logo";
 import { Pattern } from "../ui/Pattern";
 import { Icon } from "../ui/Icon";
 
@@ -11,15 +11,11 @@ export function Footer() {
       <div className="pointer-events-none absolute inset-0">
         <Pattern className="h-full w-full text-gold/[0.04]" id="footer-geo" />
       </div>
-      {/* large symbol watermark */}
-      <div className="pointer-events-none absolute -bottom-16 left-1/2 -translate-x-1/2 opacity-[0.04]">
-        <AtharSymbol className="h-80 w-auto text-gold" />
-      </div>
 
       <Container className="relative py-20">
         <div className="grid gap-12 md:grid-cols-12">
           <div className="md:col-span-6">
-            <Logo tone="light" />
+            <AtharWordmark tone="light" />
             <p className="mt-6 max-w-sm text-sm leading-relaxed text-ivory/55">{SITE.essenceAr}</p>
             <p className="mt-2 max-w-sm font-serif text-sm italic text-gold/70">{SITE.taglineEn}</p>
           </div>

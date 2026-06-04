@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { NAV_LINKS } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import { Container } from "../ui/Container";
-import { Logo } from "../ui/Logo";
+import { AtharWordmark } from "../ui/Logo";
 import { Button } from "../ui/Button";
 import { Icon } from "../ui/Icon";
 import { MobileMenu } from "./MobileMenu";
@@ -32,7 +32,7 @@ export function Header() {
       >
         <Container className="flex items-center justify-between gap-4">
           <a href="#home" aria-label="أثر | ATHAR — الرئيسية" className="shrink-0">
-            <Logo tone="light" />
+            <AtharWordmark tone="light" />
           </a>
 
           <nav className="hidden items-center gap-1 lg:flex">

@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { NAV_LINKS } from "@/lib/constants";
 import { whatsappUrl } from "@/lib/whatsapp";
 import { cn } from "@/lib/utils";
-import { Logo } from "../ui/Logo";
+import { AtharWordmark } from "../ui/Logo";
 import { Button } from "../ui/Button";
 import { Icon } from "../ui/Icon";
 import { Pattern } from "../ui/Pattern";
@@ -49,7 +49,7 @@ export function MobileMenu({ open, onClose }: { open: boolean; onClose: () => vo
         <Pattern className="pointer-events-none absolute inset-0 h-full w-full text-gold/[0.05]" id="menu-geo" />
 
         <div className="relative flex items-center justify-between border-b border-ivory/10 px-6 py-5">
-          <Logo tone="light" />
+          <AtharWordmark tone="light" />
           <button
             type="button"
             onClick={onClose}

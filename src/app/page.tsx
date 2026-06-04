@@ -1,5 +1,5 @@
 import { Hero } from "@/components/sections/Hero";
-import { BrandEssence } from "@/components/sections/BrandEssence";
+import { BrandSystem } from "@/components/sections/BrandSystem";
 import { ColorPalette } from "@/components/sections/ColorPalette";
 import { Typography } from "@/components/sections/Typography";
 import { PatternShowcase } from "@/components/sections/PatternShowcase";
@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <BrandEssence />
+      <BrandSystem />
       <ColorPalette />
       <Typography />
       <PatternShowcase />
