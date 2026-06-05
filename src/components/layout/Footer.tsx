@@ -1,23 +1,29 @@
+import Image from "next/image";
 import { NAV_LINKS, SITE } from "@/lib/constants";
 import { whatsappUrl } from "@/lib/whatsapp";
 import { Container } from "../ui/Container";
-import { AtharWordmark } from "../ui/Logo";
 import { Pattern } from "../ui/Pattern";
 import { Icon } from "../ui/Icon";
 
 export function Footer() {
   return (
-    <footer className="relative overflow-hidden border-t border-gold/12 bg-charcoal text-ivory">
+    <footer className="relative overflow-hidden border-t border-gold/15 bg-charcoal-600 text-ink">
       <div className="pointer-events-none absolute inset-0">
-        <Pattern className="h-full w-full text-gold/[0.04]" id="footer-geo" />
+        <Pattern className="h-full w-full text-gold/[0.05]" id="footer-geo" />
       </div>
 
       <Container className="relative py-20">
         <div className="grid gap-12 md:grid-cols-12">
           <div className="md:col-span-6">
-            <AtharWordmark tone="light" />
-            <p className="mt-6 max-w-sm text-sm leading-relaxed text-ivory/55">{SITE.essenceAr}</p>
-            <p className="mt-2 max-w-sm font-serif text-sm italic text-gold/70">{SITE.taglineEn}</p>
+            <Image
+              src="/brand/athar-v2/wordmark.png"
+              alt="أثر | ATHAR Branding Studio"
+              width={555}
+              height={205}
+              className="h-12 w-auto"
+            />
+            <p className="mt-6 max-w-sm text-sm leading-relaxed text-ink/70">{SITE.essenceAr}</p>
+            <p className="mt-2 max-w-sm font-serif text-base italic text-gold">{SITE.taglineEn}</p>
           </div>
 
           <nav className="md:col-span-3" aria-label="روابط">
@@ -64,9 +70,9 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-16 flex flex-col items-center justify-between gap-4 border-t border-ivory/10 pt-6 text-xs text-ivory/50 sm:flex-row">
-          <p>© ATHAR Brands 2026. All rights reserved.</p>
-          <p className="label-latin text-[0.58rem] text-gold/60">Legacy in Every Impact</p>
+        <div className="mt-16 flex flex-col items-center justify-between gap-4 border-t border-ink/12 pt-6 text-xs text-ink/55 sm:flex-row">
+          <p>© 2026 أثر | ATHAR Branding Studio. جميع الحقوق محفوظة.</p>
+          <p className="label-latin text-[0.58rem] text-gold/80">Branding · Identity · Strategy</p>
         </div>
       </Container>
     </footer>

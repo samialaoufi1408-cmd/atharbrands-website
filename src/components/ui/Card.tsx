@@ -13,14 +13,13 @@ export function Card({
   tone?: "light" | "dark";
   hover?: boolean;
 }) {
-  const light = tone === "light";
+  const elevated = tone === "light";
   return (
     <div
       className={cn(
-        "rounded-card border p-6 sm:p-8",
-        light ? "border-midnight/10 bg-white" : "border-ivory/10 bg-ivory/[0.035]",
-        hover && "card-lift",
-        hover && (light ? "hover:border-gold/45 hover:shadow-gold" : "hover:border-gold/45 hover:bg-ivory/[0.06]"),
+        "rounded-card border border-ink/10 p-6 sm:p-8",
+        elevated ? "bg-white shadow-soft" : "bg-white/80",
+        hover && "card-lift hover:border-gold/40 hover:shadow-gold",
         className
       )}
     >

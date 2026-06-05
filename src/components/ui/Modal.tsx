@@ -37,7 +37,7 @@ export function Modal({
         type="button"
         aria-label="إغلاق"
         onClick={onClose}
-        className="bg-midnight/70 absolute inset-0 backdrop-blur-sm"
+        className="bg-ink/55 absolute inset-0 backdrop-blur-sm"
       />
       <div
         role="dialog"

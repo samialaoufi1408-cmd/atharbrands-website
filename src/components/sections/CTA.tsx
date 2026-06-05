@@ -1,35 +1,43 @@
+import Image from "next/image";
 import { Container } from "../ui/Container";
 import { Button } from "../ui/Button";
 import { Icon } from "../ui/Icon";
 import { Pattern } from "../ui/Pattern";
-import { Monogram } from "../ui/Logo";
 import { whatsappUrl } from "@/lib/whatsapp";
 
 export function CTA() {
   return (
     <section
       id="cta"
-      className="relative isolate overflow-hidden bg-midnight py-24 text-ivory lg:py-32"
+      className="relative isolate overflow-hidden bg-gradient-to-b from-gold to-gold-deep py-24 text-offwhite lg:py-32"
     >
-      <div className="pointer-events-none absolute inset-0">
-        <Pattern className="h-full w-full text-gold/[0.05]" id="cta-geo" />
+      <div className="pointer-events-none absolute inset-0 opacity-60">
+        <Pattern className="h-full w-full text-white/[0.10]" id="cta-ripple" />
       </div>
-      <div className="pointer-events-none absolute left-1/2 top-1/2 h-[34rem] w-[34rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-gold/12 blur-[130px]" />
+      <div className="pointer-events-none absolute left-1/2 top-1/2 h-[34rem] w-[34rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/10 blur-[120px]" />
 
       <Container className="relative">
         <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
-          <Monogram className="size-12" />
+          <span className="grid size-20 place-items-center overflow-hidden rounded-full bg-offwhite shadow-soft">
+            <Image
+              src="/brand/athar-v2/symbol.png"
+              alt=""
+              width={270}
+              height={178}
+              className="w-12"
+            />
+          </span>
 
-          <h2 className="mt-8 text-balance text-4xl leading-[1.15] text-ivory sm:text-5xl">
-            جاهز تصنع <span className="text-gold-gradient">أثر</span> علامتك؟
+          <h2 className="mt-8 text-balance font-kufi text-4xl leading-[1.15] text-offwhite sm:text-5xl">
+            جاهز تصنع <span className="font-serif italic">أثر</span> علامتك؟
           </h2>
 
-          <p className="mt-5 max-w-xl text-lg leading-relaxed text-ivory/70">
+          <p className="mt-5 max-w-xl text-lg leading-relaxed text-offwhite/85">
             ابدأ معنا رحلة بناء علامة تجارية واضحة، فاخرة، ومؤثرة.
           </p>
 
           <div className="mt-10 flex flex-wrap justify-center gap-3">
-            <Button href="#contact" size="lg">
+            <Button href="#contact" variant="light" size="lg">
               احجز جلسة اكتشاف
               <Icon name="arrow" className="size-4" />
             </Button>

@@ -38,6 +38,9 @@ yarn-error.log*
 # local agent / editor tooling
 .claude
 
+# brand source working files (large originals + candidate crops; final assets live in public/brand/athar-v2)
+/public/brand/source/
+
 # vercel
 .vercel
 

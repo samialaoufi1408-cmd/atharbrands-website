@@ -1,10 +1,10 @@
 "use client";
 
 import { useEffect } from "react";
+import Image from "next/image";
 import { NAV_LINKS } from "@/lib/constants";
 import { whatsappUrl } from "@/lib/whatsapp";
 import { cn } from "@/lib/utils";
-import { AtharWordmark } from "../ui/Logo";
 import { Button } from "../ui/Button";
 import { Icon } from "../ui/Icon";
 import { Pattern } from "../ui/Pattern";
@@ -36,7 +36,7 @@ export function MobileMenu({ open, onClose }: { open: boolean; onClose: () => vo
         aria-label="إغلاق القائمة"
         onClick={onClose}
         className={cn(
-          "absolute inset-0 bg-midnight/70 backdrop-blur-sm transition-opacity duration-300",
+          "absolute inset-0 bg-ink/55 backdrop-blur-sm transition-opacity duration-300",
           open ? "opacity-100" : "opacity-0"
         )}
       />
@@ -48,8 +48,14 @@ export function MobileMenu({ open, onClose }: { open: boolean; onClose: () => vo
       >
         <Pattern className="pointer-events-none absolute inset-0 h-full w-full text-gold/[0.05]" id="menu-geo" />
 
-        <div className="relative flex items-center justify-between border-b border-ivory/10 px-6 py-5">
-          <AtharWordmark tone="light" />
+        <div className="relative flex items-center justify-between border-b border-ink/10 px-6 py-5">
+          <Image
+            src="/brand/athar-v2/wordmark.png"
+            alt="أثر | ATHAR Branding Studio"
+            width={555}
+            height={205}
+            className="h-9 w-auto"
+          />
           <button
             type="button"
             onClick={onClose}

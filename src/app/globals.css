@@ -1,72 +1,78 @@
 @import "tailwindcss";
 
 /* ============================================================
-   أثر | ATHAR — Brand Board Design System (source of truth)
-   Charcoal · Champagne Gold · Ivory · Warm Taupe · Olive Gray.
-   Type: Cairo (AR ≈ DIN Next Arabic) · Cormorant Garamond (EN display) · Jost (labels).
-   Token NAMES kept for compatibility; VALUES are the board's colours.
+   أثر | ATHAR Branding Studio — Brand Book Design System
+   Smoky Purple · Muted Mauve · Soft Silver · Deep Charcoal · Warm Off-White.
+   Light, warm, editorial — ripple/droplet identity.
+   Type: Cairo (AR + sans) · Playfair Display (Latin display).
+   Legacy token NAMES kept for compatibility; VALUES are the new brand's.
+   (charcoal/midnight = light surfaces · ivory = dark ink · gold = smoky purple)
    ============================================================ */
 
 @theme {
-  /* Charcoal (primary dark / background) — board CHARCOAL #0F1113 */
-  --color-midnight: #0f1113;
-  --color-midnight-700: #17191c;
-  --color-midnight-600: #20232733;
-  --color-charcoal: #0f1113;
-  --color-charcoal-700: #17191c;
-  --color-charcoal-600: #202327;
+  /* Surfaces — Warm Off-White #F6F4F1 (slightly warmed to match logo art) */
+  --color-midnight: #f4efea;
+  --color-midnight-700: #ebe6dd;
+  --color-midnight-600: #dcd8d3;
+  --color-charcoal: #f4efea;
+  --color-charcoal-700: #ebe6dd;
+  --color-charcoal-600: #dcd8d3;
 
-  /* Champagne Gold — board #D4AF7A */
-  --color-gold: #d4af7a;
-  --color-gold-soft: #e6cda1;
-  --color-gold-deep: #b9935c;
-  --color-champagne: #d4af7a;
+  /* Accent — Smoky Purple #786D8D, Muted Mauve #B89CAC */
+  --color-gold: #786d8d;
+  --color-gold-soft: #b89cac;
+  --color-gold-deep: #5e5470;
+  --color-champagne: #786d8d;
 
-  /* Ivory — board #F2EFE6 */
-  --color-ivory: #f2efe6;
-  --color-ivory-deep: #e6e1d3;
+  /* Ink — Deep Charcoal #4E4A55 */
+  --color-ivory: #4e4a55;
+  --color-ivory-deep: #36333d;
 
-  /* Warm Taupe — board #7A6955 */
-  --color-sand: #7a6955;
-  --color-sand-soft: #9a8770;
-  --color-taupe: #7a6955;
+  /* Legacy aliases → mauve / silver */
+  --color-sand: #b89cac;
+  --color-sand-soft: #cbb6c2;
+  --color-taupe: #b89cac;
+  --color-sage: #8b8f88;
+  --color-sage-soft: #a7aaa1;
 
-  /* Olive Gray — board #555B50 */
-  --color-sage: #555b50;
-  --color-sage-soft: #6f766a;
-  --color-olive: #555b50;
+  /* Explicit brand tokens */
+  --color-purple: #786d8d;
+  --color-mauve: #b89cac;
+  --color-silver: #dcd8d3;
+  --color-offwhite: #f6f4f1;
+  --color-ink: #4e4a55;
 
   /* Type families (wired by next/font in layout.tsx) */
   --font-sans: var(--font-cairo), "Segoe UI", system-ui, sans-serif;
   --font-kufi: var(--font-cairo), "Segoe UI", system-ui, sans-serif;
-  --font-serif: var(--font-cormorant), "Times New Roman", serif;
+  --font-serif: var(--font-playfair), "Times New Roman", serif;
   --font-latin: var(--font-jost), system-ui, sans-serif;
 
   /* Radii */
   --radius-card: 18px;
   --radius-button: 6px;
 
-  /* Shadows */
-  --shadow-soft: 0 30px 90px rgba(0, 0, 0, 0.45);
+  /* Shadows — soft, purple-tinted for a light theme */
+  --shadow-soft: 0 24px 70px rgba(78, 74, 85, 0.12);
   --shadow-gold:
-    0 0 0 1px rgba(212, 175, 122, 0.22), 0 30px 90px rgba(0, 0, 0, 0.5);
-  --shadow-mock: 0 40px 80px -30px rgba(0, 0, 0, 0.8);
+    0 0 0 1px rgba(120, 109, 141, 0.18), 0 24px 70px rgba(78, 74, 85, 0.16);
+  --shadow-mock: 0 40px 80px -30px rgba(78, 74, 85, 0.4);
 
   --ease-luxe: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 :root {
-  color-scheme: dark;
+  color-scheme: light;
 }
 
 html {
   scroll-behavior: smooth;
 }
 
-/* Dark-first, like the brand board */
+/* Light, warm, like the brand book */
 body {
-  background-color: var(--color-charcoal);
-  color: var(--color-ivory);
+  background-color: var(--color-offwhite);
+  color: var(--color-ink);
   font-family: var(--font-sans);
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
@@ -94,7 +100,7 @@ h4 {
   font-family: var(--font-serif);
 }
 
-/* Letter-spaced uppercase Latin micro-label (board section labels) */
+/* Letter-spaced uppercase Latin micro-label */
 .label-latin {
   font-family: var(--font-latin);
   font-weight: 500;
@@ -104,8 +110,8 @@ h4 {
 }
 
 ::selection {
-  background: color-mix(in srgb, var(--color-gold) 32%, transparent);
-  color: var(--color-charcoal);
+  background: color-mix(in srgb, var(--color-purple) 28%, transparent);
+  color: var(--color-ink);
 }
 
 section[id] {
@@ -158,17 +164,17 @@ section[id] {
   background-image: linear-gradient(
     90deg,
     transparent,
-    color-mix(in srgb, var(--color-gold) 55%, transparent),
+    color-mix(in srgb, var(--color-purple) 55%, transparent),
     transparent
   );
 }
 
-/* Embossed surface (seal / folder / debossed marks) */
+/* Soft embossed surface for a light theme */
 .emboss {
   box-shadow:
-    inset 0 1px 1px rgba(255, 255, 255, 0.05),
-    inset 0 -3px 8px rgba(0, 0, 0, 0.65),
-    0 1px 0 rgba(255, 255, 255, 0.03);
+    inset 0 1px 0 rgba(255, 255, 255, 0.65),
+    inset 0 -2px 6px rgba(78, 74, 85, 0.1),
+    0 1px 2px rgba(78, 74, 85, 0.08);
 }
 
 .card-lift {
@@ -185,12 +191,12 @@ section[id] {
 @media (pointer: fine) {
   * {
     scrollbar-width: thin;
-    scrollbar-color: color-mix(in srgb, var(--color-gold) 50%, transparent) transparent;
+    scrollbar-color: color-mix(in srgb, var(--color-purple) 50%, transparent) transparent;
   }
 }
 
 :where(a, button, input, select, textarea, [tabindex]):focus-visible {
-  outline: 2px solid var(--color-gold);
+  outline: 2px solid var(--color-purple);
   outline-offset: 3px;
   border-radius: 2px;
 }

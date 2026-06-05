@@ -1,10 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import { NAV_LINKS } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import { Container } from "../ui/Container";
-import { AtharWordmark } from "../ui/Logo";
 import { Button } from "../ui/Button";
 import { Icon } from "../ui/Icon";
 import { MobileMenu } from "./MobileMenu";
@@ -31,8 +31,15 @@ export function Header() {
         )}
       >
         <Container className="flex items-center justify-between gap-4">
-          <a href="#home" aria-label="أثر | ATHAR — الرئيسية" className="shrink-0">
-            <AtharWordmark tone="light" />
+          <a href="#home" aria-label="أثر | ATHAR Branding Studio — الرئيسية" className="shrink-0">
+            <Image
+              src="/brand/athar-v2/wordmark.png"
+              alt="أثر | ATHAR Branding Studio"
+              width={555}
+              height={205}
+              priority
+              className="h-9 w-auto sm:h-10"
+            />
           </a>
 
           <nav className="hidden items-center gap-1 lg:flex">

@@ -23,10 +23,11 @@ export const SITE = {
     "في أثر، نصنع الهويات والاستراتيجيات التي تمنح الشركات حضورًا واضحًا، وشخصية مميزة، وتجربة تترك أثرًا طويلًا في السوق.",
   positioningAr: "استوديو سعودي لبناء العلامات التجارية يخدم المشاريع الطموحة في السعودية والخليج.",
   positioningEn: "Saudi-born Brand Studio serving Saudi Arabia & GCC",
-  taglineEn: "Legacy in Every Impact",
-  essenceAr: "أثر يعبّر عن ما نتركه من قيمة؛ ما يصنع الفرق، وما يستمر بعدنا.",
-  essenceEn: "ATHAR is the impact we leave — the value we create, the legacy that endures.",
-  sealMottoEn: "LEGACY IN EVERY IMPACT",
+  taglineEn: "We create brands that are seen, and remembered.",
+  essenceAr: "أثر هو بصمة تُخلد في الذاكرة، هو الانطباع الذي يبقى بعد أن يغادر كل شيء آخر.",
+  essenceEn:
+    "ATHAR is the trace that stays in the memory — the impression that remains long after everything else is gone.",
+  sealMottoEn: "We create brands that leave a lasting impact",
 } as const;
 
 /** Primary navigation — labels map to in-page section ids. */
@@ -68,18 +69,18 @@ export const BUDGET_OPTIONS = [
 /** Official brand palette (hex), available for inline use / OG image. */
 /** Legacy token aliases (kept for compatibility) mapped to the board palette. */
 export const BRAND_COLORS = {
-  midnight: "#0F1113",
-  gold: "#D4AF7A",
-  ivory: "#F2EFE6",
-  sand: "#7A6955",
-  sage: "#555B50",
+  midnight: "#4E4A55",
+  gold: "#786D8D",
+  ivory: "#F6F4F1",
+  sand: "#B89CAC",
+  sage: "#DCD8D3",
 } as const;
 
-/** Official brand board palette — name + code (used by the Color Palette section). */
+/** Official brand book palette — name + code. */
 export const BRAND_PALETTE = [
-  { nameEn: "Champagne Gold", nameAr: "ذهبي شامبين", hex: "#D4AF7A" },
-  { nameEn: "Ivory", nameAr: "عاجي", hex: "#F2EFE6" },
-  { nameEn: "Charcoal", nameAr: "فحمي", hex: "#0F1113" },
-  { nameEn: "Warm Taupe", nameAr: "بُنّي دافئ", hex: "#7A6955" },
-  { nameEn: "Olive Gray", nameAr: "رمادي زيتي", hex: "#555B50" },
+  { nameEn: "Smoky Purple", nameAr: "بنفسجي دخاني", hex: "#786D8D" },
+  { nameEn: "Muted Mauve", nameAr: "موف هادئ", hex: "#B89CAC" },
+  { nameEn: "Soft Silver", nameAr: "فضي ناعم", hex: "#DCD8D3" },
+  { nameEn: "Deep Charcoal", nameAr: "رمادي فحمي", hex: "#4E4A55" },
+  { nameEn: "Warm Off-White", nameAr: "أوف وايت دافئ", hex: "#F6F4F1" },
 ] as const;

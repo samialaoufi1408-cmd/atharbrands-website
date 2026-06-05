@@ -1,9 +1,9 @@
+import Image from "next/image";
 import { Container } from "../ui/Container";
 import { SectionTitle } from "../ui/SectionTitle";
 import { Reveal } from "../ui/Reveal";
 import { Icon } from "../ui/Icon";
 import { Pattern } from "../ui/Pattern";
-import { AtharMonogram } from "../ui/Logo";
 
 const PILLARS = [
   {
@@ -41,10 +41,16 @@ export function About() {
               </p>
               <div className="rule-gold mt-8 max-w-28" />
               <div className="mt-8 flex items-center gap-3.5">
-                <AtharMonogram className="size-12 text-gold" />
+                <Image
+                  src="/brand/athar-v2/symbol.png"
+                  alt=""
+                  width={270}
+                  height={178}
+                  className="h-9 w-auto"
+                />
                 <div className="leading-tight">
-                  <p className="font-kufi text-sm text-ivory">أثر | ATHAR</p>
-                  <p className="label-latin mt-1 text-[0.55rem] text-gold/70">Saudi Brand Studio</p>
+                  <p className="font-kufi text-sm text-ink">أثر | ATHAR</p>
+                  <p className="label-latin mt-1 text-[0.55rem] text-gold/80">Branding Studio · Riyadh</p>
                 </div>
               </div>
             </Reveal>
@@ -54,8 +60,8 @@ export function About() {
             <div className="flex flex-col gap-4">
               {PILLARS.map((pillar, index) => (
                 <Reveal key={pillar.title} delay={index * 80}>
-                  <div className="card-lift flex items-start gap-5 rounded-card border border-ivory/10 bg-ivory/[0.035] p-6 hover:border-gold/45 hover:bg-ivory/[0.06]">
-                    <span className="grid size-12 shrink-0 place-items-center rounded-button border border-gold/25 bg-gold/[0.07] text-gold">
+                  <div className="card-lift flex items-start gap-5 rounded-card border border-ink/10 bg-white p-6 shadow-soft hover:border-gold/45 hover:shadow-gold">
+                    <span className="grid size-12 shrink-0 place-items-center rounded-button border border-gold/25 bg-gold/[0.08] text-gold">
                       <Icon name={pillar.icon} className="size-6" />
                     </span>
                     <div>

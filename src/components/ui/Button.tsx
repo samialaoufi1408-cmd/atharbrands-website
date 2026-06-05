@@ -15,11 +15,11 @@ const sizes: Record<Size, string> = {
 
 const variants: Record<Variant, string> = {
   primary:
-    "bg-gold text-midnight hover:bg-gold-soft shadow-[0_14px_40px_-18px_rgba(200,169,106,0.85)] hover:shadow-[0_18px_50px_-16px_rgba(200,169,106,0.95)]",
-  outline: "border border-midnight/25 text-midnight hover:border-gold hover:text-gold-deep",
-  outlineLight: "border border-gold/40 text-gold hover:border-gold hover:bg-gold/10",
-  light: "bg-ivory text-midnight hover:bg-white",
-  ghost: "text-midnight/80 hover:text-gold-deep",
+    "bg-gold text-offwhite hover:bg-gold-deep shadow-[0_14px_40px_-18px_rgba(120,109,141,0.75)] hover:shadow-[0_18px_50px_-16px_rgba(120,109,141,0.9)]",
+  outline: "border border-ink/25 text-ink hover:border-gold hover:text-gold",
+  outlineLight: "border border-gold/45 text-gold hover:border-gold hover:bg-gold/10",
+  light: "bg-ink text-offwhite hover:bg-ink/90",
+  ghost: "text-ink/80 hover:text-gold",
   whatsapp: "bg-[#1FA855] text-white hover:bg-[#1c9a4e]",
 };
 

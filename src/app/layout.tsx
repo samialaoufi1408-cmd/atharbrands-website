@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
-import { Cairo, Cormorant_Garamond, Jost } from "next/font/google";
+import { Cairo, Playfair_Display, Jost } from "next/font/google";
 import "./globals.css";
-import { SITE, BRAND_COLORS } from "@/lib/constants";
+import { SITE } from "@/lib/constants";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 
@@ -12,11 +12,11 @@ const cairo = Cairo({
   variable: "--font-cairo",
 });
 
-const cormorant = Cormorant_Garamond({
+const playfair = Playfair_Display({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
   display: "swap",
-  variable: "--font-cormorant",
+  variable: "--font-playfair",
 });
 
 const jost = Jost({
@@ -80,7 +80,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: BRAND_COLORS.midnight,
+  themeColor: "#F4EFEA",
   width: "device-width",
   initialScale: 1,
 };
@@ -90,9 +90,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html
       lang="ar"
       dir="rtl"
-      className={`${cairo.variable} ${cormorant.variable} ${jost.variable}`}
+      className={`${cairo.variable} ${playfair.variable} ${jost.variable}`}
     >
-      <body className="bg-charcoal text-ivory min-h-screen antialiased">
+      <body className="bg-offwhite text-ink min-h-screen antialiased">
         <Header />
         <main>{children}</main>
         <Footer />

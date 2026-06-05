@@ -78,7 +78,7 @@ export function CaseStudies() {
         <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {CASE_STUDIES.map((study, index) => (
             <Reveal key={study.id} delay={index * 70}>
-              <article className="card-lift group flex h-full flex-col overflow-hidden rounded-card border border-ivory/10 bg-ivory/[0.025] hover:border-gold/40">
+              <article className="card-lift group flex h-full flex-col overflow-hidden rounded-card border border-ink/10 bg-white shadow-soft hover:border-gold/40 hover:shadow-gold">
                 <Emblem study={study} />
                 <div className="flex flex-1 flex-col p-6">
                   <div className="flex items-center justify-between gap-3">
