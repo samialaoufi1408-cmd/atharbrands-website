@@ -18,7 +18,7 @@ export function Hero() {
             className="animate-rise label-latin block text-[0.62rem] text-gold"
             style={{ animationDelay: "0ms" }}
           >
-            ATHAR · Branding Studio · Riyadh
+            Branding Studio · Riyadh
           </span>
           <h1
             className="animate-rise mt-6 font-kufi text-4xl font-bold leading-[1.2] text-ink sm:text-5xl md:text-[3.5rem]"
@@ -56,17 +56,17 @@ export function Hero() {
 
         <div className="lg:col-span-5">
           <div
-            className="animate-rise relative mx-auto flex max-w-md justify-center"
+            className="animate-rise relative mx-auto flex max-w-sm justify-center"
             style={{ animationDelay: "260ms" }}
           >
-            <div className="pointer-events-none absolute inset-0 -z-10 rounded-full bg-mauve/25 blur-[80px]" />
+            <div className="pointer-events-none absolute inset-0 -z-10 rounded-full bg-mauve/25 blur-[90px]" />
             <Image
-              src="/brand/athar-v2/symbol.png"
-              alt="أثر | ATHAR — الرمز"
-              width={270}
-              height={178}
+              src="/brand/athar-v2/lockup.png"
+              alt="أثر | ATHAR Branding Studio"
+              width={352}
+              height={456}
               priority
-              className="w-72 max-w-full sm:w-96"
+              className="w-64 max-w-full sm:w-80"
             />
           </div>
         </div>
