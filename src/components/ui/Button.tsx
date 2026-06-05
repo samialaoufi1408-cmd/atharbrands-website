@@ -1,4 +1,5 @@
-import type { AnchorHTMLAttributes, ButtonHTMLAttributes, ReactNode } from "react";
+import type { AnchorHTMLAttributes, ButtonHTMLAttributes, ComponentProps, ReactNode } from "react";
+import Link from "next/link";
 import { cn } from "@/lib/utils";
 
 type Variant = "primary" | "outline" | "outlineLight" | "light" | "ghost" | "whatsapp";
@@ -41,6 +42,13 @@ export function Button(props: ButtonAsButton | ButtonAsLink) {
   const classes = cn(base, sizes[size], variants[variant], className);
 
   if (typeof props.href === "string") {
+    if (props.href.startsWith("/")) {
+      return (
+        <Link className={classes} {...(rest as unknown as ComponentProps<typeof Link>)}>
+          {children}
+        </Link>
+      );
+    }
     return (
       <a className={classes} {...(rest as AnchorHTMLAttributes<HTMLAnchorElement>)}>
         {children}

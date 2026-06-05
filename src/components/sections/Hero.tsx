@@ -44,11 +44,11 @@ export function Hero() {
             className="animate-rise mt-9 flex flex-wrap items-center gap-3"
             style={{ animationDelay: "300ms" }}
           >
-            <Button href="#contact" size="lg">
+            <Button href="/contact" size="lg">
               ابدأ مشروعك
               <Icon name="arrow" className="size-4" />
             </Button>
-            <Button href="#discovery" variant="outline" size="lg">
+            <Button href="/discovery" variant="outline" size="lg">
               اكتشف احتياج علامتك
             </Button>
           </div>

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { NAV_LINKS, SITE } from "@/lib/constants";
 import { whatsappUrl } from "@/lib/whatsapp";
 import { Container } from "../ui/Container";
@@ -34,9 +35,9 @@ export function Footer() {
             <ul className="mt-5 flex flex-col gap-2.5 text-sm text-ivory/65">
               {NAV_LINKS.map((link) => (
                 <li key={link.href}>
-                  <a href={link.href} className="transition-colors hover:text-gold">
+                  <Link href={link.href} className="transition-colors hover:text-gold">
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>

@@ -165,7 +165,7 @@ export function CaseStudies() {
               </div>
             </div>
 
-            <Button href="#contact" onClick={() => setActive(null)} className="w-full">
+            <Button href="/contact" onClick={() => setActive(null)} className="w-full">
               ابدأ مشروعًا مثله
             </Button>
           </div>

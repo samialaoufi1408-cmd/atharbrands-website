@@ -2,6 +2,7 @@
 
 import { useEffect } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { NAV_LINKS } from "@/lib/constants";
 import { whatsappUrl } from "@/lib/whatsapp";
 import { cn } from "@/lib/utils";
@@ -68,22 +69,22 @@ export function MobileMenu({ open, onClose }: { open: boolean; onClose: () => vo
 
         <nav className="relative flex flex-1 flex-col gap-0.5 overflow-y-auto px-5 py-6">
           {NAV_LINKS.map((link, i) => (
-            <a
+            <Link
               key={link.href}
               href={link.href}
               onClick={onClose}
-              className="group flex items-center justify-between border-b border-ivory/[0.08] px-2 py-3.5 text-lg text-ivory/85 transition-colors hover:text-gold"
+              className="group flex items-center justify-between border-b border-ink/[0.08] px-2 py-3.5 text-lg text-ivory/85 transition-colors hover:text-gold"
             >
               <span>{link.label}</span>
               <span className="label-latin text-[0.6rem] text-gold/45 transition-colors group-hover:text-gold">
                 {String(i + 1).padStart(2, "0")}
               </span>
-            </a>
+            </Link>
           ))}
         </nav>
 
         <div className="relative flex flex-col gap-3 border-t border-ivory/10 px-6 py-6">
-          <Button href="#contact" onClick={onClose} className="w-full">
+          <Button href="/contact" onClick={onClose} className="w-full">
             ابدأ مشروعك
           </Button>
           <Button

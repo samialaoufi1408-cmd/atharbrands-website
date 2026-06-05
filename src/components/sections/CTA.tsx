@@ -31,7 +31,7 @@ export function CTA() {
           </p>
 
           <div className="mt-10 flex flex-wrap justify-center gap-3">
-            <Button href="#contact" variant="light" size="lg">
+            <Button href="/contact" variant="light" size="lg">
               احجز جلسة اكتشاف
               <Icon name="arrow" className="size-4" />
             </Button>

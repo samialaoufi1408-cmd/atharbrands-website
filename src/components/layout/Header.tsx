@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { NAV_LINKS } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import { Container } from "../ui/Container";
@@ -31,7 +32,7 @@ export function Header() {
         )}
       >
         <Container className="flex items-center justify-between gap-4">
-          <a href="#home" aria-label="أثر | ATHAR Branding Studio — الرئيسية" className="shrink-0">
+          <Link href="/" aria-label="أثر | ATHAR Branding Studio — الرئيسية" className="shrink-0">
             <Image
               src="/brand/athar-v2/wordmark.png"
               alt="أثر | ATHAR Branding Studio"
@@ -40,22 +41,22 @@ export function Header() {
               priority
               className="h-9 w-auto sm:h-10"
             />
-          </a>
+          </Link>
 
           <nav className="hidden items-center gap-1 lg:flex">
             {NAV_LINKS.map((link) => (
-              <a
+              <Link
                 key={link.href}
                 href={link.href}
                 className="rounded-button px-3.5 py-2 text-sm text-ivory/65 transition-colors hover:text-gold"
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
           </nav>
 
           <div className="flex items-center gap-2">
-            <Button href="#contact" variant="outlineLight" size="sm" className="hidden sm:inline-flex">
+            <Button href="/contact" variant="outlineLight" size="sm" className="hidden sm:inline-flex">
               تواصل معنا
             </Button>
             <button
