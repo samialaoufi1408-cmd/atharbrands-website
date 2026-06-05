@@ -24,6 +24,9 @@ export function Footer() {
             />
             <p className="mt-6 max-w-sm text-sm leading-relaxed text-ink/70">{SITE.essenceAr}</p>
             <p className="mt-2 max-w-sm font-serif text-base italic text-gold">{SITE.taglineEn}</p>
+            <p className="mt-4 font-kufi text-sm text-ink/65">
+              أثر يبقى. <span className="font-serif italic text-gold/80">Impact that lasts.</span>
+            </p>
           </div>
 
           <nav className="md:col-span-3" aria-label="روابط">

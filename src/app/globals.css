@@ -18,14 +18,14 @@
   --color-charcoal-700: #ebe6dd;
   --color-charcoal-600: #dcd8d3;
 
-  /* Accent — Smoky Purple #786D8D, Muted Mauve #B89CAC */
-  --color-gold: #786d8d;
+  /* Accent — Smoky Purple #7B6D8D, Muted Mauve #B89CAC */
+  --color-gold: #7b6d8d;
   --color-gold-soft: #b89cac;
   --color-gold-deep: #5e5470;
-  --color-champagne: #786d8d;
+  --color-champagne: #7b6d8d;
 
-  /* Ink — Deep Charcoal #4E4A55 */
-  --color-ivory: #4e4a55;
+  /* Ink — Deep Charcoal #4E4A53 */
+  --color-ivory: #4e4a53;
   --color-ivory-deep: #36333d;
 
   /* Legacy aliases → mauve / silver */
@@ -36,11 +36,11 @@
   --color-sage-soft: #a7aaa1;
 
   /* Explicit brand tokens */
-  --color-purple: #786d8d;
+  --color-purple: #7b6d8d;
   --color-mauve: #b89cac;
   --color-silver: #dcd8d3;
   --color-offwhite: #f6f4f1;
-  --color-ink: #4e4a55;
+  --color-ink: #4e4a53;
 
   /* Type families (wired by next/font in layout.tsx) */
   --font-sans: var(--font-cairo), "Segoe UI", system-ui, sans-serif;
@@ -53,10 +53,10 @@
   --radius-button: 6px;
 
   /* Shadows — soft, purple-tinted for a light theme */
-  --shadow-soft: 0 24px 70px rgba(78, 74, 85, 0.12);
+  --shadow-soft: 0 24px 70px rgba(78, 74, 83, 0.12);
   --shadow-gold:
-    0 0 0 1px rgba(120, 109, 141, 0.18), 0 24px 70px rgba(78, 74, 85, 0.16);
-  --shadow-mock: 0 40px 80px -30px rgba(78, 74, 85, 0.4);
+    0 0 0 1px rgba(123, 109, 141, 0.18), 0 24px 70px rgba(78, 74, 83, 0.16);
+  --shadow-mock: 0 40px 80px -30px rgba(78, 74, 83, 0.4);
 
   --ease-luxe: cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -173,8 +173,8 @@ section[id] {
 .emboss {
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.65),
-    inset 0 -2px 6px rgba(78, 74, 85, 0.1),
-    0 1px 2px rgba(78, 74, 85, 0.08);
+    inset 0 -2px 6px rgba(78, 74, 83, 0.1),
+    0 1px 2px rgba(78, 74, 83, 0.08);
 }
 
 .card-lift {

@@ -15,7 +15,7 @@ import { Input } from "../ui/Input";
 import { Select } from "../ui/Select";
 import { Textarea } from "../ui/Textarea";
 import { FormSuccess } from "../ui/FormSuccess";
-import Image from "next/image";
+import { RippleMark } from "../ui/RippleMark";
 
 type FieldErrors = Record<string, string[] | undefined>;
 const EMPTY = {
@@ -72,13 +72,7 @@ export function Contact() {
       <Container className="relative">
         <Reveal>
           <div className="mx-auto max-w-2xl text-center">
-            <Image
-              src="/brand/athar-v2/symbol.png"
-              alt=""
-              width={270}
-              height={178}
-              className="mx-auto h-12 w-auto"
-            />
+            <RippleMark className="mx-auto h-12 w-auto text-gold" />
             <h2 className="mt-6 text-balance text-4xl leading-[1.15] text-ivory sm:text-5xl">
               لنصنع <span className="text-gold-gradient">أثرًا</span> يبقى
             </h2>

@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { RippleMark } from "../ui/RippleMark";
 import { Container } from "../ui/Container";
 import { SectionTitle } from "../ui/SectionTitle";
 import { Reveal } from "../ui/Reveal";
@@ -39,15 +39,10 @@ export function About() {
                 أثر بيت خبرة لبناء العلامات التجارية من الاسم والاستراتيجية إلى الهوية والإطلاق.
                 نساعد المشاريع الجادة على بناء حضور واضح، فاخر، وقابل للتذكر.
               </p>
+              <p className="mt-5 font-serif text-2xl italic text-gold">Impact is Identity.</p>
               <div className="rule-gold mt-8 max-w-28" />
               <div className="mt-8 flex items-center gap-3.5">
-                <Image
-                  src="/brand/athar-v2/symbol.png"
-                  alt=""
-                  width={270}
-                  height={178}
-                  className="h-9 w-auto"
-                />
+                <RippleMark className="h-9 w-auto text-gold" />
                 <div className="leading-tight">
                   <p className="font-kufi text-sm text-ink">أثر | ATHAR</p>
                   <p className="label-latin mt-1 text-[0.55rem] text-gold/80">Branding Studio · Riyadh</p>

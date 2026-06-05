@@ -19,7 +19,7 @@ export default function OpengraphImage() {
         }}
       >
         <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
-          <div style={{ display: "flex", fontSize: "40px", letterSpacing: "20px", color: "#786D8D", fontWeight: 600 }}>
+          <div style={{ display: "flex", fontSize: "40px", letterSpacing: "20px", color: "#7B6D8D", fontWeight: 600 }}>
             ATHAR
           </div>
           <div style={{ display: "flex", fontSize: "20px", letterSpacing: "10px", color: "#8A8395" }}>
@@ -29,16 +29,16 @@ export default function OpengraphImage() {
 
         <div style={{ display: "flex", flexDirection: "column" }}>
           <div style={{ display: "flex", width: "90px", height: "4px", background: "#B89CAC", marginBottom: "28px" }} />
-          <div style={{ display: "flex", fontSize: "70px", color: "#4E4A55", fontWeight: 600, lineHeight: 1.15 }}>
+          <div style={{ display: "flex", fontSize: "70px", color: "#4E4A53", fontWeight: 600, lineHeight: 1.15 }}>
             We create brands that are
           </div>
-          <div style={{ display: "flex", fontSize: "70px", color: "#786D8D", fontWeight: 600, lineHeight: 1.15 }}>
+          <div style={{ display: "flex", fontSize: "70px", color: "#7B6D8D", fontWeight: 600, lineHeight: 1.15 }}>
             seen, and remembered.
           </div>
         </div>
 
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-          <div style={{ display: "flex", fontSize: "26px", color: "#786D8D" }}>atharbrands.com</div>
+          <div style={{ display: "flex", fontSize: "26px", color: "#7B6D8D" }}>atharbrands.com</div>
           <div style={{ display: "flex", fontSize: "22px", color: "#8A8395" }}>Riyadh, Saudi Arabia</div>
         </div>
       </div>

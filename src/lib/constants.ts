@@ -69,8 +69,8 @@ export const BUDGET_OPTIONS = [
 /** Official brand palette (hex), available for inline use / OG image. */
 /** Legacy token aliases (kept for compatibility) mapped to the board palette. */
 export const BRAND_COLORS = {
-  midnight: "#4E4A55",
-  gold: "#786D8D",
+  midnight: "#4E4A53",
+  gold: "#7B6D8D",
   ivory: "#F6F4F1",
   sand: "#B89CAC",
   sage: "#DCD8D3",
@@ -78,9 +78,9 @@ export const BRAND_COLORS = {
 
 /** Official brand book palette — name + code. */
 export const BRAND_PALETTE = [
-  { nameEn: "Smoky Purple", nameAr: "بنفسجي دخاني", hex: "#786D8D" },
+  { nameEn: "Smoky Purple", nameAr: "بنفسجي دخاني", hex: "#7B6D8D" },
   { nameEn: "Muted Mauve", nameAr: "موف هادئ", hex: "#B89CAC" },
   { nameEn: "Soft Silver", nameAr: "فضي ناعم", hex: "#DCD8D3" },
-  { nameEn: "Deep Charcoal", nameAr: "رمادي فحمي", hex: "#4E4A55" },
+  { nameEn: "Deep Charcoal", nameAr: "رمادي فحمي", hex: "#4E4A53" },
   { nameEn: "Warm Off-White", nameAr: "أوف وايت دافئ", hex: "#F6F4F1" },
 ] as const;

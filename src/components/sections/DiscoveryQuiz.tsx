@@ -12,7 +12,7 @@ import { Reveal } from "../ui/Reveal";
 import { Icon } from "../ui/Icon";
 import { Button } from "../ui/Button";
 import { Input } from "../ui/Input";
-import Image from "next/image";
+import { RippleMark } from "../ui/RippleMark";
 import { FormSuccess } from "../ui/FormSuccess";
 
 const QUESTIONS = [
@@ -208,13 +208,7 @@ export function DiscoveryQuiz() {
                 <div className="rounded-card border border-gold/30 bg-gold/[0.06] p-6">
                   <div className="flex items-center justify-between">
                     <span className="label-latin text-[0.6rem] text-gold">Recommended</span>
-                    <Image
-                      src="/brand/athar-v2/symbol.png"
-                      alt=""
-                      width={270}
-                      height={178}
-                      className="h-8 w-auto"
-                    />
+                    <RippleMark className="h-8 w-auto text-gold" />
                   </div>
                   <h3 className="mt-3 font-kufi text-2xl text-ivory">{recommended.name}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-ivory/65">{recommended.tagline}</p>

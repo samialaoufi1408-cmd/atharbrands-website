@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { RippleMark } from "../ui/RippleMark";
 import { Container } from "../ui/Container";
 import { Button } from "../ui/Button";
 import { Icon } from "../ui/Icon";
@@ -18,14 +18,8 @@ export function CTA() {
 
       <Container className="relative">
         <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
-          <span className="grid size-20 place-items-center overflow-hidden rounded-full bg-offwhite shadow-soft">
-            <Image
-              src="/brand/athar-v2/symbol.png"
-              alt=""
-              width={270}
-              height={178}
-              className="w-12"
-            />
+          <span className="grid size-20 place-items-center rounded-full bg-offwhite shadow-soft">
+            <RippleMark className="w-11 text-gold" />
           </span>
 
           <h2 className="mt-8 text-balance font-kufi text-4xl leading-[1.15] text-offwhite sm:text-5xl">
