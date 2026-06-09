@@ -176,4 +176,7 @@
   lbImg && lbImg.addEventListener('click', (e) => e.stopPropagation());
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
 
+  /* expose helpers so the CMS layer can reuse the exact seal + lightbox on added cards */
+  window.ATHAR = { buildSeal: buildSeal, openLightbox: openLightbox };
+
 })();

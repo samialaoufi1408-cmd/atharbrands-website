@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="robots" content="noindex, nofollow"/>
+<title>ATHAR — Control Panel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Jost:wght@300;400;500&family=Tajawal:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+  :root{
+    --gold:#D4AF7A;--gold-deep:#B8945E;--ivory:#F2EFE6;--charcoal:#0F1113;
+    --charcoal-2:#15181b;--charcoal-3:#1c2024;--line:rgba(212,175,122,.22);
+    --line-soft:rgba(242,239,230,.10);--ink-soft:rgba(242,239,230,.62);--ink-faint:rgba(242,239,230,.40);
+    --sans:'Jost',sans-serif;--serif:'Cormorant Garamond',serif;--ar:'Tajawal',sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--charcoal);color:var(--ivory);font-family:var(--sans);font-weight:300;line-height:1.6}
+  a{color:var(--gold)}
+  h1,h2,h3{font-family:var(--serif);font-weight:300;margin:0}
+  .wrap{max-width:1080px;margin:0 auto;padding:2rem 1.4rem 5rem}
+  .eyebrow{font-size:.7rem;letter-spacing:.34em;text-transform:uppercase;color:var(--gold)}
+  input,textarea,select,button{font-family:var(--sans);font-size:.95rem;color:var(--ivory)}
+  input,textarea{width:100%;background:var(--charcoal-2);border:1px solid var(--line-soft);padding:.7rem .8rem;outline:none;transition:border-color .2s}
+  input:focus,textarea:focus{border-color:var(--gold)}
+  textarea{resize:vertical;min-height:2.6rem;line-height:1.5}
+  label{display:block;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-faint);margin:0 0 .35rem}
+  .btn{display:inline-flex;align-items:center;gap:.5rem;background:transparent;border:1px solid var(--gold);color:var(--gold);
+    padding:.65rem 1.4rem;letter-spacing:.18em;text-transform:uppercase;font-size:.72rem;cursor:pointer;transition:.25s}
+  .btn:hover{background:var(--gold);color:var(--charcoal)}
+  .btn.solid{background:var(--gold);color:var(--charcoal)}
+  .btn.ghost{border-color:var(--line-soft);color:var(--ink-soft)}
+  .btn.ghost:hover{border-color:var(--gold);color:var(--gold);background:transparent}
+  .btn.danger{border-color:rgba(214,140,140,.5);color:#d68c8c;padding:.4rem .8rem}
+  .btn.danger:hover{background:#d68c8c;color:var(--charcoal)}
+
+  /* login */
+  #login{min-height:100vh;display:grid;place-items:center;padding:1.4rem}
+  #login .card{width:100%;max-width:380px;border:1px solid var(--line);background:var(--charcoal-2);padding:2.4rem 2rem}
+  #login h1{font-size:2rem;margin:.3rem 0 .2rem}
+  #login .sub{color:var(--ink-soft);font-size:.9rem;margin-bottom:1.6rem}
+  #login .field{margin-bottom:1rem}
+  #login .btn{width:100%;justify-content:center;margin-top:.6rem}
+  .msg{font-size:.82rem;margin-top:.8rem;min-height:1.1rem}
+  .msg.err{color:#d68c8c}.msg.ok{color:var(--gold)}
+
+  /* editor */
+  #editor{display:none}
+  .topbar{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);padding-bottom:1.2rem;margin-bottom:1.6rem}
+  .tabs{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:1.8rem}
+  .tab{background:transparent;border:1px solid var(--line-soft);color:var(--ink-soft);padding:.5rem 1.1rem;letter-spacing:.14em;
+    text-transform:uppercase;font-size:.7rem;cursor:pointer}
+  .tab.active{border-color:var(--gold);color:var(--gold)}
+  .panel{display:none}.panel.active{display:block}
+  .group{margin:0 0 2rem}
+  .group h3{font-size:1.3rem;color:var(--gold);border-bottom:1px solid var(--line-soft);padding-bottom:.5rem;margin-bottom:1.1rem}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+  .field{margin-bottom:1rem}
+  .savebar{position:sticky;top:0;background:var(--charcoal);padding:.8rem 0;border-bottom:1px solid var(--line-soft);
+    display:flex;gap:1rem;align-items:center;z-index:5;margin-bottom:1.4rem}
+  .card-row{display:flex;gap:1rem;align-items:center;border:1px solid var(--line-soft);padding:.7rem;margin-bottom:.7rem;background:var(--charcoal-2)}
+  .card-row img{width:64px;height:48px;object-fit:cover;background:var(--charcoal-3);flex:none}
+  .card-row .meta{flex:1;min-width:0}
+  .card-row .meta b{font-family:var(--serif);font-size:1.1rem;font-weight:400}
+  .card-row .meta small{display:block;color:var(--ink-faint);font-size:.75rem}
+  .addbox{border:1px solid var(--line);padding:1.4rem;margin-bottom:1.8rem;background:var(--charcoal-2)}
+  .addbox h3{font-size:1.2rem;color:var(--ivory);margin-bottom:1rem}
+  .hint{color:var(--ink-faint);font-size:.78rem;margin:.2rem 0 1rem}
+  #toast{position:fixed;bottom:1.4rem;left:50%;transform:translateX(-50%);background:var(--charcoal-3);border:1px solid var(--gold);
+    color:var(--ivory);padding:.7rem 1.4rem;font-size:.85rem;opacity:0;pointer-events:none;transition:opacity .3s;z-index:50}
+  #toast.show{opacity:1}
+  @media(max-width:640px){.grid2{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<section id="login">
+  <div class="card">
+    <span class="eyebrow">ATHAR · لوحة التحكم</span>
+    <h1>Control Panel</h1>
+    <p class="sub">سجّل الدخول لتعديل محتوى الموقع.</p>
+    <form id="login-form">
+      <div class="field"><label>Email · البريد</label><input type="email" id="email" required autocomplete="username"/></div>
+      <div class="field"><label>Password · كلمة المرور</label><input type="password" id="password" required autocomplete="current-password"/></div>
+      <button class="btn solid" type="submit">Sign In · دخول</button>
+      <div class="msg" id="login-msg"></div>
+    </form>
+  </div>
+</section>
+
+<!-- EDITOR -->
+<section id="editor"><div class="wrap">
+  <div class="topbar">
+    <div><span class="eyebrow">ATHAR · Control Panel</span><h1 style="font-size:1.8rem">لوحة التحكم</h1></div>
+    <button class="btn ghost" id="signout">Sign Out · خروج</button>
+  </div>
+
+  <div class="tabs">
+    <button class="tab active" data-tab="texts">النصوص · Texts</button>
+    <button class="tab" data-tab="work">الأعمال · Work</button>
+    <button class="tab" data-tab="journal">المجلة · Journal</button>
+  </div>
+
+  <!-- TEXTS -->
+  <div class="panel active" id="panel-texts">
+    <div class="savebar">
+      <button class="btn solid" id="save-texts">حفظ النصوص · Save Texts</button>
+      <span class="hint" style="margin:0">عدّل أي نص ثم احفظ. <em>&lt;em&gt;كلمة&lt;/em&gt;</em> = تمييز ذهبي.</span>
+    </div>
+    <div id="texts-fields"><p class="hint">جارٍ التحميل…</p></div>
+  </div>
+
+  <!-- WORK -->
+  <div class="panel" id="panel-work">
+    <div class="addbox">
+      <h3>إضافة عمل جديد · Add Work</h3>
+      <p class="hint">كل عمل تضيفه يظهر بنفس نمط «AURA OUD» (صورة + عرض بالضغط).</p>
+      <div class="grid2">
+        <div class="field"><label>Title · العنوان</label><input id="w-title"/></div>
+        <div class="field"><label>Title (Arabic) · العنوان بالعربية</label><input id="w-title-ar" dir="rtl"/></div>
+        <div class="field"><label>Category · التصنيف</label><input id="w-cat" placeholder="Identity · Packaging"/></div>
+        <div class="field"><label>Year · السنة</label><input id="w-year" placeholder="2025"/></div>
+      </div>
+      <div class="field"><label>Image · الصورة</label><input id="w-img" type="file" accept="image/*"/></div>
+      <button class="btn solid" id="add-work">أضف العمل · Add</button>
+      <div class="msg" id="work-msg"></div>
+    </div>
+    <h3 style="font-size:1.1rem;color:var(--gold);margin-bottom:.8rem">الأعمال المضافة · Added Work</h3>
+    <div id="work-list"><p class="hint">…</p></div>
+  </div>
+
+  <!-- JOURNAL -->
+  <div class="panel" id="panel-journal">
+    <div class="addbox">
+      <h3>إضافة مقال جديد · Add Journal</h3>
+      <div class="grid2">
+        <div class="field"><label>Title · العنوان</label><input id="j-title"/></div>
+        <div class="field"><label>Tag · التصنيف</label><input id="j-tag" placeholder="Craft"/></div>
+        <div class="field"><label>Date · التاريخ</label><input id="j-date" placeholder="May 2026"/></div>
+        <div class="field"><label>Image (optional) · صورة اختيارية</label><input id="j-img" type="file" accept="image/*"/></div>
+      </div>
+      <div class="field"><label>Excerpt · المقتطف</label><textarea id="j-excerpt" rows="2"></textarea></div>
+      <button class="btn solid" id="add-journal">أضف المقال · Add</button>
+      <div class="msg" id="journal-msg"></div>
+    </div>
+    <h3 style="font-size:1.1rem;color:var(--gold);margin-bottom:.8rem">المقالات المضافة · Added Journal</h3>
+    <div id="journal-list"><p class="hint">…</p></div>
+  </div>
+</div></section>
+
+<div id="toast"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="cms-config.js"></script>
+<script src="admin.js"></script>
+</body>
+</html>
