@@ -4,6 +4,7 @@
   "outputDirectory": ".",
   "rewrites": [
     { "source": "/", "destination": "/ATHAR.html" },
-    { "source": "/admin", "destination": "/admin.html" }
+    { "source": "/admin", "destination": "/admin.html" },
+    { "source": "/standalone", "destination": "/standalone.html" }
   ]
 }
