@@ -43,18 +43,21 @@
   /* 2) Work items — appended in the AURA OUD pattern (image + lightbox) */
   sb.from("work_items")
     .select("*")
-    .order("sort_order", { ascending: true })
     .order("created_at", { ascending: true })
     .then(function (res) {
       if (res.error || !res.data || !res.data.length) return;
       var grid = document.querySelector(".work-grid");
       if (!grid) return;
+      grid.innerHTML = ""; // grid is now fully managed from the panel — replaces the design defaults
       res.data.forEach(function (w) {
         var art = document.createElement("article");
         art.className = "work-card";
         var img = w.image_url
           ? '<img class="work-img" src="' + esc(w.image_url) + '" alt="' + esc(w.title) + '"/>'
-          : '<span class="ph-tag">Image · صورة</span>';
+          : '<span class="ph-tag">Image · صورة</span>' +
+            (window.ATHAR && window.ATHAR.buildSeal
+              ? '<span class="wm">' + window.ATHAR.buildSeal(false) + "</span>"
+              : "");
         art.innerHTML =
           '<div class="work-thumb">' +
           img +
@@ -83,12 +86,12 @@
   /* 3) Journal items */
   sb.from("journal_items")
     .select("*")
-    .order("sort_order", { ascending: true })
     .order("created_at", { ascending: true })
     .then(function (res) {
       if (res.error || !res.data || !res.data.length) return;
       var grid = document.querySelector(".jrn-grid");
       if (!grid) return;
+      grid.innerHTML = ""; // grid is now fully managed from the panel — replaces the design defaults
       res.data.forEach(function (j) {
         var art = document.createElement("article");
         art.className = "jrn-card";
