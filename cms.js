@@ -31,6 +31,7 @@
       res.data.forEach(function (r) {
         map[r.key] = r.value;
       });
+      window.__ATHAR_CONTENT = map; // expose for lang.js (Arabic overrides live under key + "__ar")
       (cfg.texts || []).forEach(function (t) {
         var v = map[t.k];
         if (v == null || v === "") return;

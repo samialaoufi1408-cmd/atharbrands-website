@@ -77,13 +77,24 @@
       if (!groups[t.g]) { groups[t.g] = []; order.push(t.g); }
       groups[t.g].push(t);
     });
+    function esc(v) {
+      return String(v == null ? "" : v).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    }
     var html = "";
     order.forEach(function (g) {
       html += '<div class="group"><h3>' + g + "</h3>";
       groups[g].forEach(function (t) {
-        var val = overrides[t.k] != null ? overrides[t.k] : (defaults[t.k] || "");
-        var v = String(val).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-        html += '<div class="field"><label>' + t.l + "</label><textarea data-key=\"" + t.k + '" rows="' + (t.m ? 3 : 1) + '">' + v + "</textarea></div>";
+        var rows = t.m ? 3 : 1;
+        var enVal = overrides[t.k] != null ? overrides[t.k] : (defaults[t.k] || "");
+        html += '<div class="field"><label>' + t.l + " · English</label>";
+        html += '<textarea data-key="' + t.k + '" rows="' + rows + '">' + esc(enVal) + "</textarea>";
+        if (t.ar !== undefined) {
+          var arVal = overrides[t.k + "__ar"] != null ? overrides[t.k + "__ar"] : t.ar;
+          html +=
+            '<div style="margin-top:.45rem"><span style="font-size:.64rem;letter-spacing:.14em;color:#D4AF7A;text-transform:uppercase">العربية · Arabic</span>' +
+            '<textarea dir="rtl" data-key="' + (t.k + "__ar") + '" rows="' + rows + '">' + esc(arVal) + "</textarea></div>";
+        }
+        html += "</div>";
       });
       html += "</div>";
     });
