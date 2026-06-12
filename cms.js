@@ -37,6 +37,7 @@
         var el = document.querySelector(t.s);
         if (el) el.innerHTML = v;
       });
+      document.dispatchEvent(new CustomEvent("athar:contentloaded"));
     })
     .catch(function () {});
 
