@@ -76,6 +76,8 @@
   var css = document.createElement("style");
   css.textContent =
     "html[dir='rtl'] body{font-family:'Tajawal',sans-serif}" +
+    "html[dir='rtl'] *{letter-spacing:normal !important}" +
+    "html[dir='rtl'] .nav-links a,html[dir='rtl'] .eyebrow,html[dir='rtl'] .btn,html[dir='rtl'] .nav-cta,html[dir='rtl'] label,html[dir='rtl'] .svc-num,html[dir='rtl'] .foot-col h4,html[dir='rtl'] .work-cat{font-family:'Tajawal',sans-serif}" +
     "html[dir='rtl'] h1,html[dir='rtl'] h2,html[dir='rtl'] h3,html[dir='rtl'] .hero-title,html[dir='rtl'] .hero-title span,html[dir='rtl'] .statement-quote,html[dir='rtl'] .svc-name,html[dir='rtl'] .work-name,html[dir='rtl'] .jrn-body h3,html[dir='rtl'] .proc-step h3,html[dir='rtl'] .impact-item .num,html[dir='rtl'] .svc-num{font-family:'Tajawal',sans-serif !important}" +
     "html[dir='rtl'] .hero-sub,html[dir='rtl'] .lede,html[dir='rtl'] .svc-desc,html[dir='rtl'] .proc-step p,html[dir='rtl'] .meta{font-family:'Tajawal',sans-serif}" +
     ".lang-btn{background:none;border:1px solid rgba(212,175,122,.5);color:#D4AF7A;font-family:'Jost',sans-serif;font-size:.72rem;letter-spacing:.12em;width:34px;height:30px;cursor:pointer;padding:0;transition:.25s;flex:none}" +
