@@ -80,6 +80,22 @@
     function esc(v) {
       return String(v == null ? "" : v).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
     }
+    function escAttr(v) { return esc(v).replace(/"/g, "&quot;"); }
+    var SIZES = ["", "0.7rem", "0.8rem", "0.9rem", "1rem", "1.1rem", "1.25rem", "1.4rem", "1.6rem", "1.8rem", "2rem", "2.5rem", "3rem", "3.5rem", "4rem", "5rem", "6rem"];
+    function sizeSelect(k) {
+      var cur = overrides[k + "__size"] != null ? overrides[k + "__size"] : "";
+      var o = SIZES.map(function (s) {
+        return '<option value="' + s + '"' + (s === cur ? " selected" : "") + ">" + (s === "" ? "افتراضي" : s) + "</option>";
+      }).join("");
+      return '<div style="margin-top:.4rem;display:flex;align-items:center;gap:.5rem">' +
+        '<span style="font-size:.62rem;letter-spacing:.12em;color:#7A6955;text-transform:uppercase">حجم الخط</span>' +
+        '<select data-size-key="' + k + '__size" style="background:#15181b;border:1px solid rgba(242,239,230,.12);color:#F2EFE6;padding:.3rem .5rem;font-size:.8rem;font-family:Jost,sans-serif">' + o + "</select></div>";
+    }
+    function extraRow(v) {
+      return '<div class="extra-row" style="display:flex;gap:.5rem;margin-bottom:.5rem">' +
+        '<input class="extra-input" value="' + escAttr(v) + '" placeholder="نص الخانة (مثلاً: سجل تجاري 1010xxxxxx)" style="flex:1"/>' +
+        '<button type="button" class="btn danger del-extra">×</button></div>';
+    }
     var html = "";
     order.forEach(function (g) {
       html += '<div class="group"><h3>' + g + "</h3>";
@@ -94,17 +110,49 @@
             '<div style="margin-top:.45rem"><span style="font-size:.64rem;letter-spacing:.14em;color:#D4AF7A;text-transform:uppercase">العربية · Arabic</span>' +
             '<textarea dir="rtl" data-key="' + (t.k + "__ar") + '" rows="' + rows + '">' + esc(arVal) + "</textarea></div>";
         }
+        html += sizeSelect(t.k);
         html += "</div>";
       });
       html += "</div>";
     });
+
+    /* extra footer lines (add your own — CR, VAT, address…) */
+    var exLines = [];
+    try { if (overrides["footer_extra_lines"]) exLines = JSON.parse(overrides["footer_extra_lines"]) || []; } catch (e) {}
+    html += '<div class="group"><h3>خانات الفوتر الإضافية · Extra footer lines</h3>';
+    html += '<p class="hint">أضف أسطرًا تظهر في الفوتر (سجل تجاري، رقم ضريبي، عنوان…). يُحفظ مع زر «حفظ النصوص».</p>';
+    html += '<div id="extra-lines">' + exLines.map(extraRow).join("") + "</div>";
+    html += '<button type="button" class="btn" id="add-extra-line" style="margin-top:.4rem">+ أضف خانة</button>';
+    html += "</div>";
+
     box.innerHTML = html;
+
+    var addBtn = document.getElementById("add-extra-line");
+    var exBox = document.getElementById("extra-lines");
+    if (addBtn) addBtn.addEventListener("click", function () {
+      var d = document.createElement("div");
+      d.className = "extra-row";
+      d.style.cssText = "display:flex;gap:.5rem;margin-bottom:.5rem";
+      d.innerHTML = '<input class="extra-input" placeholder="نص الخانة" style="flex:1"/><button type="button" class="btn danger del-extra">×</button>';
+      exBox.appendChild(d);
+    });
+    if (exBox) exBox.addEventListener("click", function (e) {
+      if (e.target.classList.contains("del-extra")) e.target.closest(".extra-row").remove();
+    });
   }
   async function saveTexts() {
     var rows = [];
     document.querySelectorAll("#texts-fields textarea").forEach(function (ta) {
       rows.push({ key: ta.getAttribute("data-key"), value: ta.value });
     });
+    document.querySelectorAll("#texts-fields select[data-size-key]").forEach(function (s) {
+      rows.push({ key: s.getAttribute("data-size-key"), value: s.value });
+    });
+    var extra = [];
+    document.querySelectorAll("#extra-lines .extra-input").forEach(function (inp) {
+      if (inp.value.trim()) extra.push(inp.value.trim());
+    });
+    rows.push({ key: "footer_extra_lines", value: JSON.stringify(extra) });
     var res = await sb.from("site_content").upsert(rows, { onConflict: "key" });
     if (res.error) { toast("خطأ في الحفظ: " + res.error.message); return; }
     toast("تم حفظ النصوص ✓ — حدّث الصفحة الرئيسية لرؤيتها");

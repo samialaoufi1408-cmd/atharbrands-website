@@ -90,5 +90,6 @@ window.CMS_CONFIG = {
     { g: "Footer", k: "foot_copy", s: ".footer-bottom small:first-child", l: "Copyright", ar: "© 2026 استوديو أثر. جميع الحقوق محفوظة." },
     { g: "Footer", k: "foot_ar", s: ".footer-bottom .ar", l: "Arabic line" },
     { g: "Footer", k: "foot_en", s: ".footer-bottom small:last-child", l: "Tagline (EN)" },
+    { g: "Footer", k: "foot_permit", s: ".freelance-permit", l: "شهادة عمل حر · Legal line", m: 1 },
   ],
 };

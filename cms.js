@@ -33,11 +33,31 @@
       });
       window.__ATHAR_CONTENT = map; // expose for lang.js (Arabic overrides live under key + "__ar")
       (cfg.texts || []).forEach(function (t) {
-        var v = map[t.k];
-        if (v == null || v === "") return;
         var el = document.querySelector(t.s);
-        if (el) el.innerHTML = v;
+        if (!el) return;
+        var v = map[t.k];
+        if (v != null && v !== "") el.innerHTML = v;
+        var sz = map[t.k + "__size"]; // per-phrase font size chosen in the panel
+        if (sz && sz !== "") el.style.fontSize = sz;
       });
+      // extra footer lines added from the panel (stored as a JSON array)
+      try {
+        if (map["footer_extra_lines"]) {
+          var arr = JSON.parse(map["footer_extra_lines"]);
+          var fb = document.querySelector(".footer-brand");
+          if (fb && arr && arr.length) {
+            arr.forEach(function (line) {
+              if (line && String(line).trim()) {
+                var p = document.createElement("p");
+                p.className = "freelance-permit";
+                p.style.marginTop = ".6rem";
+                p.innerHTML = line;
+                fb.appendChild(p);
+              }
+            });
+          }
+        }
+      } catch (e) {}
       document.dispatchEvent(new CustomEvent("athar:contentloaded"));
     })
     .catch(function () {});
