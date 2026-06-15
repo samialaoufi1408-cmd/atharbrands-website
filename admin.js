@@ -96,7 +96,27 @@
         '<input class="extra-input" value="' + escAttr(v) + '" placeholder="نص الخانة (مثلاً: سجل تجاري 1010xxxxxx)" style="flex:1"/>' +
         '<button type="button" class="btn danger del-extra">×</button></div>';
     }
+    /* Philosophy image — image-only field (not a textarea). */
+    var philoUrl = overrides["philosophy_image"] || "";
     var html = "";
+    html += '<div class="group" id="philo-image-block"><h3>صورة فلسفتنا · Philosophy image</h3>';
+    html += '<p class="hint">تظهر فوق نص «فلسفتنا» على الجوال (وعلى يسارها في الشاشات الكبيرة). إن تركتها فارغة سيظهر ختم أثر الافتراضي.</p>';
+    html += '<div id="philo-preview" style="display:flex;gap:1rem;align-items:flex-start;margin-bottom:.8rem">';
+    if (philoUrl) {
+      html += '<img src="' + escAttr(philoUrl) + '" style="width:140px;height:175px;object-fit:cover;border:1px solid var(--line);background:var(--charcoal-2)"/>';
+      html += '<div><div class="hint" style="margin:0 0 .5rem">الصورة الحالية</div>' +
+              '<button type="button" class="btn danger" id="philo-remove">إزالة الصورة (رجوع للختم)</button></div>';
+    } else {
+      html += '<div style="width:140px;height:175px;border:1px dashed var(--line-soft);display:grid;place-items:center;color:var(--ink-faint);font-size:.7rem">لا توجد صورة</div>';
+      html += '<div class="hint" style="margin:0">ارفع صورة لاستبدال الختم الافتراضي.</div>';
+    }
+    html += '</div>';
+    html += '<input type="file" id="philo-file" accept="image/*"/>';
+    html += '<button type="button" class="btn solid" id="philo-upload" style="margin-top:.6rem">رفع وحفظ الصورة</button>';
+    html += '<div class="msg" id="philo-msg"></div>';
+    html += '<input type="hidden" data-key="philosophy_image" value="' + escAttr(philoUrl) + '" id="philo-url-store"/>';
+    html += '</div>';
+
     order.forEach(function (g) {
       html += '<div class="group"><h3>' + g + "</h3>";
       groups[g].forEach(function (t) {
@@ -138,6 +158,35 @@
     });
     if (exBox) exBox.addEventListener("click", function (e) {
       if (e.target.classList.contains("del-extra")) e.target.closest(".extra-row").remove();
+    });
+
+    /* Philosophy image: upload + remove (write directly to site_content). */
+    var philoUploadBtn = document.getElementById("philo-upload");
+    var philoRemoveBtn = document.getElementById("philo-remove");
+    if (philoUploadBtn) philoUploadBtn.addEventListener("click", async function () {
+      var fileInput = document.getElementById("philo-file");
+      var f = fileInput && fileInput.files && fileInput.files[0];
+      if (!f) { setMsg("#philo-msg", "اختر صورة أولًا", false); return; }
+      setMsg("#philo-msg", "جارٍ الرفع…", true);
+      try {
+        var url = await uploadImage(f);
+        var res = await sb.from("site_content").upsert(
+          [{ key: "philosophy_image", value: url }], { onConflict: "key" }
+        );
+        if (res.error) throw res.error;
+        toast("تم حفظ الصورة ✓ — حدّث الصفحة الرئيسية لرؤيتها");
+        loadTexts();
+      } catch (e) {
+        setMsg("#philo-msg", "خطأ: " + e.message, false);
+      }
+    });
+    if (philoRemoveBtn) philoRemoveBtn.addEventListener("click", async function () {
+      if (!confirm("إزالة صورة فلسفتنا والرجوع للختم الافتراضي؟")) return;
+      var res = await sb.from("site_content").upsert(
+        [{ key: "philosophy_image", value: "" }], { onConflict: "key" }
+      );
+      if (res.error) { toast("خطأ: " + res.error.message); return; }
+      toast("تمت الإزالة ✓"); loadTexts();
     });
   }
   async function saveTexts() {

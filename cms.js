@@ -40,6 +40,22 @@
         var sz = map[t.k + "__size"]; // per-phrase font size chosen in the panel
         if (sz && sz !== "") el.style.fontSize = sz;
       });
+      // philosophy section image (replaces the seal watermark when set)
+      try {
+        var pi = map["philosophy_image"];
+        if (pi) {
+          var frame = document.querySelector(".about-media .frame");
+          if (frame) {
+            frame.style.backgroundImage =
+              "linear-gradient(180deg,rgba(15,17,19,.18),rgba(15,17,19,.55))," +
+              "url('" + pi + "')";
+            frame.style.backgroundSize = "cover, cover";
+            frame.style.backgroundPosition = "center, center";
+            var wm = frame.querySelector(".seal-watermark");
+            if (wm) wm.style.display = "none";
+          }
+        }
+      } catch (e) {}
       // extra footer lines added from the panel (stored as a JSON array)
       try {
         if (map["footer_extra_lines"]) {
