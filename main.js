@@ -43,7 +43,7 @@
     }
     const burstScale = withRays ? '' : 'scale(0.86)';
     return `
-    <svg viewBox="0 0 240 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ATHAR seal">
+    <svg viewBox="0 0 240 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ATHR seal">
       <defs>
         <linearGradient id="sg" x1="0" y1="0" x2="0" y2="1">
           <stop offset="0" stop-color="#E6C998"/>
