@@ -41,8 +41,12 @@ export function Reveal({
     return () => io.disconnect();
   }, []);
   return (
-    // @ts-expect-error - dynamic element ref
-    <Tag ref={ref} className={`reveal ${className}`} data-d={delay || undefined} {...rest}>
+    <Tag
+      ref={ref as any}
+      className={`reveal ${className}`}
+      data-d={delay || undefined}
+      {...rest}
+    >
       {children}
     </Tag>
   );
