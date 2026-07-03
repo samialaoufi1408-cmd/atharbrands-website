@@ -1,7 +1,8 @@
 import { Seal } from '@/components/brand/Seal';
 import { Parallax } from '@/components/fx/Parallax';
 import { Reveal } from '@/components/fx/Reveal';
-import { Locale, t } from '@/content/site';
+import { Locale, tHtml } from '@/content/site';
+import { Mixed } from '@/lib/Mixed';
 
 interface HeroProps {
   locale: Locale;
@@ -9,7 +10,7 @@ interface HeroProps {
 }
 
 export function Hero({ locale, ov }: HeroProps) {
-  const html = (k: any) => ({ __html: t(locale, k, ov) });
+  const html = (k: any) => tHtml(locale, k, ov);
   const philLabel = locale === 'ar' ? 'فلسفتنا' : 'Our Philosophy';
   const arrow = locale === 'ar' ? '←' : '→';
   return (
@@ -63,7 +64,7 @@ export function Hero({ locale, ov }: HeroProps) {
               <span className="txt" dangerouslySetInnerHTML={html('hero_btn')} />
             </a>
             <a href="#philosophy" className="link-underline">
-              {philLabel} <span className="arr">{arrow}</span>
+              <Mixed text={philLabel} /> <span className="arr">{arrow}</span>
             </a>
           </Reveal>
         </div>
@@ -72,7 +73,7 @@ export function Hero({ locale, ov }: HeroProps) {
         </Parallax>
       </div>
       <div className="scroll-cue">
-        <span>{locale === 'ar' ? 'مرّر' : 'Scroll'}</span>
+        <Mixed text={locale === 'ar' ? 'مرّر' : 'Scroll'} />
         <span className="rail" />
       </div>
     </section>

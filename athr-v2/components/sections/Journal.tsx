@@ -1,6 +1,7 @@
 import { Reveal } from '@/components/fx/Reveal';
 import { Seal } from '@/components/brand/Seal';
-import { Locale, t } from '@/content/site';
+import { Locale, tHtml } from '@/content/site';
+import { Mixed } from '@/lib/Mixed';
 import type { JournalRow } from '@/lib/cms';
 
 const DEFAULT_ARTICLES = [
@@ -31,7 +32,7 @@ interface JournalProps {
 }
 
 export function Journal({ locale, ov, extra = [] }: JournalProps) {
-  const html = (k: any) => ({ __html: t(locale, k, ov) });
+  const html = (k: any) => tHtml(locale, k, ov);
   const ar = locale === 'ar';
   const articles = extra.length
     ? extra.map((r) => ({
@@ -58,7 +59,8 @@ export function Journal({ locale, ov, extra = [] }: JournalProps) {
           </div>
           <Reveal delay={2}>
             <a href="#" className="link-underline">
-              {ar ? 'كل المقالات' : 'All Writing'} <span className="arr">{ar ? '←' : '→'}</span>
+              <Mixed text={ar ? 'كل المقالات' : 'All Writing'} />{' '}
+              <span className="arr">{ar ? '←' : '→'}</span>
             </a>
           </Reveal>
         </div>
@@ -77,7 +79,7 @@ export function Journal({ locale, ov, extra = [] }: JournalProps) {
               </div>
               <div className="jrn-body">
                 <div className="jrn-tags">
-                  <span>{ar ? a.cat.ar : a.cat.en}</span>
+                  <Mixed text={ar ? a.cat.ar : a.cat.en} />
                   <span className="date">{a.date}</span>
                 </div>
                 <h3>{a.title}</h3>

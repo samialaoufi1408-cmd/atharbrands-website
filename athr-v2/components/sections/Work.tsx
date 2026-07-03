@@ -2,7 +2,8 @@ import Image from 'next/image';
 import { Reveal } from '@/components/fx/Reveal';
 import { Seal } from '@/components/brand/Seal';
 import { LightboxTrigger } from '@/components/fx/Lightbox';
-import { Locale, t } from '@/content/site';
+import { Locale, tHtml } from '@/content/site';
+import { Mixed } from '@/lib/Mixed';
 import type { WorkRow } from '@/lib/cms';
 
 const DEFAULT_WORK = [
@@ -43,7 +44,7 @@ interface WorkProps {
 }
 
 export function Work({ locale, ov, extra = [] }: WorkProps) {
-  const html = (k: any) => ({ __html: t(locale, k, ov) });
+  const html = (k: any) => tHtml(locale, k, ov);
   const ar = locale === 'ar';
 
   const cards = extra.length
@@ -87,14 +88,14 @@ export function Work({ locale, ov, extra = [] }: WorkProps) {
                   />
                 ) : (
                   <>
-                    <span className="ph-tag">{ar ? 'صورة · Image' : 'Image · صورة'}</span>
+                    <Mixed className="ph-tag" text={ar ? 'صورة · Image' : 'Image · صورة'} />
                     <span className="wm">
                       <Seal variant="mono" idSuffix={`work-${i}`} />
                     </span>
                   </>
                 )}
                 <div className="work-overlay">
-                  <span className="work-cat">{ar ? c.cat.ar : c.cat.en}</span>
+                  <Mixed className="work-cat" text={ar ? c.cat.ar : c.cat.en} />
                   <div className="work-meta">
                     <div className="work-name">
                       {c.name}

@@ -1,5 +1,6 @@
 import { Seal } from '@/components/brand/Seal';
-import { Locale, t, NAV_LABELS } from '@/content/site';
+import { Locale, tHtml, NAV_LABELS } from '@/content/site';
+import { Mixed } from '@/lib/Mixed';
 
 const CONNECT = [
   { label: 'Instagram', href: '#' },
@@ -9,7 +10,7 @@ const CONNECT = [
 ];
 
 export function Footer({ locale, ov }: { locale: Locale; ov?: Record<string, string> }) {
-  const html = (k: any) => ({ __html: t(locale, k, ov) });
+  const html = (k: any) => tHtml(locale, k, ov);
   const ar = locale === 'ar';
   const nav = NAV_LABELS[locale];
   return (
@@ -40,7 +41,7 @@ export function Footer({ locale, ov }: { locale: Locale; ov?: Record<string, str
             />
           </div>
           <div className="foot-col">
-            <h4>{ar ? 'التنقّل' : 'Navigate'}</h4>
+            <Mixed as="h4" text={ar ? 'التنقّل' : 'Navigate'} />
             <ul>
               <li><a href="#philosophy">{nav.philosophy}</a></li>
               <li><a href="#services">{nav.services}</a></li>
@@ -50,7 +51,7 @@ export function Footer({ locale, ov }: { locale: Locale; ov?: Record<string, str
             </ul>
           </div>
           <div className="foot-col">
-            <h4>{ar ? 'تواصل' : 'Connect'}</h4>
+            <Mixed as="h4" text={ar ? 'تواصل' : 'Connect'} />
             <ul>
               {CONNECT.map((c) => (
                 <li key={c.label}>

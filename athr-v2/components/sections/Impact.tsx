@@ -1,6 +1,6 @@
 import { Reveal } from '@/components/fx/Reveal';
 import { Counter } from '@/components/fx/Counter';
-import { Locale, t } from '@/content/site';
+import { Locale, tHtml } from '@/content/site';
 
 const ITEMS = [
   { target: 14, suffix: '' as const, lblKey: 'imp1_lbl', arKey: 'imp1_ar' },
@@ -9,7 +9,7 @@ const ITEMS = [
 ] as const;
 
 export function Impact({ locale, ov }: { locale: Locale; ov?: Record<string, string> }) {
-  const html = (k: any) => ({ __html: t(locale, k, ov) });
+  const html = (k: any) => tHtml(locale, k, ov);
   return (
     <section className="impact" data-screen-label="Impact">
       <div className="container impact-grid">

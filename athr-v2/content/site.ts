@@ -1,5 +1,6 @@
 import en from './en.json';
 import ar from './ar.json';
+import { wrapArabic } from '@/lib/arabic';
 
 export type Locale = 'en' | 'ar';
 export const locales: Locale[] = ['en', 'ar'];
@@ -33,6 +34,19 @@ export function t(
     );
   }
   return overrides?.[k] ?? enDict[k] ?? '';
+}
+
+/**
+ * Same as t() but returns a ready-to-spread dangerouslySetInnerHTML object
+ * with Arabic runs wrapped in `.ar-run` spans, so tracked (letter-spaced)
+ * containers never disconnect Arabic glyph joining.
+ */
+export function tHtml(
+  locale: Locale,
+  key: ContentKey,
+  overrides?: Record<string, string>,
+): { __html: string } {
+  return { __html: wrapArabic(t(locale, key, overrides)) };
 }
 
 /** Localized nav labels. Not in cms-config, so hardcoded here. */

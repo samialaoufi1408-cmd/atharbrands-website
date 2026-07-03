@@ -126,7 +126,9 @@ export function LightboxRoot() {
           {...(src ? { src } : {})}
         />
       </div>
-      <span className="lightbox-hint">Click anywhere to close · اضغط للإغلاق</span>
+      <span className="lightbox-hint">
+        Click anywhere to close · <span className="ar-run">اضغط للإغلاق</span>
+      </span>
     </div>
   );
 }

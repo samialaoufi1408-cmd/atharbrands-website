@@ -553,3 +553,14 @@ html[dir="rtl"] .footer-bottom .ar { font-family:'Tajawal',sans-serif; letter-sp
 
 /* Reveal visibility — components use `visible`, legacy CSS uses `.in`. Alias. */
 .reveal.visible { opacity:1; transform:none; }
+
+/* Arabic runs inside tracked (letter-spaced) Latin containers.
+   Arabic is cursive: any letter-spacing visually disconnects the glyphs,
+   so every contiguous Arabic run is wrapped in .ar-run (see lib/arabic.ts)
+   which resets tracking and forces Tajawal — on BOTH locales. */
+.ar-run{
+  font-family:var(--font-ar);
+  letter-spacing:0;
+  unicode-bidi:embed;
+  direction:rtl;
+}

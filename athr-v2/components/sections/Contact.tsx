@@ -1,7 +1,8 @@
 'use client';
 import { useRef, useState } from 'react';
 import { Reveal } from '@/components/fx/Reveal';
-import { Locale, t } from '@/content/site';
+import { Locale, tHtml } from '@/content/site';
+import { Mixed } from '@/lib/Mixed';
 import { sendEnquiry } from '@/app/actions';
 
 interface ContactProps {
@@ -10,7 +11,7 @@ interface ContactProps {
 }
 
 export function Contact({ locale, ov }: ContactProps) {
-  const html = (k: any) => ({ __html: t(locale, k, ov) });
+  const html = (k: any) => tHtml(locale, k, ov);
   const ar = locale === 'ar';
   const formRef = useRef<HTMLFormElement>(null);
   const [label, setLabel] = useState<'idle' | 'sent' | 'error'>('idle');
@@ -62,15 +63,15 @@ export function Contact({ locale, ov }: ContactProps) {
           />
           <Reveal delay={2} className="contact-detail">
             <div className="cd-item">
-              <div className="k">{ar ? 'الاستوديو' : 'Studio'}</div>
+              <Mixed as="div" className="k" text={ar ? 'الاستوديو' : 'Studio'} />
               <div className="v" dangerouslySetInnerHTML={html('con_studio')} />
             </div>
             <div className="cd-item">
-              <div className="k">{ar ? 'البريد' : 'Enquiries'}</div>
+              <Mixed as="div" className="k" text={ar ? 'البريد' : 'Enquiries'} />
               <div className="v" dangerouslySetInnerHTML={html('con_email')} />
             </div>
             <div className="cd-item">
-              <div className="k">{ar ? 'الهاتف' : 'Telephone'}</div>
+              <Mixed as="div" className="k" text={ar ? 'الهاتف' : 'Telephone'} />
               <div className="v" dangerouslySetInnerHTML={html('con_phone')} />
             </div>
           </Reveal>
@@ -79,26 +80,26 @@ export function Contact({ locale, ov }: ContactProps) {
           <form ref={formRef} className="form" onSubmit={onSubmit} noValidate>
             <div className="form-row">
               <div className="field">
-                <label>{ar ? 'الاسم · Name' : 'Name · الاسم'}</label>
+                <Mixed as="label" text={ar ? 'الاسم · Name' : 'Name · الاسم'} />
                 <input type="text" name="name" required />
               </div>
               <div className="field">
-                <label>{ar ? 'البريد · Email' : 'Email · البريد'}</label>
+                <Mixed as="label" text={ar ? 'البريد · Email' : 'Email · البريد'} />
                 <input type="email" name="email" required />
               </div>
             </div>
             <div className="field">
-              <label>{ar ? 'الجهة · Organisation' : 'Organisation · الجهة'}</label>
+              <Mixed as="label" text={ar ? 'الجهة · Organisation' : 'Organisation · الجهة'} />
               <input type="text" name="org" />
             </div>
             <div className="field">
-              <label>{ar ? 'رؤيتك · Your Vision' : 'Your Vision · رؤيتك'}</label>
+              <Mixed as="label" text={ar ? 'رؤيتك · Your Vision' : 'Your Vision · رؤيتك'} />
               <textarea name="msg" rows={3} required />
             </div>
             <button type="submit" className="btn">
               <span className="dot" />
               <span className="txt">
-                {label === 'sent' ? sent : label === 'error' ? err : idle}
+                <Mixed text={label === 'sent' ? sent : label === 'error' ? err : idle} />
               </span>
             </button>
           </form>

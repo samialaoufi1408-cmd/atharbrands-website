@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { Seal } from '@/components/brand/Seal';
 import { Locale, NAV_LABELS } from '@/content/site';
+import { Mixed } from '@/lib/Mixed';
 
 const LINKS = [
   ['#philosophy', 'philosophy'] as const,
@@ -44,7 +45,7 @@ export function Nav({ locale }: NavProps) {
       <nav className={`nav-links ${open ? 'open' : ''}`} aria-label="Primary">
         {LINKS.map(([href, key]) => (
           <a key={href} href={href} onClick={closeMenu}>
-            {labels[key]}
+            <Mixed text={labels[key]} />
           </a>
         ))}
         <Link
@@ -53,11 +54,13 @@ export function Nav({ locale }: NavProps) {
           aria-label="Switch language"
           onClick={closeMenu}
         >
-          {ar ? 'EN' : 'العربية'}
+          {ar ? 'EN' : <Mixed text="العربية" />}
         </Link>
         <a href="#contact" className="btn nav-cta" onClick={closeMenu}>
           <span className="dot" />
-          <span className="txt">{labels.enquire}</span>
+          <span className="txt">
+            <Mixed text={labels.enquire} />
+          </span>
         </a>
       </nav>
       <button

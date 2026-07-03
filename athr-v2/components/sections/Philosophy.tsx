@@ -1,9 +1,9 @@
 import { Reveal } from '@/components/fx/Reveal';
 import { Seal } from '@/components/brand/Seal';
-import { Locale, t } from '@/content/site';
+import { Locale, tHtml } from '@/content/site';
 
 export function Philosophy({ locale, ov }: { locale: Locale; ov?: Record<string, string> }) {
-  const html = (k: any) => ({ __html: t(locale, k, ov) });
+  const html = (k: any) => tHtml(locale, k, ov);
   return (
     <section className="about" id="philosophy" data-screen-label="Philosophy">
       <div className="container about-grid">

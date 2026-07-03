@@ -1,6 +1,6 @@
 import { Reveal } from '@/components/fx/Reveal';
 import { ProcessIcon, type ProcessName } from '@/components/brand/ProcessIcon';
-import { Locale, t } from '@/content/site';
+import { Locale, tHtml } from '@/content/site';
 
 const STEPS: { icon: ProcessName; n: string }[] = [
   { icon: 'listen', n: '01' },
@@ -10,7 +10,7 @@ const STEPS: { icon: ProcessName; n: string }[] = [
 ];
 
 export function Process({ locale, ov }: { locale: Locale; ov?: Record<string, string> }) {
-  const html = (k: any) => ({ __html: t(locale, k, ov) });
+  const html = (k: any) => tHtml(locale, k, ov);
   return (
     <section className="process" data-screen-label="Process">
       <div className="container">

@@ -1,8 +1,8 @@
 import { Reveal } from '@/components/fx/Reveal';
-import { Locale, t } from '@/content/site';
+import { Locale, tHtml } from '@/content/site';
 
 export function Statement({ locale, ov }: { locale: Locale; ov?: Record<string, string> }) {
-  const html = (k: any) => ({ __html: t(locale, k, ov) });
+  const html = (k: any) => tHtml(locale, k, ov);
   return (
     <section className="statement">
       <div className="container">
