@@ -122,10 +122,16 @@ like the legacy panel. `robots.ts` already disallows `/admin`.
   (+ RLS: anon read, authenticated write) as `if not exists` — documents the
   production schema and bootstraps fresh environments. Applied manually.
 
-## Phase D — Launch checklist (manual, outside this environment)
+## Phase D — Launch checklist
+- [x] Vercel deploy: branch previews now build `athr-v2/` via the builds-API `vercel.json`
+      (preview verified READY: /en /ar /admin /api/revalidate). Production on `main`
+      switches to v2 automatically when this branch merges.
+- [x] Env: `athr-v2/.env.production` points at the production ATHR Supabase project
+      (public URL + anon key, same values as legacy cms-config.js).
 - [ ] Apply `001_enquiries.sql` (+ `002` if fresh) to Supabase project `wsoomnkzaoglnqjagosc`
-- [ ] Vercel: root dir `athr-v2/`, env `NEXT_PUBLIC_SUPABASE_URL` + `NEXT_PUBLIC_SUPABASE_ANON_KEY`
-- [ ] Delete legacy `vercel.json` rewrites when cutting over the domain
+      — run in the Supabase dashboard SQL editor (project not reachable from the dev
+      environment; the MCP token is scoped to a different, unrelated project).
+      Until then the contact form shows "حاول مجدداً" on submit; everything else works.
 - [ ] Manual visual pass: ≤720px hamburger, ≤1000px column collapse, reduced-motion, full RTL
 - [ ] Lighthouse ≥95 performance & SEO
 - [ ] Confirm `hello@athrbrands.sa` with the client (deliberate change from `hello@athar.studio`)
