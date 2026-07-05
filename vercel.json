@@ -1,4 +1,0 @@
-{
-  "version": 2,
-  "builds": [{ "src": "athr-v2/package.json", "use": "@vercel/next" }]
-}
