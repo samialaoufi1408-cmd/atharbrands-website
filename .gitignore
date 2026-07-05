@@ -34,6 +34,8 @@ yarn-error.log*
 .env*
 # ...but always keep the reference example tracked
 !.env.example
+# Public-by-design Supabase URL + anon key (same values as legacy cms-config.js)
+!.env.production
 
 # local agent / editor tooling
 .claude
