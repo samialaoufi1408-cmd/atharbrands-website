@@ -45,12 +45,25 @@ for (const t of cfg.texts) {
   ar[t.k] = typeof t.ar === 'string' && t.ar.length > 0 ? t.ar : enValue;
 }
 
+// Editor schema: everything the admin texts panel needs to render the form,
+// plus the legacy CSS selector (v2 kept the same class names, so the selector
+// doubles as the target for per-key font-size override styles).
+const schema = cfg.texts.map((t) => ({
+  group: t.g,
+  key: t.k,
+  label: t.l,
+  multiline: !!t.m,
+  hasAr: typeof t.ar === 'string',
+  selector: t.s,
+}));
+
 const outDir = path.join(ROOT, 'content');
 mkdirSync(outDir, { recursive: true });
 writeFileSync(path.join(outDir, 'en.json'), JSON.stringify(en, null, 2) + '\n');
 writeFileSync(path.join(outDir, 'ar.json'), JSON.stringify(ar, null, 2) + '\n');
+writeFileSync(path.join(outDir, 'schema.json'), JSON.stringify(schema, null, 2) + '\n');
 
 console.log(
-  `extracted ${cfg.texts.length} keys → content/en.json + content/ar.json` +
+  `extracted ${cfg.texts.length} keys → content/{en,ar,schema}.json` +
     (missing ? ` (${missing} selector(s) did not match)` : ''),
 );

@@ -34,14 +34,16 @@ interface JournalProps {
 export function Journal({ locale, ov, extra = [] }: JournalProps) {
   const html = (k: any) => tHtml(locale, k, ov);
   const ar = locale === 'ar';
+  // CMS rows REPLACE the design defaults entirely (legacy cms.js behavior).
   const articles = extra.length
     ? extra.map((r) => ({
-        cat: { en: r.category, ar: r.category },
-        date: r.published_at,
+        cat: { en: r.tag ?? '', ar: r.tag ?? '' },
+        date: r.date_label ?? '',
         title: r.title,
-        excerpt: r.excerpt,
+        excerpt: r.excerpt ?? '',
+        image: r.image_url,
       }))
-    : [...DEFAULT_ARTICLES];
+    : [...DEFAULT_ARTICLES].map((a) => ({ ...a, image: null as string | null }));
 
   return (
     <section className="journal" id="journal" data-screen-label="Journal">
@@ -73,9 +75,18 @@ export function Journal({ locale, ov, extra = [] }: JournalProps) {
               delay={(i as 0 | 1 | 2)}
             >
               <div className="jrn-thumb">
-                <span className="wm">
-                  <Seal variant="mono" idSuffix={`jrn-${i}`} />
-                </span>
+                {a.image ? (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    src={a.image}
+                    alt={a.title}
+                    style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+                  />
+                ) : (
+                  <span className="wm">
+                    <Seal variant="mono" idSuffix={`jrn-${i}`} />
+                  </span>
+                )}
               </div>
               <div className="jrn-body">
                 <div className="jrn-tags">

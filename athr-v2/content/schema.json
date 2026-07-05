@@ -1,0 +1,562 @@
+[
+  {
+    "group": "Hero",
+    "key": "hero_eyebrow",
+    "label": "Eyebrow",
+    "multiline": false,
+    "hasAr": true,
+    "selector": ".hero-copy .eyebrow"
+  },
+  {
+    "group": "Hero",
+    "key": "hero_title_1",
+    "label": "Title line 1",
+    "multiline": false,
+    "hasAr": true,
+    "selector": ".hero-title .l1"
+  },
+  {
+    "group": "Hero",
+    "key": "hero_title_2",
+    "label": "Title line 2",
+    "multiline": false,
+    "hasAr": true,
+    "selector": ".hero-title .l2"
+  },
+  {
+    "group": "Hero",
+    "key": "hero_title_3",
+    "label": "Title line 3 (gold)",
+    "multiline": false,
+    "hasAr": true,
+    "selector": ".hero-title .l3"
+  },
+  {
+    "group": "Hero",
+    "key": "hero_ar",
+    "label": "Accent line",
+    "multiline": false,
+    "hasAr": true,
+    "selector": ".hero-ar"
+  },
+  {
+    "group": "Hero",
+    "key": "hero_sub",
+    "label": "Sub paragraph",
+    "multiline": true,
+    "hasAr": true,
+    "selector": ".hero-sub"
+  },
+  {
+    "group": "Hero",
+    "key": "hero_btn",
+    "label": "Button label",
+    "multiline": false,
+    "hasAr": true,
+    "selector": ".hero-actions .btn .txt"
+  },
+  {
+    "group": "Statement",
+    "key": "stmt_quote",
+    "label": "Quote",
+    "multiline": true,
+    "hasAr": true,
+    "selector": ".statement-quote"
+  },
+  {
+    "group": "Statement",
+    "key": "stmt_ar",
+    "label": "Second line",
+    "multiline": true,
+    "hasAr": false,
+    "selector": ".statement-ar"
+  },
+  {
+    "group": "Philosophy",
+    "key": "phil_eyebrow",
+    "label": "Eyebrow",
+    "multiline": false,
+    "hasAr": true,
+    "selector": ".about-copy .eyebrow"
+  },
+  {
+    "group": "Philosophy",
+    "key": "phil_title",
+    "label": "Title",
+    "multiline": true,
+    "hasAr": true,
+    "selector": ".about-copy h2"
+  },
+  {
+    "group": "Philosophy",
+    "key": "phil_p1",
+    "label": "Paragraph 1",
+    "multiline": true,
+    "hasAr": true,
+    "selector": ".about-copy .lede"
+  },
+  {
+    "group": "Philosophy",
+    "key": "phil_p2",
+    "label": "Paragraph 2",
+    "multiline": true,
+    "hasAr": true,
+    "selector": ".about-copy p:nth-of-type(2)"
+  },
+  {
+    "group": "Philosophy",
+    "key": "phil_sign",
+    "label": "Signature (Arabic)",
+    "multiline": false,
+    "hasAr": false,
+    "selector": ".about-sign span:last-child"
+  },
+  {
+    "group": "Services",
+    "key": "svc_eyebrow",
+    "label": "Eyebrow",
+    "multiline": false,
+    "hasAr": true,
+    "selector": ".services .eyebrow"
+  },
+  {
+    "group": "Services",
+    "key": "svc_title",
+    "label": "Title",
+    "multiline": true,
+    "hasAr": true,
+    "selector": ".services .sect-head .title"
+  },
+  {
+    "group": "Services",
+    "key": "svc_meta",
+    "label": "Meta",
+    "multiline": true,
+    "hasAr": true,
+    "selector": ".services .meta"
+  },
+  {
+    "group": "Services",
+    "key": "svc1_name",
+    "label": "1 · Name",
+    "multiline": false,
+    "hasAr": true,
+    "selector": ".svc-list .svc-row:nth-of-type(1) .svc-name"
+  },
+  {
+    "group": "Services",
+    "key": "svc1_ar",
+    "label": "1 · Arabic",
+    "multiline": false,
+    "hasAr": true,
+    "selector": ".svc-list .svc-row:nth-of-type(1) .svc-ar"
+  },
+  {
+    "group": "Services",
+    "key": "svc1_desc",
+    "label": "1 · Description",
+    "multiline": true,
+    "hasAr": true,
+    "selector": ".svc-list .svc-row:nth-of-type(1) .svc-desc"
+  },
+  {
+    "group": "Services",
+    "key": "svc2_name",
+    "label": "2 · Name",
+    "multiline": false,
+    "hasAr": true,
+    "selector": ".svc-list .svc-row:nth-of-type(2) .svc-name"
+  },
+  {
+    "group": "Services",
+    "key": "svc2_ar",
+    "label": "2 · Arabic",
+    "multiline": false,
+    "hasAr": true,
+    "selector": ".svc-list .svc-row:nth-of-type(2) .svc-ar"
+  },
+  {
+    "group": "Services",
+    "key": "svc2_desc",
+    "label": "2 · Description",
+    "multiline": true,
+    "hasAr": true,
+    "selector": ".svc-list .svc-row:nth-of-type(2) .svc-desc"
+  },
+  {
+    "group": "Services",
+    "key": "svc3_name",
+    "label": "3 · Name",
+    "multiline": false,
+    "hasAr": true,
+    "selector": ".svc-list .svc-row:nth-of-type(3) .svc-name"
+  },
+  {
+    "group": "Services",
+    "key": "svc3_ar",
+    "label": "3 · Arabic",
+    "multiline": false,
+    "hasAr": true,
+    "selector": ".svc-list .svc-row:nth-of-type(3) .svc-ar"
+  },
+  {
+    "group": "Services",
+    "key": "svc3_desc",
+    "label": "3 · Description",
+    "multiline": true,
+    "hasAr": true,
+    "selector": ".svc-list .svc-row:nth-of-type(3) .svc-desc"
+  },
+  {
+    "group": "Services",
+    "key": "svc4_name",
+    "label": "4 · Name",
+    "multiline": false,
+    "hasAr": true,
+    "selector": ".svc-list .svc-row:nth-of-type(4) .svc-name"
+  },
+  {
+    "group": "Services",
+    "key": "svc4_ar",
+    "label": "4 · Arabic",
+    "multiline": false,
+    "hasAr": true,
+    "selector": ".svc-list .svc-row:nth-of-type(4) .svc-ar"
+  },
+  {
+    "group": "Services",
+    "key": "svc4_desc",
+    "label": "4 · Description",
+    "multiline": true,
+    "hasAr": true,
+    "selector": ".svc-list .svc-row:nth-of-type(4) .svc-desc"
+  },
+  {
+    "group": "Services",
+    "key": "svc5_name",
+    "label": "5 · Name",
+    "multiline": false,
+    "hasAr": true,
+    "selector": ".svc-list .svc-row:nth-of-type(5) .svc-name"
+  },
+  {
+    "group": "Services",
+    "key": "svc5_ar",
+    "label": "5 · Arabic",
+    "multiline": false,
+    "hasAr": true,
+    "selector": ".svc-list .svc-row:nth-of-type(5) .svc-ar"
+  },
+  {
+    "group": "Services",
+    "key": "svc5_desc",
+    "label": "5 · Description",
+    "multiline": true,
+    "hasAr": true,
+    "selector": ".svc-list .svc-row:nth-of-type(5) .svc-desc"
+  },
+  {
+    "group": "Work",
+    "key": "work_eyebrow",
+    "label": "Eyebrow",
+    "multiline": false,
+    "hasAr": true,
+    "selector": ".work .eyebrow"
+  },
+  {
+    "group": "Work",
+    "key": "work_title",
+    "label": "Title",
+    "multiline": true,
+    "hasAr": true,
+    "selector": ".work .sect-head .title"
+  },
+  {
+    "group": "Work",
+    "key": "work_meta",
+    "label": "Meta",
+    "multiline": true,
+    "hasAr": true,
+    "selector": ".work .meta"
+  },
+  {
+    "group": "Process",
+    "key": "proc_eyebrow",
+    "label": "Eyebrow",
+    "multiline": false,
+    "hasAr": true,
+    "selector": ".process .eyebrow"
+  },
+  {
+    "group": "Process",
+    "key": "proc_title",
+    "label": "Title",
+    "multiline": true,
+    "hasAr": true,
+    "selector": ".process .sect-head .title"
+  },
+  {
+    "group": "Process",
+    "key": "proc_meta",
+    "label": "Meta",
+    "multiline": true,
+    "hasAr": true,
+    "selector": ".process .meta"
+  },
+  {
+    "group": "Process",
+    "key": "proc1_h",
+    "label": "1 · Title",
+    "multiline": false,
+    "hasAr": true,
+    "selector": ".proc-grid .proc-step:nth-of-type(1) h3"
+  },
+  {
+    "group": "Process",
+    "key": "proc1_ar",
+    "label": "1 · Arabic",
+    "multiline": false,
+    "hasAr": true,
+    "selector": ".proc-grid .proc-step:nth-of-type(1) .ar"
+  },
+  {
+    "group": "Process",
+    "key": "proc1_p",
+    "label": "1 · Text",
+    "multiline": true,
+    "hasAr": true,
+    "selector": ".proc-grid .proc-step:nth-of-type(1) p"
+  },
+  {
+    "group": "Process",
+    "key": "proc2_h",
+    "label": "2 · Title",
+    "multiline": false,
+    "hasAr": true,
+    "selector": ".proc-grid .proc-step:nth-of-type(2) h3"
+  },
+  {
+    "group": "Process",
+    "key": "proc2_ar",
+    "label": "2 · Arabic",
+    "multiline": false,
+    "hasAr": true,
+    "selector": ".proc-grid .proc-step:nth-of-type(2) .ar"
+  },
+  {
+    "group": "Process",
+    "key": "proc2_p",
+    "label": "2 · Text",
+    "multiline": true,
+    "hasAr": true,
+    "selector": ".proc-grid .proc-step:nth-of-type(2) p"
+  },
+  {
+    "group": "Process",
+    "key": "proc3_h",
+    "label": "3 · Title",
+    "multiline": false,
+    "hasAr": true,
+    "selector": ".proc-grid .proc-step:nth-of-type(3) h3"
+  },
+  {
+    "group": "Process",
+    "key": "proc3_ar",
+    "label": "3 · Arabic",
+    "multiline": false,
+    "hasAr": true,
+    "selector": ".proc-grid .proc-step:nth-of-type(3) .ar"
+  },
+  {
+    "group": "Process",
+    "key": "proc3_p",
+    "label": "3 · Text",
+    "multiline": true,
+    "hasAr": true,
+    "selector": ".proc-grid .proc-step:nth-of-type(3) p"
+  },
+  {
+    "group": "Process",
+    "key": "proc4_h",
+    "label": "4 · Title",
+    "multiline": false,
+    "hasAr": true,
+    "selector": ".proc-grid .proc-step:nth-of-type(4) h3"
+  },
+  {
+    "group": "Process",
+    "key": "proc4_ar",
+    "label": "4 · Arabic",
+    "multiline": false,
+    "hasAr": true,
+    "selector": ".proc-grid .proc-step:nth-of-type(4) .ar"
+  },
+  {
+    "group": "Process",
+    "key": "proc4_p",
+    "label": "4 · Text",
+    "multiline": true,
+    "hasAr": true,
+    "selector": ".proc-grid .proc-step:nth-of-type(4) p"
+  },
+  {
+    "group": "Impact",
+    "key": "imp1_lbl",
+    "label": "1 · Label",
+    "multiline": false,
+    "hasAr": true,
+    "selector": ".impact-grid .impact-item:nth-of-type(1) .lbl"
+  },
+  {
+    "group": "Impact",
+    "key": "imp1_ar",
+    "label": "1 · Arabic",
+    "multiline": false,
+    "hasAr": true,
+    "selector": ".impact-grid .impact-item:nth-of-type(1) .ar"
+  },
+  {
+    "group": "Impact",
+    "key": "imp2_lbl",
+    "label": "2 · Label",
+    "multiline": false,
+    "hasAr": true,
+    "selector": ".impact-grid .impact-item:nth-of-type(2) .lbl"
+  },
+  {
+    "group": "Impact",
+    "key": "imp2_ar",
+    "label": "2 · Arabic",
+    "multiline": false,
+    "hasAr": true,
+    "selector": ".impact-grid .impact-item:nth-of-type(2) .ar"
+  },
+  {
+    "group": "Impact",
+    "key": "imp3_lbl",
+    "label": "3 · Label",
+    "multiline": false,
+    "hasAr": true,
+    "selector": ".impact-grid .impact-item:nth-of-type(3) .lbl"
+  },
+  {
+    "group": "Impact",
+    "key": "imp3_ar",
+    "label": "3 · Arabic",
+    "multiline": false,
+    "hasAr": true,
+    "selector": ".impact-grid .impact-item:nth-of-type(3) .ar"
+  },
+  {
+    "group": "Journal",
+    "key": "jrn_eyebrow",
+    "label": "Eyebrow",
+    "multiline": false,
+    "hasAr": true,
+    "selector": ".journal .eyebrow"
+  },
+  {
+    "group": "Journal",
+    "key": "jrn_title",
+    "label": "Title",
+    "multiline": true,
+    "hasAr": true,
+    "selector": ".journal .sect-head .title"
+  },
+  {
+    "group": "Contact",
+    "key": "con_eyebrow",
+    "label": "Eyebrow",
+    "multiline": false,
+    "hasAr": true,
+    "selector": ".contact .eyebrow"
+  },
+  {
+    "group": "Contact",
+    "key": "con_title",
+    "label": "Title",
+    "multiline": true,
+    "hasAr": true,
+    "selector": ".contact-lead h2"
+  },
+  {
+    "group": "Contact",
+    "key": "con_ar",
+    "label": "Accent line",
+    "multiline": false,
+    "hasAr": false,
+    "selector": ".contact-ar"
+  },
+  {
+    "group": "Contact",
+    "key": "con_lede",
+    "label": "Paragraph",
+    "multiline": true,
+    "hasAr": true,
+    "selector": ".contact-lead .lede"
+  },
+  {
+    "group": "Contact",
+    "key": "con_studio",
+    "label": "Studio",
+    "multiline": false,
+    "hasAr": true,
+    "selector": ".contact-detail .cd-item:nth-of-type(1) .v"
+  },
+  {
+    "group": "Contact",
+    "key": "con_email",
+    "label": "Email",
+    "multiline": false,
+    "hasAr": false,
+    "selector": ".contact-detail .cd-item:nth-of-type(2) .v"
+  },
+  {
+    "group": "Contact",
+    "key": "con_phone",
+    "label": "Telephone",
+    "multiline": false,
+    "hasAr": false,
+    "selector": ".contact-detail .cd-item:nth-of-type(3) .v"
+  },
+  {
+    "group": "Footer",
+    "key": "foot_desc",
+    "label": "Description",
+    "multiline": true,
+    "hasAr": true,
+    "selector": ".footer-brand p"
+  },
+  {
+    "group": "Footer",
+    "key": "foot_copy",
+    "label": "Copyright",
+    "multiline": false,
+    "hasAr": true,
+    "selector": ".footer-bottom small:first-child"
+  },
+  {
+    "group": "Footer",
+    "key": "foot_ar",
+    "label": "Arabic line",
+    "multiline": false,
+    "hasAr": false,
+    "selector": ".footer-bottom .ar"
+  },
+  {
+    "group": "Footer",
+    "key": "foot_en",
+    "label": "Tagline (EN)",
+    "multiline": false,
+    "hasAr": false,
+    "selector": ".footer-bottom small:last-child"
+  },
+  {
+    "group": "Footer",
+    "key": "foot_permit",
+    "label": "شهادة عمل حر · Legal line",
+    "multiline": true,
+    "hasAr": false,
+    "selector": ".freelance-permit"
+  }
+]

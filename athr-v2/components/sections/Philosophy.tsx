@@ -4,14 +4,26 @@ import { Locale, tHtml } from '@/content/site';
 
 export function Philosophy({ locale, ov }: { locale: Locale; ov?: Record<string, string> }) {
   const html = (k: any) => tHtml(locale, k, ov);
+  // Control-panel image replaces the seal watermark (legacy cms.js behavior).
+  const philImage = ov?.philosophy_image || '';
+  const frameStyle = philImage
+    ? {
+        backgroundImage:
+          `linear-gradient(180deg,rgba(15,17,19,.18),rgba(15,17,19,.55)),url('${philImage}')`,
+        backgroundSize: 'cover, cover',
+        backgroundPosition: 'center, center',
+      }
+    : undefined;
   return (
     <section className="about" id="philosophy" data-screen-label="Philosophy">
       <div className="container about-grid">
         <Reveal className="about-media">
-          <div className="frame">
-            <div className="seal-watermark">
-              <Seal variant="full" idSuffix="phil" />
-            </div>
+          <div className="frame" style={frameStyle}>
+            {!philImage && (
+              <div className="seal-watermark">
+                <Seal variant="full" idSuffix="phil" />
+              </div>
+            )}
           </div>
           <span className="corner tl" />
           <span className="corner tr" />

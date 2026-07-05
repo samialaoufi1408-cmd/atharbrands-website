@@ -12,6 +12,7 @@ import { Impact } from '@/components/sections/Impact';
 import { Journal } from '@/components/sections/Journal';
 import { Contact } from '@/components/sections/Contact';
 import { Footer } from '@/components/sections/Footer';
+import { CmsSizeStyles } from '@/components/CmsSizeStyles';
 
 /** ISR — control-panel edits show up within 5 minutes without a redeploy. */
 export const revalidate = 300;
@@ -23,6 +24,7 @@ export default async function Page({ params }: { params: { locale: string } }) {
   const ov = cms.overrides;
   return (
     <>
+      <CmsSizeStyles overrides={ov} />
       <Nav locale={locale} />
       <main id="top">
         <Hero locale={locale} ov={ov} />

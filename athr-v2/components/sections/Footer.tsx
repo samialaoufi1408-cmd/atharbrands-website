@@ -9,10 +9,27 @@ const CONNECT = [
   { label: 'hello@athrbrands.sa', href: 'mailto:hello@athrbrands.sa' },
 ];
 
+const DISALLOWED_TAGS = /<(?!\/?(em|br|span)\b)[^>]*>/gi;
+
+function parseExtraLines(raw: string | undefined): string[] {
+  if (!raw) return [];
+  try {
+    const arr = JSON.parse(raw);
+    return Array.isArray(arr)
+      ? arr
+          .filter((l) => typeof l === 'string' && l.trim())
+          .map((l: string) => l.replace(DISALLOWED_TAGS, ''))
+      : [];
+  } catch {
+    return [];
+  }
+}
+
 export function Footer({ locale, ov }: { locale: Locale; ov?: Record<string, string> }) {
   const html = (k: any) => tHtml(locale, k, ov);
   const ar = locale === 'ar';
   const nav = NAV_LABELS[locale];
+  const extraLines = parseExtraLines(ov?.footer_extra_lines);
   return (
     <footer className="footer">
       <div className="container">
@@ -39,6 +56,19 @@ export function Footer({ locale, ov }: { locale: Locale; ov?: Record<string, str
               }}
               dangerouslySetInnerHTML={html('foot_permit')}
             />
+            {extraLines.map((line, i) => (
+              <p
+                key={i}
+                className="freelance-permit"
+                style={{
+                  marginTop: '.6rem',
+                  fontSize: '.78rem',
+                  color: 'var(--ink-faint)',
+                  lineHeight: 1.8,
+                }}
+                dangerouslySetInnerHTML={{ __html: line }}
+              />
+            ))}
           </div>
           <div className="foot-col">
             <Mixed as="h4" text={ar ? 'التنقّل' : 'Navigate'} />

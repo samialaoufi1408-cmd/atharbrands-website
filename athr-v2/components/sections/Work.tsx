@@ -47,12 +47,13 @@ export function Work({ locale, ov, extra = [] }: WorkProps) {
   const html = (k: any) => tHtml(locale, k, ov);
   const ar = locale === 'ar';
 
+  // CMS rows REPLACE the design defaults entirely (legacy cms.js behavior).
   const cards = extra.length
     ? extra.map((r) => ({
-        cat: { en: r.category, ar: r.category },
-        name: r.name,
-        ar: r.name_ar,
-        year: r.year,
+        cat: { en: r.category ?? '', ar: r.category ?? '' },
+        name: r.title,
+        ar: r.title_ar ?? '',
+        year: r.year ?? '',
         image: r.image_url,
       }))
     : [...DEFAULT_WORK];
