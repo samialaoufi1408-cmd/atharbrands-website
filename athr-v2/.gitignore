@@ -8,3 +8,6 @@ coverage/
 .env
 .env.local
 .vercel
+
+# Public-by-design Supabase URL + anon key (same values as legacy cms-config.js)
+!.env.production
