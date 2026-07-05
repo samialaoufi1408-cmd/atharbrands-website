@@ -1,10 +1,4 @@
 {
-  "framework": null,
-  "buildCommand": "echo 'static handoff — no build step'",
-  "outputDirectory": ".",
-  "rewrites": [
-    { "source": "/", "destination": "/ATHAR.html" },
-    { "source": "/admin", "destination": "/admin.html" },
-    { "source": "/standalone", "destination": "/standalone.html" }
-  ]
+  "version": 2,
+  "builds": [{ "src": "athr-v2/package.json", "use": "@vercel/next" }]
 }
