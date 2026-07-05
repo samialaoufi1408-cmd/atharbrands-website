@@ -1,0 +1,35 @@
+/* ATHR admin panel — dark utilitarian skin over the brand tokens. */
+.admin-wrap { max-width: 1100px; margin-inline: auto; padding: 2.5rem 1.4rem 6rem; }
+.admin-head { display: flex; justify-content: space-between; align-items: center; gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap; }
+.admin-head h1 { font-size: 1.4rem; font-weight: 500; color: var(--gold); }
+.admin-card { border: 1px solid var(--line-soft); background: var(--charcoal-2); padding: 1.6rem; margin-bottom: 1.6rem; }
+.admin-card h3 { color: var(--gold); font-size: 1rem; font-weight: 500; margin-bottom: 1rem; }
+.admin-tabs { display: flex; gap: .5rem; margin-bottom: 1.6rem; flex-wrap: wrap; }
+.admin-tab { background: transparent; border: 1px solid var(--line-soft); color: var(--ink-soft); padding: .6rem 1.2rem; cursor: pointer; font-family: inherit; font-size: .9rem; }
+.admin-tab.active { border-color: var(--gold); color: var(--gold); }
+.admin-field { margin-bottom: 1rem; }
+.admin-field label { display: block; font-size: .74rem; color: var(--ink-faint); margin-bottom: .35rem; letter-spacing: .06em; }
+.admin-field input, .admin-field textarea, .admin-field select {
+  width: 100%; background: var(--charcoal); border: 1px solid var(--line-soft); color: var(--ivory);
+  padding: .55rem .7rem; font-family: inherit; font-size: .95rem;
+}
+.admin-field input:focus, .admin-field textarea:focus { outline: none; border-color: var(--gold); }
+.admin-btn { background: transparent; border: 1px solid var(--gold); color: var(--gold); padding: .65rem 1.6rem; cursor: pointer; font-family: inherit; font-size: .9rem; transition: all .3s var(--ease); }
+.admin-btn:hover { background: var(--gold); color: var(--charcoal); }
+.admin-btn.solid { background: var(--gold); color: var(--charcoal); }
+.admin-btn.danger { border-color: #a33; color: #d66; }
+.admin-btn.danger:hover { background: #a33; color: var(--ivory); }
+.admin-msg { font-size: .82rem; margin-top: .6rem; min-height: 1.2em; }
+.admin-msg.err { color: #d66; }
+.admin-msg.ok { color: var(--gold); }
+.admin-row { display: flex; align-items: center; gap: 1rem; border-bottom: 1px solid var(--line-soft); padding: .8rem 0; }
+.admin-row img { width: 64px; height: 44px; object-fit: cover; background: var(--charcoal); border: 1px solid var(--line-soft); }
+.admin-row .meta { flex: 1; }
+.admin-row .meta b { display: block; font-weight: 500; }
+.admin-row .meta small { color: var(--ink-faint); }
+.admin-toast { position: fixed; bottom: 1.4rem; inset-inline-start: 50%; transform: translateX(50%); background: var(--gold); color: var(--charcoal); padding: .7rem 1.4rem; font-size: .9rem; opacity: 0; pointer-events: none; transition: opacity .3s; z-index: 100; }
+.admin-toast.show { opacity: 1; }
+.admin-group-title { color: var(--ivory); font-size: .85rem; letter-spacing: .1em; text-transform: uppercase; border-bottom: 1px solid var(--line-soft); padding-bottom: .5rem; margin: 1.6rem 0 1rem; }
+.admin-ar-label { font-size: .68rem; color: var(--gold); letter-spacing: .08em; display: block; margin: .45rem 0 .25rem; }
+.admin-hint { font-size: .78rem; color: var(--ink-faint); margin-bottom: .8rem; line-height: 1.7; }
+.admin-inline { display: flex; gap: .6rem; align-items: center; }

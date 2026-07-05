@@ -1,0 +1,13 @@
+node_modules/
+.next/
+out/
+dist/
+coverage/
+.DS_Store
+*.log
+.env
+.env.local
+.vercel
+
+# Public-by-design Supabase URL + anon key (same values as legacy cms-config.js)
+!.env.production
