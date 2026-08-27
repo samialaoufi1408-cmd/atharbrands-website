@@ -67,10 +67,15 @@ export default function LocaleLayout({
                 params.locale === 'ar'
                   ? 'أثر بيت خبرة لبناء العلامات التجارية'
                   : 'ATHR luxury brand identity atelier',
-              address: [
-                { '@type': 'PostalAddress', addressLocality: 'Riyadh', addressCountry: 'SA' },
-                { '@type': 'PostalAddress', addressLocality: 'Dubai', addressCountry: 'AE' },
-              ],
+              address: {
+                '@type': 'PostalAddress',
+                addressRegion: 'Al Qassim',
+                addressCountry: 'SA',
+              },
+              areaServed: { '@type': 'Country', name: 'Saudi Arabia' },
+              telephone: '+966599444486',
+              email: 'admin@atharbrands.com',
+              sameAs: ['https://www.linkedin.com/in/sami-alaoufi'],
             }),
           }}
         />

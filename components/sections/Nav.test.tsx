@@ -3,11 +3,13 @@ import { describe, it, expect } from 'vitest';
 import { Nav } from './Nav';
 
 describe('Nav', () => {
-  it('EN: five section anchors + Enquire button + AR language switch', () => {
+  it('EN: five sales-focused anchors + Enquire button + AR language switch', () => {
     const { container, getByText } = render(<Nav locale="en" />);
-    for (const h of ['#philosophy', '#services', '#work', '#journal', '#contact']) {
+    for (const h of ['#philosophy', '#services', '#launch-package', '#work', '#contact']) {
       expect(container.querySelector(`a[href="${h}"]`), h).toBeTruthy();
     }
+    expect(container.querySelector('a[href="#journal"]')).toBeNull();
+    expect(getByText('Launch Package')).toBeTruthy();
     expect(getByText('Enquire')).toBeTruthy();
     // Language switch points to /ar and shows the Arabic label
     const langLink = container.querySelector('a[href="/ar"]')!;

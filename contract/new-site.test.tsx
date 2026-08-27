@@ -2,9 +2,7 @@ import { render, act } from '@testing-library/react';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import {
   SitePage,
-  assertStructure,
   assertSeal,
-  assertCounters,
   assertLightbox,
   assertContactForm,
   assertArabicMode,
@@ -57,30 +55,6 @@ async function loadNew(locale: 'en' | 'ar'): Promise<SitePage> {
   };
 }
 
-async function driveCounters(p: SitePage) {
-  // Counters use performance.now + rAF; drive both.
-  vi.useFakeTimers();
-  const clock = { t: 0 };
-  vi.spyOn(performance, 'now').mockImplementation(() => clock.t);
-  const rafs: FrameRequestCallback[] = [];
-  vi.stubGlobal('requestAnimationFrame', (fn: FrameRequestCallback) => {
-    rafs.push(fn);
-    return rafs.length;
-  });
-  await act(async () => {
-    p.fireIO();
-  });
-  for (let step = 0; step <= 1800; step += 16) {
-    clock.t = step;
-    const pending = rafs.splice(0);
-    await act(async () => {
-      pending.forEach((fn) => fn(step));
-    });
-  }
-  vi.unstubAllGlobals();
-  vi.useRealTimers();
-}
-
 describe('Contract on new site — the loop that must be green', () => {
   beforeEach(() => {
     document.body.innerHTML = '';
@@ -88,23 +62,26 @@ describe('Contract on new site — the loop that must be green', () => {
     (globalThis as any).__IO.instances.length = 0;
   });
 
-  it('EN: structure + all bilingual content', async () => {
+  it('EN: sales-ready structure uses real contact details and no placeholder sections', async () => {
     const p = await loadNew('en');
-    assertStructure(p);
+    for (const id of ['philosophy', 'services', 'launch-package', 'work', 'contact']) {
+      expect(p.doc.getElementById(id), `#${id} section must exist`).toBeTruthy();
+    }
+    expect(p.doc.getElementById('journal')).toBeNull();
+    expect(p.doc.querySelector('.impact')).toBeNull();
+    const body = p.doc.body.textContent ?? '';
+    expect(body).toContain('7,500');
+    expect(body).toContain('Al Qassim');
+    expect(body).toContain('admin@atharbrands.com');
+    expect(body).toContain('059 944 4486');
+    expect(body).toContain('AURA OUD');
+    expect(body).not.toContain('Rimal Atelier');
+    expect(p.doc.querySelector('a[href*="wa.me/966599444486"]')).toBeTruthy();
   });
 
   it('EN: seal has the correct ray counts', async () => {
     const p = await loadNew('en');
     assertSeal(p);
-  });
-
-  it('EN: counters animate to 14 / 90 / 12', async () => {
-    const p = await loadNew('en');
-    // Fire IO for every observed element so Reveals + Counters start
-    const nums = [...p.doc.querySelectorAll<HTMLElement>('[data-count]')];
-    expect(nums.map((n) => Number(n.getAttribute('data-count')))).toEqual([14, 90, 12]);
-    await driveCounters(p);
-    expect(nums.map((n) => Number(n.textContent))).toEqual([14, 90, 12]);
   });
 
   it('EN: lightbox opens/closes with body scroll lock', async () => {

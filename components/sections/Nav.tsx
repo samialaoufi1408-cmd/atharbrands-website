@@ -8,8 +8,8 @@ import { Mixed } from '@/lib/Mixed';
 const LINKS = [
   ['#philosophy', 'philosophy'] as const,
   ['#services', 'services'] as const,
+  ['#launch-package', 'package'] as const,
   ['#work', 'work'] as const,
-  ['#journal', 'journal'] as const,
   ['#contact', 'contact'] as const,
 ];
 

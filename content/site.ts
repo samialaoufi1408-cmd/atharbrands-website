@@ -4,7 +4,7 @@ import { wrapArabic } from '@/lib/arabic';
 
 export type Locale = 'en' | 'ar';
 export const locales: Locale[] = ['en', 'ar'];
-export const defaultLocale: Locale = 'en';
+export const defaultLocale: Locale = 'ar';
 
 /** Every generated content key. */
 export type ContentKey = keyof typeof en;
@@ -50,20 +50,20 @@ export function tHtml(
 }
 
 /** Localized nav labels. Not in cms-config, so hardcoded here. */
-export const NAV_LABELS: Record<Locale, Record<'philosophy' | 'services' | 'work' | 'journal' | 'contact' | 'enquire', string>> = {
+export const NAV_LABELS: Record<Locale, Record<'philosophy' | 'services' | 'package' | 'work' | 'contact' | 'enquire', string>> = {
   en: {
     philosophy: 'Philosophy',
     services: 'Services',
+    package: 'Launch Package',
     work: 'Work',
-    journal: 'Journal',
     contact: 'Contact',
     enquire: 'Enquire',
   },
   ar: {
     philosophy: 'فلسفتنا',
     services: 'خدماتنا',
+    package: 'باقة الإطلاق',
     work: 'الأعمال',
-    journal: 'المجلة',
     contact: 'تواصل',
     enquire: 'تواصل معنا',
   },

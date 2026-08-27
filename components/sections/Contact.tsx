@@ -5,6 +5,16 @@ import { Locale, tHtml } from '@/content/site';
 import { Mixed } from '@/lib/Mixed';
 import { sendEnquiry } from '@/app/actions';
 
+const EMAIL = 'admin@atharbrands.com';
+const PHONE = '+966599444486';
+
+function whatsappHref(ar: boolean) {
+  const message = ar
+    ? 'السلام عليكم، أرغب في معرفة المزيد عن خدمات أثر وباقة إطلاق المنتج السعودي.'
+    : 'Hello, I would like to know more about ATHR services and the Saudi Product Launch Package.';
+  return `https://wa.me/966599444486?text=${encodeURIComponent(message)}`;
+}
+
 interface ContactProps {
   locale: Locale;
   ov?: Record<string, string>;
@@ -68,15 +78,33 @@ export function Contact({ locale, ov }: ContactProps) {
             </div>
             <div className="cd-item">
               <Mixed as="div" className="k" text={ar ? 'البريد' : 'Enquiries'} />
-              <div className="v" dangerouslySetInnerHTML={html('con_email')} />
+              <a className="v contact-link" href={`mailto:${EMAIL}`} dangerouslySetInnerHTML={html('con_email')} />
             </div>
             <div className="cd-item">
               <Mixed as="div" className="k" text={ar ? 'الهاتف' : 'Telephone'} />
-              <div className="v" dangerouslySetInnerHTML={html('con_phone')} />
+              <a className="v contact-link" href={`tel:${PHONE}`} dangerouslySetInnerHTML={html('con_phone')} />
             </div>
+          </Reveal>
+          <Reveal delay={3} className="contact-direct">
+            <a
+              href={whatsappHref(ar)}
+              className="btn"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <span className="dot" />
+              <span className="txt">
+                <Mixed text={ar ? 'تواصل عبر واتساب' : 'Chat on WhatsApp'} />
+              </span>
+            </a>
           </Reveal>
         </div>
         <Reveal delay={2}>
+          <Mixed
+            as="p"
+            className="form-intro"
+            text={ar ? 'أو أرسل تفاصيل مشروعك مباشرة' : 'Or send your project brief directly'}
+          />
           <form ref={formRef} className="form" onSubmit={onSubmit} noValidate>
             <div className="form-row">
               <div className="field">

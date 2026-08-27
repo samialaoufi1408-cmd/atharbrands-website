@@ -6,10 +6,9 @@ import { Hero } from '@/components/sections/Hero';
 import { Statement } from '@/components/sections/Statement';
 import { Philosophy } from '@/components/sections/Philosophy';
 import { Services } from '@/components/sections/Services';
+import { LaunchPackage } from '@/components/sections/LaunchPackage';
 import { Work } from '@/components/sections/Work';
 import { Process } from '@/components/sections/Process';
-import { Impact } from '@/components/sections/Impact';
-import { Journal } from '@/components/sections/Journal';
 import { Contact } from '@/components/sections/Contact';
 import { Footer } from '@/components/sections/Footer';
 import { CmsSizeStyles } from '@/components/CmsSizeStyles';
@@ -31,10 +30,9 @@ export default async function Page({ params }: { params: { locale: string } }) {
         <Statement locale={locale} ov={ov} />
         <Philosophy locale={locale} ov={ov} />
         <Services locale={locale} ov={ov} />
+        <LaunchPackage locale={locale} />
         <Work locale={locale} ov={ov} extra={cms.work} />
         <Process locale={locale} ov={ov} />
-        <Impact locale={locale} ov={ov} />
-        <Journal locale={locale} ov={ov} extra={cms.journal} />
         <Contact locale={locale} ov={ov} />
       </main>
       <Footer locale={locale} ov={ov} />

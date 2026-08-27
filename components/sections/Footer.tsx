@@ -3,10 +3,18 @@ import { Locale, tHtml, NAV_LABELS } from '@/content/site';
 import { Mixed } from '@/lib/Mixed';
 
 const CONNECT = [
-  { label: 'Instagram', href: '#' },
-  { label: 'LinkedIn', href: '#' },
-  { label: 'Behance', href: '#' },
-  { label: 'hello@athrbrands.sa', href: 'mailto:hello@athrbrands.sa' },
+  {
+    label: { en: 'WhatsApp', ar: 'واتساب' },
+    href: 'https://wa.me/966599444486',
+  },
+  {
+    label: { en: 'LinkedIn', ar: 'لينكدإن' },
+    href: 'https://www.linkedin.com/in/sami-alaoufi',
+  },
+  {
+    label: { en: 'admin@atharbrands.com', ar: 'admin@atharbrands.com' },
+    href: 'mailto:admin@atharbrands.com',
+  },
 ];
 
 const DISALLOWED_TAGS = /<(?!\/?(em|br|span)\b)[^>]*>/gi;
@@ -75,8 +83,8 @@ export function Footer({ locale, ov }: { locale: Locale; ov?: Record<string, str
             <ul>
               <li><a href="#philosophy">{nav.philosophy}</a></li>
               <li><a href="#services">{nav.services}</a></li>
+              <li><a href="#launch-package">{nav.package}</a></li>
               <li><a href="#work">{nav.work}</a></li>
-              <li><a href="#journal">{nav.journal}</a></li>
               <li><a href="#contact">{nav.contact}</a></li>
             </ul>
           </div>
@@ -84,8 +92,14 @@ export function Footer({ locale, ov }: { locale: Locale; ov?: Record<string, str
             <Mixed as="h4" text={ar ? 'تواصل' : 'Connect'} />
             <ul>
               {CONNECT.map((c) => (
-                <li key={c.label}>
-                  <a href={c.href}>{c.label}</a>
+                <li key={c.href}>
+                  <a
+                    href={c.href}
+                    target={c.href.startsWith('http') ? '_blank' : undefined}
+                    rel={c.href.startsWith('http') ? 'noreferrer' : undefined}
+                  >
+                    {ar ? c.label.ar : c.label.en}
+                  </a>
                 </li>
               ))}
             </ul>

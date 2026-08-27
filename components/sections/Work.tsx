@@ -14,27 +14,6 @@ const DEFAULT_WORK = [
     year: '2025',
     image: '/assets/aura-featured.png',
   },
-  {
-    cat: { en: 'Naming · Fragrance', ar: 'تسمية · عطور' },
-    name: 'Rimal Atelier',
-    ar: 'أتيليه رمال',
-    year: '2025',
-    image: null,
-  },
-  {
-    cat: { en: 'Strategy · Investment', ar: 'استراتيجية · استثمار' },
-    name: 'Wathiq Capital',
-    ar: 'واثق كابيتال',
-    year: '2024',
-    image: null,
-  },
-  {
-    cat: { en: 'Spatial · Retail', ar: 'مكاني · تجزئة' },
-    name: 'Dar Al Qimah',
-    ar: 'دار القيمة',
-    year: '2024',
-    image: null,
-  },
 ] as const;
 
 interface WorkProps {
@@ -74,7 +53,7 @@ export function Work({ locale, ov, extra = [] }: WorkProps) {
           </div>
           <Reveal as="p" delay={2} className="meta" dangerouslySetInnerHTML={html('work_meta')} />
         </div>
-        <div className="work-grid">
+        <div className={`work-grid ${cards.length === 1 ? 'single' : ''}`}>
           {cards.map((c, i) => {
             const inner = (
               <div className="work-thumb">
