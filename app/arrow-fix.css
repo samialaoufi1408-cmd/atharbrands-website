@@ -1,0 +1,54 @@
+/*
+ * ATHRBRANDS V4 link-arrow treatment.
+ * The source component intentionally keeps a text fallback, but this stylesheet
+ * hides that glyph and draws the arrow with CSS so iOS cannot convert it into
+ * a blue emoji.
+ */
+a > span[aria-hidden='true'] {
+  position: relative;
+  display: inline-block;
+  width: 1.35rem;
+  height: 1.35rem;
+  flex: 0 0 1.35rem;
+  overflow: visible;
+  color: currentColor;
+  font-size: 0 !important;
+  line-height: 0 !important;
+  transform: translateZ(0);
+  transition: transform 220ms ease;
+}
+
+a > span[aria-hidden='true']::before {
+  content: '';
+  position: absolute;
+  left: 0.2rem;
+  bottom: 0.28rem;
+  width: 0.92rem;
+  height: 1.5px;
+  border-radius: 999px;
+  background: currentColor;
+  transform: rotate(-45deg);
+  transform-origin: left center;
+}
+
+a > span[aria-hidden='true']::after {
+  content: '';
+  position: absolute;
+  top: 0.18rem;
+  right: 0.18rem;
+  width: 0.52rem;
+  height: 0.52rem;
+  border-top: 1.5px solid currentColor;
+  border-right: 1.5px solid currentColor;
+}
+
+a:hover > span[aria-hidden='true'],
+a:focus-visible > span[aria-hidden='true'] {
+  transform: translate(2px, -2px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  a > span[aria-hidden='true'] {
+    transition: none;
+  }
+}
