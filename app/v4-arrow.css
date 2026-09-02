@@ -1,0 +1,81 @@
+/*
+ * ATHRBRANDS V4 link arrow.
+ * Drawn entirely with CSS so iOS and Safari cannot substitute the source
+ * character with a blue emoji. This applies to every Arrow component used
+ * in the header, hero, project links and final call to action.
+ */
+html body a > span[aria-hidden="true"] {
+  position: relative;
+  display: inline-block;
+  flex: 0 0 24px;
+  width: 24px;
+  height: 24px;
+  overflow: visible;
+  color: currentColor;
+  font-size: 0 !important;
+  line-height: 0 !important;
+  text-indent: -9999px;
+  transform: translate3d(0, 0, 0);
+  transition: transform 220ms ease;
+}
+
+html body a > span[aria-hidden="true"]::before {
+  content: "";
+  position: absolute;
+  left: 3px;
+  top: 11px;
+  width: 18px;
+  height: 1.5px;
+  border-radius: 999px;
+  background: currentColor;
+  transform: rotate(-45deg);
+  transform-origin: center;
+}
+
+html body a > span[aria-hidden="true"]::after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  right: 2px;
+  width: 9px;
+  height: 9px;
+  border-top: 1.5px solid currentColor;
+  border-right: 1.5px solid currentColor;
+}
+
+html body a:hover > span[aria-hidden="true"],
+html body a:focus-visible > span[aria-hidden="true"] {
+  transform: translate3d(2px, -2px, 0);
+}
+
+/*
+ * WIZAN portfolio artwork.
+ * This replaces the earlier placeholder composition with an artwork built
+ * directly from the approved 59-page WIZAN case study: the open wellness
+ * indicator, approved palette, digital app, report and membership system.
+ */
+html body [class*="wizanArt"] {
+  background-color: #0F1F1D !important;
+  background-image: url('/assets/wizan-case-study-v2.svg') !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  background-size: cover !important;
+  box-shadow: 0 28px 80px rgba(15, 31, 29, 0.2) !important;
+}
+
+html body [class*="wizanArt"] > * {
+  display: none !important;
+}
+
+@media (max-width: 760px) {
+  html body [class*="wizanArt"] {
+    background-size: auto 100% !important;
+    background-position: center !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html body a > span[aria-hidden="true"] {
+    transition: none;
+  }
+}

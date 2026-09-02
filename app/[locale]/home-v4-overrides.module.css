@@ -1,0 +1,141 @@
+.scope :global([class*="StudioHomeV4_projectList__"]) {
+  gap: clamp(140px, 16vw, 240px) !important;
+}
+
+.scope :global([class*="StudioHomeV4_project__"]) {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
+  gap: clamp(42px, 5vw, 72px) !important;
+  padding-top: clamp(42px, 5vw, 72px);
+  border-top: 1px solid rgba(15, 17, 19, 0.14);
+}
+
+.scope :global([class*="StudioHomeV4_projectCopy__"]) {
+  order: 1 !important;
+  width: min(100%, 1080px);
+  align-self: flex-start !important;
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 0.45fr);
+  column-gap: clamp(42px, 7vw, 104px);
+  align-items: start;
+}
+
+.scope :global([class*="StudioHomeV4_projectVisual__"]) {
+  order: 2 !important;
+  width: 100%;
+}
+
+.scope :global([class*="StudioHomeV4_projectTopline__"]) {
+  grid-column: 1 / -1;
+  margin: 0 0 32px !important;
+  padding-top: 0 !important;
+  border-top: 0 !important;
+}
+
+.scope :global([class*="StudioHomeV4_projectSector__"]),
+.scope :global([class*="StudioHomeV4_projectCopy__"] > h3),
+.scope :global([class*="StudioHomeV4_projectScope__"]),
+.scope :global([class*="StudioHomeV4_projectDescription__"]),
+.scope :global([class*="StudioHomeV4_projectLink__"]) {
+  grid-column: 1;
+}
+
+.scope :global([class*="StudioHomeV4_projectCopy__"] > h3) {
+  font-size: clamp(50px, 5.2vw, 82px) !important;
+}
+
+.scope :global([class*="StudioHomeV4_projectIdea__"]) {
+  grid-column: 2;
+  grid-row: 2 / 6;
+  margin-top: 0 !important;
+}
+
+.scope :global([class*="StudioHomeV4_projectDescription__"]) {
+  max-width: 760px;
+  font-size: 16px !important;
+  line-height: 1.95 !important;
+}
+
+.scope :global([class*="StudioHomeV4_caseArt__"]) {
+  aspect-ratio: 1.65 / 1 !important;
+  box-shadow: 0 30px 90px rgba(38, 29, 20, 0.14) !important;
+}
+
+/* Prevent iOS from rendering the arrow as a blue emoji. */
+.scope :global([class*="StudioHomeV4_navCta__"] > span),
+.scope :global([class*="StudioHomeV4_primaryButton__"] > span),
+.scope :global([class*="StudioHomeV4_projectLink__"] > span),
+.scope :global([class*="StudioHomeV4_approachPreview__"] a > span) {
+  position: relative;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  flex: 0 0 16px;
+  overflow: hidden;
+  color: currentColor;
+  font-size: 0 !important;
+  line-height: 0;
+}
+
+.scope :global([class*="StudioHomeV4_navCta__"] > span)::before,
+.scope :global([class*="StudioHomeV4_primaryButton__"] > span)::before,
+.scope :global([class*="StudioHomeV4_projectLink__"] > span)::before,
+.scope :global([class*="StudioHomeV4_approachPreview__"] a > span)::before {
+  content: '';
+  position: absolute;
+  width: 13px;
+  height: 1px;
+  top: 8px;
+  left: 1px;
+  background: currentColor;
+  transform: rotate(-45deg);
+  transform-origin: center;
+}
+
+.scope :global([class*="StudioHomeV4_navCta__"] > span)::after,
+.scope :global([class*="StudioHomeV4_primaryButton__"] > span)::after,
+.scope :global([class*="StudioHomeV4_projectLink__"] > span)::after,
+.scope :global([class*="StudioHomeV4_approachPreview__"] a > span)::after {
+  content: '';
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  top: 1px;
+  right: 1px;
+  border-top: 1px solid currentColor;
+  border-right: 1px solid currentColor;
+}
+
+@media (max-width: 760px) {
+  .scope :global([class*="StudioHomeV4_projectList__"]) {
+    gap: 124px !important;
+  }
+
+  .scope :global([class*="StudioHomeV4_project__"]) {
+    gap: 32px !important;
+    padding-top: 38px;
+  }
+
+  .scope :global([class*="StudioHomeV4_projectCopy__"]) {
+    width: 100%;
+    display: flex !important;
+    flex-direction: column;
+  }
+
+  .scope :global([class*="StudioHomeV4_projectTopline__"]) {
+    margin-bottom: 24px !important;
+  }
+
+  .scope :global([class*="StudioHomeV4_projectIdea__"]) {
+    margin-top: 30px !important;
+  }
+
+  .scope :global([class*="StudioHomeV4_projectCopy__"] > h3) {
+    font-size: 48px !important;
+  }
+
+  .scope :global([class*="StudioHomeV4_caseArt__"]) {
+    aspect-ratio: 0.92 / 1 !important;
+  }
+}
