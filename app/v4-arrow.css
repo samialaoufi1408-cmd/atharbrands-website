@@ -1,0 +1,50 @@
+/* V4 CTA arrow
+   Drawn with CSS so iOS cannot substitute the Unicode arrow with an emoji. */
+html body a[href="#work"] > span[aria-hidden="true"] {
+  position: relative;
+  display: inline-block;
+  flex: 0 0 24px;
+  width: 24px;
+  height: 24px;
+  overflow: visible;
+  color: currentColor;
+  font-size: 0;
+  line-height: 0;
+  transform: translate3d(0, 0, 0);
+  transition: transform 220ms ease;
+}
+
+html body a[href="#work"] > span[aria-hidden="true"]::before {
+  content: "";
+  position: absolute;
+  left: 3px;
+  top: 11px;
+  width: 18px;
+  height: 1.5px;
+  border-radius: 999px;
+  background: currentColor;
+  transform: rotate(-45deg);
+  transform-origin: center;
+}
+
+html body a[href="#work"] > span[aria-hidden="true"]::after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  right: 2px;
+  width: 9px;
+  height: 9px;
+  border-top: 1.5px solid currentColor;
+  border-right: 1.5px solid currentColor;
+}
+
+html body a[href="#work"]:hover > span[aria-hidden="true"],
+html body a[href="#work"]:focus-visible > span[aria-hidden="true"] {
+  transform: translate3d(2px, -2px, 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html body a[href="#work"] > span[aria-hidden="true"] {
+    transition: none;
+  }
+}
