@@ -3,6 +3,7 @@ import { locales, Locale } from '@/content/site';
 import { LightboxProvider } from '@/components/fx/Lightbox';
 import { LightboxRoot } from '@/components/fx/Lightbox';
 import '../globals.css';
+import '../v4-arrow.css';
 
 export async function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
