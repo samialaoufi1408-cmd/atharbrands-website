@@ -1,0 +1,388 @@
+import Link from 'next/link';
+import { Locale } from '@/content/site';
+import { Seal } from '@/components/brand/Seal';
+import styles from './StudioHomeV4.module.css';
+
+interface StudioHomeV4Props {
+  locale: Locale;
+}
+
+const COPY = {
+  ar: {
+    nav: {
+      work: 'الأعمال',
+      approach: 'المنهج',
+      services: 'الخدمات',
+      start: 'ابدأ مشروعك',
+    },
+    hero: {
+      kicker: 'استوديو سعودي لاستراتيجية العلامة وتصميم الهوية البصرية',
+      lineOne: 'نصنع علاماتٍ',
+      lineTwo: 'تُعرَف قبل أن تُقرأ.',
+      body: 'نحوّل الفكرة إلى نظام بصري واضح ومتماسك؛ من التموضع والتسمية إلى الهوية والتطبيق.',
+      primary: 'استكشف الأعمال',
+      secondary: 'ابدأ مشروعك',
+      proof: 'استراتيجية · هوية · تجربة',
+      note: 'هوية تُرى. أثرٌ يبقى.',
+    },
+    work: {
+      eyebrow: 'أعمال مختارة',
+      title: 'ثلاثة مشاريع، وثلاث طرق مختلفة لبناء المعنى.',
+      intro: 'لا نعرض شعارًا منفصلًا؛ بل نعرض الفكرة التي قادته، والنظام الذي يحميه، والتجربة التي تمنحه قيمة.',
+      actual: 'مشروع الاستوديو',
+      concept: 'مشروع تصوري من ATHRBRANDS',
+      explore: 'استكشف ملامح المشروع',
+      projects: {
+        athr: {
+          sector: 'استوديو صناعة هويات بصرية',
+          name: 'ATHRBRANDS',
+          scope: 'الاستراتيجية · الهوية اللفظية · النظام البصري · التجربة الرقمية',
+          idea: 'الأثر الذي يبقى',
+          description: 'بناء هوية الاستوديو من جوهر الفكرة إلى نظام يضبط كل نقطة تواصل، ويمنح العلامة حضورًا هادئًا وواثقًا.',
+        },
+        qira: {
+          sector: 'ضيافة تراثية معاصرة',
+          name: 'قِرَى · QIRĀ',
+          scope: 'التموضع · التسمية · الهوية · تجربة المكان',
+          idea: 'العتبة',
+          description: 'هوية تستلهم لحظة الانتقال من الخارج إلى الداخل، وتستحضر ذاكرة المكان دون الوقوع في الرموز التراثية المتوقعة.',
+        },
+        wizan: {
+          sector: 'عافية وقائية رقمية',
+          name: 'وِزان · WIZAN',
+          scope: 'الاستراتيجية · الهوية · البيانات · المنتج الرقمي',
+          idea: 'الاتزان في حركة',
+          description: 'نظام بصري يجمع الطمأنينة والدقة، ويحوّل بيانات العافية إلى تجربة إنسانية واضحة وقابلة للاستخدام.',
+        },
+      },
+    },
+    close: {
+      label: 'المرحلة الأولى من الموقع الجديد',
+      title: 'هذه ليست زينة للموقع؛ بل طريقة أوضح لشرح قيمة الاستوديو.',
+      body: 'بعد اعتماد هذا الاتجاه، نكمل المنهج والخدمات وصفحات دراسات الحالة ونموذج بدء المشروع بالنظام نفسه.',
+      action: 'ناقش مشروعك معنا',
+    },
+    footer: 'القصيم، المملكة العربية السعودية · نخدم العلامات في المملكة والخليج',
+  },
+  en: {
+    nav: {
+      work: 'Work',
+      approach: 'Approach',
+      services: 'Services',
+      start: 'Start a project',
+    },
+    hero: {
+      kicker: 'Saudi studio for brand strategy and visual identity',
+      lineOne: 'We build brands',
+      lineTwo: 'recognized before they are read.',
+      body: 'We turn ideas into clear, coherent visual systems—from positioning and naming to identity and application.',
+      primary: 'Explore selected work',
+      secondary: 'Start a project',
+      proof: 'Strategy · Identity · Experience',
+      note: 'Seen as an identity. Remembered as an impact.',
+    },
+    work: {
+      eyebrow: 'Selected work',
+      title: 'Three projects. Three distinct ways to build meaning.',
+      intro: 'We do not present a logo in isolation. We show the idea that shaped it, the system that protects it and the experience that gives it value.',
+      actual: 'Studio project',
+      concept: 'Concept project by ATHRBRANDS',
+      explore: 'Explore the project direction',
+      projects: {
+        athr: {
+          sector: 'Brand identity studio',
+          name: 'ATHRBRANDS',
+          scope: 'Strategy · Verbal identity · Visual system · Digital experience',
+          idea: 'The impact that remains',
+          description: 'The studio identity built from its strategic core into a coherent system that brings quiet confidence to every brand touchpoint.',
+        },
+        qira: {
+          sector: 'Contemporary heritage hospitality',
+          name: 'QIRĀ',
+          scope: 'Positioning · Naming · Identity · Place experience',
+          idea: 'The threshold',
+          description: 'An identity inspired by the transition from outside to inside, carrying the memory of place without relying on predictable heritage symbols.',
+        },
+        wizan: {
+          sector: 'Preventive digital wellness',
+          name: 'WIZAN',
+          scope: 'Strategy · Identity · Data · Digital product',
+          idea: 'Balance in motion',
+          description: 'A visual system that brings reassurance and precision together, turning wellbeing data into a clear human experience.',
+        },
+      },
+    },
+    close: {
+      label: 'Phase one of the new website',
+      title: 'This is not decoration. It is a clearer way to communicate the studio’s value.',
+      body: 'Once this direction is approved, the approach, services, full case studies and project enquiry will follow the same system.',
+      action: 'Discuss your project',
+    },
+    footer: 'Al Qassim, Saudi Arabia · Working with brands across Saudi Arabia and the GCC',
+  },
+} as const;
+
+function Arrow() {
+  return <span aria-hidden="true">↗</span>;
+}
+
+function QiraMark({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 240 240" aria-label="QIRĀ brand mark" role="img">
+      <g fill="none" stroke="currentColor" strokeWidth="10" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="45" y="60" width="145" height="145" rx="28" />
+        <path d="M155 170 L205 220" />
+      </g>
+      <circle cx="98" cy="30" r="7" fill="currentColor" />
+      <circle cx="140" cy="30" r="7" fill="currentColor" />
+    </svg>
+  );
+}
+
+function WizanMark({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 512 512" aria-label="WIZAN brand mark" role="img">
+      <path d="M 184.15 410.07 A 170 170 0 1 1 327.85 410.07" fill="none" stroke="currentColor" strokeWidth="34" strokeLinecap="round" />
+      <path d="M 208.67 357.51 A 112 112 0 0 1 208.67 154.49" fill="none" stroke="#91A79D" strokeWidth="34" strokeLinecap="round" />
+      <path d="M 303.33 154.49 A 112 112 0 0 1 208.67 357.51" fill="none" stroke="#DD776A" strokeWidth="34" strokeLinecap="round" />
+      <circle cx="256" cy="256" r="26" fill="currentColor" />
+      <circle cx="365" cy="118" r="14" fill="#6087A0" />
+    </svg>
+  );
+}
+
+function AthrArt() {
+  return (
+    <div className={`${styles.caseArt} ${styles.athrArt}`} aria-hidden="true">
+      <div className={styles.athrCover}>
+        <Seal variant="full" idSuffix="v4-work-athr" className={styles.coverSeal} />
+        <span className={styles.coverEyebrow}>BRAND STRATEGY &amp; IDENTITY</span>
+        <strong>دراسة الهوية<br />الاستراتيجية والبصرية</strong>
+        <span className={styles.coverName}>ATHRBRANDS</span>
+        <small>هويات تترك أثرًا</small>
+      </div>
+      <div className={`${styles.systemSheet} ${styles.athrLogoSheet}`}>
+        <span>قراءة في الرمز المعتمد</span>
+        <Seal variant="full" idSuffix="v4-work-athr-small" className={styles.sheetSeal} />
+        <b>الأثر · الاتزان · الدقة</b>
+      </div>
+      <div className={`${styles.systemSheet} ${styles.athrPaletteSheet}`}>
+        <span>لوحة الألوان المعتمدة</span>
+        <div className={styles.swatches}>
+          <i style={{ background: '#161616' }} />
+          <i style={{ background: '#B69A70' }} />
+          <i style={{ background: '#F5F0E8' }} />
+          <i style={{ background: '#C8BFB2' }} />
+          <i style={{ background: '#8D7354' }} />
+        </div>
+        <b>فحمي · ذهبي · عاجي</b>
+      </div>
+      <div className={`${styles.systemSheet} ${styles.athrDigitalSheet}`}>
+        <span>التجربة الرقمية</span>
+        <div className={styles.browserMock}>
+          <Seal variant="mono" idSuffix="v4-work-athr-browser" className={styles.browserSeal} />
+          <p>نحوّل الفكرة إلى حضور بصري يترك أثرًا.</p>
+          <em>ابدأ مشروعك</em>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function QiraArt() {
+  return (
+    <div className={`${styles.caseArt} ${styles.qiraArt}`} aria-hidden="true">
+      <div className={styles.qiraCover}>
+        <QiraMark className={styles.qiraMarkLarge} />
+        <span>قِرَى</span>
+        <strong>QIRĀ</strong>
+        <small>ضيافة تنتمي إلى المكان.</small>
+      </div>
+      <div className={styles.qiraConcept}>
+        <span>THE THRESHOLD</span>
+        <div className={styles.thresholdSymbol}><i /></div>
+        <strong>الفكرة: العتبة</strong>
+        <p>لحظة الانتقال من الخارج إلى الداخل، ومن المكان إلى الألفة.</p>
+      </div>
+      <div className={styles.qiraMaterials}>
+        <span>ألوان من المكان، لا عنه</span>
+        <div className={styles.qiraSwatches}>
+          <i style={{ background: '#171512' }} />
+          <i style={{ background: '#F2EEE7' }} />
+          <i style={{ background: '#8A4B38' }} />
+          <i style={{ background: '#4B594E' }} />
+          <i style={{ background: '#B28D59' }} />
+        </div>
+      </div>
+      <div className={styles.qiraApplications}>
+        <div className={styles.qiraCardDark}>
+          <QiraMark />
+          <b>QIRĀ</b>
+        </div>
+        <div className={styles.qiraCardLight}>
+          <QiraMark />
+          <b>قِرَى</b>
+        </div>
+        <div className={styles.qiraPhone}>
+          <QiraMark />
+          <span>اختر بيتك</span>
+          <i /><i /><i />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function WizanArt() {
+  return (
+    <div className={`${styles.caseArt} ${styles.wizanArt}`} aria-hidden="true">
+      <div className={styles.wizanCover}>
+        <WizanMark className={styles.wizanMarkLarge} />
+        <span>وِزان</span>
+        <strong>WIZAN</strong>
+        <small>عافية تُقاس. حياة تتوازن.</small>
+      </div>
+      <div className={styles.wizanGeometry}>
+        <span>بناء العلامة</span>
+        <WizanMark className={styles.wizanGeometryMark} />
+        <div className={styles.gridTicks}><i /><i /><i /><i /></div>
+      </div>
+      <div className={styles.wizanApp}>
+        <div className={styles.phoneTop}><WizanMark /><b>WIZAN</b></div>
+        <small>صباح الخير، نورة</small>
+        <strong>78</strong>
+        <em>مؤشر اليوم</em>
+        <div className={styles.metricBars}>
+          <i style={{ width: '82%' }} /><i style={{ width: '74%' }} /><i style={{ width: '79%' }} /><i style={{ width: '65%' }} />
+        </div>
+      </div>
+      <div className={styles.wizanReport}>
+        <span>تقرير العافية</span>
+        <div className={styles.reportCards}><i /><i /><i /></div>
+        <p>بيانات واضحة، وخطوة تالية قابلة للتنفيذ.</p>
+      </div>
+    </div>
+  );
+}
+
+export function StudioHomeV4({ locale }: StudioHomeV4Props) {
+  const ar = locale === 'ar';
+  const c = COPY[locale];
+
+  const projects = [
+    { key: 'athr', copy: c.work.projects.athr, tag: c.work.actual, art: <AthrArt /> },
+    { key: 'qira', copy: c.work.projects.qira, tag: c.work.concept, art: <QiraArt /> },
+    { key: 'wizan', copy: c.work.projects.wizan, tag: c.work.concept, art: <WizanArt /> },
+  ] as const;
+
+  return (
+    <div className={`${styles.site} ${ar ? styles.ar : styles.en}`}>
+      <header className={styles.nav}>
+        <a className={styles.brand} href="#top" aria-label="ATHRBRANDS home">
+          <Seal variant="full" idSuffix="v4-nav" className={styles.navSeal} />
+          <span>ATHRBRANDS</span>
+        </a>
+
+        <nav className={styles.desktopNav} aria-label={ar ? 'التنقل الرئيسي' : 'Primary navigation'}>
+          <a href="#work">{c.nav.work}</a>
+          <a href="#approach">{c.nav.approach}</a>
+          <a href="#services">{c.nav.services}</a>
+        </nav>
+
+        <div className={styles.navActions}>
+          <Link href={ar ? '/en' : '/ar'} className={styles.language}>{ar ? 'EN' : 'AR'}</Link>
+          <a href="#contact" className={styles.navCta}>{c.nav.start}<Arrow /></a>
+        </div>
+
+        <details className={styles.mobileMenu}>
+          <summary aria-label={ar ? 'فتح القائمة' : 'Open menu'}><i /><i /></summary>
+          <div>
+            <a href="#work">{c.nav.work}</a>
+            <a href="#approach">{c.nav.approach}</a>
+            <a href="#services">{c.nav.services}</a>
+            <a href="#contact">{c.nav.start}</a>
+          </div>
+        </details>
+      </header>
+
+      <main id="top">
+        <section className={styles.hero}>
+          <div className={styles.heroGrid} aria-hidden="true" />
+          <div className={styles.heroCopy}>
+            <p className={styles.kicker}>{c.hero.kicker}</p>
+            <h1>
+              <span>{c.hero.lineOne}</span>
+              <em>{c.hero.lineTwo}</em>
+            </h1>
+            <p className={styles.heroBody}>{c.hero.body}</p>
+            <div className={styles.heroActions}>
+              <a className={styles.primaryButton} href="#work">{c.hero.primary}<Arrow /></a>
+              <a className={styles.secondaryButton} href="#contact">{c.hero.secondary}</a>
+            </div>
+            <div className={styles.heroProof}>
+              <span>{c.hero.proof}</span>
+              <i />
+            </div>
+          </div>
+
+          <div className={styles.heroIdentity} aria-hidden="true">
+            <div className={styles.heroOrbit} />
+            <Seal variant="full" idSuffix="v4-hero" className={styles.heroSeal} />
+            <p>{c.hero.note}</p>
+          </div>
+        </section>
+
+        <section className={styles.work} id="work">
+          <div className={styles.sectionIntro}>
+            <p>{c.work.eyebrow}</p>
+            <h2>{c.work.title}</h2>
+            <div><span />{c.work.intro}</div>
+          </div>
+
+          <div className={styles.projectList}>
+            {projects.map((project, index) => (
+              <article className={styles.project} key={project.key}>
+                <div className={styles.projectVisual}>{project.art}</div>
+                <div className={styles.projectCopy}>
+                  <div className={styles.projectTopline}>
+                    <span>0{index + 1}</span>
+                    <small>{project.tag}</small>
+                  </div>
+                  <p className={styles.projectSector}>{project.copy.sector}</p>
+                  <h3>{project.copy.name}</h3>
+                  <p className={styles.projectScope}>{project.copy.scope}</p>
+                  <div className={styles.projectIdea}>
+                    <span>{ar ? 'الفكرة الإبداعية' : 'Creative idea'}</span>
+                    <b>{project.copy.idea}</b>
+                  </div>
+                  <p className={styles.projectDescription}>{project.copy.description}</p>
+                  <a href="#contact" className={styles.projectLink}>{c.work.explore}<Arrow /></a>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className={styles.approachPreview} id="approach">
+          <div>
+            <p>{c.close.label}</p>
+            <h2>{c.close.title}</h2>
+          </div>
+          <div>
+            <p>{c.close.body}</p>
+            <a href="mailto:admin@atharbrands.com" id="contact">{c.close.action}<Arrow /></a>
+          </div>
+        </section>
+      </main>
+
+      <footer className={styles.footer} id="services">
+        <div className={styles.footerBrand}>
+          <Seal variant="mono" idSuffix="v4-footer" className={styles.footerSeal} />
+          <span>ATHRBRANDS</span>
+        </div>
+        <p>{c.footer}</p>
+        <a href="mailto:admin@atharbrands.com">admin@atharbrands.com</a>
+      </footer>
+    </div>
+  );
+}
