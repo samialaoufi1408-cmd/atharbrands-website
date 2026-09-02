@@ -48,6 +48,32 @@ html body a:focus-visible > span[aria-hidden="true"] {
   transform: translate3d(2px, -2px, 0);
 }
 
+/*
+ * WIZAN portfolio artwork.
+ * This replaces the earlier placeholder composition with an artwork built
+ * directly from the approved 59-page WIZAN case study: the open wellness
+ * indicator, approved palette, digital app, report and membership system.
+ */
+html body [class*="wizanArt"] {
+  background-color: #0F1F1D !important;
+  background-image: url('/assets/wizan-case-study-v2.svg') !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  background-size: cover !important;
+  box-shadow: 0 28px 80px rgba(15, 31, 29, 0.2) !important;
+}
+
+html body [class*="wizanArt"] > * {
+  display: none !important;
+}
+
+@media (max-width: 760px) {
+  html body [class*="wizanArt"] {
+    background-size: auto 100% !important;
+    background-position: center !important;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html body a > span[aria-hidden="true"] {
     transition: none;
