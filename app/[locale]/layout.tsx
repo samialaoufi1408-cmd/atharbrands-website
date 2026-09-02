@@ -5,7 +5,7 @@ import { LightboxRoot } from '@/components/fx/Lightbox';
 import '../globals.css';
 
 export async function generateStaticParams() {
-  return locales.map((l) => ({ locale: l }));
+  return locales.map((locale) => ({ locale }));
 }
 
 export function htmlAttrs(locale: Locale) {
@@ -18,10 +18,12 @@ export function generateMetadata({ params }: { params: { locale: Locale } }): Me
   const ar = params.locale === 'ar';
   return {
     metadataBase: new URL('https://athrbrands.sa'),
-    title: ar ? 'أثر — إرث في كل أثر' : 'ATHR — Legacy in Every Impact',
+    title: ar
+      ? 'ATHRBRANDS | استراتيجية وتصميم الهويات البصرية'
+      : 'ATHRBRANDS | Brand Strategy & Visual Identity',
     description: ar
-      ? 'أثر بيت خبرة لبناء العلامات التجارية — هوياتٌ تُصاغ لتُذكر لأجيال.'
-      : 'ATHR is a luxury brand atelier — identities crafted to be remembered for generations.',
+      ? 'استوديو سعودي متخصص في استراتيجية العلامة وتصميم الهوية البصرية للعلامات الطموحة.'
+      : 'A Saudi studio specializing in brand strategy and visual identity systems for ambitious brands.',
     alternates: {
       canonical: `/${params.locale}`,
       languages: { en: '/en', ar: '/ar' },
@@ -29,7 +31,13 @@ export function generateMetadata({ params }: { params: { locale: Locale } }): Me
     openGraph: {
       type: 'website',
       locale: ar ? 'ar_SA' : 'en_US',
-      siteName: 'ATHR',
+      siteName: 'ATHRBRANDS',
+      title: ar
+        ? 'ATHRBRANDS | استراتيجية وتصميم الهويات البصرية'
+        : 'ATHRBRANDS | Brand Strategy & Visual Identity',
+      description: ar
+        ? 'نحوّل الفكرة إلى نظام بصري واضح ومتماسك، من التموضع إلى كل نقطة تواصل.'
+        : 'We turn ideas into clear, coherent visual systems—from positioning to every meaningful touchpoint.',
       images: ['/assets/aura-featured.png'],
     },
     icons: {
@@ -46,13 +54,14 @@ export default function LocaleLayout({
   children: React.ReactNode;
   params: { locale: Locale };
 }) {
-  const a = htmlAttrs(params.locale);
+  const attrs = htmlAttrs(params.locale);
   return (
-    <html lang={a.lang} dir={a.dir} className={a.className}>
+    <html lang={attrs.lang} dir={attrs.dir} className={attrs.className}>
       <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&family=Tajawal:wght@300;400;500;700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=IBM+Plex+Sans+Arabic:wght@300;400;500&family=Manrope:wght@300;400;500&family=Noto+Naskh+Arabic:wght@400;500;600&display=swap"
           rel="stylesheet"
         />
         <script
@@ -61,19 +70,19 @@ export default function LocaleLayout({
             __html: JSON.stringify({
               '@context': 'https://schema.org',
               '@type': 'ProfessionalService',
-              name: 'ATHR — أثر',
+              name: 'ATHRBRANDS',
+              alternateName: 'أثر لصناعة الهويات البصرية',
               url: 'https://athrbrands.sa',
               description:
                 params.locale === 'ar'
-                  ? 'أثر بيت خبرة لبناء العلامات التجارية'
-                  : 'ATHR luxury brand identity atelier',
+                  ? 'استوديو سعودي لاستراتيجية العلامة وتصميم الهوية البصرية'
+                  : 'Saudi brand strategy and visual identity studio',
               address: {
                 '@type': 'PostalAddress',
                 addressRegion: 'Al Qassim',
                 addressCountry: 'SA',
               },
-              areaServed: { '@type': 'Country', name: 'Saudi Arabia' },
-              telephone: '+966599444486',
+              areaServed: ['Saudi Arabia', 'GCC'],
               email: 'admin@atharbrands.com',
               sameAs: ['https://www.linkedin.com/in/sami-alaoufi'],
             }),
