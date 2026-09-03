@@ -4,6 +4,7 @@ import sumraCups from '@/lib/sumra-v2/cups';
 import sumraProducts from '@/lib/sumra-v2/products';
 import sumraBags from '@/lib/sumra-v2/bags';
 import styles from './sumra.module.css';
+import gallery from './sumra-gallery.module.css';
 
 type Props = { params: { locale: 'ar' | 'en' } };
 
@@ -84,14 +85,14 @@ export default function SumraCase({ params }: Props) {
           <h2>{ar ? 'المنتج يشرح النظام بنفسه.' : 'The product explains the system.'}</h2>
         </div>
 
-        <div className={styles.applicationGallery}>
-          <figure className={styles.applicationCups}>
+        <div className={gallery.gallery}>
+          <figure className={gallery.cups}>
             <img src={sumraCups} alt={ar ? 'أكواب قهوة سُمرة بألوان الهوية' : 'SUMRA branded coffee cups'} />
           </figure>
-          <figure className={styles.applicationProducts}>
+          <figure className={gallery.products}>
             <img src={sumraProducts} alt={ar ? 'أكياس وأكواب سُمرة ضمن بيئة المقهى' : 'SUMRA coffee bags and cups in the café'} />
           </figure>
-          <figure className={styles.applicationBags}>
+          <figure className={gallery.bags}>
             <img src={sumraBags} alt={ar ? 'أكياس قهوة سُمرة للتحميص الفاتح والغامق' : 'SUMRA light and dark roast coffee bags'} />
           </figure>
         </div>
