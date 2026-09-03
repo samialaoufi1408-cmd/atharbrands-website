@@ -5,8 +5,8 @@ import { createPortal } from 'react-dom';
 import { useEffect, useState } from 'react';
 import { Locale } from '@/content/site';
 
-const SUMRA_CUPS = '/assets/sumra/cups.svg';
-const SUMRA_FALLBACK = '/assets/sumra/full.svg';
+const SUMRA_CUPS = '/assets/sumra/cups.webp';
+const SUMRA_FALLBACK = '/assets/sumra/full.webp';
 
 export function SumraWorkInjector({ locale }: { locale: Locale }) {
   const [target, setTarget] = useState<Element | null>(null);
