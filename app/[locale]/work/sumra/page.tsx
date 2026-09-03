@@ -184,7 +184,7 @@ export default function SumraCase({ params }: Props) {
         <div className={galleryStyles.gallery}>
           <figure className={galleryStyles.galleryMain}>
             <img
-              src="/assets/sumra/full.svg"
+              src="/assets/sumra/full.webp"
               alt={
                 ar
                   ? 'أكياس وأكواب سُمرة بتطبيق الهوية البصرية'
@@ -197,7 +197,7 @@ export default function SumraCase({ params }: Props) {
 
           <figure className={galleryStyles.galleryTall}>
             <img
-              src="/assets/sumra/bags.svg"
+              src="/assets/sumra/bags.webp"
               alt={
                 ar
                   ? 'أكياس قهوة سُمرة للتحميص الفاتح والغامق'
@@ -210,7 +210,7 @@ export default function SumraCase({ params }: Props) {
 
           <figure className={galleryStyles.galleryWide}>
             <img
-              src="/assets/sumra/cups.svg"
+              src="/assets/sumra/cups.webp"
               alt={
                 ar
                   ? 'أكواب قهوة سُمرة باللونين الكريمي والبني'
