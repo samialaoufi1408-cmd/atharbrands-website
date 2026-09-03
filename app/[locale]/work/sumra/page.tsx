@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { Seal } from '@/components/brand/Seal';
 import styles from './sumra.module.css';
+import galleryStyles from './sumra-gallery.module.css';
 
 type Props = {
   params: {
@@ -173,15 +174,15 @@ export default function SumraCase({ params }: Props) {
               ? 'المنتج يشرح النظام بنفسه.'
               : 'The product explains the system.'}
           </h2>
-          <p className={styles.packIntro}>
+          <p className={galleryStyles.packIntro}>
             {ar
               ? 'تنتقل درجات التحميص من النظام البصري إلى أكياس القهوة والأكواب، فتظهر الفروق بوضوح من دون إضافة عناصر زخرفية جديدة.'
               : 'Roast levels move directly from the visual system to coffee bags and cups, making each difference clear without adding decorative elements.'}
           </p>
         </div>
 
-        <div className={styles.gallery}>
-          <figure className={styles.galleryMain}>
+        <div className={galleryStyles.gallery}>
+          <figure className={galleryStyles.galleryMain}>
             <img
               src="/assets/sumra/full.svg"
               alt={
@@ -194,7 +195,7 @@ export default function SumraCase({ params }: Props) {
             />
           </figure>
 
-          <figure className={styles.galleryTall}>
+          <figure className={galleryStyles.galleryTall}>
             <img
               src="/assets/sumra/bags.svg"
               alt={
@@ -207,7 +208,7 @@ export default function SumraCase({ params }: Props) {
             />
           </figure>
 
-          <figure className={styles.galleryWide}>
+          <figure className={galleryStyles.galleryWide}>
             <img
               src="/assets/sumra/cups.svg"
               alt={
