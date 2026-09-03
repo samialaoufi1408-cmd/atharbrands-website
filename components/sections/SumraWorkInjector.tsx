@@ -5,7 +5,8 @@ import { createPortal } from 'react-dom';
 import { useEffect, useState } from 'react';
 import { Locale } from '@/content/site';
 
-const SUMRA_CUPS = '/assets/sumra/sumra-cups.webp';
+const SUMRA_CUPS = '/assets/sumra/cups.svg';
+const SUMRA_FALLBACK = '/assets/sumra/full.svg';
 
 export function SumraWorkInjector({ locale }: { locale: Locale }) {
   const [target, setTarget] = useState<Element | null>(null);
@@ -53,6 +54,13 @@ export function SumraWorkInjector({ locale }: { locale: Locale }) {
                 ? 'تطبيقات هوية سُمرة على أكواب القهوة'
                 : 'SUMRA identity applied to coffee cups'
             }
+            loading="lazy"
+            decoding="async"
+            onError={(event) => {
+              if (!event.currentTarget.src.endsWith(SUMRA_FALLBACK)) {
+                event.currentTarget.src = SUMRA_FALLBACK;
+              }
+            }}
           />
         </div>
 
