@@ -1,3 +1,4 @@
+import type { CSSProperties } from 'react';
 import Link from 'next/link';
 import styles from './full-case-study-document.module.css';
 
@@ -28,7 +29,7 @@ export function FullCaseStudyDocument({
     <main
       className={styles.page}
       dir={ar ? 'rtl' : 'ltr'}
-      style={{ '--case-accent': accent } as React.CSSProperties}
+      style={{ '--case-accent': accent } as CSSProperties}
     >
       <header className={styles.header}>
         <Link href={`/${locale}#work`} className={styles.backLink}>
@@ -64,7 +65,10 @@ export function FullCaseStudyDocument({
         </div>
       </section>
 
-      <section className={styles.viewerSection} aria-label={ar ? `ملف ${title} الكامل` : `${title} full document`}>
+      <section
+        className={styles.viewerSection}
+        aria-label={ar ? `ملف ${title} الكامل` : `${title} full document`}
+      >
         <iframe
           className={styles.viewer}
           src={viewerSrc}
