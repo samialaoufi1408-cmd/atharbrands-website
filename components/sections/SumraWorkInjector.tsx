@@ -5,8 +5,8 @@ import { createPortal } from 'react-dom';
 import { useEffect, useState } from 'react';
 import { Locale } from '@/content/site';
 
-const SUMRA_CUPS = '/assets/sumra/cups.webp';
-const SUMRA_FALLBACK = '/assets/sumra/full.webp';
+const SUMRA_CUPS = '/assets/sumra/cups.svg?v=6';
+const SUMRA_FALLBACK = '/assets/sumra/full.svg?v=6';
 
 export function SumraWorkInjector({ locale }: { locale: Locale }) {
   const [target, setTarget] = useState<Element | null>(null);
@@ -54,11 +54,13 @@ export function SumraWorkInjector({ locale }: { locale: Locale }) {
                 ? 'تطبيقات هوية سُمرة على أكواب القهوة'
                 : 'SUMRA identity applied to coffee cups'
             }
-            loading="lazy"
             decoding="async"
+            fetchPriority="high"
             onError={(event) => {
-              if (!event.currentTarget.src.endsWith(SUMRA_FALLBACK)) {
-                event.currentTarget.src = SUMRA_FALLBACK;
+              const image = event.currentTarget;
+              if (!image.dataset.fallback) {
+                image.dataset.fallback = '1';
+                image.src = SUMRA_FALLBACK;
               }
             }}
           />
@@ -67,15 +69,11 @@ export function SumraWorkInjector({ locale }: { locale: Locale }) {
         <div className="sumraPortfolioCopy" dir={ar ? 'rtl' : 'ltr'}>
           <div className="sumraPortfolioTopline">
             <span>04</span>
-            <small>
-              {ar ? 'مشروع تصوري من ATHRBRANDS' : 'Concept project by ATHRBRANDS'}
-            </small>
+            <small>{ar ? 'مشروع تصوري من ATHRBRANDS' : 'Concept project by ATHRBRANDS'}</small>
           </div>
 
           <p className="sumraPortfolioSector">
-            {ar
-              ? 'محمصة ومقهى قهوة مختصة · الرياض'
-              : 'Specialty coffee roastery & café · Riyadh'}
+            {ar ? 'محمصة ومقهى قهوة مختصة · الرياض' : 'Specialty coffee roastery & café · Riyadh'}
           </p>
 
           <h3>{ar ? 'سُمرة' : 'SUMRA'}</h3>
@@ -178,7 +176,7 @@ export function SumraWorkInjector({ locale }: { locale: Locale }) {
 
         .sumraPortfolioImage {
           position: relative;
-          background: #e8d6be;
+          background: #dfcab0;
         }
 
         .sumraPortfolioImage img {
@@ -186,7 +184,7 @@ export function SumraWorkInjector({ locale }: { locale: Locale }) {
           width: 100%;
           height: 100%;
           object-fit: cover;
-          object-position: center 54%;
+          object-position: center 56%;
         }
 
         .sumraPortfolioCopy {
@@ -241,7 +239,6 @@ export function SumraWorkInjector({ locale }: { locale: Locale }) {
           #work [data-athr-work-grid="true"] {
             grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
           }
-
           #work [data-athr-work-grid="true"] > article > div:first-child {
             aspect-ratio: 4 / 3 !important;
           }
@@ -251,28 +248,23 @@ export function SumraWorkInjector({ locale }: { locale: Locale }) {
           #work[data-athr-work-section="true"] {
             padding-inline: 16px !important;
           }
-
           #work[data-athr-work-section="true"] > div:first-child {
             grid-template-columns: 1fr !important;
             gap: 22px !important;
             padding-block: 54px 30px !important;
           }
-
           #work[data-athr-work-section="true"] > div:first-child > h2 {
             font-size: clamp(58px, 19vw, 92px) !important;
           }
-
           #work [data-athr-work-grid="true"] {
             grid-template-columns: 1fr !important;
             gap: 22px !important;
           }
-
           #work [data-athr-work-grid="true"] > article > div:first-child {
             aspect-ratio: 4 / 3 !important;
           }
-
           .sumraPortfolioImage img {
-            object-position: center;
+            object-position: center 54%;
           }
         }
       `}</style>
