@@ -1,3 +1,7 @@
+import Image from 'next/image';
+import { caseMetadata } from '@/lib/case-metadata';
+import { ProjectContact } from '@/components/sections/ProjectContact';
+import type { Locale } from '@/content/site';
 import Link from 'next/link';
 import { Seal } from '@/components/brand/Seal';
 import styles from './sumra.module.css';
@@ -17,6 +21,10 @@ function SumraMark() {
       <i />
     </div>
   );
+}
+
+export function generateMetadata({ params }: { params: { locale: Locale } }) {
+  return caseMetadata(params.locale, 'sumra');
 }
 
 export default function SumraCase({ params }: Props) {
@@ -183,8 +191,9 @@ export default function SumraCase({ params }: Props) {
 
         <div className={galleryStyles.gallery}>
           <figure className={galleryStyles.galleryMain}>
-            <img
-              src="/assets/sumra/full.webp"
+            <Image
+              src="/assets/sumra/full.jpg"
+              width={1536} height={1024} sizes="(max-width: 760px) 100vw, 84vw"
               alt={
                 ar
                   ? 'أكياس وأكواب سُمرة بتطبيق الهوية البصرية'
@@ -196,8 +205,9 @@ export default function SumraCase({ params }: Props) {
           </figure>
 
           <figure className={galleryStyles.galleryTall}>
-            <img
-              src="/assets/sumra/bags.webp"
+            <Image
+              src="/assets/sumra/bags.jpg"
+              width={1122} height={1402} sizes="(max-width: 760px) 100vw, 42vw"
               alt={
                 ar
                   ? 'أكياس قهوة سُمرة للتحميص الفاتح والغامق'
@@ -209,8 +219,9 @@ export default function SumraCase({ params }: Props) {
           </figure>
 
           <figure className={galleryStyles.galleryWide}>
-            <img
-              src="/assets/sumra/cups.webp"
+            <Image
+              src="/assets/sumra/cups.jpg"
+              width={1536} height={1024} sizes="(max-width: 760px) 100vw, 42vw"
               alt={
                 ar
                   ? 'أكواب قهوة سُمرة باللونين الكريمي والبني'
@@ -233,6 +244,7 @@ export default function SumraCase({ params }: Props) {
           {ar ? 'العودة إلى الأعمال' : 'Back to selected work'}
         </Link>
       </section>
+    <ProjectContact locale={params.locale} project="SUMRA" />
     </main>
   );
 }

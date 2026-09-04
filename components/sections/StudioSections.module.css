@@ -1,0 +1,58 @@
+.services, .approach, .about, .contact {
+  padding: clamp(64px, 8vw, 112px) max(22px, calc((100vw - 1280px) / 2));
+  scroll-margin-top: 32px;
+}
+.services { background: #e5ddd1; color: #0f1113; }
+.approach, .contact { background: #0f1113; color: #f3efe7; }
+.about { background: #f1ece3; color: #0f1113; display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 6vw, 96px); }
+.eyebrow { font-size: 14px; margin: 0 0 18px; }
+.services h2, .approach h2, .about h2, .contact h2 { font-family: var(--font-display); font-size: clamp(34px, 4.3vw, 58px); font-weight: 400; line-height: 1.4; margin: 0; max-width: 850px; }
+.intro { font-size: 17px; line-height: 1.9; max-width: 740px; margin: 24px 0 36px; }
+.serviceGrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 36px; margin: 48px 0 32px; }
+.serviceGrid article { border-top: 1px solid rgba(15, 17, 19, .3); padding-top: 26px; }
+.number { font-family: Manrope, sans-serif; font-size: 14px; font-variant-numeric: tabular-nums; }
+.serviceGrid h3, .steps h3 { font-size: 24px; line-height: 1.6; font-weight: 500; margin: 16px 0 12px; }
+.serviceGrid p, .serviceGrid li, .steps p, .about p { font-size: 16px; line-height: 1.9; }
+.serviceGrid ul { padding-inline-start: 20px; margin: 20px 0; list-style: disc; }
+.serviceGrid li + li { margin-top: 8px; }
+.textLink { display: inline-block; font-size: 15px; border-bottom: 1px solid currentColor; padding-block: 8px; text-decoration: none; color: inherit; }
+.steps { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px 64px; list-style: none; padding: 0; margin: 48px 0 0; }
+.steps li { display: grid; grid-template-columns: 36px minmax(0, 1fr); gap: 20px; padding-top: 24px; border-top: 1px solid rgba(243, 239, 231, .2); }
+.steps .number { padding-top: 12px; color: #e0c28f; }
+.steps h3 { margin-top: 0; }
+.steps p, .contact .intro { color: #c8c5bf; margin-bottom: 0; }
+.about > div:last-child { align-self: center; }
+.contact { display: grid; grid-template-columns: .85fr 1fr; gap: clamp(40px, 8vw, 112px); }
+.contact .intro { margin-bottom: 32px; }
+.button { display: inline-flex; align-items: center; justify-content: center; gap: 12px; padding: 16px 24px; min-height: 52px; font: inherit; font-size: 16px; font-weight: 500; line-height: 1.5; border: 1px solid #c7a36d; border-radius: 2px; background: #c7a36d; color: #0f1113 !important; cursor: pointer; text-decoration: none; }
+.button:hover { background: #e0c28f; }
+.button:disabled { opacity: .65; cursor: wait; }
+.contactDetails { display: flex; align-items: flex-start; flex-direction: column; gap: 16px; margin-top: 30px; font-size: 15px; overflow-wrap: anywhere; }
+.form { display: grid; gap: 20px; min-width: 0; }
+.formRow { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.form label { display: grid; gap: 10px; font-size: 14px; }
+.form input, .form select, .form textarea { min-width: 0; width: 100%; box-sizing: border-box; min-height: 50px; padding: 12px 14px; font: inherit; font-size: 16px; color: #f3efe7; background: #191c1e; border: 1px solid #666968; border-radius: 2px; line-height: 1.6; }
+.form select { color-scheme: dark; }
+.form textarea { resize: vertical; }
+.formNote { font-size: 14px; color: #c8c5bf; line-height: 1.8; margin: 0; }
+.formStatus { min-height: 26px; font-size: 15px; line-height: 1.8; }
+.formStatus p { margin: 0; }
+.honeypot { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+.caseCta { padding: clamp(48px, 7vw, 96px) clamp(22px, 8vw, 130px); display: flex; align-items: center; justify-content: space-between; gap: 36px; background: #0f1113; color: #f3efe7; font-family: 'IBM Plex Sans Arabic', Manrope, sans-serif; }
+.caseCta:lang(en) { font-family: Manrope, sans-serif; }
+.caseCta h2 { margin: 0 0 16px; font-size: clamp(28px, 3.5vw, 44px); font-weight: 500; line-height: 1.5; }
+.caseCta p { font-size: 16px; line-height: 1.9; max-width: 600px; margin: 0; color: #c8c5bf; }
+.caseActions { display: flex; flex-direction: column; align-items: center; gap: 14px; flex-shrink: 0; }
+.floatingContact { position: fixed; inset-inline-end: 20px; bottom: max(20px, env(safe-area-inset-bottom)); z-index: 40; min-height: 48px; padding: 12px 22px; display: flex; align-items: center; justify-content: center; border-radius: 30px; background: #0f1113; color: #f3efe7; border: 1px solid #c7a36d; font: 500 15px/1.5 'IBM Plex Sans Arabic', Manrope, sans-serif; text-decoration: none; box-shadow: 0 6px 24px #0003; }
+.floatingContact:hover { background: #262a2c; }
+.services :focus-visible, .approach :focus-visible, .about :focus-visible, .contact :focus-visible, .caseCta :focus-visible, .floatingContact:focus-visible { outline: 3px solid #b58b4c; outline-offset: 5px; }
+@media (max-width: 760px) {
+  .serviceGrid, .steps, .about, .contact { grid-template-columns: 1fr; }
+  .serviceGrid { gap: 28px; }
+  .steps { gap: 28px; }
+  .formRow { grid-template-columns: 1fr; gap: 20px; }
+  .caseCta { flex-direction: column; align-items: stretch; }
+  .caseActions { align-items: stretch; text-align: center; }
+  .floatingContact { inset-inline-end: 16px; bottom: max(16px, env(safe-area-inset-bottom)); }
+}
+@media print { .floatingContact { display: none; } }
