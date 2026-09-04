@@ -1,7 +1,4 @@
 from pathlib import Path
-import base64
-import io
-import re
 from PIL import Image, ImageDraw, ImageFont, ImageFile
 from pypdf import PdfReader
 
@@ -44,21 +41,6 @@ def label(d, n, text, dark=False):
     color = CREAM if dark else ESPRESSO
     lat(d, (110,152), f"{n:02d}", 29, SAFFRON)
     rtl(d, (W-110,152), text, 32, color)
-def photo(path, box, bg="#EADCCA"):
-    x1,y1,x2,y2=box; canvas=Image.new("RGB",(x2-x1,y2-y1),bg)
-    try:
-        src=Image.open(path).convert("RGB")
-    except OSError:
-        svg=path.with_suffix(".svg").read_text(encoding="utf-8")
-        encoded=re.search(r"base64,([^\"]+)",svg).group(1)
-        encoded=re.sub(r"\[\.\.\.[^\]]*\]", "", encoded).replace("\n", "")
-        encoded=encoded.rstrip("=") + "=" * ((4-len(encoded.rstrip("="))%4)%4)
-        src=Image.open(io.BytesIO(base64.b64decode(encoded))).convert("RGB")
-    src.thumbnail((canvas.width-24,canvas.height-24),Image.Resampling.LANCZOS)
-    canvas.paste(src,((canvas.width-src.width)//2,(canvas.height-src.height)//2))
-    mask=Image.new("L",canvas.size); ImageDraw.Draw(mask).rounded_rectangle((0,0,canvas.width-1,canvas.height-1),26,fill=255)
-    return canvas,mask
-
 def applications(box, cups=False):
     x1,y1,x2,y2=box; cw,ch=x2-x1,y2-y1; canvas=Image.new("RGB",(cw,ch),"#EADCCA"); d=ImageDraw.Draw(canvas)
     if cups:
@@ -76,11 +58,6 @@ def applications(box, cups=False):
             lat(d,(x+int(cw*.11),int(ch*.72)),tag,int(cw*.011),ink,"ma")
     mask=Image.new("L",canvas.size); ImageDraw.Draw(mask).rounded_rectangle((0,0,cw-1,ch-1),26,fill=255)
     return canvas,mask
-
-def repair_site_assets():
-    full,_=applications((0,0,840,560)); full.save(ASSETS/"full.webp","WEBP",quality=92,method=6)
-    bags,_=applications((0,0,720,900)); bags.save(ASSETS/"bags.webp","WEBP",quality=92,method=6)
-    cups,_=applications((0,0,840,560),True); cups.save(ASSETS/"cups.webp","WEBP",quality=92,method=6)
 
 def pages():
     out=[]
@@ -122,10 +99,10 @@ def pages():
     footer(d,6); out.append(im)
 
     im,d=new("#E8DCCB"); label(d,6,"تطبيقات الهوية"); rtl(d,(W-110,355),"أكياس القهوة",84); pic,mask=applications((110,520,W-110,2110)); im.paste(pic,(110,520),mask); footer(d,7); out.append(im)
-    im,d=new("#E8DCCB"); label(d,7,"تطبيقات الهوية"); rtl(d,(W-110,355),"أكواب سُمرة",84); pic,mask=photo(ASSETS/"cups.webp",(110,520,W-110,1820)); im.paste(pic,(110,520),mask)
+    im,d=new("#E8DCCB"); label(d,7,"تطبيقات الهوية"); rtl(d,(W-110,355),"أكواب سُمرة",84); pic,mask=applications((110,520,W-110,1820),True); im.paste(pic,(110,520),mask)
     rtl(d,(W//2,1970),"مشروع تصوري لعلامة خيالية أُعد لعرض منهجية ATHR BRANDS.\nجميع الأسماء والبيانات في التطبيقات افتراضية.",34,DARK,"ma",14); footer(d,8); out.append(im)
     return out
 
 if __name__ == "__main__":
-    OUT.parent.mkdir(parents=True,exist_ok=True); repair_site_assets(); p=pages(); p[0].save(OUT,"PDF",resolution=150,save_all=True,append_images=p[1:])
+    OUT.parent.mkdir(parents=True,exist_ok=True); p=pages(); p[0].save(OUT,"PDF",resolution=150,save_all=True,append_images=p[1:])
     reader=PdfReader(str(OUT)); assert len(reader.pages)==8; print(f"created {OUT} ({OUT.stat().st_size} bytes, 8 pages)")
