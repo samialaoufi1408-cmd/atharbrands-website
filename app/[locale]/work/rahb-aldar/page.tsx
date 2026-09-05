@@ -1,13 +1,12 @@
 import type { Locale } from '@/content/site';
-import { BusinessCase } from '@/components/case-studies/BusinessCase';
 import { caseMetadata } from '@/lib/case-metadata';
+import { CompleteStudy, type Study } from '@/components/case-studies/CompleteStudy';
+import study from '@/content/studies/rahb-aldar.json';
 
-type Props = { params: { locale: Locale } };
-
-export function generateMetadata({ params }: Props) {
+export function generateMetadata({ params }: { params: { locale: Locale } }) {
   return caseMetadata(params.locale, 'rahb-aldar');
 }
 
-export default function Page({ params }: Props) {
-  return <BusinessCase slug="nawsaq" locale={params.locale}/>;
+export default function CasePage({ params }: { params: { locale: Locale } }) {
+  return <CompleteStudy study={study as Study} locale={params.locale} />;
 }
