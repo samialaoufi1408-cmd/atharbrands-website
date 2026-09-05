@@ -1,7 +1,7 @@
 import type { Locale } from '@/content/site';
 
 // Reuse the studio's existing, published contact details.
-export const CONTACT_EMAIL = 'admin@atharbrands.com';
+export const CONTACT_EMAIL = 'admin@athrbrands.com';
 export const CONTACT_PHONE = '+966599444486';
 export const CONTACT_LINKEDIN = 'https://www.linkedin.com/in/sami-alaoufi';
 

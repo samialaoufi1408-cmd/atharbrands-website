@@ -12,8 +12,8 @@ const CONNECT = [
     href: 'https://www.linkedin.com/in/sami-alaoufi',
   },
   {
-    label: { en: 'admin@atharbrands.com', ar: 'admin@atharbrands.com' },
-    href: 'mailto:admin@atharbrands.com',
+    label: { en: 'admin@athrbrands.com', ar: 'admin@athrbrands.com' },
+    href: 'mailto:admin@athrbrands.com',
   },
 ];
 

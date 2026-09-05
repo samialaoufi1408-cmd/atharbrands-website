@@ -71,8 +71,8 @@ describe('Contract on new site — the loop that must be green', () => {
     const body = p.doc.body.textContent ?? '';
     expect(p.doc.getElementById('services')?.tagName).toBe('SECTION');
     expect(p.doc.getElementById('contact')?.querySelector('form')).toBeTruthy();
-    expect(body).toContain('Al Qassim');
-    expect(body).toContain('admin@atharbrands.com');
+    expect(body).toContain('Riyadh');
+    expect(body).toContain('admin@athrbrands.com');
     expect(body).toContain('+966599444486');
     expect(body).toContain('SUMRA');
     expect(body).toContain('DAHSHA');

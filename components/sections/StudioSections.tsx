@@ -23,7 +23,7 @@ const COPY = {
     ],
     about: 'عن أثر',
     aboutTitle: 'استوديو سعودي، وفهم قريب من مشروعك.',
-    aboutBody: 'من القصيم، نعمل مع العلامات في المملكة والخليج على بناء هويات تربط الفكرة بالتطبيق. يقود الاستوديو سامي العوفي، ويبدأ كل مشروع بحوار واضح حول ما تحتاجه العلامة فعلًا.',
+    aboutBody: 'من الرياض، نعمل مع العلامات في المملكة والخليج على بناء هويات تربط الفكرة بالتطبيق. يقود الاستوديو سامي العوفي، ويبدأ كل مشروع بحوار واضح حول ما تحتاجه العلامة فعلًا.',
     profile: 'تعرّف على سامي عبر لينكدإن',
   },
   en: {
@@ -46,7 +46,7 @@ const COPY = {
     ],
     about: 'About ATHR',
     aboutTitle: 'A Saudi studio, close to your business.',
-    aboutBody: 'Based in Al Qassim, we work with brands across Saudi Arabia and the GCC, connecting ideas with applications. Led by Sami Al Aoufi, the studio starts every project with an open conversation about what the brand actually needs.',
+    aboutBody: 'Based in Riyadh, we work with brands across Saudi Arabia and the GCC, connecting ideas with applications. Led by Sami Al Aoufi, the studio starts every project with an open conversation about what the brand actually needs.',
     profile: 'Meet Sami on LinkedIn',
   },
 } as const;

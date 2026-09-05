@@ -84,11 +84,11 @@ export default function LocaleLayout({
                   : 'Saudi brand strategy and visual identity studio',
               address: {
                 '@type': 'PostalAddress',
-                addressRegion: 'Al Qassim',
+                addressRegion: 'Riyadh',
                 addressCountry: 'SA',
               },
               areaServed: ['Saudi Arabia', 'GCC'],
-              email: 'admin@atharbrands.com',
+              email: 'admin@athrbrands.com',
               sameAs: ['https://www.linkedin.com/in/sami-alaoufi'],
             }),
           }}

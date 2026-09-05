@@ -5,7 +5,7 @@ import { Locale, tHtml } from '@/content/site';
 import { Mixed } from '@/lib/Mixed';
 import { sendEnquiry } from '@/app/actions';
 
-const EMAIL = 'admin@atharbrands.com';
+const EMAIL = 'admin@athrbrands.com';
 const PHONE = '+966599444486';
 
 function whatsappHref(ar: boolean) {
