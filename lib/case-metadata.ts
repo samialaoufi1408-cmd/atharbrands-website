@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import type { Locale } from '@/content/site';
 
 export const SITE_URL = 'https://www.athrbrands.sa';
-export const CASE_SLUGS = ['athrbrands', 'qira', 'wizan', 'sumra', 'dahsha'] as const;
+export const CASE_SLUGS = ['athrbrands', 'naysar', 'wizan', 'sumra', 'dahsha'] as const;
 export type CaseSlug = typeof CASE_SLUGS[number];
 
 const COPY = {
@@ -10,9 +10,9 @@ const COPY = {
     ar: ['هوية أثر | استراتيجية ونظام بصري', 'دراسة هوية استوديو أثر: من استراتيجية العلامة والهوية اللفظية إلى النظام البصري والتطبيقات الرقمية.'],
     en: ['ATHR identity | Strategy and visual system', 'The ATHR studio identity: from brand strategy and verbal identity to a visual system and digital applications.'],
   },
-  qira: {
-    ar: ['قِرَى | هوية لضيافة تراثية معاصرة', 'دراسة تصورية لهوية قِرَى، تستلهم العتبة وذاكرة المكان لتشكيل علامة ضيافة معاصرة.'],
-    en: ['QIRĀ | Contemporary heritage hospitality', 'A conceptual hospitality identity inspired by the threshold and the memory of place.'],
+  naysar: {
+    ar: ['نَيْسَار | هوية وتغليف لعلامة عطور معاصرة', 'مشروع نيسار التصوري: استراتيجية وتسمية وهوية بصرية وتغليف عطور وتجربة متجر ومحتوى إطلاق من أثر.'],
+    en: ['NAYSAR | Contemporary fragrance identity and packaging', 'A conceptual fragrance brand by ATHR: strategy, naming, visual identity, packaging, a product-page concept and launch art direction.'],
   },
   wizan: {
     ar: ['وِزان | هوية لمنصة عافية رقمية', 'دراسة تصورية لهوية وِزان: استراتيجية وتسمية ونظام بصري لمنصة عافية وقائية رقمية.'],
@@ -47,8 +47,7 @@ export function caseMetadata(locale: Locale, slug: CaseSlug): Metadata {
       title,
       description,
       url: path,
-      // Preserve the existing shared preview asset; no new social artwork.
-      images: ['/assets/aura-featured.png'],
+      images: [slug === 'naysar' ? '/assets/naysar/hero.png' : '/assets/aura-featured.png'],
     },
   };
 }
