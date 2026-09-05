@@ -1,8 +1,15 @@
+import { caseMetadata } from '@/lib/case-metadata';
+import { ProjectContact } from '@/components/sections/ProjectContact';
+import type { Locale } from '@/content/site';
 import Link from 'next/link';
 import { Seal } from '@/components/brand/Seal';
 import styles from './wizan.module.css';
 type Props={params:{locale:'ar'|'en'}};
 function Mark({className=''}:{className?:string}){return <svg className={className} viewBox="0 0 512 512" role="img" aria-label="WIZAN"><path d="M184.15 410.07A170 170 0 1 1 327.85 410.07" fill="none" stroke="currentColor" strokeWidth="34" strokeLinecap="round"/><path d="M208.67 357.51A112 112 0 0 1 208.67 154.49" fill="none" stroke="#91A79D" strokeWidth="34" strokeLinecap="round"/><path d="M303.33 154.49A112 112 0 0 1 208.67 357.51" fill="none" stroke="#DD776A" strokeWidth="34" strokeLinecap="round"/><circle cx="256" cy="256" r="26" fill="currentColor"/><circle cx="365" cy="118" r="14" fill="#6087A0"/></svg>}
+export function generateMetadata({ params }: { params: { locale: Locale } }) {
+  return caseMetadata(params.locale, 'wizan');
+}
+
 export default function WizanCase({params}:Props){const ar=params.locale==='ar';return <main className={styles.page} dir={ar?'rtl':'ltr'}>
 <header className={styles.nav}><Link href={`/${params.locale}`} className={styles.brand}><Seal variant="full" idSuffix="wizan-case" className={styles.seal}/><span>ATHR BRANDS</span></Link><Link href={`/${params.locale}#work`} className={styles.back}>{ar?'العودة إلى الأعمال':'Back to work'}</Link></header>
 <section className={styles.hero}><div className={styles.heroCopy}><p>{ar?'مشروع تصوري مستقل من ATHR BRANDS':'Independent concept project by ATHR BRANDS'}</p><h1>{ar?'وِزان':'WIZAN'}<small>WIZAN</small></h1><h2>{ar?'عافية تُقاس. حياة تتوازن.':'Measure wellbeing. Live in balance.'}</h2><div className={styles.meta}>{ar?'استراتيجية · تسمية · هوية لفظية وبصرية · نظام رقمي':'Strategy · Naming · Verbal & Visual Identity · Digital System'}</div></div><Mark className={styles.heroMark}/></section>
@@ -15,4 +22,5 @@ export default function WizanCase({params}:Props){const ar=params.locale==='ar';
 <section className={styles.product}><div className={styles.sectionHead}><span>07</span><p>{ar?'التطبيق الرقمي':'Digital product'}</p><h2>{ar?'القرار أهم من القراءة.':'The decision matters more than the reading.'}</h2></div><div className={styles.phone}><div className={styles.phoneTop}><Mark/><b>WIZAN</b></div><small>{ar?'صباح الخير، نورة':'Good morning, Noura'}</small><strong>78</strong><em>{ar?'مؤشر العافية اليوم':'Today’s wellbeing indicator'}</em><div className={styles.bars}><i/><i/><i/><i/><i/></div><button>{ar?'عرض خطة اليوم':'View today’s plan'}</button></div><div className={styles.report}><b>{ar?'تقرير العافية':'WELLBEING REPORT'}</b><span>WEEK 24</span><h3>{ar?'صورة أسبوعية تساعدك على اختيار الأولوية التالية.':'A weekly view that helps you choose the next priority.'}</h3><div><i/><i/><i/></div></div></section>
 <section className={styles.intro}><span>08</span><div><p>{ar?'قواعد الكتابة':'Writing rules'}</p><h2>{ar?'لغة قصيرة، دقيقة، ولا تُشعر المستخدم بالذنب.':'Short, precise language that never shames the user.'}</h2><p>{ar?'في الواجهة لا تتجاوز الجملة 14 كلمة، وفي التقرير 22 كلمة. تخاطب وِزان المستخدم بصيغة محايدة قدر الإمكان، وتشرح المصطلح الطبي عند ظهوره أول مرة، وتستخدم الأرقام الغربية لسهولة القراءة داخل الرسوم والجداول.':'Interface sentences stay within 14 words and report sentences within 22. WIZAN uses neutral address where possible, explains medical terms at first use and uses Western Arabic numerals for consistency in charts and tables.'}</p></div></section>
 <section className={styles.close}><p>{ar?'هذا المشروع تصوري وليس عملًا منفذًا لعميل حقيقي. لم تُجرَ له دراسة سوق ميدانية، وأي إطلاق فعلي يستوجب بحثًا كميًا وفحصًا قانونيًا وتنظيميًا واعتمادًا للادعاءات الصحية.':'This is a concept project, not commissioned client work. No field market study was conducted; any real launch would require quantitative research, legal and regulatory review, and approval of health claims.'}</p><Link href={`/${params.locale}#work`}>{ar?'العودة إلى الأعمال':'Back to selected work'}</Link></section>
-</main>}
+<ProjectContact locale={params.locale} project="WIZAN" />
+    </main>}

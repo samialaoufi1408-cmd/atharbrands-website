@@ -1,7 +1,14 @@
+import { caseMetadata } from '@/lib/case-metadata';
+import { ProjectContact } from '@/components/sections/ProjectContact';
+import type { Locale } from '@/content/site';
 import Link from 'next/link';
 import { Seal } from '@/components/brand/Seal';
 import styles from './athr.module.css';
 type Props={params:{locale:'ar'|'en'}};
+export function generateMetadata({ params }: { params: { locale: Locale } }) {
+  return caseMetadata(params.locale, 'athrbrands');
+}
+
 export default function AthrCase({params}:Props){const ar=params.locale==='ar';return <main className={styles.page} dir={ar?'rtl':'ltr'}>
 <header className={styles.nav}><Link href={`/${params.locale}`} className={styles.brand}><Seal variant="full" idSuffix="athr-v2-nav" className={styles.seal}/><span>ATHR BRANDS</span></Link><Link href={`/${params.locale}#work`} className={styles.back}>{ar?'العودة إلى الأعمال':'Back to work'}</Link></header>
 <section className={styles.hero}><div><p>BRAND STRATEGY &amp; IDENTITY · V2.0</p><h1>{ar?'هويةٌ تُرى.':'An identity seen.'}<br/><em>{ar?'أثرٌ يبقى.':'An impact that remains.'}</em></h1><p className={styles.lede}>{ar?'نظام بصري واضح، ورسالة متماسكة، وتجربة تليق بطموح العلامة.':'A clear visual system, a coherent message, and an experience worthy of the brand’s ambition.'}</p></div><Seal variant="full" idSuffix="athr-v2-hero" className={styles.heroSeal}/></section>
@@ -14,4 +21,5 @@ export default function AthrCase({params}:Props){const ar=params.locale==='ar';r
 <section className={styles.system}><div className={styles.head}><span>07</span><p>{ar?'النظام البصري':'Visual system'}</p><h2>{ar?'مرجع واحد يحكم التنفيذ.':'One reference governs execution.'}</h2></div><div className={styles.systemGrid}><div className={styles.logoPanel}><Seal variant="full" idSuffix="athr-v2-system"/><strong>ATHR BRANDS</strong><small>{ar?'أثر لصناعة الهويات البصرية':'Brand identity studio'}</small></div><div className={styles.rules}><p>{ar?'عند تعارض أي مادة منشورة مع وثيقة الهوية، تُعدّل المادة لا الوثيقة. ويُرفع رقم الإصدار عند تغيير الشعار أو الألوان أو الخطوط أو بيان التموضع.':'When published material conflicts with the identity document, the material changes—not the document. Versioning is updated when the logo, colors, typography or positioning changes.'}</p><div className={styles.palette}><i/><i/><i/></div></div></div></section>
 <section className={styles.dark}><div className={styles.head}><span>08</span><p>{ar?'رحلة العميل':'Client journey'}</p><h2>{ar?'الثقة تُبنى خطوةً بخطوة.':'Trust is built step by step.'}</h2></div><div className={styles.grid}><article><b>01 · {ar?'الانتباه':'Attention'}</b><p>{ar?'محتوى مفيد وتحليل صادق يعرّف بالمنهج قبل الخدمة.':'Useful content and honest analysis introduce the method before the service.'}</p></article><article><b>02 · {ar?'التأهيل':'Qualification'}</b><p>{ar?'فهم المجال والاحتياج والميزانية قبل الالتزام بأي وقت.':'Understand sector, need and budget before committing time.'}</p></article><article><b>03 · {ar?'الاكتشاف':'Discovery'}</b><p>{ar?'جلسة تركّز على الهدف والجمهور والنتيجة المتوقعة.':'A session focused on goal, audience and expected outcome.'}</p></article><article><b>04 · {ar?'العرض':'Proposal'}</b><p>{ar?'نطاق واضح، ومخرجات محددة، ومدة، وتكلفة.':'Clear scope, defined outputs, timeline and cost.'}</p></article><article><b>05 · {ar?'البناء':'Build'}</b><p>{ar?'مشاركة القرارات ومراجعات محددة العدد والتوقيت.':'Shared decisions and structured review rounds.'}</p></article><article><b>06 · {ar?'التسليم':'Delivery'}</b><p>{ar?'ملفات منظمة، ودليل استخدام، ودعم أولي بعد الإطلاق.':'Organized files, usage guidance and initial post-launch support.'}</p></article></div></section>
 <section className={styles.close}><h2>{ar?'هويةٌ تُرى. أثرٌ يبقى.':'An identity seen. An impact that remains.'}</h2><p>{ar?'هذه الصفحة مبنية على دراسة ATHR BRANDS المعتمدة — الإصدار 2.0، سبتمبر 2026.':'This page is based on the approved ATHR BRANDS identity study — version 2.0, September 2026.'}</p><Link href={`/${params.locale}#work`}>{ar?'العودة إلى الأعمال':'Back to selected work'}</Link></section>
-</main>}
+<ProjectContact locale={params.locale} project="ATHR BRANDS" />
+    </main>}

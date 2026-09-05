@@ -1,5 +1,5 @@
 .scope :global([class*="StudioHomeV4_projectList__"]) {
-  gap: clamp(140px, 16vw, 240px) !important;
+  gap: clamp(64px, 8vw, 120px) !important;
 }
 
 .scope :global([class*="StudioHomeV4_project__"]) {
@@ -109,7 +109,7 @@
 
 @media (max-width: 760px) {
   .scope :global([class*="StudioHomeV4_projectList__"]) {
-    gap: 124px !important;
+    gap: 64px !important;
   }
 
   .scope :global([class*="StudioHomeV4_project__"]) {
@@ -139,3 +139,11 @@
     aspect-ratio: 0.92 / 1 !important;
   }
 }
+
+.scope :global([data-case-art="photograph"]) { aspect-ratio: 3 / 2 !important; }
+.scope :global([class*="StudioHomeV4_footer__"]) { padding-bottom: 96px; }
+.scope :global([class*="StudioHomeV4_projectTopline__"] small),
+.scope :global([class*="StudioHomeV4_projectSector__"]),
+.scope :global([class*="StudioHomeV4_projectScope__"]),
+.scope :global([class*="StudioHomeV4_projectIdea__"] span),
+.scope :global([class*="StudioHomeV4_projectLink__"]) { font-size: 14px; }

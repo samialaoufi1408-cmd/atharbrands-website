@@ -1,8 +1,15 @@
+import { caseMetadata } from '@/lib/case-metadata';
+import { ProjectContact } from '@/components/sections/ProjectContact';
+import type { Locale } from '@/content/site';
 import Link from 'next/link';
 import { Seal } from '@/components/brand/Seal';
 import styles from './qira.module.css';
 type Props={params:{locale:'ar'|'en'}};
 function QiraMark(){return <svg viewBox="0 0 240 240" role="img" aria-label="QIRA"><g fill="none" stroke="currentColor" strokeWidth="10" strokeLinecap="round" strokeLinejoin="round"><rect x="45" y="60" width="145" height="145" rx="28"/><path d="M155 170 L205 220"/></g><circle cx="98" cy="30" r="7" fill="currentColor"/><circle cx="140" cy="30" r="7" fill="currentColor"/></svg>}
+export function generateMetadata({ params }: { params: { locale: Locale } }) {
+  return caseMetadata(params.locale, 'qira');
+}
+
 export default function QiraCase({params}:Props){const ar=params.locale==='ar';return <main className={styles.page} dir={ar?'rtl':'ltr'}>
 <header className={styles.nav}><Link href={`/${params.locale}`} className={styles.brand}><Seal variant="full" idSuffix="qira-nav"/><span>ATHR BRANDS</span></Link><Link href={`/${params.locale}#work`}>{ar?'العودة إلى الأعمال':'Back to work'}</Link></header>
 <section className={styles.hero}><div><p>{ar?'مشروع تصوري من ATHR BRANDS':'Concept project by ATHR BRANDS'}</p><h1>{ar?'قِرَى':'QIRĀ'}<small>QIRĀ</small></h1><h2>{ar?'ضيافةٌ تنتمي إلى المكان.':'Hospitality that belongs to the place.'}</h2></div><QiraMark/></section>
@@ -13,4 +20,5 @@ export default function QiraCase({params}:Props){const ar=params.locale==='ar';r
 <section className={styles.dark}><div><span>05</span><p>{ar?'تجربة الوصول':'The arrival'}</p><h2>{ar?'أول ثلاثين ثانية تصنع معنى العلامة.':'The first thirty seconds carry the brand promise.'}</h2><p>{ar?'00:00 — يُفتح الباب من الداخل قبل أن يصل الضيف إليه. 00:10 — يُنادى الضيف باسمه لأن الحجز قُرئ قبل وصوله. 00:20 — يُقدَّم الشراب قبل أي إجراء. هنا تتحول «العتبة» من فكرة بصرية إلى سلوك تشغيلي.':'00:00 — the door is opened from inside before the guest reaches it. 00:10 — the guest is greeted by name because the booking was read in advance. 00:20 — a drink is offered before any procedure. The threshold moves from a visual idea into operational behavior.'}</p></div><QiraMark/></section>
 <section className={styles.idea}><span>06</span><div><p>{ar?'من الهوية إلى التجربة':'From identity to experience'}</p><h2>{ar?'الهوية لا تنتهي عند التسليم؛ تبدأ عند أول ضيف يفتح الباب.':'The identity does not end at delivery; it begins when the first guest opens the door.'}</h2><p>{ar?'لذلك صُممت قِرَى كنظام يمكن أن يمتد إلى اللافتات، مواد الغرف، الرسائل قبل الوصول، تجربة الاستقبال، القوائم، المحتوى الرقمي، والهدايا الصغيرة؛ مع بقاء لغة واحدة تربط كل نقطة تواصل بالمكان.':'QIRĀ is therefore designed as a system that can extend into signage, in-room materials, pre-arrival messages, reception, menus, digital content and small gifts while keeping one language across every touchpoint.'}</p></div></section>
 <section className={styles.close}><h2>{ar?'ضيافةٌ تنتمي إلى المكان.':'Hospitality that belongs to the place.'}</h2><p>{ar?'مشروع تصوري مستقل من ATHR BRANDS، مبني على دراسة قِرَى المعتمدة. الاسم والهوية يحتاجان إلى فحص قانوني وتنظيمي قبل أي استخدام تجاري.':'An independent ATHR BRANDS concept project based on the approved QIRĀ study. The name and identity require legal and regulatory review before commercial use.'}</p><Link href={`/${params.locale}#work`}>{ar?'العودة إلى الأعمال':'Back to selected work'}</Link></section>
-</main>}
+<ProjectContact locale={params.locale} project="QIRA" />
+    </main>}

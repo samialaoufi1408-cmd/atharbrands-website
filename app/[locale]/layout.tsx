@@ -2,6 +2,9 @@ import type { Metadata } from 'next';
 import { locales, Locale } from '@/content/site';
 import { LightboxProvider } from '@/components/fx/Lightbox';
 import { LightboxRoot } from '@/components/fx/Lightbox';
+import { FloatingContact } from '@/components/sections/ProjectContact';
+import { SITE_URL } from '@/lib/case-metadata';
+import { notFound } from 'next/navigation';
 import '../globals.css';
 import '../v4-arrow.css';
 
@@ -18,9 +21,9 @@ export function htmlAttrs(locale: Locale) {
 export function generateMetadata({ params }: { params: { locale: Locale } }): Metadata {
   const ar = params.locale === 'ar';
   return {
-    metadataBase: new URL('https://athrbrands.sa'),
+    metadataBase: new URL(SITE_URL),
     title: ar
-      ? 'ATHRBRANDS | استراتيجية وتصميم الهويات البصرية'
+      ? 'أثر | استراتيجية وتصميم الهويات البصرية'
       : 'ATHRBRANDS | Brand Strategy & Visual Identity',
     description: ar
       ? 'استوديو سعودي متخصص في استراتيجية العلامة وتصميم الهوية البصرية للعلامات الطموحة.'
@@ -34,7 +37,7 @@ export function generateMetadata({ params }: { params: { locale: Locale } }): Me
       locale: ar ? 'ar_SA' : 'en_US',
       siteName: 'ATHRBRANDS',
       title: ar
-        ? 'ATHRBRANDS | استراتيجية وتصميم الهويات البصرية'
+        ? 'أثر | استراتيجية وتصميم الهويات البصرية'
         : 'ATHRBRANDS | Brand Strategy & Visual Identity',
       description: ar
         ? 'نحوّل الفكرة إلى نظام بصري واضح ومتماسك، من التموضع إلى كل نقطة تواصل.'
@@ -55,6 +58,7 @@ export default function LocaleLayout({
   children: React.ReactNode;
   params: { locale: Locale };
 }) {
+  if (!locales.includes(params.locale)) notFound();
   const attrs = htmlAttrs(params.locale);
   return (
     <html lang={attrs.lang} dir={attrs.dir} className={attrs.className}>
@@ -73,7 +77,7 @@ export default function LocaleLayout({
               '@type': 'ProfessionalService',
               name: 'ATHRBRANDS',
               alternateName: 'أثر لصناعة الهويات البصرية',
-              url: 'https://athrbrands.sa',
+              url: SITE_URL,
               description:
                 params.locale === 'ar'
                   ? 'استوديو سعودي لاستراتيجية العلامة وتصميم الهوية البصرية'
@@ -93,6 +97,7 @@ export default function LocaleLayout({
       <body>
         <LightboxProvider>
           {children}
+          <FloatingContact locale={params.locale} />
           <LightboxRoot />
         </LightboxProvider>
       </body>

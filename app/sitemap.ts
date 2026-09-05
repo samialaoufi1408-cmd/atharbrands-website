@@ -1,16 +1,13 @@
 import type { MetadataRoute } from 'next';
-
-const BASE = 'https://athrbrands.sa';
+import { CASE_SLUGS, SITE_URL } from '@/lib/case-metadata';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const now = new Date();
-  return (['en', 'ar'] as const).map((l) => ({
-    url: `${BASE}/${l}`,
-    lastModified: now,
+  return (['en', 'ar'] as const).flatMap((locale) => ['', ...CASE_SLUGS.map(slug => `/work/${slug}`)].map(path => ({
+    url: `${SITE_URL}/${locale}${path}`,
     changeFrequency: 'monthly' as const,
-    priority: 1,
+    priority: path ? 0.8 : 1,
     alternates: {
-      languages: { en: `${BASE}/en`, ar: `${BASE}/ar` },
+      languages: { en: `${SITE_URL}/en${path}`, ar: `${SITE_URL}/ar${path}` },
     },
-  }));
+  })));
 }
