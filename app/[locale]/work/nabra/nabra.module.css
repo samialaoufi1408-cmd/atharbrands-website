@@ -1,7 +1,7 @@
-@font-face{font-family:Nabra;src:url('/fonts/nabra/NotoSansArabic-Regular.woff') format('woff');font-weight:400;font-style:normal;font-display:swap}
-@font-face{font-family:Nabra;src:url('/fonts/nabra/NotoSansArabic-Bold.woff') format('woff');font-weight:700;font-style:normal;font-display:swap}
-@font-face{font-family:NabraLatin;src:url('/fonts/nabra/NotoSans-Regular.woff') format('woff');font-weight:400;font-style:normal;font-display:swap}
-@font-face{font-family:NabraLatin;src:url('/fonts/nabra/NotoSans-Bold.woff') format('woff');font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:Nabra;src:url('/fonts/tajawal/Tajawal-Regular.woff') format('woff');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:Nabra;src:url('/fonts/tajawal/Tajawal-Bold.woff') format('woff');font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:NabraLatin;src:url('/fonts/tajawal/Tajawal-Regular.woff') format('woff');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:NabraLatin;src:url('/fonts/tajawal/Tajawal-Bold.woff') format('woff');font-weight:700;font-style:normal;font-display:swap}
 .page{--petrol:#123E42;--ivory:#F4F1E9;--sage:#D3E2D9;--peach:#DE9D75;background:var(--ivory);color:var(--petrol);font-family:Nabra,NabraLatin,sans-serif;font-size:18px;line-height:1.9;letter-spacing:0;overflow-wrap:anywhere}
 .page *{box-sizing:border-box}
 .page h1,.page h2,.page h3,.page h4{font-family:inherit;font-weight:700;letter-spacing:0;line-height:1.5;color:inherit}
