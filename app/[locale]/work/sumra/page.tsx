@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { Seal } from '@/components/brand/Seal';
 import styles from './sumra.module.css';
 import galleryStyles from './sumra-gallery.module.css';
+import downloadStyles from './sumra-download.module.css';
 
 type Props = {
   params: {
@@ -54,6 +55,16 @@ export default function SumraCase({ params }: Props) {
             {ar ? 'سُمرة' : 'SUMRA'}
             <small>SUMRA</small>
           </h1>
+          {ar && (
+            <a
+              className={downloadStyles.download}
+              href="/downloads/sumra-case-study-ar.pdf"
+              download="SUMRA-Case-Study-AR.pdf"
+            >
+              تحميل دراسة SUMRA
+              <span aria-hidden="true">↓</span>
+            </a>
+          )}
           <h2>
             {ar ? 'كل حبة لها سُمرتها.' : 'Every bean has its own sumra.'}
           </h2>

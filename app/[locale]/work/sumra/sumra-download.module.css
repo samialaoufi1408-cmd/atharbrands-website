@@ -1,0 +1,29 @@
+.download {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  margin: -4px 0 30px;
+  padding: 14px 20px;
+  border: 1px solid #4b2e1e;
+  color: #4b2e1e;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.download span {
+  font-family: Manrope, sans-serif;
+  font-size: 1.15em;
+}
+
+.download:hover,
+.download:focus-visible {
+  background: #4b2e1e;
+  color: #f4eadb;
+}
+
+@media (max-width: 900px) {
+  .download {
+    margin-top: 2px;
+  }
+}
