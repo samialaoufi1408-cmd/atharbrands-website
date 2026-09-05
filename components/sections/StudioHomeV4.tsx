@@ -31,6 +31,10 @@ function DahshaArt() {
   return <div className={styles.caseArt} data-case-art="photograph"><Image src="/assets/dahsha/campaign.png" alt="" width={1536} height={1024} sizes="(max-width: 760px) 100vw, 85vw" style={{width:'100%',height:'100%',objectFit:'cover'}} /></div>;
 }
 
+function NabraArt() {
+  return <div className={styles.caseArt} data-case-art="photograph"><Image src="/assets/nabra/campaign.webp" alt="" width={1536} height={1024} sizes="(max-width: 760px) 100vw, 85vw" style={{width:'100%',height:'100%',objectFit:'cover'}} /></div>;
+}
+
 export function StudioHomeV4({ locale }: StudioHomeV4Props) {
   const ar = locale === 'ar';
   const c = COPY[locale];
@@ -52,6 +56,20 @@ export function StudioHomeV4({ locale }: StudioHomeV4Props) {
       };
     }),
     { key:'wizan', copy:c.work.projects.wizan, tag:c.work.concept, art:<WizanArt/>, href:`/${locale}/work/wizan` },
+    {
+      key:'nabra', tag:c.work.concept, art:<NabraArt/>, href:`/${locale}/work/nabra`,
+      copy: ar ? {
+        sector:'مركز طبي متعدد التخصصات', name:'نبرأ · NABRA',
+        scope:'الاستراتيجية · الهوية اللفظية والبصرية · تجربة المراجع · التطبيقات',
+        idea:'معك، خطوة بخطوة.',
+        description:'دراسة كاملة تربط رعاية واضحة وقريبة بالتموضع والرسائل ومسارات الهوية، ثم تمتد إلى رحلة المراجع والإرشاد والمطبوعات والإطلاق.',
+      } : {
+        sector:'Multidisciplinary medical center', name:'NABRA',
+        scope:'Strategy · Verbal & visual identity · Visitor journey · Applications',
+        idea:'With you, step by step.',
+        description:'A complete Arabic study connecting clear, approachable care with positioning, messages and a visual system, then extending it into the visitor journey, signage, print and launch planning.',
+      },
+    },
     { key:'sumra', copy:c.work.projects.sumra, tag:c.work.concept, art:<SumraArt/>, href:`/${locale}/work/sumra` },
     {
       key:'dahsha', tag:c.work.concept, art:<DahshaArt/>, href:`/${locale}/work/dahsha`,
