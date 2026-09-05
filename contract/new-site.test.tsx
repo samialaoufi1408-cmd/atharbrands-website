@@ -90,7 +90,7 @@ describe('Contract on new site — the loop that must be green', () => {
     const p = await loadNew('en');
     const work = p.doc.getElementById('work')!;
     expect(work.querySelectorAll('article')).toHaveLength(5);
-    for (const slug of ['athrbrands', 'qira', 'wizan', 'sumra', 'dahsha']) {
+    for (const slug of ['athrbrands', 'naysar', 'wizan', 'sumra', 'dahsha']) {
       expect(work.querySelectorAll(`a[href="/en/work/${slug}"]`)).toHaveLength(2);
     }
     const ids = [...p.doc.querySelectorAll('[id]')].map(element => element.id);
