@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import type { Locale } from '@/content/site';
 
 export const SITE_URL = 'https://www.athrbrands.sa';
-export const CASE_SLUGS = ['athrbrands', 'naysar', 'wizan', 'sumra', 'dahsha'] as const;
+export const CASE_SLUGS = ['athrbrands', 'naysar', 'nawsaq', 'darwaq', 'wizan', 'sumra', 'dahsha'] as const;
 export type CaseSlug = typeof CASE_SLUGS[number];
 
 const COPY = {
@@ -13,6 +13,14 @@ const COPY = {
   naysar: {
     ar: ['نَيْسَار | هوية وتغليف لعلامة عطور معاصرة', 'مشروع نيسار التصوري: استراتيجية وتسمية وهوية بصرية وتغليف عطور وتجربة متجر ومحتوى إطلاق من أثر.'],
     en: ['NAYSAR | Contemporary fragrance identity and packaging', 'A conceptual fragrance brand by ATHR: strategy, naming, visual identity, packaging, a product-page concept and launch art direction.'],
+  },
+  nawsaq: {
+    ar: ['نَوْسَق | هوية لشركة تطوير عقاري سكني', 'دراسة نوسق التصورية: استراتيجية وتسمية وهوية بصرية وملف مشروع ولوحات معمارية وتجربة رقمية من أثر.'],
+    en: ['NAWSAQ | Residential developer brand identity', 'A conceptual residential developer identity by ATHR, spanning strategy, naming, project presentation, signage and a digital space-exploration concept.'],
+  },
+  darwaq: {
+    ar: ['دَرْوَق | هوية لخدمة شحن وتوصيل', 'دراسة دروق التصورية: استراتيجية وتسمية وهوية بصرية للمركبات والطرود والزيّ وتجربة تتبّع الشحنات من أثر.'],
+    en: ['DARWAQ | Shipping and delivery brand identity', 'A conceptual delivery identity by ATHR, connecting vehicle livery, parcels, workwear and a clear tracking-interface concept.'],
   },
   wizan: {
     ar: ['وِزان | هوية لمنصة عافية رقمية', 'دراسة تصورية لهوية وِزان: استراتيجية وتسمية ونظام بصري لمنصة عافية وقائية رقمية.'],
@@ -47,7 +55,7 @@ export function caseMetadata(locale: Locale, slug: CaseSlug): Metadata {
       title,
       description,
       url: path,
-      images: [slug === 'naysar' ? '/assets/naysar/hero.png' : '/assets/aura-featured.png'],
+      images: [['naysar', 'nawsaq', 'darwaq'].includes(slug) ? `/assets/${slug}/hero.png` : '/assets/aura-featured.png'],
     },
   };
 }

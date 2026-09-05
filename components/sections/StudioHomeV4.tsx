@@ -5,6 +5,7 @@ import { StudioContact } from './StudioContact';
 import { StudioMobileMenu } from './StudioMobileMenu';
 import { CONTACT_EMAIL, CONTACT_LINKEDIN, whatsappUrl } from '@/lib/contact';
 import { Locale } from '@/content/site';
+import { BUSINESS_CASES, type BusinessCaseKey } from '@/content/business-cases';
 import { Seal } from '@/components/brand/Seal';
 import styles from './StudioHomeV4.module.css';
 interface StudioHomeV4Props{locale:Locale}
@@ -17,6 +18,10 @@ function WizanArt(){return <div className={`${styles.caseArt} ${styles.wizanArt}
 
 function NaysarArt() {
   return <div className={styles.caseArt} data-case-art="photograph"><Image src="/assets/naysar/hero.png" alt="" width={1536} height={1024} sizes="(max-width: 760px) 100vw, 85vw" style={{width:'100%',height:'100%',objectFit:'cover'}} /></div>;
+}
+
+function BusinessArt({ slug }: { slug: BusinessCaseKey }) {
+  return <div className={styles.caseArt} data-case-art="photograph"><Image src={`/assets/${slug}/hero.png`} alt="" width={1536} height={1024} sizes="(max-width: 760px) 100vw, 85vw" style={{width:'100%',height:'100%',objectFit:'cover'}} /></div>;
 }
 
 function SumraArt() {
@@ -32,6 +37,20 @@ export function StudioHomeV4({ locale }: StudioHomeV4Props) {
   const projects = [
     { key:'athr', copy:c.work.projects.athr, tag:c.work.actual, art:<AthrArt/>, href:`/${locale}/work/athrbrands` },
     { key:'naysar', copy:c.work.projects.naysar, tag:c.work.concept, art:<NaysarArt/>, href:`/${locale}/work/naysar` },
+    ...(['nawsaq', 'darwaq'] as const).map(slug => {
+      const project = BUSINESS_CASES[slug];
+      const copy = project.copy[locale];
+      return {
+        key: slug, tag: c.work.concept, art: <BusinessArt slug={slug}/>, href: `/${locale}/work/${slug}`,
+        copy: {
+          sector: copy.sector,
+          name: ar ? `${copy.name} · ${project.latinName}` : project.latinName,
+          scope: copy.scope.join(' · '),
+          idea: copy.tagline,
+          description: copy.summary,
+        },
+      };
+    }),
     { key:'wizan', copy:c.work.projects.wizan, tag:c.work.concept, art:<WizanArt/>, href:`/${locale}/work/wizan` },
     { key:'sumra', copy:c.work.projects.sumra, tag:c.work.concept, art:<SumraArt/>, href:`/${locale}/work/sumra` },
     {
