@@ -1,4 +1,4 @@
-/** The open ellipse follows the scent trail used across NAYSAR packaging. */
+/** The open ellipse follows the scent trail used across the fragrance packaging. */
 export function NaysarMark({ className }: { className?: string }) {
   return (
     <svg viewBox="0 0 180 240" fill="none" aria-hidden="true" className={className}>

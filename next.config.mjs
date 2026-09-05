@@ -2,11 +2,19 @@
 const nextConfig = {
   reactStrictMode: true,
   async redirects() {
-    return ['ar', 'en'].map(locale => ({
-      source: `/${locale}/work/qira`,
-      destination: `/${locale}/work/naysar`,
-      permanent: true,
-    }));
+    const renamedCases = {
+      qira: 'awwal-nafha',
+      naysar: 'awwal-nafha',
+      nawsaq: 'rahb-aldar',
+      darwaq: 'tatabu',
+    };
+    return ['ar', 'en'].flatMap(locale =>
+      Object.entries(renamedCases).map(([oldSlug, newSlug]) => ({
+        source: `/${locale}/work/${oldSlug}`,
+        destination: `/${locale}/work/${newSlug}`,
+        permanent: true,
+      })),
+    );
   },
   images: {
     remotePatterns: [
