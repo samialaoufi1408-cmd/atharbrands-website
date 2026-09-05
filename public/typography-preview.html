@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>اختبار الخطوط العربية — أثر</title>
+  <style>
+    @font-face{font-family:PreviewCurrent;src:url('/fonts/nabra/NotoSansArabic-Regular.woff') format('woff');font-weight:400;font-display:swap}
+    @font-face{font-family:PreviewCurrent;src:url('/fonts/nabra/NotoSansArabic-Bold.woff') format('woff');font-weight:700;font-display:swap}
+    @font-face{font-family:PreviewPlex;src:url('/fonts/font-test/IBMPlexSansArabic-Regular.woff') format('woff');font-weight:400;font-display:swap}
+    @font-face{font-family:PreviewPlex;src:url('/fonts/font-test/IBMPlexSansArabic-SemiBold.woff') format('woff');font-weight:600;font-display:swap}
+    @font-face{font-family:PreviewTajawal;src:url('/fonts/font-test/Tajawal-Regular.woff') format('woff');font-weight:400;font-display:swap}
+    @font-face{font-family:PreviewTajawal;src:url('/fonts/font-test/Tajawal-Bold.woff') format('woff');font-weight:700;font-display:swap}
+    *{box-sizing:border-box}body{margin:0;background:#ededeb;color:#161616;font-family:PreviewPlex,PreviewCurrent,sans-serif;line-height:1.7;font-size:18px}
+    a{color:inherit;text-underline-offset:4px}button,input{font:inherit}button,label{touch-action:manipulation}a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid #2558e8;outline-offset:4px}
+    header{padding:28px max(20px,5vw);border-bottom:1px solid #d3d3ce;background:#fff;display:flex;align-items:center;justify-content:space-between;gap:24px}header h1{font-size:28px;font-weight:600;margin:0}header p{margin:6px 0 0;font-size:16px}header a{font-size:16px;white-space:nowrap}
+    main{max-width:1440px;margin:auto;padding:28px max(20px,4vw) 60px}.status{font-size:14px;margin:0 0 20px;min-height:24px}.status[data-error=true]{color:#a51c27}
+    fieldset{padding:0;border:0;margin:0}legend{font-size:18px;font-weight:600;margin-bottom:14px}.options{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.option{position:relative;background:#fff;border:1px solid #c5c5bd;padding:20px;cursor:pointer;min-width:0}.option:has(input:checked){border:2px solid #123e42;padding:19px;box-shadow:0 0 0 2px #123e4215}.option input{width:18px;height:18px;accent-color:#123e42;margin-inline-end:8px}.option strong{font-size:16px;font-weight:600}.option small{display:block;font-size:14px;margin-top:8px;color:#52524c}.option h2{font-family:var(--sample);font-size:32px;line-height:1.65;font-weight:var(--weight);margin:18px 0 10px}.option .sampleText{font-family:var(--sample);font-size:18px;line-height:1.9;margin:0;font-weight:400}
+    [data-font=current]{--sample:PreviewCurrent;--weight:700}[data-font=plex]{--sample:PreviewPlex;--weight:600}[data-font=tajawal]{--sample:PreviewTajawal;--weight:700}
+    .toolbar{display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap;margin:32px 0 18px}.toolbar p{font-size:16px;margin:0}.sizes{display:flex;gap:8px}.sizes button{border:1px solid #b9b9b0;padding:10px 16px;background:#fff;min-height:44px;cursor:pointer;font-size:16px}.sizes button[aria-pressed=true]{background:#161616;color:#fff;border-color:#161616}
+    .stage{padding:24px;background:#d8dbd8;border:1px solid #c4c9c4;overflow:auto}.samplePage{width:100%;max-width:1040px;margin:auto;background:#f4f1e9;color:#123e42;font-family:var(--sample),sans-serif;font-size:18px;line-height:1.9;overflow-wrap:break-word}.samplePage[data-size=narrow]{max-width:390px}.sampleHero{padding:36px 30px;background:#123e42;color:#f4f1e9}.sampleHero .eyebrow{font-size:14px;margin:0}.sampleHero h2{font-size:52px;line-height:1.55;margin:18px 0 12px;font-weight:var(--weight)}.sampleHero p{margin:0}.sampleHero .latin{font-size:16px;letter-spacing:.05em;margin-bottom:18px}.sampleBody{padding:30px}.sampleBody h3{font-size:28px;line-height:1.65;font-weight:var(--weight);margin:0 0 16px}.sampleBody h4{font-size:21px;line-height:1.7;font-weight:var(--weight);margin:28px 0 12px}.sampleBody p{margin:0 0 18px}.sampleBody .names{line-height:2.2}.numbers{font-size:17px;border-block:1px solid #123e4230;padding:18px 0;display:flex;gap:12px 28px;flex-wrap:wrap}.sampleAction{display:inline-block;padding:12px 18px;background:#123e42;color:#fff;margin-top:10px;font-size:16px;font-weight:var(--weight)}
+    footer{margin-top:26px;font-size:14px;color:#50534d}footer p{margin:8px 0}footer a{margin-inline-end:16px}.recommendation{background:#fff;padding:20px;border-inline-start:3px solid #123e42;margin-top:24px;font-size:17px}.recommendation p{margin:0}.recommendation strong{font-weight:600}
+    @media(max-width:760px){header{align-items:flex-start;flex-direction:column;gap:12px}header h1{font-size:25px}.options{grid-template-columns:1fr}.option h2{font-size:30px}.stage{padding:10px}.sampleHero,.sampleBody{padding:24px 20px}.sampleHero h2{font-size:44px}.sampleBody h3{font-size:26px}.toolbar{align-items:flex-start;flex-direction:column}.sizes{width:100%}.sizes button{flex:1}.recommendation{font-size:16px}}
+    @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+  </style>
+</head>
+<body>
+  <header><div><h1>اختبار الخطوط العربية</h1><p>نفس النص، بثلاثة خطوط. اختر خطًا لتراه في نموذج الدراسة.</p></div><a href="/ar#work">العودة إلى المشاريع</a></header>
+  <main>
+    <p class="status" id="font-status" role="status" aria-live="polite">جارٍ تحميل الخطوط المحلية…</p>
+    <fieldset><legend>أي خط يناسب أثر؟</legend><div class="options">
+      <label class="option" data-font="current"><input type="radio" name="font" value="current"><strong>١ · الخط الحالي</strong><small lang="en" dir="ltr">Noto Sans Arabic</small><h2>هوية تُرى. أثر يبقى.</h2><p class="sampleText">نحوّل الفكرة إلى حضور بصري واضح، ونبني نظامًا يربط الاستراتيجية بالهوية والتجربة.</p></label>
+      <label class="option" data-font="plex"><input type="radio" name="font" value="plex" checked><strong>٢ · ترشيحي للدراسات</strong><small lang="en" dir="ltr">IBM Plex Sans Arabic</small><h2>هوية تُرى. أثر يبقى.</h2><p class="sampleText">نحوّل الفكرة إلى حضور بصري واضح، ونبني نظامًا يربط الاستراتيجية بالهوية والتجربة.</p></label>
+      <label class="option" data-font="tajawal"><input type="radio" name="font" value="tajawal"><strong>٣ · بديل هندسي</strong><small lang="en" dir="ltr">Tajawal</small><h2>هوية تُرى. أثر يبقى.</h2><p class="sampleText">نحوّل الفكرة إلى حضور بصري واضح، ونبني نظامًا يربط الاستراتيجية بالهوية والتجربة.</p></label>
+    </div></fieldset>
+    <div class="toolbar"><p id="selection" aria-live="polite">المعاينة: IBM Plex Sans Arabic</p><div class="sizes" role="group" aria-label="عرض نموذج الدراسة"><button type="button" data-size="wide" aria-pressed="true">عرض واسع</button><button type="button" data-size="narrow" aria-pressed="false">عرض ضيق · ٣٩٠ بكسل</button></div></div>
+    <div class="stage"><article class="samplePage" id="sample-page" data-font="plex" data-size="wide" aria-label="نموذج قراءة بالخط المختار">
+      <div class="sampleHero"><p class="eyebrow">نموذج لاختبار الخطوط · دراسة هوية</p><h2>نبرأ</h2><p class="latin" lang="en" dir="ltr">NABRA — BRAND STUDY</p><p>الاستراتيجية والهوية البصرية</p></div>
+      <div class="sampleBody"><h3>من الفكرة إلى حضور واضح</h3><p>تبدأ الهوية بفهم العلامة وجمهورها، ثم تتحول هذه المعرفة إلى قرارات في الشعار والألوان والخطوط وطريقة عرض المحتوى. تتكامل هذه العناصر لتمنح التجربة وضوحًا واتساقًا.</p><h4>وضوح القراءة في التفاصيل</h4><p>نختبر العناوين والفقرات، واتصال الحروف والتشكيل، ونراجع الأرقام العربية والإنجليزية داخل النص نفسه. يختلف إيقاع القراءة باختلاف عرض السطر ووزن الخط والمسافة بين السطور.</p><p class="names">نبرأ · أثر · أوّل نفحة · رَحْب الدار<br>تَتابُع · وِزان · سُمرة · دهشة</p><div class="numbers"><span>٩ فصول · ٣٩ قسمًا · ٤١ صفحة</span><span dir="ltr">2026 · 01 / 09 · PDF</span></div><span class="sampleAction">اقرأ الدراسة كاملة</span></div>
+    </article></div>
+    <aside class="recommendation"><p><strong>ترشيحي: الخيار ٢.</strong> أفضّل توازن حروفه للعربية، مع عناوين بوزن ٦٠٠ وفقرات بوزن ٤٠٠. الخيار ٣ يعطي اتجاهًا هندسيًا أخف. هذه مقارنة بصرية، وليست نتيجة اختبار مستخدمين.</p></aside>
+    <footer><p>المعاينة تختبر خط القراءة والعناوين فقط؛ النص المعروض نموذج للمقارنة.</p><a href="https://fonts.google.com/specimen/IBM+Plex+Sans+Arabic" lang="en">IBM Plex Sans Arabic</a><a href="https://fonts.google.com/specimen/Tajawal" lang="en">Tajawal</a></footer>
+  </main>
+  <script>
+    const names={current:'Noto Sans Arabic',plex:'IBM Plex Sans Arabic',tajawal:'Tajawal'};
+    const sample=document.getElementById('sample-page');
+    document.querySelectorAll('input[name="font"]').forEach(input=>input.addEventListener('change',()=>{if(input.checked){sample.dataset.font=input.value;document.getElementById('selection').textContent='المعاينة: '+names[input.value];}}));
+    document.querySelectorAll('button[data-size]').forEach(button=>button.addEventListener('click',()=>{sample.dataset.size=button.dataset.size;document.querySelectorAll('button[data-size]').forEach(other=>other.setAttribute('aria-pressed',String(other===button)));}));
+    const requirements=['400 18px PreviewCurrent','700 32px PreviewCurrent','400 18px PreviewPlex','600 32px PreviewPlex','400 18px PreviewTajawal','700 32px PreviewTajawal'];
+    Promise.all(requirements.map(font=>document.fonts.load(font,'نبرأ أثر سُمرة ١٢٣'))).then(results=>{if(results.some(faces=>faces.length===0))throw new Error('Font unavailable');document.getElementById('font-status').textContent='تم تحميل الخطوط الثلاثة؛ المقارنة جاهزة.';}).catch(()=>{const status=document.getElementById('font-status');status.dataset.error='true';status.textContent='تعذّر تحميل أحد الخطوط. أعد تحميل الصفحة قبل المقارنة.';});
+  </script>
+</body>
+</html>
