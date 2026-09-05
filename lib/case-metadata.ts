@@ -2,10 +2,14 @@ import type { Metadata } from 'next';
 import type { Locale } from '@/content/site';
 
 export const SITE_URL = 'https://www.athrbrands.sa';
-export const CASE_SLUGS = ['athrbrands', 'awwal-nafha', 'rahb-aldar', 'tatabu', 'wizan', 'sumra', 'dahsha'] as const;
+export const CASE_SLUGS = ['athrbrands', 'awwal-nafha', 'rahb-aldar', 'tatabu', 'wizan', 'sumra', 'dahsha', 'nabra'] as const;
 export type CaseSlug = typeof CASE_SLUGS[number];
 
 const COPY = {
+  nabra: {
+    ar: ['نبرأ | الاستراتيجية والهوية البصرية كاملة', 'دراسة نبرأ الطبية التصورية من أثر: الجمهور والتموضع والرسائل ورحلة المراجع ونظام الهوية والتطبيقات والإطلاق، مع دليل كامل من 41 صفحة.'],
+    en: ['NABRA | Complete brand strategy and visual identity', 'A complete Arabic healthcare concept study by ATHR: positioning, messages, visitor journey, visual identity, applications and launch planning, with a 41-page guide.'],
+  },
   athrbrands: {
     ar: ['هوية أثر | استراتيجية ونظام بصري', 'دراسة هوية استوديو أثر: من استراتيجية العلامة والهوية اللفظية إلى النظام البصري والتطبيقات الرقمية.'],
     en: ['ATHR identity | Strategy and visual system', 'The ATHR studio identity: from brand strategy and verbal identity to a visual system and digital applications.'],
@@ -39,6 +43,7 @@ const COPY = {
 export function caseMetadata(locale: Locale, slug: CaseSlug): Metadata {
   const [heading, description] = COPY[slug][locale];
   const heroImages: Partial<Record<CaseSlug, string>> = {
+    nabra: '/assets/nabra/campaign.webp',
     'awwal-nafha': '/assets/naysar/hero.png',
     'rahb-aldar': '/assets/nawsaq/hero.png',
     tatabu: '/assets/darwaq/hero.png',
