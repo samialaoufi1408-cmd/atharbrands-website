@@ -1,5 +1,7 @@
 # NAWSAQ and DARWAQ — identity case studies
 
+> Historical creative record. These project names were replaced by the user-approved names documented in [approved-name-changes.md](approved-name-changes.md). The original image prompts below are retained as history.
+
 ## Brief and decisions
 
 Add two independent fictional projects to the ATHR portfolio, alongside its five existing projects. The new work expands the portfolio into residential development and merchant delivery. These choices demonstrate different applications of identity; they are not presented as a measured ranking of market demand.

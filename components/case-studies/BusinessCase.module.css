@@ -15,8 +15,9 @@
 .topline { display: flex; gap: 20px; justify-content: space-between; align-items: center; font-size: 13px; line-height: 1.8; color: var(--muted); }
 .topline>span:first-child { border: 1px solid var(--line); border-radius: 30px; padding: 3px 13px; white-space: nowrap; }
 .titleRow { display: grid; grid-template-columns: 1fr 1fr 130px; align-items: center; gap: 40px; margin: 44px 0 36px; }
-.titleRow h1 { font-size: clamp(48px,5.8vw,92px); font-weight: 500; line-height: 1.3; letter-spacing: -.045em; color: var(--brand); }
-.page[dir=rtl] .titleRow h1 { font-size: clamp(70px,8vw,126px); letter-spacing: 0; }
+.titleRow>div { min-width: 0; }
+.titleRow h1 { font-size: clamp(46px,4.8vw,78px); font-weight: 500; line-height: 1.3; letter-spacing: -.045em; color: var(--brand); }
+.page[dir=rtl] .titleRow h1 { font-size: clamp(58px,6.5vw,102px); letter-spacing: 0; line-height: 1.5; }
 .otherName { font-size: 20px; letter-spacing: .18em; margin-top: 12px!important; }
 .page[dir=ltr] .otherName { letter-spacing: 0; font-size: 28px; }
 .titleRow h2 { font-size: clamp(24px,2.5vw,38px); font-weight: 500; line-height: 1.6; }
@@ -38,8 +39,8 @@
 .identity { background: var(--brand); color: var(--on-brand); display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: clamp(32px,8vw,128px); padding: 78px clamp(22px,7vw,112px); }
 .brandBoard { min-height: 430px; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 16px; padding: 30px; border: 1px solid #ffffff35; }
 .boardMark { width: 135px; height: 135px; color: var(--on-brand); }
-.boardArabic { font-size: 62px; line-height: 1.6; }
-.boardLatin { font-size: 27px; letter-spacing: .18em; padding-inline-start: .18em; }
+.boardArabic { font-size: clamp(42px,4.6vw,62px); line-height: 1.6; text-align: center; max-width: 100%; }
+.boardLatin { font-size: clamp(22px,2.3vw,27px); letter-spacing: .12em; padding-inline-start: .12em; line-height: 1.5; text-align: center; max-width: 100%; }
 .boardLine { width: 65px; height: 3px; background: var(--accent); margin-top: 26px; }
 .identityCopy .number,.identityCopy .eyebrow { color: #fff; opacity: .75; }
 .identityCopy>p:last-child { font-size: 16px; line-height: 2; margin-top: 24px; color: #f2f4f8; }
@@ -98,9 +99,9 @@
 @media(max-width:1100px) { .titleRow { grid-template-columns: 1fr 1fr; gap: 30px; }.introMark { display: none; }.spaceBody,.trackingBody { padding: 32px; gap: 30px; }.planArt { padding: 12px; } }
 @media(max-width:760px) {
   .nav { min-height: 74px; padding: 14px 20px; }.nav>div { gap: 14px; }.nav a { font-size: 12px; }.studio span { display: none; }
-  .intro { padding-top: 28px; }.topline { align-items: flex-start; flex-direction: column; gap: 16px; font-size: 12px; }.titleRow { grid-template-columns: 1fr; gap: 28px; margin: 32px 0 28px; }.titleRow h1 { font-size: clamp(46px,10vw,76px); }.page[dir=rtl] .titleRow h1 { font-size: 82px; }.otherName { font-size: 18px; }.titleRow h2 { font-size: 30px; }.scope { font-size: 12px; gap: 12px 20px; padding-top: 20px; }
+  .intro { padding-top: 28px; }.topline { align-items: flex-start; flex-direction: column; gap: 16px; font-size: 12px; }.titleRow { grid-template-columns: 1fr; gap: 28px; margin: 32px 0 28px; }.titleRow h1 { font-size: clamp(46px,10vw,76px); }.page[dir=rtl] .titleRow h1 { font-size: clamp(54px,13vw,80px); }.otherName { font-size: 18px; }.titleRow h2 { font-size: 30px; }.scope { font-size: 12px; gap: 12px 20px; padding-top: 20px; }
   .section { grid-template-columns: 1fr; gap: 20px; padding-block: 62px; }.body { padding-top: 0; }.body>p { font-size: 16px; }.heading h2,.identityCopy h2,.deliverables h2 { font-size: 32px; }.number { margin-bottom: 12px; }.facts>div { grid-template-columns: 72px 1fr; gap: 14px; }
-  .identity { grid-template-columns: 1fr; gap: 36px; padding-block: 52px; }.brandBoard { min-height: 330px; padding: 25px; }.boardArabic { font-size: 55px; }.boardLatin { font-size: 24px; }.boardMark { width: 105px; height: 105px; }.identityCopy>p:last-child { font-size: 15px; }
+  .identity { grid-template-columns: 1fr; gap: 36px; padding-block: 52px; }.brandBoard { min-height: 330px; padding: 25px; }.boardArabic { font-size: clamp(40px,10vw,55px); }.boardLatin { font-size: 24px; }.boardMark { width: 105px; height: 105px; }.identityCopy>p:last-child { font-size: 15px; }
   .principles { grid-template-columns: 1fr; gap: 25px; padding-top: 44px; }.principles h3 { font-size: 21px; }.palette>div { grid-template-columns: repeat(2,1fr); gap: 22px 16px; }.swatch>p { flex-direction: column; gap: 2px; }
   .digital { margin-top: 60px; padding-bottom: 42px; }.digital .section { padding-bottom: 32px; }.demoHeader { padding: 23px; flex-wrap: wrap; gap: 14px; }.demoHeader>span:first-child { font-size: 22px; }.spaceBody,.trackingBody { grid-template-columns: 1fr; padding: 22px; gap: 30px; }.planArt { padding: 12px; }.spaceBody h3,.trackingBody h3 { font-size: 28px; }.spaceBody a { font-size: 12px; padding-inline: 16px; }
   .trackingBrand { padding: 22px; flex-wrap: wrap; }.trackingBrand>small { width: 100%; margin: 0; }.trackingBody { gap: 16px; }.trackingSteps li { padding: 19px 0; }.trackingSteps h4 { font-size: 16px; }.trackingSteps li:not(:last-child)::after { top: 59px; bottom: -19px; }.demoTag { margin-top: 22px; }

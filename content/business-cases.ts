@@ -21,6 +21,7 @@ export type BusinessCaseCopy = {
 
 type BusinessCase = {
   latinName: string;
+  slug: 'rahb-aldar' | 'tatabu';
   theme: 'architecture' | 'logistics';
   colors: string[];
   assets: { hero: string; application: string; environment: string };
@@ -29,12 +30,12 @@ type BusinessCase = {
 
 export const BUSINESS_CASES: Record<BusinessCaseKey, BusinessCase> = {
   nawsaq: {
-    latinName: 'NAWSAQ', theme: 'architecture',
+    latinName: 'RAHB ALDAR', slug: 'rahb-aldar', theme: 'architecture',
     colors: ['#172F3D', '#BBC6DD', '#F1F0E8', '#B7684F'],
     assets: { hero: 'hero.png', application: 'presentation.png', environment: 'wayfinding.png' },
     copy: {
       ar: {
-        name: 'نَوْسَق', sector: 'تطوير عقاري سكني', tagline: 'مكانٌ يتّسع لحياتك.',
+        name: 'رَحْب الدار', sector: 'تطوير عقاري سكني', tagline: 'مكانٌ يتّسع لحياتك.',
         intro: 'هوية ترى المشروع من زاوية من سيسكنه؛ وتربط تفاصيل المكان بوضوح العرض.',
         summary: 'نظام هوية لشركة تطوير عقاري سكني، يمتد من ملف المشروع والمطبوعات إلى لوحات الموقع وتجربة استكشاف المساحات.',
         scope: ['الاستراتيجية والتسمية', 'الهوية البصرية', 'ملف المشروع', 'اللوحات والتجربة الرقمية'],
@@ -46,7 +47,7 @@ export const BUSINESS_CASES: Record<BusinessCaseKey, BusinessCase> = {
         },
         idea: {
           title: 'الفراغ هو بداية الحكاية.',
-          body: 'إطاران هندسيان مفتوحان يتركان مساحة في المركز. منهما تنطلق طريقة توزيع الصور والعناوين والمخططات، ليصبح الفراغ أداة لتنظيم المعلومات واستحضار الضوء والخصوصية.',
+          body: '«رَحْب الدار» يجمع بين اتساع المسكن والشعور بالانتماء إليه. إطاران هندسيان مفتوحان يتركان مساحة في المركز. منهما تنطلق طريقة توزيع الصور والعناوين والمخططات، ليصبح الفراغ أداة لتنظيم المعلومات واستحضار الضوء والخصوصية.',
           principles: [
             { title: 'إطار واضح', body: 'وحدة هندسية تربط الشعار بتقسيمات ملف المشروع واللوحات.' },
             { title: 'مساحة مقصودة', body: 'هوامش رحبة تمنح الصور والمعلومات أولوية في القراءة.' },
@@ -57,15 +58,15 @@ export const BUSINESS_CASES: Record<BusinessCaseKey, BusinessCase> = {
         environment: { title: 'هوية تقودك داخل المكان.', body: 'تُترجم النسب نفسها إلى لوحة المدخل وأرقام المباني وإشارات الاتجاه. اختلاف الحجم والخامة يحافظ على وظيفة كل لوحة، بينما يجمعها حضور بصري واحد.' },
         digital: { title: 'استكشاف المساحة قبل تفاصيلها.', body: 'تصور لواجهة تعرض فكرة الوحدة عبر ثلاثة محاور: اللقاء، والخصوصية، والضوء. يربط الترقيم بين الرسم والمعلومة، ويُبقي الانتقال إلى عرض المشروع واضحًا.', caption: 'تصور لواجهة عرض مشروع سكني ضمن دراسة الهوية.' },
         images: {
-          hero: 'مدخل مبنى سكني تصوري بواجهة حجرية ولوحة زرقاء عميقة تحمل اسم نوسق بالإنجليزية',
-          application: 'تطبيقات نوسق المطبوعة: ملف مشروع وبطاقات وهوية بلون أزرق عميق وحجر فاتح',
-          environment: 'لوحات نوسق المعمارية وأرقام توجيه داخل مساحة سكنية تصورية',
+          hero: 'مدخل مبنى سكني تصوري بواجهة حجرية ولوحة زرقاء عميقة تحمل اسم رحب الدار بالإنجليزية',
+          application: 'تطبيقات رحب الدار المطبوعة: ملف مشروع وبطاقات وهوية بلون أزرق عميق وحجر فاتح',
+          environment: 'لوحات رحب الدار المعمارية وأرقام توجيه داخل مساحة سكنية تصورية',
         },
         paletteNames: ['أزرق عميق', 'أزرق ضبابي', 'حجر فاتح', 'طين'],
         deliverables: ['التموضع والتسمية والرسالة', 'الاسم البصري والعنصر الهندسي', 'الألوان وتسلسل المعلومات', 'ملف المشروع والبطاقات', 'لوحات الموقع والتوجيه', 'تصور واجهة استكشاف المساحات'],
       },
       en: {
-        name: 'NAWSAQ', sector: 'Residential real estate development', tagline: 'Room for your life.',
+        name: 'RAHB ALDAR', sector: 'Residential real estate development', tagline: 'Room for your life.',
         intro: 'An identity built around the people who will live there, connecting a sense of place with a clear presentation.',
         summary: 'A residential developer identity spanning project presentations, stationery, architectural signage and a digital space-exploration concept.',
         scope: ['Strategy & naming', 'Visual identity', 'Project presentation', 'Signage & digital'],
@@ -77,7 +78,7 @@ export const BUSINESS_CASES: Record<BusinessCaseKey, BusinessCase> = {
         },
         idea: {
           title: 'The story begins with space.',
-          body: 'Two open geometric frames leave room at the center. They guide the placement of imagery, titles and plans, using space to organize information and suggest light and privacy.',
+          body: 'RAHB ALDAR evokes a spacious home in Arabic, connecting room to live with a sense of belonging. Two open geometric frames leave room at the center. They guide the placement of imagery, titles and plans, using space to organize information and suggest light and privacy.',
           principles: [
             { title: 'A clear frame', body: 'One geometric unit connects the mark to presentation grids and signs.' },
             { title: 'Space with purpose', body: 'Generous margins give images and information a clear reading order.' },
@@ -88,9 +89,9 @@ export const BUSINESS_CASES: Record<BusinessCaseKey, BusinessCase> = {
         environment: { title: 'An identity that guides you through the place.', body: 'The same proportions become entrance signs, building numbers and directional markers. Scale and material serve each sign’s purpose while maintaining one visual language.' },
         digital: { title: 'Explore the space before the specifications.', body: 'A digital concept presents a home through three themes: gathering, privacy and light. Numbering connects the diagram to the information and keeps the path to the project presentation clear.', caption: 'Residential project interface concept, presented within the identity study.' },
         images: {
-          hero: 'Conceptual residential entrance with pale stone and a deep-blue NAWSAQ sign',
-          application: 'NAWSAQ project presentation and stationery in deep blue and pale stone colors',
-          environment: 'NAWSAQ architectural signage and numbered wayfinding in a conceptual residential setting',
+          hero: 'Conceptual residential entrance with pale stone and a deep-blue RAHB ALDAR sign',
+          application: 'RAHB ALDAR project presentation and stationery in deep blue and pale stone colors',
+          environment: 'RAHB ALDAR architectural signage and numbered wayfinding in a conceptual residential setting',
         },
         paletteNames: ['Deep blue', 'Mist blue', 'Pale stone', 'Clay'],
         deliverables: ['Positioning, naming and message', 'Wordmarks and geometric motif', 'Color and information hierarchy', 'Project presentation and stationery', 'Architectural signage and wayfinding', 'Digital space-exploration concept'],
@@ -98,12 +99,12 @@ export const BUSINESS_CASES: Record<BusinessCaseKey, BusinessCase> = {
     },
   },
   darwaq: {
-    latinName: 'DARWAQ', theme: 'logistics',
+    latinName: 'TATABU', slug: 'tatabu', theme: 'logistics',
     colors: ['#273FEE', '#FF743D', '#F1F4F7', '#15212D'],
     assets: { hero: 'hero.png', application: 'parcels.png', environment: 'uniform.png' },
     copy: {
       ar: {
-        name: 'دَرْوَق', sector: 'شحن وتوصيل للمتاجر', tagline: 'كل خطوة واضحة.',
+        name: 'تَتابُع', sector: 'شحن وتوصيل للمتاجر', tagline: 'كل خطوة واضحة.',
         intro: 'من المتجر إلى الباب؛ هوية تجعل الحركة مفهومة وتمنح التفاصيل صوتًا واحدًا.',
         summary: 'هوية لخدمة شحن وتوصيل تربط المركبات والطرود والزيّ بواجهة تتبّع واضحة، بلغة بصرية مناسبة للمتاجر وعملائها.',
         scope: ['الاستراتيجية والتسمية', 'الهوية البصرية', 'المركبات والطرود', 'التتبّع والتواصل'],
@@ -115,7 +116,7 @@ export const BUSINESS_CASES: Record<BusinessCaseKey, BusinessCase> = {
         },
         idea: {
           title: 'اتجاه واحد. خطوات مترابطة.',
-          body: 'علامتان اتجاهيتان تصنعان إيقاع الحركة. تظهران بحجم كبير على المركبة، وباختصار على الطرد، وتتحولان إلى ترتيب واضح للحالات في واجهة التتبّع.',
+          body: '«تَتابُع» يعني توالي الخطوات واتصالها؛ من استلام الشحنة إلى تسليمها. علامتان اتجاهيتان تصنعان إيقاع الحركة. تظهران بحجم كبير على المركبة، وباختصار على الطرد، وتتحولان إلى ترتيب واضح للحالات في واجهة التتبّع.',
           principles: [
             { title: 'تميّز من بعيد', body: 'كتلة زرقاء وكلمة واضحة وتفصيل برتقالي يسهل تمييزها في الشارع.' },
             { title: 'وضوح من قريب', body: 'مساحة ثابتة لاسم الخدمة ومعلومات الشحنة، دون خلط بينهما.' },
@@ -126,15 +127,15 @@ export const BUSINESS_CASES: Record<BusinessCaseKey, BusinessCase> = {
         environment: { title: 'حضور واحد أثناء العمل.', body: 'يمتد النظام إلى زيّ الفريق ومعداته. توزيع اللون والعلامة يراعي القراءة على القماش، ويصل بين ما يراه العميل على المركبة وما يستلمه عند الباب.' },
         digital: { title: 'معلومة تصل قبل السؤال.', body: 'تصور لواجهة تتبّع تبني تسلسلًا مفهومًا: الاستلام، ثم النقل، ثم التسليم. تُبرز الحالة الحالية وتعرض التالية بهدوء، دون إغراق المستخدم بالتفاصيل التشغيلية.', caption: 'تصور توضيحي لواجهة تتبّع، ببيانات عرض ضمن دراسة الهوية.' },
         images: {
-          hero: 'مركبة توصيل تصورية بهوية دروق، بكتلة زرقاء واسم أبيض وعلامتين اتجاهيتين برتقاليتين',
-          application: 'طرود وكراتين وأشرطة تغليف تحمل هوية دروق الزرقاء والبرتقالية',
-          environment: 'زيّ ومعدات خدمة دروق بألوان زرقاء وبرتقالية وتطبيقات واضحة للاسم',
+          hero: 'مركبة توصيل تصورية بهوية تتابع، بكتلة زرقاء واسم أبيض وعلامتين اتجاهيتين برتقاليتين',
+          application: 'طرود وكراتين وأشرطة تغليف تحمل هوية تتابع الزرقاء والبرتقالية',
+          environment: 'زيّ ومعدات خدمة تتابع بألوان زرقاء وبرتقالية وتطبيقات واضحة للاسم',
         },
         paletteNames: ['أزرق حيوي', 'برتقالي', 'رمادي فاتح', 'فحمي'],
         deliverables: ['التموضع والتسمية ونبرة التواصل', 'الاسم البصري والعلامة الاتجاهية', 'الألوان وقواعد التباين', 'هوية المركبات والطرود', 'تطبيقات الزيّ والمعدات', 'تصور واجهة تتبّع الشحنة'],
       },
       en: {
-        name: 'DARWAQ', sector: 'Shipping and delivery for merchants', tagline: 'Every step, clear.',
+        name: 'TATABU', sector: 'Shipping and delivery for merchants', tagline: 'Every step, clear.',
         intro: 'From store to doorstep: an identity that makes movement understandable and gives the details one voice.',
         summary: 'A delivery identity connecting vehicles, parcels and workwear with a clear tracking-interface concept for merchants and their customers.',
         scope: ['Strategy & naming', 'Visual identity', 'Vehicles & parcels', 'Tracking & communication'],
@@ -146,7 +147,7 @@ export const BUSINESS_CASES: Record<BusinessCaseKey, BusinessCase> = {
         },
         idea: {
           title: 'One direction. Connected steps.',
-          body: 'Two directional shapes create a rhythm of movement. They appear at scale on the vehicle, in a compact form on the parcel and as an ordered sequence of states in the tracking interface.',
+          body: 'TATABU means succession in Arabic: connected steps from collection to delivery. Two directional shapes create a rhythm of movement. They appear at scale on the vehicle, in a compact form on the parcel and as an ordered sequence of states in the tracking interface.',
           principles: [
             { title: 'Recognizable at a distance', body: 'A blue field, a clear wordmark and an orange accent are easy to distinguish on the street.' },
             { title: 'Clear at close range', body: 'Dedicated space separates service identity from shipment information.' },
@@ -157,9 +158,9 @@ export const BUSINESS_CASES: Record<BusinessCaseKey, BusinessCase> = {
         environment: { title: 'One presence, on the job.', body: 'The system extends to team workwear and equipment. Color and mark placement account for legibility on fabric and connect the branded vehicle to the doorstep encounter.' },
         digital: { title: 'Information before the question.', body: 'A tracking-interface concept sets out a clear sequence: collection, transit and delivery. It highlights the current step and presents what comes next without overwhelming the customer with operational detail.', caption: 'Illustrative tracking-interface concept using demonstration data within the identity study.' },
         images: {
-          hero: 'Conceptual DARWAQ delivery van with cobalt-blue livery, a white wordmark and orange chevrons',
-          application: 'DARWAQ parcels, cartons and packaging tape in cobalt blue and orange',
-          environment: 'DARWAQ delivery workwear and equipment with blue and orange identity applications',
+          hero: 'Conceptual TATABU delivery van with cobalt-blue livery, a white wordmark and orange chevrons',
+          application: 'TATABU parcels, cartons and packaging tape in cobalt blue and orange',
+          environment: 'TATABU delivery workwear and equipment with blue and orange identity applications',
         },
         paletteNames: ['Cobalt', 'Orange', 'Light gray', 'Graphite'],
         deliverables: ['Positioning, naming and tone of voice', 'Wordmarks and directional motif', 'Color and contrast rules', 'Vehicle livery and parcels', 'Workwear and equipment', 'Shipment-tracking interface concept'],

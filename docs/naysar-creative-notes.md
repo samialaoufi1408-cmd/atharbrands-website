@@ -1,5 +1,7 @@
 # NAYSAR — fragrance concept for ATHR
 
+> Historical creative record. These project names were replaced by the user-approved names documented in [approved-name-changes.md](approved-name-changes.md). The original image prompts below are retained as history.
+
 Independent portfolio concept, prepared to replace QIRĀ. It is not a client commission or a product offered for sale. No sales results or customer endorsements are claimed.
 
 ## Direction
