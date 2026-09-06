@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="640" viewBox="0 0 1200 640" role="img" aria-label="WIZAN brand mark">
+  <rect width="1200" height="640" fill="#F2EFE7"/>
+  <g transform="translate(364.48 84.48) scale(.92)">
+    <path d="M184.15 410.07A170 170 0 1 1 327.85 410.07" fill="none" stroke="#0F1F1D" stroke-width="34" stroke-linecap="round"/>
+    <path d="M208.67 357.51A112 112 0 0 1 208.67 154.49" fill="none" stroke="#91A79D" stroke-width="34" stroke-linecap="round"/>
+    <path d="M303.33 154.49A112 112 0 0 1 208.67 357.51" fill="none" stroke="#DD776A" stroke-width="34" stroke-linecap="round"/>
+    <circle cx="256" cy="256" r="26" fill="#0F1F1D"/>
+    <circle cx="361.3709" cy="122.5947" r="14" fill="#6087A0"/>
+  </g>
+</svg>

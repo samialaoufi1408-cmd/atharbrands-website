@@ -8,7 +8,7 @@
   "taglineEn": "Measure wellbeing. Live in balance.",
   "concept": true,
   "file": "WIZAN-Strategy-and-Visual-Identity.pdf",
-  "hero": "mark",
+  "hero": "mark-v2",
   "summary": "من المؤشر إلى المعنى ثم إلى خطوة قابلة للاستمرار: استراتيجية وهوية وتجربة لمنصة عافية تصورية.",
   "summaryEn": "A complete Arabic wellbeing study: positioning, supportive language, privacy, data presentation, identity and launch.",
   "theme": {
@@ -568,7 +568,7 @@
       "blocks": [
         {
           "type": "image",
-          "src": "/assets/studies/wizan/mark.webp",
+          "src": "/assets/studies/wizan/mark-v2.webp",
           "alt": "رمز وِزان المعتمد: مسارات مفتوحة ومركز ونقطة حرة.",
           "width": 1200,
           "height": 640
