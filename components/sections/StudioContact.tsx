@@ -58,6 +58,8 @@ export function StudioContact({ locale }: { locale: Locale }) {
         <label htmlFor="enquiry-service">{ar ? 'الخدمة المطلوبة' : 'Service needed'}
           <select id="enquiry-service" name="service" defaultValue="" required>
             <option value="" disabled>{ar ? 'اختر الخدمة' : 'Select a service'}</option>
+            <option>{ar ? 'دراسة الجدوى' : 'Feasibility study'}</option>
+            <option>{ar ? 'دراسة الجدوى واستراتيجية العلامة والهوية' : 'Feasibility, brand strategy and identity'}</option>
             <option>{ar ? 'استراتيجية العلامة' : 'Brand strategy'}</option>
             <option>{ar ? 'الهوية البصرية' : 'Visual identity'}</option>
             <option>{ar ? 'تطبيقات الهوية' : 'Brand applications'}</option>
