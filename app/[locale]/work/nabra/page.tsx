@@ -89,6 +89,7 @@ export default function NabraCase({ params }: { params: { locale: Locale } }) {
           <div className={styles.actions}>
             <a className={styles.primaryButton} href="#study">{ar ? 'اقرأ الدراسة كاملة' : 'Read the full Arabic study'}<span aria-hidden="true">↓</span></a>
             <a className={styles.downloadButton} href={download} download>{ar ? 'تحميل الدليل الكامل' : 'Download the Arabic guide'}<span>PDF · {ar ? '٤١ صفحة' : '41 pages'}</span></a>
+            <Link className={styles.downloadButton} href={`/${params.locale}/work/nabra/feasibility`}>{ar ? 'دراسة جدوى نبرأ' : 'NABRA feasibility study'}<span>{ar ? 'نموذج تفاعلي بافتراضات معلنة' : 'Interactive example with disclosed assumptions'}</span></Link>
           </div>
         </div>
         <figure className={styles.heroVisual}><Image src="/assets/nabra/campaign.webp" alt={ar ? 'تصور حملة نبرأ: طبيبة تستمع إلى مراجعة، وشعار نبرأ وعبارة معك، خطوة بخطوة' : 'NABRA campaign concept: a doctor listening to a visitor, alongside the brand identity'} width={1536} height={1024} priority sizes="(max-width: 900px) 100vw, 58vw" /></figure>

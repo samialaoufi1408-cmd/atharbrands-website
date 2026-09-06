@@ -53,18 +53,20 @@
 .tableScroll th,.tableScroll td{text-align:start;padding:15px 18px;border-bottom:1px solid var(--line);vertical-align:top;overflow-wrap:normal;word-break:normal}
 .tableScroll td>bdi:only-child{min-width:7ch;font-weight:700;font-size:1.0625em}
 .tableScroll thead th{background:var(--ink);color:var(--paper)}
-.tableScroll tbody tr:nth-child(even){background:#e8ddcd50}
+.tableScroll tbody tr:nth-child(even){background:color-mix(in srgb,var(--soft) 35%,transparent)}
 .tableScroll tr:last-child>*{border-bottom:0}
 .tableScroll tfoot{font-weight:700;background:var(--soft)}
+.cellDetails{display:none;font-size:14px;font-weight:400;margin-top:8px}
+.scrollHint{font-size:14px}
 .sources li{margin-bottom:18px}
 .closing{padding:56px clamp(20px,5vw,88px) 80px;background:var(--ink);color:var(--paper)}
-.calculator{padding:28px;background:#fffaf2;border:1px solid var(--line);margin:28px 0}
+.calculator{padding:28px;background:color-mix(in srgb,var(--paper) 55%,white);border:1px solid var(--line);margin:28px 0}
 .scenarioButtons{display:flex;flex-wrap:wrap;gap:12px;margin:20px 0}
 .scenarioButtons button{border:1px solid var(--ink);background:transparent;color:var(--ink);padding:10px 18px;min-height:48px;cursor:pointer}
 .scenarioButtons button[aria-pressed=true]{background:var(--ink);color:var(--paper)}
 .inputGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;margin:24px 0}
 .inputGrid label{font-size:16px;font-weight:700;display:block}
-.inputGrid input{display:block;width:100%;background:var(--paper);border:1px solid #39251d70;border-radius:0;padding:10px 14px;min-height:48px;color:var(--ink);font-variant-numeric:tabular-nums;margin-top:6px}
+.inputGrid input{display:block;width:100%;background:var(--paper);border:1px solid var(--ink);border-radius:0;padding:10px 14px;min-height:48px;color:var(--ink);font-variant-numeric:tabular-nums;margin-top:6px}
 .inputGrid input[aria-invalid=true]{border:2px solid #8e2920}
 .fieldHelp{font-size:14px;display:block;margin-top:5px}
 .error{color:#8e2920;font-size:16px}
@@ -84,3 +86,4 @@
 @media(max-width:900px){.hero{grid-template-columns:1fr;padding-top:44px}.hero figure{max-width:800px}.metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.body{padding-top:36px}}
 @media(max-width:600px){.nav{gap:16px;align-items:flex-start}.brand span{display:none}.navLinks{gap:14px;flex-wrap:wrap;justify-content:flex-end}.nav a{font-size:14px}.grid,.inputGrid,.metrics{grid-template-columns:1fr}.calculator{padding:20px 14px}.metric{padding:14px}.metric dd{font-size:27px}.card{padding:22px}.tableScroll th,.tableScroll td{padding:12px}.section{padding-block:34px}.contents{gap:10px 18px}.heroSteps li{grid-template-columns:28px 1fr}}
 @media print{.nav,.skip,.contents,.inputGrid,.scenarioButtons,.actions{display:none}.page{font-size:12pt}.hero,.body,.closing,.notice{padding:20px}.hero{display:block}.hero figure{max-width:400px}.section,.card{break-inside:avoid}.calculator{padding:12px}.tableScroll{overflow:visible}.tableScroll table{min-width:0;font-size:10pt}.chart svg{max-height:230px}}
+@media screen and (max-width:600px){.compactDetails table{min-width:0}.compactDetails thead th:nth-child(3),.compactDetails tbody td:nth-child(3){display:none}.compactDetails .cellDetails{display:block}}
