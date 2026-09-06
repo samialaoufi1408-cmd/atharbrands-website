@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import type { Locale } from '@/content/site';
 import { CONTACT_LINKEDIN } from '@/lib/contact';
 import styles from './StudioSections.module.css';
@@ -5,9 +6,10 @@ import styles from './StudioSections.module.css';
 const COPY = {
   ar: {
     services: 'الخدمات',
-    serviceTitle: 'من وضوح الفكرة إلى حضور العلامة.',
+    serviceTitle: 'من دراسة المشروع إلى بناء هويته.',
     serviceIntro: 'نحدد معك ما يحتاجه مشروعك، ونوضح نطاق العمل ومخرجاته ومدته في عرض السعر قبل البدء.',
     items: [
+      { title: 'دراسة الجدوى', fit: 'لمن يريد تقييم المشروع قبل الالتزام بالتأسيس أو التوسع.', deliverables: ['السوق والمنافسون ونموذج التشغيل', 'التكاليف والإيرادات والتدفقات النقدية', 'نقطة التعادل والسيناريوهات والمخاطر'] },
       { title: 'استراتيجية العلامة', fit: 'لمن يبدأ علامة جديدة أو يعيد تحديد اتجاهها.', deliverables: ['فهم الجمهور والسوق', 'التموضع وشخصية العلامة', 'الرسائل ونبرة التواصل'] },
       { title: 'الهوية البصرية', fit: 'لمن يحتاج نظامًا متماسكًا يتجاوز تصميم الشعار.', deliverables: ['الشعار ونسخه', 'الألوان والخطوط والعناصر البصرية', 'دليل استخدام الهوية'] },
       { title: 'تطبيقات الهوية', fit: 'لمن يريد نقل الهوية إلى نقاط تواصل ملموسة.', deliverables: ['التغليف والمطبوعات', 'قوالب المحتوى الرقمي', 'تطبيقات الهوية بحسب نشاطك'] },
@@ -28,9 +30,10 @@ const COPY = {
   },
   en: {
     services: 'Services',
-    serviceTitle: 'From a clear idea to a coherent brand.',
+    serviceTitle: 'From business feasibility to brand identity.',
     serviceIntro: 'We define what your project needs and agree on scope, deliverables and timing in the proposal before work begins.',
     items: [
+      { title: 'Feasibility study', fit: 'For assessing a business before committing to setup or expansion.', deliverables: ['Market, competitors and operating model', 'Costs, revenue and cash flow', 'Break-even, scenarios and risks'] },
       { title: 'Brand strategy', fit: 'For a new brand or a business redefining its direction.', deliverables: ['Audience and market understanding', 'Positioning and brand personality', 'Messaging and tone of voice'] },
       { title: 'Visual identity', fit: 'For a consistent system that goes beyond a logo.', deliverables: ['Logo and variations', 'Color, typography and visual elements', 'Brand usage guidelines'] },
       { title: 'Brand applications', fit: 'For bringing your identity to real touchpoints.', deliverables: ['Packaging and print', 'Digital content templates', 'Applications tailored to your business'] },
@@ -67,6 +70,10 @@ export function StudioServices({ locale }: { locale: Locale }) {
             <ul>{service.deliverables.map(item => <li key={item}>{item}</li>)}</ul>
           </article>
         ))}
+      </div>
+      <div className={styles.integratedPath}>
+        <div><h3>{locale === 'ar' ? 'مسار واحد، أو الخدمة التي تحتاجها.' : 'One connected path, or the stage you need.'}</h3><p>{locale === 'ar' ? 'نبدأ بجدوى المشروع، ثم نبني استراتيجية العلامة، ونحوّلها إلى هوية وتطبيقات. يتحدد نطاق البحث والبيانات والمخرجات قبل التعاقد.' : 'Assess the business, define the brand strategy, then build its identity and applications. Research scope, data and deliverables are agreed before engagement.'}</p></div>
+        <Link className={styles.textLink} href={`/${locale}/services/feasibility`}>{locale === 'ar' ? 'تفاصيل الخدمة ونموذج سُمرة' : 'Explore the service and SUMRA example'}</Link>
       </div>
       <a className={styles.textLink} href="#contact">{c.request}</a>
     </section>

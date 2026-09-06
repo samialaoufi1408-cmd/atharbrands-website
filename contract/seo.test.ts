@@ -3,14 +3,18 @@ import sitemap from '../app/sitemap';
 import robots from '../app/robots';
 import { generateMetadata } from '../app/[locale]/layout';
 import { CASE_SLUGS, SITE_URL, caseMetadata } from '../lib/case-metadata';
+import { feasibilityMetadata } from '../lib/feasibility-metadata';
 
 describe('SEO', () => {
   it('sitemap covers both locales with hreflang alternates', () => {
     const s = sitemap();
-    expect(s).toHaveLength(18);
+    expect(s).toHaveLength(22);
     for (const locale of ['ar', 'en']) {
       expect(s.map(e => e.url)).toContain(`${SITE_URL}/${locale}`);
       for (const slug of CASE_SLUGS) expect(s.map(e => e.url)).toContain(`${SITE_URL}/${locale}/work/${slug}`);
+      for (const path of ['/services/feasibility', '/work/sumra/feasibility']) {
+        expect(s.map(e => e.url)).toContain(`${SITE_URL}/${locale}${path}`);
+      }
     }
     expect(s[0].alternates?.languages).toEqual({
       en: `${SITE_URL}/en`,
@@ -42,5 +46,18 @@ describe('SEO', () => {
       titles.add(m.title);
     }
     expect(titles.size).toBe(16);
+  });
+
+  it('keeps the feasibility service and example independently addressable in both languages', () => {
+    const titles = new Set();
+    for (const locale of ['ar', 'en'] as const) for (const example of [false, true]) {
+      const path = example ? '/work/sumra/feasibility' : '/services/feasibility';
+      const metadata = feasibilityMetadata(locale, example);
+      expect(metadata.alternates?.canonical).toBe(`/${locale}${path}`);
+      expect(metadata.alternates?.languages).toEqual({ ar: `/ar${path}`, en: `/en${path}` });
+      expect(metadata.description).toBeTruthy();
+      titles.add(metadata.title);
+    }
+    expect(titles.size).toBe(4);
   });
 });
