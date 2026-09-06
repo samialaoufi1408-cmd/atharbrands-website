@@ -24,7 +24,7 @@
       <path d="M-42 76 A92 92 0 0 1 -42 -76" fill="none" stroke="#91A79D" stroke-width="26" stroke-linecap="round"/>
       <path d="M42 -76 A92 92 0 0 1 42 76" fill="none" stroke="#DD776A" stroke-width="26" stroke-linecap="round"/>
       <circle cx="0" cy="0" r="22" fill="#0F1F1D"/>
-      <circle cx="96" cy="-92" r="13" fill="#6087A0"/>
+      <circle cx="105.6116" cy="-101.0421" r="13" fill="#6087A0"/>
     </g>
 
     <text x="274" y="500" text-anchor="middle" fill="#0F1F1D" font-family="Arial, sans-serif" font-weight="700" font-size="48">WIZAN</text>
@@ -45,7 +45,7 @@
       <path d="M-42 76 A92 92 0 0 1 -42 -76" fill="none" stroke="#91A79D" stroke-width="26" stroke-linecap="round"/>
       <path d="M42 -76 A92 92 0 0 1 42 76" fill="none" stroke="#DD776A" stroke-width="26" stroke-linecap="round"/>
       <circle cx="0" cy="0" r="22" fill="#0F1F1D"/>
-      <circle cx="96" cy="-92" r="13" fill="#6087A0"/>
+      <circle cx="105.6116" cy="-101.0421" r="13" fill="#6087A0"/>
     </g>
 
     <g transform="translate(840 162)">

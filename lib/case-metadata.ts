@@ -45,7 +45,7 @@ export function caseMetadata(locale: Locale, slug: CaseSlug): Metadata {
   const heroImages: Partial<Record<CaseSlug, string>> = {
     nabra: '/assets/nabra/campaign.webp',
     athrbrands: '/assets/studies/athrbrands/mark.webp',
-    wizan: '/assets/studies/wizan/mark.webp',
+    wizan: '/assets/studies/wizan/mark-v2.webp',
     sumra: '/assets/studies/sumra/full.webp',
     dahsha: '/assets/studies/dahsha/campaign.webp',
     'awwal-nafha': '/assets/naysar/hero.png',

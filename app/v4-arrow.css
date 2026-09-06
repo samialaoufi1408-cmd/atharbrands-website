@@ -56,7 +56,7 @@ html body a:focus-visible > span[aria-hidden="true"] {
  */
 html body [class*="wizanArt"] {
   background-color: #0F1F1D !important;
-  background-image: url('/assets/wizan-case-study-v2.svg') !important;
+  background-image: url('/assets/wizan-case-study-v2.svg?v=3') !important;
   background-repeat: no-repeat !important;
   background-position: center !important;
   background-size: cover !important;
