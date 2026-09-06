@@ -31,7 +31,7 @@ export default function SumraFeasibilityPage({ params }: { params: { locale: Loc
     ['brand', t('من الجدوى إلى الهوية', 'From feasibility to identity')],
     ['sources', t('المصادر والتحديث', 'Sources and updates')],
   ];
-  return <FeasibilityFrame locale={locale} path="/work/sumra/feasibility">
+  return <FeasibilityFrame locale={locale} path="/work/sumra/feasibility" project={{ slug: 'sumra', name: t('سُمرة', 'SUMRA') }}>
     <section className={styles.hero}>
       <div><p className={styles.eyebrow}>{t('سُمرة · نموذج دراسة جدوى تصوري', 'SUMRA · Illustrative feasibility study')}</p><h1>{t('قبل أول فنجان، نختبر الفكرة.', 'Before the first cup, test the idea.')}</h1>
         <p className={styles.lead}>{t('دراسة لفرع مقهى صغير تربط العميل والتشغيل والتكلفة بقرارات العلامة. اقرأ المنطق، راجع الافتراضات، وغيّر الأرقام بنفسك.', 'A small café branch study connecting customers, operations and costs to brand decisions. Explore the reasoning, inspect the assumptions and change the numbers yourself.')}</p>
@@ -106,7 +106,7 @@ export default function SumraFeasibilityPage({ params }: { params: { locale: Loc
           ...FIXED_COSTS.map(row => [row[locale], amount(row.amount)]),
           [t('الإجمالي', 'Total'), amount(BASE_INPUTS.fixedMonthlyCost)],
         ]} />
-        <DataTable caption={t('ملخص التمويل الأولي الأساسي — ر.س', 'Base initial funding summary — SAR')} headers={[t('الاستخدام', 'Use'), t('المبلغ', 'Amount'), t('التفسير', 'Explanation')]} rows={[
+        <DataTable compactDetails caption={t('ملخص التمويل الأولي الأساسي — ر.س', 'Base initial funding summary — SAR')} headers={[t('الاستخدام', 'Use'), t('المبلغ', 'Amount'), t('التفسير', 'Explanation')]} rows={[
           [t('تجهيز ومصاريف ما قبل الافتتاح', 'Setup and pre-opening'), amount(BASE_INPUTS.setupCost), t('يتضمن احتياطي تجاوز تكلفة التجهيز 21,000؛ لا يتكرر ضمن مصاريف التشغيل.', 'Includes a 21,000 setup contingency; it is not repeated as an operating cost.')],
           [t('وديعة إيجار ومخزون افتتاحي', 'Rent deposit and opening stock'), amount(BASE_INPUTS.depositAndStock), t('تجميد نقد 21,000 + مخزون 8,000. يُفترض ثبات المخزون لاحقًا، وتجديد المستهلك ضمن التكلفة المتغيرة.', '21,000 tied up as a deposit + 8,000 inventory. Stock remains constant afterwards; replenishment of consumption is included in variable cost.')],
           [t('نقد متاح بعد الافتتاح', 'Cash available after opening'), amount(base.reserve), t('38,000 × 3 أشهر. الاحتياطي رصيد نقدي وليس مصروفًا إضافيًا.', '38,000 × 3 months. The reserve is cash, not an additional expense.')],

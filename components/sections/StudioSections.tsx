@@ -73,7 +73,7 @@ export function StudioServices({ locale }: { locale: Locale }) {
       </div>
       <div className={styles.integratedPath}>
         <div><h3>{locale === 'ar' ? 'مسار واحد، أو الخدمة التي تحتاجها.' : 'One connected path, or the stage you need.'}</h3><p>{locale === 'ar' ? 'نبدأ بجدوى المشروع، ثم نبني استراتيجية العلامة، ونحوّلها إلى هوية وتطبيقات. يتحدد نطاق البحث والبيانات والمخرجات قبل التعاقد.' : 'Assess the business, define the brand strategy, then build its identity and applications. Research scope, data and deliverables are agreed before engagement.'}</p></div>
-        <Link className={styles.textLink} href={`/${locale}/services/feasibility`}>{locale === 'ar' ? 'تفاصيل الخدمة ونموذج سُمرة' : 'Explore the service and SUMRA example'}</Link>
+        <Link className={styles.textLink} href={`/${locale}/services/feasibility`}>{locale === 'ar' ? 'تفاصيل الخدمة ودراسات جميع الأعمال' : 'Explore the service and all project studies'}</Link>
       </div>
       <a className={styles.textLink} href="#contact">{c.request}</a>
     </section>

@@ -77,7 +77,7 @@ export function CompleteStudy({ study, locale }: { study: Study; locale: Locale 
           <div className={styles.actions}>
             <a className={styles.primaryButton} href="#study">{ar ? 'اقرأ الدراسة كاملة' : 'Read the full Arabic study'}<span aria-hidden="true">↓</span></a>
             <a className={styles.downloadButton} href={study.download} download>{ar ? 'تحميل الدليل الكامل' : 'Download the Arabic guide'}<span>PDF · {ar ? '٤١ صفحة' : '41 pages'}</span></a>
-            {study.slug === 'sumra' && <Link className={styles.downloadButton} href={`/${locale}/work/sumra/feasibility`}>{ar ? 'دراسة جدوى سُمرة' : 'SUMRA feasibility study'}<span>{ar ? 'نموذج تفاعلي بافتراضات معلنة' : 'Interactive example with disclosed assumptions'}</span></Link>}
+            <Link className={styles.downloadButton} href={`/${locale}/work/${study.slug}/feasibility`}>{ar ? `دراسة جدوى ${study.name}` : `${study.latinName} feasibility study`}<span>{ar ? 'نموذج تفاعلي بافتراضات معلنة' : 'Interactive example with disclosed assumptions'}</span></Link>
           </div>
         </div>
         <figure className={styles.heroVisual}><Image src={`/assets/studies/${study.slug}/${study.hero}.webp`} alt={ar ? `الهوية المعتمدة لعلامة ${study.name}` : `${study.latinName} identity concept`} width={study.heroWidth} height={study.heroHeight} priority sizes="(max-width: 900px) 100vw, 55vw" /></figure>
