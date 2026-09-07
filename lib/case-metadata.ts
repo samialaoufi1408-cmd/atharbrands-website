@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import type { Locale } from '@/content/site';
 
 export const SITE_URL = 'https://www.athrbrands.sa';
-export const CASE_SLUGS = ['athrbrands', 'awwal-nafha', 'rahb-aldar', 'tatabu', 'wizan', 'sumra', 'dahsha', 'nabra'] as const;
+export const CASE_SLUGS = ['athrbrands', 'aevu', 'rahb-aldar', 'tatabu', 'wizan', 'sumra', 'dahsha', 'nabra'] as const;
 export type CaseSlug = typeof CASE_SLUGS[number];
 
 const COPY = {
@@ -14,9 +14,9 @@ const COPY = {
     ar: ['هوية أثر | استراتيجية ونظام بصري', 'دراسة هوية استوديو أثر: من استراتيجية العلامة والهوية اللفظية إلى النظام البصري والتطبيقات الرقمية. دراسة كاملة تشمل رحلة العميل والرسائل وقواعد الهوية والتطبيقات والإطلاق، مع دليل من 41 صفحة.'],
     en: ['ATHR identity | Strategy and visual system', 'The ATHR studio identity: from brand strategy and verbal identity to a visual system and digital applications. Includes a complete Arabic study of the customer journey, messages, identity rules and launch, with a 41-page guide.'],
   },
-  'awwal-nafha': {
-    ar: ['أوّل نفحة | هوية وتغليف لعلامة عطور معاصرة', 'مشروع أول نفحة التصوري: استراتيجية وتسمية وهوية بصرية وتغليف عطور وتجربة متجر ومحتوى إطلاق من أثر. دراسة كاملة تشمل رحلة العميل والرسائل وقواعد الهوية والتطبيقات والإطلاق، مع دليل من 41 صفحة.'],
-    en: ['AWWAL NAFHA | Contemporary fragrance identity and packaging', 'A conceptual fragrance brand by ATHR: strategy, naming, visual identity, packaging, a product-page concept and launch art direction. Includes a complete Arabic study of the customer journey, messages, identity rules and launch, with a 41-page guide.'],
+  'aevu': {
+    ar: ['إيڤو AEVU | استراتيجية وهوية ودراسة جدوى لعلامة عطور', 'نفَس يتّسع: مشروع إيڤو التصوري من أثر. استراتيجية وهوية وتغليف ودراسة جدوى سعودية من 36 صفحة، مع نموذج مالي قابل للتعديل.'],
+    en: ['AEVU | Fragrance strategy, identity and feasibility', 'A breath, unfolding: a conceptual unisex fragrance brand by ATHR. A 36-page Arabic strategy, identity and Saudi feasibility study, with an editable financial model.'],
   },
   'rahb-aldar': {
     ar: ['رَحْب الدار | هوية لشركة تطوير عقاري سكني', 'دراسة رحب الدار التصورية: استراتيجية وتسمية وهوية بصرية وملف مشروع ولوحات معمارية وتجربة رقمية من أثر. دراسة كاملة تشمل رحلة العميل والرسائل وقواعد الهوية والتطبيقات والإطلاق، مع دليل من 41 صفحة.'],
@@ -48,7 +48,7 @@ export function caseMetadata(locale: Locale, slug: CaseSlug): Metadata {
     wizan: '/assets/studies/wizan/mark-v2.webp',
     sumra: '/assets/studies/sumra/full.webp',
     dahsha: '/assets/studies/dahsha/campaign.webp',
-    'awwal-nafha': '/assets/naysar/hero.png',
+    'aevu': '/assets/studies/aevu/landscape.webp',
     'rahb-aldar': '/assets/nawsaq/hero.png',
     tatabu: '/assets/darwaq/hero.png',
   };

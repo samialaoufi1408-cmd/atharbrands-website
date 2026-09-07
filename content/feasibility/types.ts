@@ -10,5 +10,7 @@ export type PortfolioFeasibilityStudy = {
   operations: StudyCard[]; capacityNote: Bilingual; collectionNote: Bilingual;
   assumptions: StudyCard[]; variableCosts: Bilingual; tax: Bilingual;
   risks: StudyCard[]; gates: StudyCard[]; brand: StudyCard[];
+  version?: string; download?: string; financialDownload?: string;
+  evidenceNote?: Bilingual; budgetNote?: Bilingual;
   sources: StudySource[]; model: ModelConfig;
 };

@@ -1,0 +1,497 @@
+{
+  "assumptions": {
+    "price": 249,
+    "vat": 0.15,
+    "discount": 0.08,
+    "refund": 0.02,
+    "product": 62,
+    "fulfillment": 5,
+    "shipping": 18,
+    "paymentPct": 0.025,
+    "paymentFixed": 1,
+    "returnsCost": 2.5,
+    "marketing": 45,
+    "fixed": 15000,
+    "setup": 75000,
+    "openingUnits": 1000,
+    "deposit": 3000,
+    "reserveMonths": 4,
+    "vatBuffer": 10000,
+    "batch": 1000,
+    "leadMonths": 1,
+    "depositPct": 0.5,
+    "safetyUnits": 250,
+    "conversion": 0.02
+  },
+  "unitEconomics": {
+    "gross": 229.08,
+    "net": 195.216,
+    "payment": 6.727,
+    "variable": 139.227,
+    "contribution": 55.989000000000004,
+    "margin": 0.2868053848045242,
+    "breakEven": 268
+  },
+  "setup": [
+    [
+      "تطوير التركيبة والعينات",
+      20000
+    ],
+    [
+      "الهوية والمتجر والتصوير",
+      15000
+    ],
+    [
+      "نماذج التغليف والطباعة",
+      8000
+    ],
+    [
+      "تسجيل العلامة: طلب واحد وفئة واحدة",
+      6500
+    ],
+    [
+      "اختبارات الجودة والتوافق",
+      4000
+    ],
+    [
+      "عقود وإجراءات وتجهيز الإدراج",
+      5500
+    ],
+    [
+      "تجربة ما قبل الإطلاق",
+      8000
+    ],
+    [
+      "احتياطي تجاوز التأسيس",
+      8000
+    ]
+  ],
+  "fixed": [
+    [
+      "أجر المؤسس العامل",
+      6000
+    ],
+    [
+      "خدمة عملاء بدوام جزئي",
+      2000
+    ],
+    [
+      "تخزين أساسي",
+      1000
+    ],
+    [
+      "إنتاج محتوى مستمر",
+      2000
+    ],
+    [
+      "منصة وأنظمة",
+      500
+    ],
+    [
+      "محاسبة وإدارة",
+      1000
+    ],
+    [
+      "جودة وتأمين تقديري",
+      1000
+    ],
+    [
+      "مصاريف مساندة",
+      1500
+    ]
+  ],
+  "productCost": [
+    [
+      "مركز عطري",
+      18
+    ],
+    [
+      "كحول وتعبئة",
+      8
+    ],
+    [
+      "زجاجة وبخاخ وغطاء",
+      18
+    ],
+    [
+      "علبة وطباعة",
+      10
+    ],
+    [
+      "فحص ونقل إلى المخزن",
+      5
+    ],
+    [
+      "هالك إنتاج مخصص",
+      3
+    ]
+  ],
+  "monthlyUnits": [
+    150,
+    180,
+    220,
+    250,
+    280,
+    300,
+    320,
+    340,
+    360,
+    380,
+    420,
+    450
+  ],
+  "receiptsUnits": [
+    0,
+    0,
+    0,
+    1000,
+    0,
+    0,
+    1000,
+    0,
+    0,
+    1000,
+    0,
+    0
+  ],
+  "months": [
+    {
+      "month": 1,
+      "units": 150,
+      "received": 0,
+      "stock": 850,
+      "revenue": 29282.4,
+      "cogs": 9300,
+      "otherVariable": 11584.05,
+      "fixed": 15000,
+      "surplus": -6601.649999999998,
+      "advance": 0.0,
+      "balance": 0.0,
+      "purchases": 0.0,
+      "cashflow": 2698.350000000002,
+      "cash": 62698.350000000006
+    },
+    {
+      "month": 2,
+      "units": 180,
+      "received": 0,
+      "stock": 670,
+      "revenue": 35138.880000000005,
+      "cogs": 11160,
+      "otherVariable": 13900.86,
+      "fixed": 15000,
+      "surplus": -4921.979999999996,
+      "advance": 0.0,
+      "balance": 0.0,
+      "purchases": 0.0,
+      "cashflow": 6238.020000000004,
+      "cash": 68936.37000000001
+    },
+    {
+      "month": 3,
+      "units": 220,
+      "received": 0,
+      "stock": 450,
+      "revenue": 42947.520000000004,
+      "cogs": 13640,
+      "otherVariable": 16989.940000000002,
+      "fixed": 15000,
+      "surplus": -2682.4199999999983,
+      "advance": 31000.0,
+      "balance": 0.0,
+      "purchases": 31000.0,
+      "cashflow": -20042.42,
+      "cash": 48893.95000000001
+    },
+    {
+      "month": 4,
+      "units": 250,
+      "received": 1000,
+      "stock": 1200,
+      "revenue": 48804.0,
+      "cogs": 15500,
+      "otherVariable": 19306.75,
+      "fixed": 15000,
+      "surplus": -1002.75,
+      "advance": 0.0,
+      "balance": 31000.0,
+      "purchases": 31000.0,
+      "cashflow": -16502.75,
+      "cash": 32391.20000000001
+    },
+    {
+      "month": 5,
+      "units": 280,
+      "received": 0,
+      "stock": 920,
+      "revenue": 54660.48,
+      "cogs": 17360,
+      "otherVariable": 21623.559999999998,
+      "fixed": 15000,
+      "surplus": 676.9200000000055,
+      "advance": 0.0,
+      "balance": 0.0,
+      "purchases": 0.0,
+      "cashflow": 18036.920000000006,
+      "cash": 50428.12000000002
+    },
+    {
+      "month": 6,
+      "units": 300,
+      "received": 0,
+      "stock": 620,
+      "revenue": 58564.8,
+      "cogs": 18600,
+      "otherVariable": 23168.1,
+      "fixed": 15000,
+      "surplus": 1796.7000000000044,
+      "advance": 31000.0,
+      "balance": 0.0,
+      "purchases": 31000.0,
+      "cashflow": -10603.299999999996,
+      "cash": 39824.82000000002
+    },
+    {
+      "month": 7,
+      "units": 320,
+      "received": 1000,
+      "stock": 1300,
+      "revenue": 62469.12,
+      "cogs": 19840,
+      "otherVariable": 24712.64,
+      "fixed": 15000,
+      "surplus": 2916.480000000003,
+      "advance": 0.0,
+      "balance": 31000.0,
+      "purchases": 31000.0,
+      "cashflow": -8243.519999999997,
+      "cash": 31581.300000000025
+    },
+    {
+      "month": 8,
+      "units": 340,
+      "received": 0,
+      "stock": 960,
+      "revenue": 66373.44,
+      "cogs": 21080,
+      "otherVariable": 26257.18,
+      "fixed": 15000,
+      "surplus": 4036.260000000002,
+      "advance": 0.0,
+      "balance": 0.0,
+      "purchases": 0.0,
+      "cashflow": 25116.260000000002,
+      "cash": 56697.56000000003
+    },
+    {
+      "month": 9,
+      "units": 360,
+      "received": 0,
+      "stock": 600,
+      "revenue": 70277.76000000001,
+      "cogs": 22320,
+      "otherVariable": 27801.72,
+      "fixed": 15000,
+      "surplus": 5156.040000000008,
+      "advance": 31000.0,
+      "balance": 0.0,
+      "purchases": 31000.0,
+      "cashflow": -3523.959999999992,
+      "cash": 53173.600000000035
+    },
+    {
+      "month": 10,
+      "units": 380,
+      "received": 1000,
+      "stock": 1220,
+      "revenue": 74182.08,
+      "cogs": 23560,
+      "otherVariable": 29346.260000000002,
+      "fixed": 15000,
+      "surplus": 6275.82,
+      "advance": 0.0,
+      "balance": 31000.0,
+      "purchases": 31000.0,
+      "cashflow": -1164.1800000000003,
+      "cash": 52009.420000000035
+    },
+    {
+      "month": 11,
+      "units": 420,
+      "received": 0,
+      "stock": 800,
+      "revenue": 81990.72,
+      "cogs": 26040,
+      "otherVariable": 32435.340000000004,
+      "fixed": 15000,
+      "surplus": 8515.379999999997,
+      "advance": 0.0,
+      "balance": 0.0,
+      "purchases": 0.0,
+      "cashflow": 34555.38,
+      "cash": 86564.80000000003
+    },
+    {
+      "month": 12,
+      "units": 450,
+      "received": 0,
+      "stock": 350,
+      "revenue": 87847.2,
+      "cogs": 27900,
+      "otherVariable": 34752.15,
+      "fixed": 15000,
+      "surplus": 10195.049999999996,
+      "advance": 0.0,
+      "balance": 0.0,
+      "purchases": 0.0,
+      "cashflow": 38095.049999999996,
+      "cash": 124659.85000000003
+    }
+  ],
+  "scenarios": [
+    {
+      "name": "متحفظ",
+      "inputs": {
+        "price": 249,
+        "vat": 0.15,
+        "discount": 0.12,
+        "refund": 0.04,
+        "product": 70,
+        "fulfillment": 6,
+        "shipping": 20,
+        "paymentPct": 0.025,
+        "paymentFixed": 1,
+        "returnsCost": 4,
+        "marketing": 60,
+        "fixed": 15000,
+        "setup": 75000,
+        "openingUnits": 1000,
+        "deposit": 3000,
+        "reserveMonths": 4,
+        "vatBuffer": 10000,
+        "batch": 1000,
+        "leadMonths": 1,
+        "depositPct": 0.5,
+        "safetyUnits": 250,
+        "conversion": 0.02
+      },
+      "units": 2555,
+      "gross": 219.12,
+      "net": 182.9175652173913,
+      "payment": 6.478000000000001,
+      "variable": 166.478,
+      "contribution": 16.439565217391305,
+      "margin": 0.08987417472921991,
+      "breakEven": 913,
+      "revenue": 467354.3791304348,
+      "profit": -137996.9108695652
+    },
+    {
+      "name": "أساسي",
+      "inputs": {
+        "price": 249,
+        "vat": 0.15,
+        "discount": 0.08,
+        "refund": 0.02,
+        "product": 62,
+        "fulfillment": 5,
+        "shipping": 18,
+        "paymentPct": 0.025,
+        "paymentFixed": 1,
+        "returnsCost": 2.5,
+        "marketing": 45,
+        "fixed": 15000,
+        "setup": 75000,
+        "openingUnits": 1000,
+        "deposit": 3000,
+        "reserveMonths": 4,
+        "vatBuffer": 10000,
+        "batch": 1000,
+        "leadMonths": 1,
+        "depositPct": 0.5,
+        "safetyUnits": 250,
+        "conversion": 0.02
+      },
+      "units": 3650,
+      "gross": 229.08,
+      "net": 195.216,
+      "payment": 6.727,
+      "variable": 139.227,
+      "contribution": 55.989000000000004,
+      "margin": 0.2868053848045242,
+      "breakEven": 268,
+      "revenue": 712538.4,
+      "profit": 24359.850000000006
+    },
+    {
+      "name": "متفائل",
+      "inputs": {
+        "price": 269,
+        "vat": 0.15,
+        "discount": 0.05,
+        "refund": 0.01,
+        "product": 60,
+        "fulfillment": 5,
+        "shipping": 17,
+        "paymentPct": 0.025,
+        "paymentFixed": 1,
+        "returnsCost": 1.5,
+        "marketing": 35,
+        "fixed": 18000,
+        "setup": 75000,
+        "openingUnits": 1000,
+        "deposit": 3000,
+        "reserveMonths": 4,
+        "vatBuffer": 10000,
+        "batch": 1000,
+        "leadMonths": 1,
+        "depositPct": 0.5,
+        "safetyUnits": 250,
+        "conversion": 0.02
+      },
+      "units": 4745,
+      "gross": 255.54999999999998,
+      "net": 219.99521739130435,
+      "payment": 7.38875,
+      "variable": 125.88875,
+      "contribution": 94.10646739130435,
+      "margin": 0.4277659692206748,
+      "breakEven": 192,
+      "revenue": 1043877.3065217391,
+      "profit": 230535.18777173915
+    }
+  ],
+  "years": [
+    {
+      "year": 1,
+      "units": 3650,
+      "revenue": 712538.4,
+      "product": 62.0,
+      "fixedAnnual": 180000.0,
+      "profit": 24359.850000000006
+    },
+    {
+      "year": 2,
+      "units": 4563,
+      "revenue": 890770.608,
+      "product": 63.86,
+      "fixedAnnual": 198000.0,
+      "profit": 48990.627000000095
+    },
+    {
+      "year": 3,
+      "units": 5476,
+      "revenue": 1069002.816,
+      "product": 65.7758,
+      "fixedAnnual": 217800.00000000006,
+      "profit": 68119.48319999996
+    }
+  ],
+  "funding": 200000,
+  "totalUnits": 3650,
+  "revenue": 712538.4,
+  "profit": 24359.850000000024,
+  "endingCash": 124659.85000000003,
+  "minimumCash": 31581.300000000025,
+  "endingStock": 350
+}

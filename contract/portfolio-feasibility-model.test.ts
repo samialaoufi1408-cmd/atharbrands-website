@@ -7,11 +7,13 @@ const run = (slug: string, changes: ModelInputs = {}) => {
   return calculatePortfolioModel(config, { ...config.base, ...changes })!;
 };
 
+import financial from '../content/aevu-financial.json';
+
 describe('Sector-specific feasibility and cash accounting', () => {
   // Reference totals independently calculated with Python Decimal, not rounded monthly cells.
   it.each([
     ['athrbrands', 225000, 723600, 2700, 65700, 18900, 72000],
-    ['awwal-nafha', 368000, 912000, -2400, 165600, 103200, 0],
+    ['aevu', 200000, 712538.4, 24359.85, 84359.85, 44791.2, 0],
     ['tatabu', 410000, 1080000, -78000, 69500, 28875, 112500],
     ['dahsha', 556000, 1287000, -59460, 140540, 112940, 0],
     ['nabra', 1445000, 1375400, -192172, 467828, 404547, 0],
@@ -23,6 +25,18 @@ describe('Sector-specific feasibility and cash accounting', () => {
     expect(r.closingCash).toBeCloseTo(cash, 6);
     expect(r.minimumCash).toBeCloseTo(low, 6);
     expect(r.receivables).toBeCloseTo(receivables, 6);
+  });
+
+  it('reconciles AEVU scenarios and explains the inventory cash difference', () => {
+    const config = getPortfolioFeasibility('aevu').model;
+    for (const [i, name] of ['conservative', 'base', 'optimistic'].entries()) {
+      const result = calculatePortfolioModel(config, config[name as 'base'])!;
+      expect(result.yearRevenue).toBeCloseTo(financial.scenarios[i].revenue, 6);
+      expect(result.surplus).toBeCloseTo(financial.scenarios[i].profit, 6);
+    }
+    const r = run('aevu');
+    expect(r.breakEven).toBe(268);
+    expect(financial.endingCash - r.closingCash).toBeCloseTo((1000 - financial.endingStock) * 62, 6);
   });
 
   it('distinguishes performed services from delayed cash, including the year-end debtor', () => {
@@ -113,7 +127,7 @@ describe('Sector-specific feasibility and cash accounting', () => {
 
   it.each([
     ['nabra', { volume: 1001 }], ['dahsha', { price: 0 }], ['athrbrands', { fixed: NaN }],
-    ['awwal-nafha', { setup: Infinity }], ['tatabu', { collectionLag: 1.5 }],
+    ['aevu', { setup: Infinity }], ['tatabu', { collectionLag: 1.5 }],
     ['wizan', { churnPct: 101 }], ['wizan', { newUsers: -1 }],
     ['rahb-aldar', { soldUnits: 11 }], ['rahb-aldar', { delay: 1.5 }],
   ] as [string, ModelInputs][])('rejects invalid inputs for %s: %j', (slug, changes) => {

@@ -5,9 +5,22 @@ import path from 'node:path';
 import DahshaCase from '../app/[locale]/work/dahsha/page';
 import SumraCase from '../app/[locale]/work/sumra/page';
 
+import AevuCase from '../app/[locale]/work/aevu/page';
+
 afterEach(cleanup);
 
 describe('Complete case studies', () => {
+  it('publishes the 36-page AEVU guide and editable model with its complete content', () => {
+    const { container } = render(<AevuCase params={{ locale: 'ar' }}/>);
+    expect(container.querySelectorAll('#study article')).toHaveLength(34);
+    expect(container.querySelector('a[download][href="/downloads/AEVU-Strategy-Identity-Feasibility.pdf"]')).toBeTruthy();
+    expect(container.querySelector('a[href="/downloads/AEVU-Financial-Model.xlsx"]')).toBeTruthy();
+    expect(container.querySelector('a[href="/ar/work/aevu/feasibility"]')).toBeTruthy();
+    expect(readFileSync('public/downloads/AEVU-Financial-Model.xlsx').subarray(0, 2).toString()).toBe('PK');
+    expect(container.textContent).toContain('إيڤو');
+    expect(container.textContent).not.toContain('أول نفحة');
+  });
+
   it('preserves the complete DAHSHA study and its current PDF guide', () => {
     const { container } = render(<DahshaCase params={{ locale: 'ar' }}/>);
     expect(container.querySelectorAll('#study article')).toHaveLength(39);

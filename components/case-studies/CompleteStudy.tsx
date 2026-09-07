@@ -18,6 +18,7 @@ export type Study = {
   slug: string; name: string; latinName: string; sector: string; sectorEn: string;
   tagline: string; taglineEn: string; concept: boolean; summary: string; summaryEn: string;
   hero: string; heroWidth: number; heroHeight: number; download: string; pageCount: number;
+  financialDownload?: string; scopeTitle?: string; scopeDescription?: string;
   theme: { ink: string; brand: string; paper: string; soft: string; accent: string };
   chapters: { id: string; title: string; description: string; start: number; end: number }[];
   sections: { page: number; id: string; title: string; kicker: string; theme: string; blocks: Block[] }[];
@@ -76,14 +77,15 @@ export function CompleteStudy({ study, locale }: { study: Study; locale: Locale 
           <p className={styles.heroBody}>{ar ? study.summary : study.summaryEn}</p>
           <div className={styles.actions}>
             <a className={styles.primaryButton} href="#study">{ar ? 'اقرأ الدراسة كاملة' : 'Read the full Arabic study'}<span aria-hidden="true">↓</span></a>
-            <a className={styles.downloadButton} href={study.download} download>{ar ? 'تحميل الدليل الكامل' : 'Download the Arabic guide'}<span>PDF · {ar ? '٤١ صفحة' : '41 pages'}</span></a>
+            <a className={styles.downloadButton} href={study.download} download>{ar ? 'تحميل الدليل الكامل' : 'Download the Arabic guide'}<span>PDF · {study.pageCount.toLocaleString(ar ? 'ar-SA' : 'en-GB')} {ar ? 'صفحة' : 'pages'}</span></a>
+            {study.financialDownload && <a className={styles.downloadButton} href={study.financialDownload} download>{ar ? 'تحميل النموذج المالي' : 'Download the financial model'}<span>Excel · {ar ? 'افتراضات قابلة للتعديل' : 'Editable assumptions'}</span></a>}
             <Link className={styles.downloadButton} href={`/${locale}/work/${study.slug}/feasibility`}>{ar ? `دراسة جدوى ${study.name}` : `${study.latinName} feasibility study`}<span>{ar ? 'نموذج تفاعلي بافتراضات معلنة' : 'Interactive example with disclosed assumptions'}</span></Link>
           </div>
         </div>
         <figure className={styles.heroVisual}><Image src={`/assets/studies/${study.slug}/${study.hero}.webp`} alt={ar ? `الهوية المعتمدة لعلامة ${study.name}` : `${study.latinName} identity concept`} width={study.heroWidth} height={study.heroHeight} priority sizes="(max-width: 900px) 100vw, 55vw" /></figure>
       </section>
       <div className={styles.scope} lang="ar" dir="rtl">
-        <p><strong>الاستراتيجية والهوية والتجربة.</strong> تسعة فصول، و٣٩ قسمًا تفصيليًا، ودليل من ٤١ صفحة.</p>
+        <p><strong>{study.scopeTitle ?? 'الاستراتيجية والهوية والتجربة.'}</strong> {study.scopeDescription ?? `${study.chapters.length.toLocaleString('ar-SA')} فصول، و${study.sections.length.toLocaleString('ar-SA')} قسمًا تفصيليًا، ودليل من ${study.pageCount.toLocaleString('ar-SA')} صفحة.`}</p>
         <p>{study.concept ? 'مشروع تصوري يعرض منهجية أثر. بُنيت الدراسة على هوية العلامة القائمة، مع مقترحات للجمهور والتطبيق والتشغيل والتحقق. لم يُجرَ بحث ميداني أو تشغيل فعلي؛ وتُبيّن الفصول حدود كل مثال.' : 'دراسة لهوية استوديو أثر الفعلية، مبنية على مراجعها المعتمدة، مع توسعة للرحلة والتطبيق والقياس. الخطط والمؤشرات مقترحة، وأي نتائج تحتاج إلى قياس موثق.'}</p>
       </div>
       <div className={styles.studyLayout} lang="ar" dir="rtl" id="study">
@@ -104,7 +106,7 @@ export function CompleteStudy({ study, locale }: { study: Study; locale: Locale 
           </section>)}
         </div>
       </div>
-      <section className={styles.closing} lang="ar" dir="rtl"><p className={styles.eyebrow}>{study.name} · الاستراتيجية والهوية البصرية</p><h2>{study.tagline}</h2><div className={styles.actions}><a className={styles.downloadButton} href={study.download} download>تحميل الدليل الكامل<span>PDF · ٤١ صفحة</span></a><a className={styles.backTop} href="#top">العودة إلى البداية ↑</a></div></section>
+      <section className={styles.closing} lang="ar" dir="rtl"><p className={styles.eyebrow}>{study.name} · {study.scopeTitle ?? 'الاستراتيجية والهوية البصرية'}</p><h2>{study.tagline}</h2><div className={styles.actions}><a className={styles.downloadButton} href={study.download} download>تحميل الدليل الكامل<span>PDF · {study.pageCount.toLocaleString('ar-SA')} صفحة</span></a><a className={styles.backTop} href="#top">العودة إلى البداية ↑</a></div></section>
       <ProjectContact locale={locale} project={study.latinName} />
     </main>
   </div>;

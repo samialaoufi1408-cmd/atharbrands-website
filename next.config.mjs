@@ -3,8 +3,10 @@ const nextConfig = {
   reactStrictMode: true,
   async redirects() {
     const renamedCases = {
-      qira: 'awwal-nafha',
-      naysar: 'awwal-nafha',
+      qira: 'aevu',
+      naysar: 'aevu',
+      'awwal-nafha': 'aevu',
+      'awwal-nafha/feasibility': 'aevu/feasibility',
       nawsaq: 'rahb-aldar',
       darwaq: 'tatabu',
     };

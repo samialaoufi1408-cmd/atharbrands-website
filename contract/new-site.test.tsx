@@ -86,11 +86,11 @@ describe('Contract on new site — the loop that must be green', () => {
     assertSeal(p);
   });
 
-  it('EN: all seven projects render with working destinations without DOM injection', async () => {
+  it('EN: all eight projects render with working destinations without DOM injection', async () => {
     const p = await loadNew('en');
     const work = p.doc.getElementById('work')!;
-    expect(work.querySelectorAll('article')).toHaveLength(7);
-    for (const slug of ['athrbrands', 'awwal-nafha', 'rahb-aldar', 'tatabu', 'wizan', 'sumra', 'dahsha']) {
+    expect(work.querySelectorAll('article')).toHaveLength(8);
+    for (const slug of ['athrbrands', 'aevu', 'rahb-aldar', 'tatabu', 'wizan', 'nabra', 'sumra', 'dahsha']) {
       expect(work.querySelectorAll(`a[href="/en/work/${slug}"]`)).toHaveLength(2);
     }
     const ids = [...p.doc.querySelectorAll('[id]')].map(element => element.id);
