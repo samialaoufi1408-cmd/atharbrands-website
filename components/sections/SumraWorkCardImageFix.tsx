@@ -20,7 +20,7 @@ export function SumraWorkCardImageFix() {
       if (!frame) return;
 
       frame.style.backgroundImage =
-        'url("/assets/sumra/cups.webp?v=11"), url("/assets/sumra/full.webp?v=11")';
+        'url("/assets/studies/sumra/cups-v2.webp"), url("/assets/studies/sumra/full-v2.webp")';
       frame.style.backgroundSize = 'cover, cover';
       frame.style.backgroundPosition = 'center 52%, center';
       frame.style.backgroundRepeat = 'no-repeat, no-repeat';

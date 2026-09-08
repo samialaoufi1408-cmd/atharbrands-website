@@ -21,6 +21,6 @@ export function feasibilityMetadata(locale: Locale, example: boolean | CaseSlug 
   return {
     metadataBase: new URL(SITE_URL), title, description,
     alternates: { canonical: `/${locale}${path}`, languages: { ar: `/ar${path}`, en: `/en${path}` } },
-    openGraph: { type: 'website', siteName: 'ATHRBRANDS', title, description, url: `/${locale}${path}`, locale: ar ? 'ar_SA' : 'en_US', images: [study?.hero ?? '/assets/studies/sumra/full.webp'] },
+    openGraph: { type: 'website', siteName: 'ATHRBRANDS', title, description, url: `/${locale}${path}`, locale: ar ? 'ar_SA' : 'en_US', images: [study?.hero ?? '/assets/studies/sumra/full-v2.webp'] },
   };
 }
