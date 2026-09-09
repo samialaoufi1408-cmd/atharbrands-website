@@ -25,7 +25,7 @@ function BusinessArt({ slug }: { slug: BusinessCaseKey }) {
 }
 
 function SumraArt() {
-  return <div className={styles.caseArt} data-case-art="photograph"><Image src="/assets/studies/sumra/full-v2.webp" alt="" width={1536} height={1024} sizes="(max-width: 760px) 100vw, 85vw" style={{width:'100%',height:'100%',objectFit:'cover'}} /></div>;
+  return <div className={styles.caseArt} data-case-art="photograph"><Image src="/assets/studies/sumra/full-v3.webp" alt="" width={1536} height={1024} sizes="(max-width: 760px) 100vw, 85vw" style={{width:'100%',height:'100%',objectFit:'cover'}} /></div>;
 }
 function DahshaArt() {
   return <div className={styles.caseArt} data-case-art="photograph"><Image src="/assets/dahsha/campaign.png" alt="" width={1536} height={1024} sizes="(max-width: 760px) 100vw, 85vw" style={{width:'100%',height:'100%',objectFit:'cover'}} /></div>;

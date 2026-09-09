@@ -36,7 +36,10 @@ def measure(html,width,size=16,line=1.48):
 def image(page,src,rect):
  path=REPO/'public'/src.lstrip('/')
  if str(path) not in IMAGES:
-  im=Image.open(path).convert('RGB');buf=io.BytesIO();im.save(buf,format='JPEG',quality=94,subsampling=0);IMAGES[str(path)]=buf.getvalue()
+  im=Image.open(path);buf=io.BytesIO()
+  if 'A' in im.getbands():im.save(buf,format='PNG')
+  else:im.convert('RGB').save(buf,format='JPEG',quality=94,subsampling=0)
+  IMAGES[str(path)]=buf.getvalue()
  page.insert_image(fitz.Rect(rect),stream=IMAGES[str(path)],keep_proportion=True)
 
 def new_page(title,kicker,dark=False):

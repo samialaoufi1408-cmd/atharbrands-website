@@ -31,8 +31,8 @@ const COPY = {
     en: ['WIZAN | Digital wellbeing identity', 'A conceptual strategy, naming and visual identity system for a preventive digital wellbeing platform. Includes a complete Arabic study of the customer journey, messages, identity rules and launch, with a 41-page guide.'],
   },
   sumra: {
-    ar: ['سُمرة | هوية محمصة ومقهى قهوة مختصة', 'دراسة تصورية لهوية سُمرة: رمز الحبة ومسار S يربطان الاسم بالمنتج، مع ألوان التحميص وتطبيقات أكياس القهوة والأكواب. دراسة كاملة تشمل رحلة العميل والرسائل وقواعد الهوية والتطبيقات والإطلاق، مع دليل من 41 صفحة.'],
-    en: ['SUMRA | Specialty coffee brand identity', 'A conceptual coffee identity connecting a bean and S-shaped path with roast colors, coffee bags and takeaway cups. Includes a complete Arabic study of the customer journey, messages, identity rules and launch, with a 41-page guide.'],
+    ar: ['سُمرة | هوية محمصة ومقهى قهوة مختصة', 'دراسة تصورية لهوية سُمرة: شعار كتابي مخصص وعناصر مستمدة من الحروف، مع ألوان التحميص وتطبيقات الأكياس والأكواب. دراسة كاملة تشمل رحلة العميل والرسائل وقواعد الهوية والتطبيقات والإطلاق، مع دليل من 41 صفحة.'],
+    en: ['SUMRA | Specialty coffee brand identity', 'A conceptual coffee identity led by a bespoke Arabic wordmark, letter-derived graphic elements, roast colors and packaging applications. Includes a complete Arabic study of the customer journey, messages, identity rules and launch, with a 41-page guide.'],
   },
   dahsha: {
     ar: ['دهشة | استراتيجية وهوية لمتجر ألعاب أطفال', 'دراسة دهشة التصورية كاملة في 41 صفحة: الاستراتيجية والشعار والألوان والتغليف وتجربة متجر ألعاب الأطفال.'],
@@ -46,7 +46,7 @@ export function caseMetadata(locale: Locale, slug: CaseSlug): Metadata {
     nabra: '/assets/nabra/campaign.webp',
     athrbrands: '/assets/studies/athrbrands/mark.webp',
     wizan: '/assets/studies/wizan/mark-v2.webp',
-    sumra: '/assets/studies/sumra/full-v2.webp',
+    sumra: '/assets/studies/sumra/full-v3.webp',
     dahsha: '/assets/studies/dahsha/campaign.webp',
     'aevu': '/assets/studies/aevu/landscape.webp',
     'rahb-aldar': '/assets/nawsaq/hero.png',
