@@ -1,0 +1,64 @@
+.section {
+  padding: clamp(40px, 6vw, 80px) max(20px, calc((100vw - 1344px) / 2));
+  background: var(--paper, #f1ece3);
+  scroll-margin-top: 24px;
+}
+
+.panel {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr);
+  align-items: center;
+  gap: clamp(32px, 5vw, 80px);
+  padding: clamp(28px, 4vw, 64px);
+  background: #111315;
+  color: #f3efe7;
+  border: 1px solid #b69a7059;
+}
+
+.copy { min-width: 0; }
+.eyebrow { margin: 0 0 20px; color: #e0c28f; font-size: .9375rem; line-height: 1.7; }
+
+.copy h2 {
+  margin: 0;
+  font: 500 clamp(2.2rem, 4.4vw, 4.25rem)/1.35 var(--font-display);
+  letter-spacing: 0;
+  text-wrap: balance;
+}
+
+.copy h2 span { display: block; color: #e0c28f; }
+.intro { margin: 24px 0 32px; max-width: 35rem; color: #d1cec7; font-size: 1.0625rem; line-height: 1.95; }
+.features { display: grid; gap: 18px; margin: 0 0 32px; }
+.features > div { border-inline-start: 2px solid #c7a36d; padding-inline-start: 18px; }
+.features dt { font-size: 1rem; font-weight: 500; line-height: 1.6; }
+.features dd { margin: 4px 0 0; color: #c8c5bf; font-size: 1rem; line-height: 1.8; }
+.actions { display: flex; flex-wrap: wrap; align-items: center; gap: 18px 24px; }
+
+.panel .cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 52px;
+  padding: 14px 22px;
+  background: #c7a36d;
+  color: #0f1113;
+  border: 1px solid #c7a36d;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.7;
+  text-align: center;
+}
+
+.panel .cta:hover { background: #e0c28f; border-color: #e0c28f; }
+.enquiry { padding-block: 8px; border-bottom: 1px solid #c7a36d; font-size: .9375rem; line-height: 1.7; }
+.visual { display: block; width: 100%; max-width: 400px; justify-self: center; border: 1px solid #c7a36d40; }
+.image { display: block; width: 100%; height: auto; }
+.section a:focus-visible { outline: 3px solid #e0c28f; outline-offset: 6px; }
+
+@media (max-width: 760px) {
+  .section { padding: 28px 16px; }
+  .panel { grid-template-columns: minmax(0, 1fr); gap: 32px; padding: 28px 16px 16px; }
+  .copy h2 { font-size: clamp(2.2rem, 9vw, 3.2rem); }
+  .intro { margin-block: 20px 28px; }
+  .actions { align-items: stretch; flex-direction: column; }
+  .enquiry { align-self: flex-start; }
+}

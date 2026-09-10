@@ -63,6 +63,7 @@ export function StudioContact({ locale }: { locale: Locale }) {
             <option>{ar ? 'استراتيجية العلامة' : 'Brand strategy'}</option>
             <option>{ar ? 'الهوية البصرية' : 'Visual identity'}</option>
             <option>{ar ? 'تطبيقات الهوية' : 'Brand applications'}</option>
+            <option>{ar ? 'تصميم وتجهيز بطاقات الولاء الرقمية' : 'Digital loyalty card design and setup'}</option>
             <option>{ar ? 'أحتاج مساعدتكم في تحديد النطاق' : 'Help me define the scope'}</option>
           </select>
         </label>

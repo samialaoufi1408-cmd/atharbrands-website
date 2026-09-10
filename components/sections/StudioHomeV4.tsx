@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { StudioServices, StudioApproach, StudioAbout } from './StudioSections';
 import { StudioContact } from './StudioContact';
 import { StudioMobileMenu } from './StudioMobileMenu';
+import { StudioLoyalty } from './StudioLoyalty';
 import { CONTACT_EMAIL, CONTACT_LINKEDIN, whatsappUrl } from '@/lib/contact';
 import { Locale } from '@/content/site';
 import { BUSINESS_CASES, type BusinessCaseKey } from '@/content/business-cases';
@@ -120,6 +121,7 @@ export function StudioHomeV4({ locale }: StudioHomeV4Props) {
             <p>{c.hero.note}</p>
           </div>
         </section>
+        <StudioLoyalty locale={locale}/>
         <section className={styles.work} id="work">
           <div className={styles.sectionIntro}><p>{c.work.eyebrow}</p><h2>{c.work.title}</h2><div><span/>{c.work.intro}</div></div>
           <div className={styles.projectList}>
