@@ -1,0 +1,35 @@
+.page { --font-body: 'IBM Plex Sans Arabic', Manrope, sans-serif; --font-display: 'Noto Naskh Arabic', Georgia, serif; background: #0f1113; color: #f3efe7; font-family: var(--font-body); font-weight: 400; }
+.page:lang(en) { --font-body: Manrope, sans-serif; --font-display: 'Cormorant Garamond', Georgia, serif; }
+.page a:focus-visible, .page summary:focus-visible { outline: 3px solid #c7a36d; outline-offset: 6px; }
+.header, .hero, .scope, .process, .faq, .footer { padding-inline: max(24px, calc((100vw - 1280px) / 2)); }
+.header { display: flex; align-items: center; justify-content: space-between; gap: 24px; min-height: 96px; border-bottom: 1px solid #c7a36d40; }
+.brand { display: inline-flex; gap: 12px; align-items: center; direction: ltr; font: 500 14px/1.5 Manrope, sans-serif; letter-spacing: .12em; }
+.brand svg { width: 30px; height: 44px; }
+.header nav { display: flex; align-items: center; gap: 24px; font-size: 14px; }
+.hero { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr); align-items: center; gap: clamp(32px, 7vw, 100px); padding-block: 64px; }
+.eyebrow { color: #e0c28f; font-size: 16px; margin-bottom: 24px; }
+.hero h1 { font: 500 clamp(38px, 4.8vw, 70px)/1.4 var(--font-display); margin: 0; letter-spacing: 0; }
+.hero h1 span { display: block; color: #e0c28f; }
+.intro { max-width: 640px; font-size: 18px; line-height: 1.95; color: #d1cec7; margin: 24px 0 32px; }
+.actions { display: flex; flex-wrap: wrap; align-items: center; gap: 20px 28px; }
+.button { display: inline-flex; align-items: center; justify-content: center; min-height: 52px; padding: 14px 24px; background: #c7a36d; color: #0f1113; font-size: 16px; font-weight: 500; line-height: 1.6; }
+.button:hover { background: #e0c28f; }
+.textLink { font-size: 16px; line-height: 1.8; padding-block: 8px; border-bottom: 1px solid #c7a36d; }
+.poster { width: 100%; max-width: 360px; height: auto; justify-self: center; border: 1px solid #c7a36d40; }
+.scope, .process, .faq { padding-block: clamp(56px, 6vw, 88px); }
+.scope, .faq { background: #f1ece3; color: #0f1113; }
+.page h2 { font: 500 clamp(30px, 3.6vw, 48px)/1.5 var(--font-display); margin: 0 0 32px; letter-spacing: 0; }
+.grid, .steps { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 36px 56px; }
+.grid article { border-top: 1px solid #0f111330; padding-top: 24px; }
+.page h3 { font: 500 22px/1.6 var(--font-body); margin: 0 0 12px; }
+.grid p, .steps p, .faq p { font-size: 16px; line-height: 1.95; margin: 0; max-width: 780px; }
+.steps { list-style: none; padding: 0; margin: 0; }
+.steps li { display: flex; gap: 20px; border-top: 1px solid #c7a36d50; padding-top: 24px; }
+.steps li > span { color: #e0c28f; font: 500 16px/2 Manrope, sans-serif; }
+.steps p { color: #c8c5bf; }
+.faq details { padding: 22px 0; border-bottom: 1px solid #0f111330; }
+.faq summary { font-size: 18px; line-height: 1.7; cursor: pointer; }
+.faq details p { margin-top: 16px; padding-inline-start: 20px; }
+.footer { padding-block: 32px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 24px; border-top: 1px solid #c7a36d40; font-size: 14px; }
+.footer > span { font-family: Manrope, sans-serif; }
+@media(max-width:760px) { .header { flex-wrap: wrap; padding-block: 18px; gap: 16px; } .header nav { gap: 16px; } .hero, .grid, .steps { grid-template-columns: minmax(0, 1fr); } .hero { padding-block: 40px; } .actions { align-items: flex-start; flex-direction: column; } .intro { font-size: 17px; } }

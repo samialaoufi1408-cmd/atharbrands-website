@@ -7,7 +7,7 @@ import { StudioContact } from './StudioContact';
 import { StudioMobileMenu } from './StudioMobileMenu';
 
 beforeEach(() => { vi.mocked(sendEnquiry).mockReset(); });
-afterEach(cleanup);
+afterEach(() => { cleanup(); window.history.replaceState({}, '', '/'); });
 
 function fillForm(ui: ReturnType<typeof render>) {
   fireEvent.change(ui.getByLabelText('Name'), { target: { value: 'Test user' } });
@@ -18,6 +18,22 @@ function fillForm(ui: ReturnType<typeof render>) {
 }
 
 describe('Studio contact', () => {
+  it('prefills loyalty and retains safe campaign attribution with the submitted enquiry', async () => {
+    window.history.replaceState({}, '', '/en/services/loyalty?utm_source=tiktok&utm_campaign=loyalty_cafes_202609&email=private@example.com');
+    vi.mocked(sendEnquiry).mockResolvedValue({ ok: true });
+    const ui = render(<StudioContact locale="en" service="loyalty"/>);
+    expect(ui.getByLabelText('Service needed')).toHaveValue('Digital loyalty card design and setup');
+    fireEvent.change(ui.getByLabelText('Name'), { target: { value: 'Test user' } });
+    fireEvent.change(ui.getByLabelText('Email'), { target: { value: 'test@example.com' } });
+    fireEvent.change(ui.getByLabelText('Business or project name'), { target: { value: 'Test cafe' } });
+    await act(async () => { fireEvent.submit(ui.container.querySelector('form')!); });
+    const input = vi.mocked(sendEnquiry).mock.calls[0][0];
+    expect(input.vision).toContain('Digital loyalty card design and setup');
+    expect(input.vision).toContain('utm_source: tiktok');
+    expect(input.vision).toContain('Enquiry page: /en/services/loyalty');
+    expect(input.vision).not.toContain('private@example.com');
+    expect(decodeURIComponent(ui.getByRole('link', { name: 'Chat on WhatsApp' }).getAttribute('href')!)).toContain('loyalty card');
+  });
   it('keeps the brief on server errors and offers direct WhatsApp contact', async () => {
     vi.mocked(sendEnquiry).mockResolvedValue({ ok: false, error: 'unconfigured' });
     const ui = render(<StudioContact locale="en"/>);

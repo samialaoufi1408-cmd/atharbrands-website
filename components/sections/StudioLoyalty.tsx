@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import type { Locale } from '@/content/site';
 import { CONTACT_PHONE } from '@/lib/contact';
 import styles from './StudioLoyalty.module.css';
@@ -15,7 +16,7 @@ const COPY = {
       { title: 'تجهيز وتسليم', body: 'نجهّز تفاصيل البطاقة ونوضّح لك طريقة استخدامها.' },
     ],
     cta: 'اطلب بطاقتك عبر واتساب',
-    enquiry: 'أرسل تفاصيل مشروعك',
+    enquiry: 'تفاصيل الخدمة وطريقة الطلب',
     message: 'السلام عليكم، أرغب في تصميم وتجهيز بطاقات ولاء رقمية لمشروعي مع أثر. أود معرفة التفاصيل وعرض السعر.',
     imageAlt: 'إعلان أثر لتصميم وتجهيز بطاقات الولاء الرقمية: بطاقة بهوية المشروع ونقاط ومكافآت، مع نموذج للبطاقة على الجوال.',
   },
@@ -30,7 +31,7 @@ const COPY = {
       { title: 'Setup & handover', body: 'We prepare the card details and explain how to use it.' },
     ],
     cta: 'Request your card on WhatsApp',
-    enquiry: 'Send your project details',
+    enquiry: 'Explore the service',
     message: 'Hello, I would like ATHR to design and set up digital loyalty cards for my business. Please share the details and a quote.',
     imageAlt: 'ATHR digital loyalty card campaign in Arabic, showing a branded rewards card and a mobile loyalty pass.',
   },
@@ -57,7 +58,7 @@ export function StudioLoyalty({ locale }: { locale: Locale }) {
           </dl>
           <div className={styles.actions}>
             <a className={styles.cta} href={requestUrl} target="_blank" rel="noopener noreferrer" data-cta="loyalty-whatsapp">{c.cta}</a>
-            <a className={styles.enquiry} href="#contact">{c.enquiry}</a>
+            <Link className={styles.enquiry} href={`/${locale}/services/loyalty`}>{c.enquiry}</Link>
           </div>
         </div>
         <a className={styles.visual} href={requestUrl} target="_blank" rel="noopener noreferrer" aria-label={c.cta}>
