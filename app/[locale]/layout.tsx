@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Script from 'next/script';
 import { locales, Locale } from '@/content/site';
 import { LightboxProvider } from '@/components/fx/Lightbox';
 import { LightboxRoot } from '@/components/fx/Lightbox';
@@ -100,6 +101,10 @@ export default function LocaleLayout({
           <FloatingContact locale={params.locale} />
           <LightboxRoot />
         </LightboxProvider>
+        <Script id="vercel-analytics-init" strategy="afterInteractive">
+          {`window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };`}
+        </Script>
+        <Script src="/_vercel/insights/script.js" strategy="afterInteractive" />
       </body>
     </html>
   );
