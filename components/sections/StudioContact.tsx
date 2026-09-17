@@ -5,7 +5,9 @@ import type { FormEvent } from 'react';
 import type { Locale } from '@/content/site';
 import { sendEnquiry } from '@/app/actions';
 import { CONTACT_EMAIL, CONTACT_PHONE, whatsappUrl } from '@/lib/contact';
-import { campaignAttribution } from '@/lib/campaign-attribution';
+import { formatCampaignAttribution } from '@/lib/campaign-attribution';
+import { sessionCampaign } from '@/lib/campaign-session';
+import { trackConversion } from '@/lib/web-analytics';
 import styles from './StudioSections.module.css';
 
 export function StudioContact({ locale, service }: { locale: Locale; service?: 'loyalty' }) {
@@ -25,7 +27,8 @@ export function StudioContact({ locale, service }: { locale: Locale; service?: '
     if (String(data.get('website') ?? '').trim()) return;
     setStatus('pending');
     try {
-      const attribution = campaignAttribution(window.location.search);
+      const campaign = sessionCampaign();
+      const attribution = formatCampaignAttribution(campaign);
       const phone = String(data.get('phone') ?? '').trim().slice(0, 30);
       const details = [
         `${ar ? 'الخدمة المطلوبة' : 'Requested service'}: ${data.get('service')}`,
@@ -44,6 +47,7 @@ export function StudioContact({ locale, service }: { locale: Locale; service?: '
       if (result.ok) {
         form.reset();
         setStatus('sent');
+        trackConversion('enquiry_submitted', { locale, form: loyalty ? 'loyalty' : 'general' }, campaign);
       } else {
         setStatus('error');
       }
