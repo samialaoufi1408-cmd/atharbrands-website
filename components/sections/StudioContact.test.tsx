@@ -2,11 +2,19 @@ import { act, fireEvent, render, cleanup } from '@testing-library/react';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 vi.mock('@/app/actions', () => ({ sendEnquiry: vi.fn() }));
+vi.mock('@vercel/analytics', () => ({ track: vi.fn() }));
+import { track } from '@vercel/analytics';
 import { sendEnquiry } from '@/app/actions';
+import { CONTACT_PHONE } from '@/lib/contact';
+import { sessionCampaign } from '@/lib/campaign-session';
 import { StudioContact } from './StudioContact';
 import { StudioMobileMenu } from './StudioMobileMenu';
 
-beforeEach(() => { vi.mocked(sendEnquiry).mockReset(); });
+beforeEach(() => {
+  vi.mocked(sendEnquiry).mockReset();
+  vi.mocked(track).mockReset();
+  window.sessionStorage.clear();
+});
 afterEach(() => { cleanup(); window.history.replaceState({}, '', '/'); });
 
 function fillForm(ui: ReturnType<typeof render>) {
@@ -32,6 +40,10 @@ describe('Studio contact', () => {
     expect(input.vision).toContain('utm_source: tiktok');
     expect(input.vision).toContain('Enquiry page: /en/services/loyalty');
     expect(input.vision).not.toContain('private@example.com');
+    expect(track).toHaveBeenCalledWith('enquiry_submitted', {
+      locale: 'en', form: 'loyalty', utm_source: 'tiktok', utm_campaign: 'loyalty_cafes_202609',
+    });
+    expect(JSON.stringify(vi.mocked(track).mock.calls)).not.toMatch(/test@example.com|Test user|Test cafe/);
     expect(decodeURIComponent(ui.getByRole('link', { name: 'Chat on WhatsApp' }).getAttribute('href')!)).toContain('loyalty card');
   });
   it('keeps the brief on server errors and offers direct WhatsApp contact', async () => {
@@ -42,7 +54,8 @@ describe('Studio contact', () => {
     expect(ui.getByRole('alert')).toHaveTextContent('could not be sent');
     expect(ui.getByLabelText('Name')).toHaveValue('Test user');
     expect(ui.getByLabelText('Business or project name')).toHaveValue('Test business');
-    expect(ui.getByRole('link', { name: 'Chat on WhatsApp' })).toHaveAttribute('href', expect.stringContaining('https://wa.me/966599444486'));
+    expect(ui.getByRole('link', { name: 'Chat on WhatsApp' })).toHaveAttribute('href', expect.stringContaining(`https://wa.me/${CONTACT_PHONE.replace('+', '')}`));
+    expect(track).not.toHaveBeenCalled();
   });
 
   it('prevents repeat submissions while pending', async () => {
@@ -66,6 +79,7 @@ describe('Studio contact', () => {
     await act(async () => { fireEvent.submit(form); });
     expect(ui.getByRole('alert')).toBeTruthy();
     expect(ui.getByLabelText('Name')).toHaveValue('Test user');
+    expect(track).not.toHaveBeenCalled();
   });
 
   it('does not send a honeypot submission', async () => {
@@ -74,6 +88,29 @@ describe('Studio contact', () => {
     fireEvent.change(ui.container.querySelector('input[name="website"]')!, { target: { value: 'spam' } });
     await act(async () => { fireEvent.submit(form); });
     expect(sendEnquiry).not.toHaveBeenCalled();
+    expect(track).not.toHaveBeenCalled();
+  });
+
+  it('attaches the landing campaign to an enquiry sent on an untagged page', async () => {
+    sessionCampaign('?utm_source=x&utm_campaign=بطاقات%20الولاء');
+    window.history.replaceState({}, '', '/en/services/loyalty');
+    vi.mocked(sendEnquiry).mockResolvedValue({ ok: true });
+    const ui = render(<StudioContact locale="en"/>);
+    await act(async () => { fireEvent.submit(fillForm(ui)); });
+    expect(vi.mocked(sendEnquiry).mock.calls[0][0].vision).toContain('utm_campaign: بطاقات الولاء');
+    expect(track).toHaveBeenCalledTimes(1);
+    expect(track).toHaveBeenCalledWith('enquiry_submitted', {
+      locale: 'en', form: 'general', utm_source: 'x', utm_campaign: 'بطاقات الولاء',
+    });
+  });
+
+  it('still confirms a successful enquiry when tracking throws', async () => {
+    vi.mocked(sendEnquiry).mockResolvedValue({ ok: true });
+    vi.mocked(track).mockImplementation(() => { throw new Error('Analytics unavailable'); });
+    const ui = render(<StudioContact locale="en"/>);
+    await act(async () => { fireEvent.submit(fillForm(ui)); });
+    expect(ui.getByText('Your enquiry has been received. We will contact you by email.')).toBeTruthy();
+    expect(ui.queryByRole('alert')).toBeNull();
   });
 
   it('closes the mobile menu on navigation and on Escape', () => {
