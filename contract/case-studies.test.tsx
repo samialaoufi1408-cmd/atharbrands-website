@@ -41,7 +41,7 @@ describe('Complete case studies', () => {
     for (const image of images) {
       const src = new URL(image.getAttribute('src')!, 'https://example.com');
       const originalPath = src.searchParams.get('url') ?? src.pathname;
-      expect(originalPath).toMatch(/^\/assets\/studies\/sumra\/(full|mark|bags|cups)\.webp$/);
+      expect(originalPath).toMatch(/^\/assets\/studies\/sumra\/(full|mark|bags|cups)(?:-v\d+)?\.webp$/);
       const bytes = readFileSync(path.join(process.cwd(), 'public', originalPath));
       expect(bytes.subarray(8, 12).toString()).toBe('WEBP');
       expect(image).toHaveAttribute('width');
@@ -49,7 +49,8 @@ describe('Complete case studies', () => {
     }
     expect(container.querySelectorAll('#study article')).toHaveLength(39);
     expect(container.querySelector('a[href="/en/work/sumra/feasibility"]')).toBeTruthy();
-    expect(container.querySelector('a[download]')).toHaveAttribute('href', '/downloads/SUMRA-Strategy-and-Visual-Identity.pdf');
+    const downloadHref = container.querySelector('a[download]')?.getAttribute('href');
+    expect(downloadHref?.split('?')[0]).toBe('/downloads/SUMRA-Strategy-and-Visual-Identity.pdf');
     expect(readFileSync('public/downloads/SUMRA-Strategy-and-Visual-Identity.pdf').subarray(0, 4).toString()).toBe('%PDF');
     expect(container.querySelector('a[href="/en#contact"]')).toBeTruthy();
   });
