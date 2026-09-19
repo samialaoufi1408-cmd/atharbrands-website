@@ -5,6 +5,7 @@ import {
   assertSeal,
 } from './contract';
 import { htmlAttrs } from '../app/[locale]/layout';
+import { CONTACT_PHONE } from '../lib/contact';
 
 // The contract exercises the fully-composed page. Mocks stand in for
 // external boundaries: Supabase reads (fetchCms) and Supabase writes (sendEnquiry).
@@ -20,6 +21,7 @@ import { sendEnquiry } from '@/app/actions';
 import { LightboxProvider, LightboxRoot } from '../components/fx/Lightbox';
 
 async function loadNew(locale: 'en' | 'ar'): Promise<SitePage> {
+  window.history.replaceState({}, '', `/${locale}`);
   const a = htmlAttrs(locale);
   document.documentElement.setAttribute('lang', a.lang);
   document.documentElement.setAttribute('dir', a.dir);
@@ -58,6 +60,7 @@ describe('Contract on new site — the loop that must be green', () => {
     document.body.innerHTML = '';
     document.body.style.overflow = '';
     (globalThis as any).__IO.instances.length = 0;
+    window.sessionStorage.clear();
     vi.clearAllMocks();
   });
 
@@ -73,12 +76,13 @@ describe('Contract on new site — the loop that must be green', () => {
     expect(p.doc.getElementById('contact')?.querySelector('form')).toBeTruthy();
     expect(body).toContain('Riyadh');
     expect(body).toContain('admin@athrbrands.com');
-    expect(body).toContain('+966599444486');
+    expect(body).toContain(CONTACT_PHONE);
     expect(body).toContain('SUMRA');
     expect(body).toContain('DAHSHA');
     expect(body).not.toContain('Phase one of the new website');
     expect(body).not.toContain('Rimal Atelier');
-    expect(p.doc.querySelector('a[href*="wa.me/966599444486"]')).toBeTruthy();
+    expect(p.doc.querySelector(`a[href="tel:${CONTACT_PHONE}"]`)).toBeTruthy();
+    expect(p.doc.querySelector(`a[href^="https://wa.me/${CONTACT_PHONE.replace('+', '')}?"]`)).toBeTruthy();
   });
 
   it('EN: seal has the correct ray counts', async () => {
@@ -106,7 +110,10 @@ describe('Contract on new site — the loop that must be green', () => {
     fireEvent.change(ui.getByLabelText('Business or project name'), { target: { value: 'Test studio' } });
     fireEvent.change(ui.getByLabelText('Service needed'), { target: { value: 'Visual identity' } });
     await act(async () => { fireEvent.submit(form); });
-    expect(sendEnquiry).toHaveBeenCalledWith(expect.objectContaining({name: 'Test enquiry', email: 'test@example.com', vision: 'Requested service: Visual identity\n', locale: 'en'}));
+    expect(sendEnquiry).toHaveBeenCalledWith(expect.objectContaining({
+      name: 'Test enquiry', email: 'test@example.com', organisation: 'Test studio',
+      vision: 'Requested service: Visual identity\nEnquiry page: /en', locale: 'en',
+    }));
     expect(ui.getByText('Your enquiry has been received. We will contact you by email.')).toBeTruthy();
     expect(ui.getByLabelText('Name')).toHaveValue('');
     expect(ui.getByLabelText('Service needed')).toHaveValue('');

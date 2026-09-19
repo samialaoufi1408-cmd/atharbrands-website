@@ -8,9 +8,12 @@ import { FEASIBILITY_PATHS, feasibilityMetadata } from '../lib/feasibility-metad
 describe('SEO', () => {
   it('sitemap covers both locales with hreflang alternates', () => {
     const s = sitemap();
-    expect(s).toHaveLength(36);
+    // Two locales: home, loyalty, case studies and feasibility pages.
+    expect(s).toHaveLength(2 * (2 + CASE_SLUGS.length + FEASIBILITY_PATHS.length));
+    expect(new Set(s.map(e => e.url)).size).toBe(s.length);
     for (const locale of ['ar', 'en']) {
       expect(s.map(e => e.url)).toContain(`${SITE_URL}/${locale}`);
+      expect(s.map(e => e.url)).toContain(`${SITE_URL}/${locale}/services/loyalty`);
       for (const slug of CASE_SLUGS) expect(s.map(e => e.url)).toContain(`${SITE_URL}/${locale}/work/${slug}`);
       for (const path of FEASIBILITY_PATHS) {
         expect(s.map(e => e.url)).toContain(`${SITE_URL}/${locale}${path}`);
